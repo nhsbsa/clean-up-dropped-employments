@@ -45,6 +45,6 @@ router.use('/', (req, res, next) => {
 // Route File Versions
 // ****************************************
 
-router.use('/clean-up', require('./views/clean-up/_routes'));
+router.use('/mvp', require('./views/mvp/_routes'));
 
 module.exports = router

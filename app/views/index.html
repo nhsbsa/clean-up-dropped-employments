@@ -28,27 +28,77 @@
 <!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
   <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-two-thirds">
-
-      <!-- You can delete the lines below -->
-      <h2 class="nhsuk-heading-l">
-        NHS prototype kit
-        <span class="nhsuk-caption-xl nhsuk-caption--bottom">Version {{version}}</span>
-      </h2>
-      <hr>
-
-
-      <!-- Add your content here -->
-      <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
-
+    <div class="nhsuk-grid-column-full">
+      <span class="nhsuk-caption-xl">Clean-up the Scheme</span>
       <h1 class="nhsuk-heading-xl">
-        {{ serviceName }}
+        Dropped Employments
       </h1>
-
       <hr>
+      <div class="nhsuk-grid-column-two-thirds">
+          <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+              <div class="nhsuk-grid-row">
+                <div class="nhsuk-grid-column-two-thirds">
+                  <span class="nhsuk-details__summary-text">
+                    Dropped Employments
+                  </span>
+                </div>
+                <div class="nhsuk-grid-column-one-third nhsuk-u-text-align-right">
+                  <strong class="nhsuk-tag nhsuk-tag--blue">DESIGN</strong>
+                </div>
+              </div>
+            </summary>
+            <div class="nhsuk-details__text">
+              <h3 class="nhsuk-heading-s">User research</h3>
+              <p>TBC</p>
+              
+              
+              <hr>
+              {{ button({
+                "text": "View MVP",
+                "href": "/mvp/search"
+              }) }}
+              <br/>
+              {{ actionLink({
+                "classes": "nhsuk-u-margin-bottom-3",
+                "text": "View user journey on Miro",
+                "href": "https://miro.com/app/board/uXjVJGRiT-8=/?share_link_id=109589333112"
+              }) }}
+            </div>
+          </details>
+      </div>
 
-      <!-- End of content -->
-
+      <div class="nhsuk-grid-column-one-third key-padding-left">
+        <h3>Key</h2>
+        <table class="nhsuk-table">
+          <tbody class="nhsuk-table__body">
+            <tr role="row" class="nhsuk-table__row">
+              <td class="nhsuk-table__cell">
+                <strong class="nhsuk-tag nhsuk-tag--blue  nhsuk-u-font-size-14">DESIGN</strong>
+              </td>
+              <td class="nhsuk-table__cell nhsuk-u-font-size-14">All or parts of the version are still being designed</td>
+            </tr>
+            <tr role="row" class="nhsuk-table__row">
+              <td class="nhsuk-table__cell">
+                <strong class="nhsuk-tag nhsuk-tag--yellow nhsuk-u-font-size-14">UR</strong>
+              </td>
+              <td class="nhsuk-table__cell nhsuk-u-font-size-14">All or parts of the version are currently with UR for usability testing</td>
+            </tr>
+            <tr role="row" class="nhsuk-table__row">
+              <td class="nhsuk-table__cell">
+                <strong class="nhsuk-tag nhsuk-tag--green nhsuk-u-font-size-14">DEV</strong>
+              </td>
+              <td class="nhsuk-table__cell nhsuk-u-font-size-14">All or parts of the version are currently in development</td>
+            </tr>
+            <tr role="row" class="nhsuk-table__row">
+              <td class="nhsuk-table__cell">
+                <strong class="nhsuk-tag nhsuk-tag--red  nhsuk-u-font-size-14">RETIRED</strong>
+              </td>
+              <td class="nhsuk-table__cell nhsuk-u-font-size-14">All or parts of the version have been retired and replaced with new prototypes and Miro boards</td>
+            </tr>
+          </tbody>
+        </table>
     </div>
   </div>
+</div>
 {% endblock %}
