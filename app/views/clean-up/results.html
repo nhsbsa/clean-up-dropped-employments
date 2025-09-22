@@ -1,0 +1,402 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "John Smith"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <span class="nhsuk-caption-l">Member Details</span>
+      <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">{{pageTitle}}</h1>
+
+          {{ summaryList({
+            rows: [
+              {
+                key: {
+                  text: "Employee ID"
+                },
+                value: {
+                  text: "12345678"
+                }
+              },
+              {
+                key: {
+                  text: "Role"
+                },
+                value: {
+                  text: "Software Engineer"
+                }
+              },
+              {
+                key: {
+                  text: "Dpt"
+                },
+                value: {
+                  html: "IT"
+                }
+              },
+              {
+                key: {
+                  text: "Email"
+                },
+                value: {
+                  html: 'john.smith@email.com'
+                }
+              }
+            ]
+          }) }}
+
+      <!-- ****************
+        SERVICE HISTORY
+      ***************** -->
+
+      {% call details({
+        summaryText: "Service History",
+        classes: "nhsuk-expander"
+      }) %}
+
+        {{ table({
+          responsive: true,
+          panel: false,
+          firstCellIsHeader: false,
+          head: [
+            {
+              text: "Employment ID",
+              classes: "nhsuk-u-font-size-16"
+            },
+            {
+              text: "Personal reference",
+              classes: "nhsuk-u-font-size-16"
+            },
+            {
+              text: "Scheme code",
+              classes: "nhsuk-u-font-size-16"
+            },
+            {
+              text: "Service start date",
+              classes: "nhsuk-u-font-size-16"
+            },
+            {
+              text: "Service end date",
+              classes: "nhsuk-u-font-size-16"
+            },
+            {
+              text: "Member Status",
+              classes: "nhsuk-u-font-size-16"
+            },
+            {
+              text: "End reason code",
+              classes: "nhsuk-u-font-size-16"
+            },
+            {
+              text: "Scheme category",
+              classes: "nhsuk-u-font-size-16"
+            }
+          ],
+          rows: [
+            [
+              {
+                header: "Employment ID",
+                text: "1",
+                classes: "nhsuk-u-font-size-16"
+              },
+              {
+                header: "Personal reference",
+                text: "1234567",
+                classes: "nhsuk-u-font-size-16"
+              },
+              {
+                header: "Scheme code",
+                text: "NHS",
+                classes: "nhsuk-u-font-size-16"
+              },
+              {
+                header: "Service start date",
+                text: "01 April 2009",
+                classes: "nhsuk-u-font-size-16"
+              },
+              {
+                header: "Service end date",
+                text: "31 December 2015",
+                classes: "nhsuk-u-font-size-16"
+              },
+              {
+                header: "Member status",
+                text: "A",
+                classes: "nhsuk-u-font-size-16"
+              },
+              {
+                header: "End reason code",
+                text: "Full time",
+                classes: "nhsuk-u-font-size-16"
+              },
+              {
+                header: "Scheme category",
+                text: "DB",
+                classes: "nhsuk-u-font-size-16"
+              }
+            ]
+          ]
+        }) }}
+      {% endcall %}
+
+      <!-- ****************
+        EMPLOYMENT HISTORY
+      ***************** -->
+
+      {% call details({
+        summaryText: "Employment History",
+        classes: "nhsuk-expander"
+      }) %}
+        {{ table({
+          responsive: true,
+          panel: false,
+          firstCellIsHeader: false,
+          head: [
+            {
+              text: "Employment ID",
+              classes: "nhsuk-u-font-size-16"
+            },
+            {
+              text: "Employer code",
+              classes: "nhsuk-u-font-size-16"
+            },
+            {
+              text: "Start date",
+              classes: "nhsuk-u-font-size-16"
+            },
+            {
+              text: "End date",
+              classes: "nhsuk-u-font-size-16"
+            },
+            {
+              text: "Full/part time",
+              classes: "nhsuk-u-font-size-16"
+            },
+            {
+              text: "Employment type",
+              classes: "nhsuk-u-font-size-16"
+            },
+            {
+              text: "Actual hours",
+              classes: "nhsuk-u-font-size-16"
+            }
+          ],
+          rows: [
+            [
+              {
+                header: "Employment ID",
+                text: "1",
+                classes: "nhsuk-u-font-size-16"
+              },
+              {
+                header: "Employer code",
+                text: "Name/Code",
+                classes: "nhsuk-u-font-size-16"
+              },
+              {
+                header: "Start Date",
+                text: "01 April 2009",
+                classes: "nhsuk-u-font-size-16"
+              },
+              {
+                header: "End Date",
+                text: "31 December 2015",
+                classes: "nhsuk-u-font-size-16"
+              },
+              {
+                header: "Full/part-time",
+                text: "Full time",
+                classes: "nhsuk-u-font-size-16"
+              },
+              {
+                header: "Employment type",
+                text: "Permanent",
+                classes: "nhsuk-u-font-size-16"
+              },
+              {
+                header: "Actual hours",
+                text: "37.5",
+                classes: "nhsuk-u-font-size-16"
+              }
+            ],
+            [
+              {
+                header: "Employment ID",
+                text: "1",
+                classes: "nhsuk-u-font-size-16"
+              },
+              {
+                header: "Employer code",
+                text: "Name/Code",
+                classes: "nhsuk-u-font-size-16"
+              },
+              {
+                header: "Start Date",
+                text: "01 April 2009",
+                classes: "nhsuk-u-font-size-16"
+              },
+              {
+                header: "End Date",
+                text: "31 December 2015",
+                classes: "nhsuk-u-font-size-16"
+              },
+              {
+                header: "Full/part-time",
+                text: "Full time",
+                classes: "nhsuk-u-font-size-16"
+              },
+              {
+                header: "Employment type",
+                text: "Permanent",
+                classes: "nhsuk-u-font-size-16"
+              },
+              {
+                header: "Actual hours",
+                text: "37.5",
+                classes: "nhsuk-u-font-size-16"
+              }
+            ]
+          ]
+        }) }}
+      {% endcall %}
+
+      <!-- ****************
+        LINKED EMPLOYMENT
+      ***************** -->
+
+      {% call details({
+        summaryText: "Linked Employment",
+        classes: "nhsuk-expander"
+      }) %}
+      {{ table({
+        responsive: true,
+        panel: false,
+        firstCellIsHeader: false,
+        head: [
+          {
+            text: "Service history employment ID",
+            classes: "nhsuk-u-font-size-16"
+          },
+          {
+            text: "Linked employment ID",
+            classes: "nhsuk-u-font-size-16"
+          },
+          {
+            text: "Employer code",
+            classes: "nhsuk-u-font-size-16"
+          },
+          {
+            text: "Relation",
+            classes: "nhsuk-u-font-size-16"
+          }
+        ],
+        rows: [
+          [
+            {
+              header: "Service history employment ID",
+              text: "1",
+              classes: "nhsuk-u-font-size-16"
+            },
+            {
+              header: "Linked employment ID",
+              text: "3",
+              classes: "nhsuk-u-font-size-16"
+            },
+            {
+              header: "Employer code",
+              text: "EC101",
+              classes: "nhsuk-u-font-size-16"
+            },
+            {
+              header: "Relation",
+              text: "Linked",
+              classes: "nhsuk-u-font-size-16"
+            }
+          ]
+        ]
+      }) }}
+
+      {% endcall %}
+
+      <!-- ****************
+        PENSION CONTRIBUTIONS
+      ***************** -->
+
+      {% call details({
+        summaryText: "Pension Contributions",
+        classes: "nhsuk-expander"
+      }) %}
+      {{ table({
+        responsive: true,
+        panel: false,
+        firstCellIsHeader: false,
+        head: [
+          {
+            text: "Employer ID",
+            classes: "nhsuk-u-font-size-16"
+          },
+          {
+            text: "Period start",
+            classes: "nhsuk-u-font-size-16"
+          },
+          {
+            text: "Period end",
+            classes: "nhsuk-u-font-size-16"
+          },
+          {
+            text: "TPP",
+            classes: "nhsuk-u-font-size-16"
+          },
+          {
+            text: "Employer contribution",
+            classes: "nhsuk-u-font-size-16"
+          },
+          {
+            text: "Employee contribution",
+            classes: "nhsuk-u-font-size-16"
+          }
+        ],
+        rows: [
+          [
+            {
+              header: "Employer ID",
+              text: "1",
+              classes: "nhsuk-u-font-size-16"
+            },
+            {
+              header: "Period start",
+              text: "Name/Code",
+              classes: "nhsuk-u-font-size-16"
+            },
+            {
+              header: "Period end",
+              text: "01 April 2009",
+              classes: "nhsuk-u-font-size-16"
+            },
+            {
+              header: "TPP",
+              html: "&pound;6000.00",
+              classes: "nhsuk-u-font-size-16"
+            },
+            {
+              header: "Employer contribution",
+              html: "&pound;1700.00",
+              classes: "nhsuk-u-font-size-16"
+            },
+            {
+              header: "Employee contribution",
+              html: "&pound;1200.00",
+              classes: "nhsuk-u-font-size-16"
+            }
+          ]
+        ]
+      }) }}
+      {% endcall %}
+
+    </div>
+  </div>
+{% endblock %}
