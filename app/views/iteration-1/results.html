@@ -49,6 +49,62 @@
             ]
           }) }}
 
+
+      <!-- ****************
+        HIGHLIGHT
+      ***************** -->
+
+      {% call details({
+        summaryText: "Dropped employments - detected mismatches",
+        classes: "nhsuk-expander"
+      }) %}
+
+      <p>Rows highlighted below indicate employment ids present in service history but missing from employment history (or vice-versa)</p>
+      
+      <table class="nhsuk-table-responsive-custom"> 
+      <div class="table-scroll-hint">Scroll left & right to see all columns</div>
+        <thead class="nhsuk-table__head">
+          <tr role="row">
+            <th colspan="4" scope="colgroup">Service History</th>
+            <th colspan="4" scope="colgroup">Employment History</th>
+          </tr>
+          <tr role="row">
+            <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">Member ID</th>
+            <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">Employment ID</th>
+            <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">Start date</th>
+            <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">End date</th>
+            <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">Member ID</th>
+            <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">Employment ID</th>
+            <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">Start date</th>
+            <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">End date</th>
+          </tr>
+        </thead>
+        <tbody class="nhsuk-table__body">
+          <tr class="nhsuk-table__row highlighted">
+            <td class="nhsuk-table__cell nhsuk-u-font-size-16">1234</td>
+            <td class="nhsuk-table__cell nhsuk-u-font-size-16">3</td>
+            <td class="nhsuk-table__cell nhsuk-u-font-size-16">1 August 2020</td>
+            <td class="nhsuk-table__cell nhsuk-u-font-size-16">23 December 2024</td>
+            <td class="nhsuk-table__cell nhsuk-u-font-size-16">NULL</td>
+            <td class="nhsuk-table__cell nhsuk-u-font-size-16">NULL</td>
+            <td class="nhsuk-table__cell nhsuk-u-font-size-16">NULL</td>
+            <td class="nhsuk-table__cell nhsuk-u-font-size-16">NULL</td>
+          </tr>
+          <tr class="nhsuk-table__row">
+            <td class="nhsuk-u-font-size-16">1234</td>
+            <td class="nhsuk-u-font-size-16">1</td>
+            <td class="nhsuk-u-font-size-16">1 August 2020</td>
+            <td class="nhsuk-u-font-size-16">23 December 2024</td>
+            <td class="nhsuk-u-font-size-16">1234</td>
+            <td class="nhsuk-u-font-size-16">1</td>
+            <td class="nhsuk-u-font-size-16">1 August 2020</td>
+            <td class="nhsuk-u-font-size-16">23 December 2024</td>
+          </tr>
+        </tbody>
+      </table>
+
+      {% endcall %}
+
       <!-- ****************
         SERVICE HISTORY
       ***************** -->

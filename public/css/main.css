@@ -9572,4 +9572,31 @@ b {
 }
 
 
-/*# sourceMappingURL=main.css.map */
+
+.nhsuk-table-responsive-custom {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.nhsuk-table-responsive-custom table {
+  width: 100%;
+  min-width: 800px; /* adjust as needed */
+  border-collapse: collapse;
+}
+.nhsuk-table-responsive-custom .highlighted {
+  background-color: #fff9c4;
+}
+
+.table-scroll-hint {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .table-scroll-hint {
+    display: block;
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 0.5em;
+  }
+}/*# sourceMappingURL=main.css.map */
