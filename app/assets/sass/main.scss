@@ -3,6 +3,26 @@
 
 // Add your custom CSS/Sass styles below.
 
+.highlighted-mismatch{
+    background-color:nhsuk-colour("pale-yellow") ;
+}
+.highlighted-match{
+    background-color:nhsuk-colour("pale-yellow") ;
+}
+.mismatchCards{
+    .nhsuk-card__heading{
+        max-width:72%;
+    }
+    .nhsuk-table__row:hover {
+        background-color: transparent;
+    }
+}
+.tagPlacement{
+    position: absolute;
+    right: 32px;
+    top: 32px;
+}
+
 .nhsuk-table-responsive-custom {
     display: block;
     width: 100%;

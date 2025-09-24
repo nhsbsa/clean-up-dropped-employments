@@ -54,163 +54,259 @@
         HIGHLIGHT
       ***************** -->
 
-      <div class="nhsuk-grid-row" style="gap: 20px; margin-top: 20px;">
-
-        <!-- Card 1 -->
-        <section class="nhsuk-card nhsuk-u-margin-bottom-4" style="padding: 16px; border: 1px solid #d0d0d0; border-radius: 4px; max-width: 400px;">
-          <h2 class="nhsuk-heading-m nhsuk-u-color-nhsuk-blue">Service History</h2>
-      
-          <dl class="nhsuk-summary-list">
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Member ID</dt>
-              <dd class="nhsuk-summary-list__value">1234</dd>
-            </div>
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Employment ID</dt>
-              <dd class="nhsuk-summary-list__value">3</dd>
-            </div>
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Start date</dt>
-              <dd class="nhsuk-summary-list__value">1 August 2020</dd>
-            </div>
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">End date</dt>
-              <dd class="nhsuk-summary-list__value">23 December 2024</dd>
-            </div>
-          </dl>
-        </section>
-      
-        <!-- Card 2 -->
-        <section class="nhsuk-card nhsuk-u-margin-bottom-4" style="padding: 16px; border: 1px solid #d0d0d0; border-radius: 4px; max-width: 400px;">
-          <h2 class="nhsuk-heading-m nhsuk-u-color-nhsuk-blue">Employment History</h2>
-      
-          <dl class="nhsuk-summary-list">
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Member ID</dt>
-              <dd class="nhsuk-summary-list__value">NULL</dd>
-            </div>
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Employment ID</dt>
-              <dd class="nhsuk-summary-list__value">NULL</dd>
-            </div>
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Start date</dt>
-              <dd class="nhsuk-summary-list__value">NULL</dd>
-            </div>
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">End date</dt>
-              <dd class="nhsuk-summary-list__value">NULL</dd>
-            </div>
-          </dl>
-        </section>
-      
-      </div>
-      
-      <!-- Repeat this block for the second row -->
-      
-      <div class="nhsuk-grid-row" style="gap: 20px; margin-top: 20px;">
-      
-        <!-- Card 3 -->
-        <section class="nhsuk-card nhsuk-u-margin-bottom-4" style="padding: 16px; border: 1px solid #d0d0d0; border-radius: 4px; max-width: 400px;">
-          <h2 class="nhsuk-heading-m nhsuk-u-color-nhsuk-blue">Service History</h2>
-      
-          <dl class="nhsuk-summary-list">
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Member ID</dt>
-              <dd class="nhsuk-summary-list__value">1234</dd>
-            </div>
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Employment ID</dt>
-              <dd class="nhsuk-summary-list__value">1</dd>
-            </div>
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Start date</dt>
-              <dd class="nhsuk-summary-list__value">1 August 2020</dd>
-            </div>
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">End date</dt>
-              <dd class="nhsuk-summary-list__value">23 December 2024</dd>
-            </div>
-          </dl>
-        </section>
-      
-        <!-- Card 4 -->
-        <section class="nhsuk-card nhsuk-u-margin-bottom-4" style="padding: 16px; border: 1px solid #d0d0d0; border-radius: 4px; max-width: 400px;">
-          <h2 class="nhsuk-heading-m nhsuk-u-color-nhsuk-blue">Employment History</h2>
-      
-          <dl class="nhsuk-summary-list">
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Member ID</dt>
-              <dd class="nhsuk-summary-list__value">1234</dd>
-            </div>
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Employment ID</dt>
-              <dd class="nhsuk-summary-list__value">1</dd>
-            </div>
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Start date</dt>
-              <dd class="nhsuk-summary-list__value">1 August 2020</dd>
-            </div>
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">End date</dt>
-              <dd class="nhsuk-summary-list__value">23 December 2024</dd>
-            </div>
-          </dl>
-        </section>
-      
-      </div>
-      
-
-      {% call details({
-        summaryText: "Dropped employments - detected mismatches",
-        classes: "nhsuk-expander"
-      }) %}
-
+      <h2>Detected mismatches</h2>
       <p>Rows highlighted below indicate employment ids present in service history but missing from employment history (or vice-versa)</p>
-      
-      <table class="nhsuk-table-responsive-custom"> 
-      <div class="table-scroll-hint">Scroll left & right to see all columns</div>
-        <thead class="nhsuk-table__head">
-          <tr role="row">
-            <th colspan="4" scope="colgroup">Service History</th>
-            <th colspan="4" scope="colgroup">Employment History</th>
-          </tr>
-          <tr role="row">
-            <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">Member ID</th>
-            <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">Employment ID</th>
-            <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">Start date</th>
-            <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">End date</th>
-            <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">Member ID</th>
-            <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">Employment ID</th>
-            <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">Start date</th>
-            <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">End date</th>
-          </tr>
-        </thead>
-        <tbody class="nhsuk-table__body">
-          <tr class="nhsuk-table__row highlighted">
-            <td class="nhsuk-table__cell nhsuk-u-font-size-16">1234</td>
-            <td class="nhsuk-table__cell nhsuk-u-font-size-16">3</td>
-            <td class="nhsuk-table__cell nhsuk-u-font-size-16">1 August 2020</td>
-            <td class="nhsuk-table__cell nhsuk-u-font-size-16">23 December 2024</td>
-            <td class="nhsuk-table__cell nhsuk-u-font-size-16">NULL</td>
-            <td class="nhsuk-table__cell nhsuk-u-font-size-16">NULL</td>
-            <td class="nhsuk-table__cell nhsuk-u-font-size-16">NULL</td>
-            <td class="nhsuk-table__cell nhsuk-u-font-size-16">NULL</td>
-          </tr>
-          <tr class="nhsuk-table__row">
-            <td class="nhsuk-u-font-size-16">1234</td>
-            <td class="nhsuk-u-font-size-16">1</td>
-            <td class="nhsuk-u-font-size-16">1 August 2020</td>
-            <td class="nhsuk-u-font-size-16">23 December 2024</td>
-            <td class="nhsuk-u-font-size-16">1234</td>
-            <td class="nhsuk-u-font-size-16">1</td>
-            <td class="nhsuk-u-font-size-16">1 August 2020</td>
-            <td class="nhsuk-u-font-size-16">23 December 2024</td>
-          </tr>
-        </tbody>
-      </table>
 
-      {% endcall %}
+      <div class="nhsuk-grid-row mismatchCards">
+
+        <div class="nhsuk-grid-column-one-half">
+          {% set cardOne %}
+            <strong class="nhsuk-tag nhsuk-tag--red tagPlacement">
+              Mismatch
+            </strong>
+            {{ table({
+              responsive: false,
+              panel: false,
+              firstCellIsHeader: true,
+              rows: [
+                [
+                  {
+                    text: "Member ID",
+                    classes: "nhsuk-u-font-size-16"
+                  },
+                  {
+                    text: "1234",
+                    classes: "nhsuk-u-font-size-16"
+                  }
+                ],
+                [
+                  {
+                    text: "Employment ID",
+                    classes: "nhsuk-u-font-size-16"
+                  },
+                  {
+                    text: "3",
+                    classes: "nhsuk-u-font-size-16"
+                  }
+                ],
+                [
+                  {
+                    text: "Start date",
+                    classes: "nhsuk-u-font-size-16"
+                  },
+                  {
+                    text: "1 August 2020",
+                    classes: "nhsuk-u-font-size-16"
+                  }
+                ],
+                [
+                  {
+                    text: "End date",
+                    classes: "nhsuk-u-font-size-16"
+                  },
+                  {
+                    text: "23 December 2024",
+                    classes: "nhsuk-u-font-size-16"
+                  }
+                ]
+              ]
+            }) }}
+          {% endset %}
+          <!-- Card 1 -->
+          {{ card({
+            heading: "Service History",
+            headingLevel: "3",
+            classes: "highlighted-mismatch",
+            descriptionHtml: cardOne
+          }) }}
+        </div>
+
+        <div class="nhsuk-grid-column-one-half">
+          {% set cardTwo %}
+            <strong class="nhsuk-tag nhsuk-tag--red tagPlacement">
+              Mismatch
+            </strong>
+            {{ table({
+              responsive: false,
+              panel: false,
+              firstCellIsHeader: true,
+              rows: [
+                [
+                  {
+                    text: "Member ID",
+                    classes: "nhsuk-u-font-size-16"
+                  },
+                  {
+                    text: "NULL",
+                    classes: "nhsuk-u-font-size-16"
+                  }
+                ],
+                [
+                  {
+                    text: "Employment ID",
+                    classes: "nhsuk-u-font-size-16"
+                  },
+                  {
+                    text: "NULL",
+                    classes: "nhsuk-u-font-size-16"
+                  }
+                ],
+                [
+                  {
+                    text: "Start date",
+                    classes: "nhsuk-u-font-size-16"
+                  },
+                  {
+                    text: "NULL",
+                    classes: "nhsuk-u-font-size-16"
+                  }
+                ],
+                [
+                  {
+                    text: "End date",
+                    classes: "nhsuk-u-font-size-16"
+                  },
+                  {
+                    text: "NULL",
+                    classes: "nhsuk-u-font-size-16"
+                  }
+                ]
+              ]
+            }) }}
+          {% endset %}
+          <!-- Card 2 -->
+          {{ card({
+            heading: "Employment History",
+            headingLevel: "3",
+            classes: "highlighted-mismatch",
+            descriptionHtml: cardTwo
+          }) }}
+        </div>
+      </div>
+      
+      <div class="nhsuk-grid-row mismatchCards">
+      
+        <div class="nhsuk-grid-column-one-half">
+          {% set cardThree %}
+            <strong class="nhsuk-tag nhsuk-tag--green tagPlacement">
+              Match
+            </strong>
+            {{ table({
+              responsive: false,
+              panel: false,
+              firstCellIsHeader: true,
+              rows: [
+                [
+                  {
+                    text: "Member ID",
+                    classes: "nhsuk-u-font-size-16"
+                  },
+                  {
+                    text: "1234",
+                    classes: "nhsuk-u-font-size-16"
+                  }
+                ],
+                [
+                  {
+                    text: "Employment ID",
+                    classes: "nhsuk-u-font-size-16"
+                  },
+                  {
+                    text: "1",
+                    classes: "nhsuk-u-font-size-16"
+                  }
+                ],
+                [
+                  {
+                    text: "Start date",
+                    classes: "nhsuk-u-font-size-16"
+                  },
+                  {
+                    text: "01 April 2009",
+                    classes: "nhsuk-u-font-size-16"
+                  }
+                ],
+                [
+                  {
+                    text: "End date",
+                    classes: "nhsuk-u-font-size-16"
+                  },
+                  {
+                    text: "31 December 2015",
+                    classes: "nhsuk-u-font-size-16"
+                  }
+                ]
+              ]
+            }) }}
+          {% endset %}
+          <!-- Card 3 -->
+          {{ card({
+            heading: "Service History",
+            headingLevel: "3",
+            descriptionHtml: cardThree
+          }) }}
+        </div>
+        <div class="nhsuk-grid-column-one-half">
+          {% set cardFour %}
+            <strong class="nhsuk-tag nhsuk-tag--green tagPlacement">
+              Match
+            </strong>
+            {{ table({
+              responsive: false,
+              panel: false,
+              firstCellIsHeader: true,
+              rows: [
+                [
+                  {
+                    text: "Member ID",
+                    classes: "nhsuk-u-font-size-16"
+                  },
+                  {
+                    text: "1234",
+                    classes: "nhsuk-u-font-size-16"
+                  }
+                ],
+                [
+                  {
+                    text: "Employment ID",
+                    classes: "nhsuk-u-font-size-16"
+                  },
+                  {
+                    text: "1",
+                    classes: "nhsuk-u-font-size-16"
+                  }
+                ],
+                [
+                  {
+                    text: "Start date",
+                    classes: "nhsuk-u-font-size-16"
+                  },
+                  {
+                    text: "01 April 2009",
+                    classes: "nhsuk-u-font-size-16"
+                  }
+                ],
+                [
+                  {
+                    text: "End date",
+                    classes: "nhsuk-u-font-size-16"
+                  },
+                  {
+                    text: "31 December 2015",
+                    classes: "nhsuk-u-font-size-16"
+                  }
+                ]
+              ]
+            }) }}
+          {% endset %}
+          <!-- Card 4 -->
+          {{ card({
+            heading: "Employment History",
+            headingLevel: "3",
+            descriptionHtml: cardFour
+          }) }}
+        </div>
+      </div>
 
       <!-- ****************
         SERVICE HISTORY

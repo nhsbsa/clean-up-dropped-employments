@@ -9573,6 +9573,27 @@ b {
 
 
 
+.highlighted-mismatch {
+  background-color: #fff9c4;
+}
+
+.highlighted-match {
+  background-color: #fff9c4;
+}
+
+.mismatchCards .nhsuk-card__heading {
+  max-width: 72%;
+}
+.mismatchCards .nhsuk-table__row:hover {
+  background-color: transparent;
+}
+
+.tagPlacement {
+  position: absolute;
+  right: 32px;
+  top: 32px;
+}
+
 .nhsuk-table-responsive-custom {
   display: block;
   width: 100%;
