@@ -5,9 +5,9 @@
 
 .highlighted-mismatch{
     background-color:nhsuk-colour("pale-yellow") ;
-}
-.highlighted-match{
-    background-color:nhsuk-colour("pale-yellow") ;
+    border-bottom-width: 3px;
+    border-bottom-style: solid;
+    border-bottom-color: nhsuk-colour("warm-yellow");
 }
 .mismatchCards{
     .nhsuk-card__heading{

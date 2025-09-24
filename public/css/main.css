@@ -9575,10 +9575,9 @@ b {
 
 .highlighted-mismatch {
   background-color: #fff9c4;
-}
-
-.highlighted-match {
-  background-color: #fff9c4;
+  border-bottom-width: 3px;
+  border-bottom-style: solid;
+  border-bottom-color: #ffb81c;
 }
 
 .mismatchCards .nhsuk-card__heading {
