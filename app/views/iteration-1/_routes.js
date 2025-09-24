@@ -9,4 +9,10 @@ router.post('/search', function (req, res) {
 
 })
 
+router.post('/search-cards', function (req, res) {
+ 
+    res.redirect('results-cards');
+
+})
+
 module.exports = router;
