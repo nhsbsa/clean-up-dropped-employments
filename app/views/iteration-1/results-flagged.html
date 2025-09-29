@@ -55,256 +55,88 @@
       ***************** -->
 
       <h2>Detected mismatches</h2>
-      <p>Highlighted sections below indicate employment ids present in service history but missing from employment history (or vice-versa)</p>
 
-      <div class="nhsuk-grid-row mismatchCards">
+      {% from 'tables/macro.njk' import table %}
 
-        <div class="nhsuk-grid-column-one-half">
-          {% set cardOne %}
-            <strong class="nhsuk-tag nhsuk-tag--red tagPlacement">
-              Mismatch
-            </strong>
-            {{ table({
-              responsive: false,
-              panel: false,
-              firstCellIsHeader: true,
-              rows: [
-                [
-                  {
-                    text: "Member ID",
-                    classes: "nhsuk-u-font-size-16"
-                  },
-                  {
-                    html: "<span class=\"highlighted-mismatch\">1234</span>",
-                    classes: "nhsuk-u-font-size-16"
-                  }
-                ],
-                [
-                  {
-                    text: "Employment ID",
-                    classes: "nhsuk-u-font-size-16"
-                  },
-                  {
-                    html: "<span class=\"highlighted-mismatch\">3</span>",
-                    classes: "nhsuk-u-font-size-16"
-                  }
-                ],
-                [
-                  {
-                    text: "Start date",
-                    classes: "nhsuk-u-font-size-16"
-                  },
-                  {
-                    html: "<span class=\"highlighted-mismatch\">1 August 2020</span>",
-                    classes: "nhsuk-u-font-size-16"
-                  }
-                ],
-                [
-                  {
-                    text: "End date",
-                    classes: "nhsuk-u-font-size-16"
-                  },
-                  {
-                    html: "<span class=\"highlighted-mismatch\">23 December 2024</span>",
-                    classes: "nhsuk-u-font-size-16"
-                  }
-                ]
-              ]
-            }) }}
-          {% endset %}
-          <!-- Card 1 -->
-          {{ card({
-            heading: "Service History",
-            headingLevel: "3",
-            descriptionHtml: cardOne
-          }) }}
-        </div>
-
-        <div class="nhsuk-grid-column-one-half">
-          {% set cardTwo %}
-            <strong class="nhsuk-tag nhsuk-tag--red tagPlacement">
-              Mismatch
-            </strong>
-            {{ table({
-              responsive: false,
-              panel: false,
-              firstCellIsHeader: true,
-              rows: [
-                [
-                  {
-                    text: "Member ID",
-                    classes: "nhsuk-u-font-size-16"
-                  },
-                  {
-                    html: "<span class=\"highlighted-mismatch\">NULL</span>",
-                    classes: "nhsuk-u-font-size-16"
-                  }
-                ],
-                [
-                  {
-                    text: "Employment ID",
-                    classes: "nhsuk-u-font-size-16"
-                  },
-                  {
-                    html: "<span class=\"highlighted-mismatch\">NULL</span>",
-                    classes: "nhsuk-u-font-size-16"
-                  }
-                ],
-                [
-                  {
-                    text: "Start date",
-                    classes: "nhsuk-u-font-size-16"
-                  },
-                  {
-                    html: "<span class=\"highlighted-mismatch\">NULL</span>",
-                    classes: "nhsuk-u-font-size-16"
-                  }
-                ],
-                [
-                  {
-                    text: "End date",
-                    classes: "nhsuk-u-font-size-16"
-                  },
-                  {
-                    html: "<span class=\"highlighted-mismatch\">NULL</span>",
-                    classes: "nhsuk-u-font-size-16"
-                  }
-                ]
-              ]
-            }) }}
-          {% endset %}
-          <!-- Card 2 -->
-          {{ card({
-            heading: "Employment History",
-            headingLevel: "3",
-            descriptionHtml: cardTwo
-          }) }}
-        </div>
-      </div>
-      
-      <div class="nhsuk-grid-row mismatchCards">
-      
-        <div class="nhsuk-grid-column-one-half">
-          {% set cardThree %}
-            <strong class="nhsuk-tag nhsuk-tag--green tagPlacement">
-              Match
-            </strong>
-            {{ table({
-              responsive: false,
-              panel: false,
-              firstCellIsHeader: true,
-              rows: [
-                [
-                  {
-                    text: "Member ID",
-                    classes: "nhsuk-u-font-size-16"
-                  },
-                  {
-                    text: "1234",
-                    classes: "nhsuk-u-font-size-16"
-                  }
-                ],
-                [
-                  {
-                    text: "Employment ID",
-                    classes: "nhsuk-u-font-size-16"
-                  },
-                  {
-                    text: "1",
-                    classes: "nhsuk-u-font-size-16"
-                  }
-                ],
-                [
-                  {
-                    text: "Start date",
-                    classes: "nhsuk-u-font-size-16"
-                  },
-                  {
-                    text: "01 April 2009",
-                    classes: "nhsuk-u-font-size-16"
-                  }
-                ],
-                [
-                  {
-                    text: "End date",
-                    classes: "nhsuk-u-font-size-16"
-                  },
-                  {
-                    text: "31 December 2015",
-                    classes: "nhsuk-u-font-size-16"
-                  }
-                ]
-              ]
-            }) }}
-          {% endset %}
-          <!-- Card 3 -->
-          {{ card({
-            heading: "Service History",
-            headingLevel: "3",
-            descriptionHtml: cardThree
-          }) }}
-        </div>
-        <div class="nhsuk-grid-column-one-half">
-          {% set cardFour %}
-            <strong class="nhsuk-tag nhsuk-tag--green tagPlacement">
-              Match
-            </strong>
-            {{ table({
-              responsive: false,
-              panel: false,
-              firstCellIsHeader: true,
-              rows: [
-                [
-                  {
-                    text: "Member ID",
-                    classes: "nhsuk-u-font-size-16"
-                  },
-                  {
-                    text: "1234",
-                    classes: "nhsuk-u-font-size-16"
-                  }
-                ],
-                [
-                  {
-                    text: "Employment ID",
-                    classes: "nhsuk-u-font-size-16"
-                  },
-                  {
-                    text: "1",
-                    classes: "nhsuk-u-font-size-16"
-                  }
-                ],
-                [
-                  {
-                    text: "Start date",
-                    classes: "nhsuk-u-font-size-16"
-                  },
-                  {
-                    text: "01 April 2009",
-                    classes: "nhsuk-u-font-size-16"
-                  }
-                ],
-                [
-                  {
-                    text: "End date",
-                    classes: "nhsuk-u-font-size-16"
-                  },
-                  {
-                    text: "31 December 2015",
-                    classes: "nhsuk-u-font-size-16"
-                  }
-                ]
-              ]
-            }) }}
-          {% endset %}
-          <!-- Card 4 -->
-          {{ card({
-            heading: "Employment History",
-            headingLevel: "3",
-            descriptionHtml: cardFour
-          }) }}
-        </div>
-      </div>
+      {{ table({
+        panel: false,
+        caption: "Total number of mismatched data found: 8",
+        firstCellIsHeader: false,
+        head: [
+          {
+            text: "Description"
+          },
+          {
+            text: "Count on SDXXXXXX"
+          }
+        ],
+        rows: [
+          [
+            {
+              text: "Earliest earnings start date doesn't match service history"
+            },
+            {
+              text: "1"
+            }
+          ],
+          [
+            {
+              text: "Earnings EmpID not present in employment history"
+            },
+            {
+              text: "1"
+            }
+          ],
+          [
+            {
+              text: "Employment EmpID no present in service history"
+            },
+            {
+              text: "1"
+            }
+          ],
+          [
+            {
+              text: "Latest employment end date doesn't match service history"
+            },
+            {
+              text: "1"
+            }
+          ],
+          [
+            {
+              text: "Missing earnings record"
+            },
+            {
+              text: "1"
+            }
+          ],
+          [
+            {
+              text: "Service group end date is missing for closed group"
+            },
+            {
+              text: "1"
+            }
+          ],
+          [
+            {
+              text: "Service update date doesn't match latest earnings end date"
+            },
+            {
+              text: "1"
+            }
+          ],
+          [
+            {
+              text: "T8 date does not equal event T8 date"
+            },
+            {
+              text: "1"
+            }
+          ]
+        ]
+      }) }}
 
       <!-- ****************
         SERVICE HISTORY
