@@ -16,10 +16,10 @@
             rows: [
               {
                 key: {
-                  text: "Employee ID"
+                  text: "Member number"
                 },
                 value: {
-                  text: "12345678"
+                  text: "SD12340000"
                 }
               },
               {
@@ -83,8 +83,8 @@
           <tr class="nhsuk-table__row highlighted">
             <td class="nhsuk-table__cell nhsuk-u-font-size-16">1234</td>
             <td class="nhsuk-table__cell nhsuk-u-font-size-16">3</td>
-            <td class="nhsuk-table__cell nhsuk-u-font-size-16">1 August 2020</td>
-            <td class="nhsuk-table__cell nhsuk-u-font-size-16">23 December 2024</td>
+            <td class="nhsuk-table__cell nhsuk-u-font-size-16">20 May 2016</td>
+            <td class="nhsuk-table__cell nhsuk-u-font-size-16">15 August 2020</td>
             <td class="nhsuk-table__cell nhsuk-u-font-size-16">NULL</td>
             <td class="nhsuk-table__cell nhsuk-u-font-size-16">NULL</td>
             <td class="nhsuk-table__cell nhsuk-u-font-size-16">NULL</td>
@@ -93,12 +93,12 @@
           <tr class="nhsuk-table__row">
             <td class="nhsuk-u-font-size-16">1234</td>
             <td class="nhsuk-u-font-size-16">1</td>
-            <td class="nhsuk-u-font-size-16">1 August 2020</td>
-            <td class="nhsuk-u-font-size-16">23 December 2024</td>
+            <td class="nhsuk-u-font-size-16">01 April 2009</td>
+            <td class="nhsuk-u-font-size-16">31 December 2015</td>
             <td class="nhsuk-u-font-size-16">1234</td>
             <td class="nhsuk-u-font-size-16">1</td>
-            <td class="nhsuk-u-font-size-16">1 August 2020</td>
-            <td class="nhsuk-u-font-size-16">23 December 2024</td>
+            <td class="nhsuk-u-font-size-16">01 April 2009</td>
+            <td class="nhsuk-u-font-size-16">31 December 2015</td>
           </tr>
         </tbody>
       </table>
@@ -166,7 +166,7 @@
               },
               {
                 header: "Scheme code",
-                text: "SC123",
+                text: "1995",
                 classes: "nhsuk-u-font-size-16"
               },
               {
@@ -208,7 +208,7 @@
               },
               {
                 header: "Scheme code",
-                text: "SC789",
+                text: "2015",
                 classes: "nhsuk-u-font-size-16"
               },
               {
@@ -292,7 +292,7 @@
               },
               {
                 header: "Employer code",
-                text: "EC101",
+                text: "1234",
                 classes: "nhsuk-u-font-size-16"
               },
               {
@@ -323,64 +323,6 @@
             ]
           ]
         }) }}
-      {% endcall %}
-
-      <!-- ****************
-        LINKED EMPLOYMENT
-      ***************** -->
-
-      {% call details({
-        summaryText: "Linked Employment",
-        classes: "nhsuk-expander"
-      }) %}
-      {{ table({
-        responsive: true,
-        panel: false,
-        firstCellIsHeader: false,
-        head: [
-          {
-            text: "Service history employment ID",
-            classes: "nhsuk-u-font-size-16"
-          },
-          {
-            text: "Linked employment ID",
-            classes: "nhsuk-u-font-size-16"
-          },
-          {
-            text: "Employer code",
-            classes: "nhsuk-u-font-size-16"
-          },
-          {
-            text: "Relation",
-            classes: "nhsuk-u-font-size-16"
-          }
-        ],
-        rows: [
-          [
-            {
-              header: "Service history employment ID",
-              text: "1",
-              classes: "nhsuk-u-font-size-16"
-            },
-            {
-              header: "Linked employment ID",
-              text: "3",
-              classes: "nhsuk-u-font-size-16"
-            },
-            {
-              header: "Employer code",
-              text: "EC101",
-              classes: "nhsuk-u-font-size-16"
-            },
-            {
-              header: "Relation",
-              text: "Linked",
-              classes: "nhsuk-u-font-size-16"
-            }
-          ]
-        ]
-      }) }}
-
       {% endcall %}
 
       <!-- ****************
@@ -488,6 +430,64 @@
           ]
         ]
       }) }}
+      {% endcall %}
+
+      <!-- ****************
+        LINKED EMPLOYMENT
+      ***************** -->
+
+      {% call details({
+        summaryText: "Linked Employment",
+        classes: "nhsuk-expander"
+      }) %}
+      {{ table({
+        responsive: true,
+        panel: false,
+        firstCellIsHeader: false,
+        head: [
+          {
+            text: "Service history employment ID",
+            classes: "nhsuk-u-font-size-16"
+          },
+          {
+            text: "Linked employment ID",
+            classes: "nhsuk-u-font-size-16"
+          },
+          {
+            text: "Employer code",
+            classes: "nhsuk-u-font-size-16"
+          },
+          {
+            text: "Relation",
+            classes: "nhsuk-u-font-size-16"
+          }
+        ],
+        rows: [
+          [
+            {
+              header: "Service history employment ID",
+              text: "1",
+              classes: "nhsuk-u-font-size-16"
+            },
+            {
+              header: "Linked employment ID",
+              text: "3",
+              classes: "nhsuk-u-font-size-16"
+            },
+            {
+              header: "Employer code",
+              text: "1234",
+              classes: "nhsuk-u-font-size-16"
+            },
+            {
+              header: "Relation",
+              text: "Linked",
+              classes: "nhsuk-u-font-size-16"
+            }
+          ]
+        ]
+      }) }}
+
       {% endcall %}
 
     </div>
