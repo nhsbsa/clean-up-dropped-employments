@@ -1,0 +1,246 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "John Smith"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <span class="nhsuk-caption-l">Member Details</span>
+      <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">{{pageTitle}}</h1>
+
+          {{ summaryList({
+            rows: [
+              {
+                key: {
+                  text: "Member number"
+                },
+                value: {
+                  text: "SD12340000"
+                }
+              },
+              {
+                key: {
+                  text: "Date of birth (Age)"
+                },
+                value: {
+                  text: "18 September 1959 (66year 04month)"
+                }
+              },
+              {
+                key: {
+                  text: "Role"
+                },
+                value: {
+                  text: "Software Engineer"
+                }
+              },
+              {
+                key: {
+                  text: "Dpt"
+                },
+                value: {
+                  html: "IT"
+                }
+              },
+              {
+                key: {
+                  text: "Email"
+                },
+                value: {
+                  html: 'john.smith@email.com'
+                }
+              }
+            ]
+          }) }}
+
+
+      <!-- ****************
+        HIGHLIGHT
+      ***************** -->
+
+
+      <!-- ****************
+        SERVICE HISTORY
+      ***************** -->
+
+      {% set serviceHistory %}
+      <table class="nhsuk-table-responsive-custom"> 
+        <h3 class="table-scroll-header">Service History</h3>
+        <div class="table-scroll-hint">Scroll left & right to see all columns</div>
+          <thead class="nhsuk-table__head">
+            <tr role="row">
+              <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">Employment ID</th>
+              <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">Personal reference</th>
+              <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">Scheme code</th>
+              <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">Start date</th>
+              <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">End date</th>
+              <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">Member Status</th>
+              <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">End reason code</th>
+              <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">Scheme category</th>
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-u-font-size-16">1</td>
+              <td class="nhsuk-u-font-size-16">1234567</td>
+              <td class="nhsuk-u-font-size-16">1995</td>
+              <td class="nhsuk-u-font-size-16">01 April 2009</td>
+              <td class="nhsuk-u-font-size-16">31 December 2015</td>
+              <td class="nhsuk-u-font-size-16">Active</td>
+              <td class="nhsuk-u-font-size-16">-</td>
+              <td class="nhsuk-u-font-size-16">DB</td>
+            </tr>
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-u-font-size-16">3</td>
+              <td class="nhsuk-u-font-size-16">1234567</td>
+              <td class="nhsuk-u-font-size-16">2015</td>
+              <td class="nhsuk-u-font-size-16">20 May 2016</td>
+              <td class="nhsuk-u-font-size-16">15 August 2020</td>
+              <td class="nhsuk-u-font-size-16">Terminated</td>
+              <td class="nhsuk-u-font-size-16">ER02</td>
+              <td class="nhsuk-u-font-size-16">DB</td>
+            </tr>
+          </tbody>
+        </table>
+      {% endset %}
+
+      <!-- ****************
+        EMPLOYMENT HISTORY
+      ***************** -->
+
+      {% set employmentHistory %}
+      <table class="nhsuk-table-responsive-custom"> 
+        <h3 class="table-scroll-header">Employment History</h3>
+        <div class="table-scroll-hint">Scroll left & right to see all columns</div>
+          <thead class="nhsuk-table__head">
+            <tr role="row">
+              <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">Employment ID</th>
+              <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">Employer code</th>
+              <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">Start date</th>
+              <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">End date</th>
+              <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">Full/part time</th>
+              <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">Employment type</th>
+              <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">Actual hours</th>
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-u-font-size-16">1</td>
+              <td class="nhsuk-u-font-size-16">1234</td>
+              <td class="nhsuk-u-font-size-16">01 April 2009</td>
+              <td class="nhsuk-u-font-size-16">31 December 2015</td>
+              <td class="nhsuk-u-font-size-16">Full-time</td>
+              <td class="nhsuk-u-font-size-16">Permanent</td>
+              <td class="nhsuk-u-font-size-16">37.5</td>
+            </tr>
+          </tbody>
+        </table>
+      {% endset %}
+
+      <!-- ****************
+        PENSION CONTRIBUTIONS
+      ***************** -->
+
+      {% set contributions %}
+      <table class="nhsuk-table-responsive-custom"> 
+        <h3 class="table-scroll-header">Contributions</h3>
+        <div class="table-scroll-hint">Scroll left & right to see all columns</div>
+          <thead class="nhsuk-table__head">
+            <tr role="row">
+              <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">Employer ID</th>
+              <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">Period start</th>
+              <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">Period end</th>
+              <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">TPP</th>
+              <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">Employer contribution</th>
+              <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">Employee contribution</th>
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-u-font-size-16">1</td>
+              <td class="nhsuk-u-font-size-16">01 April 2009</td>
+              <td class="nhsuk-u-font-size-16">31 December 2015</td>
+              <td class="nhsuk-u-font-size-16">&pound;6000.00</td>
+              <td class="nhsuk-u-font-size-16">&pound;1700.00</td>
+              <td class="nhsuk-u-font-size-16">&pound;1200.00</td>
+            </tr>
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-u-font-size-16">3</td>
+              <td class="nhsuk-u-font-size-16">20 May 2016</td>
+              <td class="nhsuk-u-font-size-16">15 August 2020</td>
+              <td class="nhsuk-u-font-size-16">&pound;6000.00</td>
+              <td class="nhsuk-u-font-size-16">&pound;1700.00</td>
+              <td class="nhsuk-u-font-size-16">&pound;1200.00</td>
+            </tr>
+          </tbody>
+        </table>
+      {% endset %}
+
+      <!-- ****************
+        LINKED EMPLOYMENT
+      ***************** -->
+
+      {% set linkedEmployments %}
+      <table class="nhsuk-table-responsive-custom"> 
+        <h3 class="table-scroll-header">Linked Employments</h3>
+        <div class="table-scroll-hint">Scroll left & right to see all columns</div>
+          <thead class="nhsuk-table__head">
+            <tr role="row">
+              <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">Service history employment ID</th>
+              <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">Linked employment ID</th>
+              <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">Employer code</th>
+              <th scope="col" class="nhsuk-u-font-size-16 nhsuk-table__header">Relation</th>
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-u-font-size-16">1</td>
+              <td class="nhsuk-u-font-size-16">3</td>
+              <td class="nhsuk-u-font-size-16">1234</td>
+              <td class="nhsuk-u-font-size-16">Linked</td>
+            </tr>
+          </tbody>
+        </table>
+
+      {% endset %}
+
+      {{ tabs({ 
+        items: [ 
+        { 
+          label: "Service History", 
+          id: "service-history", 
+          panel: { 
+            html: serviceHistory 
+            } 
+          }, 
+          { 
+            label: "Employment History", 
+            id: "employment-history", 
+            panel: { 
+              html: employmentHistory 
+            } 
+          }, 
+          { 
+            label: "Contributions", 
+            id: "contributions", 
+            panel: { 
+              html: contributions 
+            } 
+          },  
+          { 
+            label: "Linked Employments", 
+            id: "linked-employments", 
+            panel: { 
+              html: linkedEmployments 
+            } 
+          } 
+        ] 
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}

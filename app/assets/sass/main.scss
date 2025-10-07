@@ -29,7 +29,7 @@
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     table {
-        width: 100%;
+        width: 100%; 
         min-width: 800px; /* adjust as needed */
         border-collapse: collapse;
     }
@@ -38,10 +38,14 @@
     }
   }
   
-  .table-scroll-hint {
+  .table-scroll-hint,
+  .table-scroll-header {
     display: none;
   }
   @media (max-width: 600px) {
+    .table-scroll-header{
+        display: block;
+    }
     .table-scroll-hint {
       display: block;
       font-size: 0.9em;

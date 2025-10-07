@@ -9608,11 +9608,15 @@ b {
   background-color: #fff9c4;
 }
 
-.table-scroll-hint {
+.table-scroll-hint,
+.table-scroll-header {
   display: none;
 }
 
 @media (max-width: 600px) {
+  .table-scroll-header {
+    display: block;
+  }
   .table-scroll-hint {
     display: block;
     font-size: 0.9em;
