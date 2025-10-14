@@ -1,0 +1,3224 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "John Smith"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    <span class="nhsuk-caption-l">Member Details</span>
+    <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">{{pageTitle}}</h1>
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-one-half">
+        {{ summaryList({
+        rows: [
+        {
+        key: {
+        text: "Member number"
+        },
+        value: {
+        text: "12345678"
+        }
+        },
+        {
+        key: {
+        text: "NI Number"
+        },
+        value: {
+        text: "QQ 12 34 45 D"
+        }
+        },
+        {
+        key: {
+        text: "Scheme"
+        },
+        value: {
+        html: "2015 Scheme"
+        }
+        }
+        ]
+        }) }}
+      </div>
+      <div class="nhsuk-grid-column-one-half">
+        {{ summaryList({
+        rows: [
+        {
+        key: {
+        text: "Date of birth (Age)"
+        },
+        value: {
+        text: "18 September 1959 (66year 02month)"
+        }
+        },
+        {
+        key: {
+        text: "Status"
+        },
+        value: {
+        html: "Active"
+        }
+        },
+        {
+        key: {
+        text: "Email"
+        },
+        value: {
+        html: 'john.smith@email.com'
+        }
+        }
+        ]
+        }) }}
+      </div>
+    </div>
+
+    <!-- ****************
+        OVERVIEW
+      ***************** -->
+
+    {% set notifyHtml %}
+    <p>
+      <b>8 validation errors</b> have been found for member number 12345678
+    </p>
+    {% endset %}
+
+    {{ insetText({
+    html: notifyHtml
+    }) }}
+
+
+    <!-- ****************
+        HIGHLIGHT
+      ***************** -->
+
+    <ul class="nhsuk-task-list">
+      <li class="nhsuk-task-list__item nhsuk-task-list__item--with-link">
+        <div class="nhsuk-task-list__name-and-hint">
+          {% call details({
+          summaryText: "Service history"
+          }) %}
+          {{ table({
+          panel: false,
+          caption: "Detected errors",
+          firstCellIsHeader: false,
+          head: [
+          {
+          text: "Description"
+          },
+          {
+          text: "Count on 12345678"
+          }
+          ],
+          rows: [
+          [
+          {
+          text: "Employment ID 3 and 5 start on the same day"
+          },
+          {
+          text: "1"
+          }
+          ],
+          [
+          {
+          text: "Employment ID 3 end date missing"
+          },
+          {
+          text: "1"
+          }
+          ],
+          [
+          {
+          text: "Employment ID 3 update date incorrect"
+          },
+          {
+          text: "1"
+          }
+          ],
+          [
+          {
+          text: "Employment ID 5 start date incorrect"
+          },
+          {
+          text: "1"
+          }
+          ]
+          ]
+          }) }}
+          {% call details({
+          summaryText: "View table",
+          classes: "nhsuk-expander"
+          }) %}
+          {{ table({
+          responsive: true,
+          caption: "Service history",
+          panel: false,
+          firstCellIsHeader: false,
+          head: [
+          {
+          text: "Employment ID",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          text: "Scheme code",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          text: "Start date",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          text: "End date",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          text: "Updated",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          text: "Member Status",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          text: "End reason code",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          text: "Group",
+          classes: "nhsuk-u-font-size-14"
+          }
+          ],
+          rows: [
+          [
+          {
+          header: "Employment ID",
+          text: "1",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "Scheme code",
+          text: "2008",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "Start date",
+          text: "01 April 2013",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "End date",
+          text: "31 March 2015",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "Updated",
+          text: "31 March 2015",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "Status",
+          text: "Active",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "End reason code",
+          text: "15",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "Group",
+          text: "1",
+          classes: "nhsuk-u-font-size-14"
+          }
+          ],
+          [
+          {
+          header: "Employment ID",
+          text: "2",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "Scheme code",
+          text: "2015",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "Start date",
+          text: "01 April 2015",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "End date",
+          text: "",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "Updated",
+          text: "31 March 2025",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "Status",
+          text: "Active",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "End reason code",
+          text: "5",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "Group",
+          text: "2",
+          classes: "nhsuk-u-font-size-14"
+          }
+          ],
+          [
+          {
+          header: "Employment ID",
+          text: "3",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "Scheme code",
+          text: "2015",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "Start date",
+          html: "<span class=\"highlighted-mismatch\">01 April 2015</span>",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "End date",
+          text: "",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "Updated",
+          html: "<span class=\"highlighted-mismatch\">31 March 2023</span>",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "Status",
+          text: "Active",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "End reason code",
+          text: "5",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "Group",
+          text: "2",
+          classes: "nhsuk-u-font-size-14"
+          }
+          ],
+          [
+          {
+          header: "Employment ID",
+          text: "5",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "Scheme code",
+          text: "2015",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "Start date",
+          html: "<span class=\"highlighted-mismatch\">01 April 2015</span>",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "End date",
+          text: "",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "Updated",
+          text: "31 March 2023",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "Status",
+          text: "Active",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "End reason code",
+          text: "5",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "Group",
+          text: "2",
+          classes: "nhsuk-u-font-size-14"
+          }
+          ]
+          ]
+          }) }}
+          {% endcall %}
+          {% endcall %}
+        </div>
+        <div class="nhsuk-task-list__status" id="your-health-3-status">
+          <strong class="nhsuk-tag nhsuk-tag--red">
+            Error
+          </strong>
+        </div>
+      </li>
+      <li class="nhsuk-task-list__item nhsuk-task-list__item--with-link">
+        <div class="nhsuk-task-list__name-and-hint">
+          {% call details({
+          summaryText: "Employment history"
+          }) %}
+          {{ table({
+          panel: false,
+          caption: "Detected errors",
+          firstCellIsHeader: false,
+          head: [
+          {
+          text: "Description"
+          },
+          {
+          text: "Count on 12345678"
+          }
+          ],
+          rows: [
+          [
+          {
+          text: "Employment ID 3 not present in employment history"
+          },
+          {
+          text: "1"
+          }
+          ],
+          [
+          {
+          text: "Employment ID 5 not present in employment history"
+          },
+          {
+          text: "1"
+          }
+          ]
+          ]
+          }) }}
+
+          {% call details({
+          summaryText: "View table",
+          classes: "nhsuk-expander"
+          }) %}
+          {{ table({
+          responsive: true,
+          caption: "Employment history",
+          panel: false,
+          firstCellIsHeader: false,
+          head: [
+          {
+          text: "Employment ID",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          text: "Employer code",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          text: "Start date",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          text: "End date",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          text: "Whole/part time",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          text: "Employment type",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          text: "Actual hours",
+          classes: "nhsuk-u-font-size-14"
+          }
+          ],
+          rows: [
+          [
+          {
+          header: "Employment ID",
+          text: "1",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "Employer code",
+          text: "5266",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "Start Date",
+          text: "01 April 2013",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "End Date",
+          text: "09 November 2014",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "Whole/part-time",
+          text: "Whole time",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "Employment type",
+          text: "8",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "Actual hours",
+          text: "",
+          classes: "nhsuk-u-font-size-14"
+          }
+          ],
+          [
+          {
+          header: "Employment ID",
+          text: "1",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "Employer code",
+          text: "5266",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "Start Date",
+          text: "10 November 2014",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "End Date",
+          text: "31 March 2015",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "Whole/part-time",
+          text: "Part time",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "Employment type",
+          text: "8",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "Actual hours",
+          text: "30",
+          classes: "nhsuk-u-font-size-14"
+          }
+          ],
+          [
+          {
+          header: "Employment ID",
+          text: "2",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "Employer code",
+          text: "5266",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "Start Date",
+          text: "01 April 2015",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "End Date",
+          text: "",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "Whole/part-time",
+          text: "Part time",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "Employment type",
+          text: "8",
+          classes: "nhsuk-u-font-size-14"
+          },
+          {
+          header: "Actual hours",
+          text: "30",
+          classes: "nhsuk-u-font-size-14"
+          }
+          ]
+          ]
+          }) }}
+          {% endcall %}
+          {% endcall %}
+        </div>
+        <div class="nhsuk-task-list__status" id="your-health-3-status">
+          <strong class="nhsuk-tag nhsuk-tag--red">
+            Error
+          </strong>
+        </div>
+      </li>
+      <li class="nhsuk-task-list__item nhsuk-task-list__item--with-link">
+        <div class="nhsuk-task-list__name-and-hint">
+          {% call details({
+          summaryText: "Pension contributions (Conts & TPP)"
+          }) %}
+          {{ table({
+          panel: false,
+          caption: "Detected errors",
+          firstCellIsHeader: false,
+          head: [
+          {
+          text: "Description"
+          },
+          {
+          text: "Count on 12345678"
+          }
+          ],
+          rows: [
+          [
+          {
+          text: "Employment ID 3 mismatch, employment id 5 missing"
+          },
+          {
+          text: "1"
+          }
+          ]
+          ]
+          }) }}
+          {% call details({
+          summaryText: "View table",
+          classes: "nhsuk-expander"
+          }) %}
+          <button class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button" onclick="toggleRows()">Show/hide
+            correct rows</button>
+          <table class="nhsuk-table-responsive" role="table">
+            <caption class="nhsuk-table__caption">Conts &amp; TPP</caption>
+            <thead class="nhsuk-table__head" role="rowgroup">
+              <tr role="row">
+                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employer ID</th>
+                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Period start</th>
+                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Period end</th>
+                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employee conts</th>
+                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">TPP</th>
+                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employer conts</th>
+                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employer pay</th>
+              </tr>
+            </thead>
+            <tbody class="nhsuk-table__body">
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>1</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period start </span>01 April 2013</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period end </span>31 March 2014</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employee conts </span>£2758.45</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">TPP </span>£30649.19</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer conts </span>£4290.88</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer pay </span>£30649.19</td>
+              </tr>
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>1</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period start </span>01 April 2014</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period end </span>31 March 2015</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employee conts </span>£2543.26</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">TPP </span>£27346.81</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer conts </span>£3828.55</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer pay </span>£27346.81</td>
+              </tr>
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>2</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period start </span>01 April 2015</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period end </span>31 March 2016</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employee conts </span>£2561.40</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">TPP </span>£27541.88</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer conts </span>£3938.50</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer pay </span>£27541.88</td>
+              </tr>
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>2</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period start </span>01 April 2016</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period end </span>31 March 2017</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employee conts </span>£2606.68</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">TPP </span>£28028.77</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer conts </span>£4008.11</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer pay </span>£28028.77</td>
+              </tr>
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>2</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period start </span>01 April 2017</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period end </span>31 March 2018</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employee conts </span>£2676.32</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">TPP </span>£28777.58</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer conts </span>£4138.22</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer pay </span>£28777.58</td>
+              </tr>
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>2</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period start </span>01 April 2018</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period end </span>31 March 2019</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employee conts </span>£2796.78</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">TPP </span>£30072.69</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer conts </span>£4324.45</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer pay </span>£30072.69</td>
+              </tr>
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>2</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period start </span>01 April 2019</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period end </span>31 March 2020</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employee conts </span>£3013.71</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">TPP </span>£32405.39</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer conts </span>£4659.89</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer pay </span>£32405.39</td>
+              </tr>
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>2</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period start </span>01 April 2020</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period end </span>31 March 2021</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employee conts </span>£2781.95</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">TPP </span>£29913.84</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer conts </span>£4301.60</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer pay </span>£29913.84</td>
+              </tr>
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>2</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period start </span>01 April 2021</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period end </span>31 March 2022</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employee conts </span>£3067.51</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">TPP </span>£32984.12</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer conts </span>£4743.11</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer pay </span>£32984.12</td>
+              </tr>
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>2</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period start </span>01 April 2022</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period end </span>31 March 2023</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employee conts </span>£3661.75</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">TPP </span>£38306.89</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer conts </span>£5508.53</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer pay </span>£38306.89</td>
+              </tr>
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>2</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period start </span>01 April 2023</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period end </span>31 March 2024</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employee conts </span>£4037.04</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">TPP </span>£41845.03</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer conts </span>£5918.68</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer pay </span>£41845.03</td>
+              </tr>
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>2</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period start </span>01 April 2024</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period end </span>31 March 2025</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employee conts </span>£4365.41</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">TPP </span>£44544.90</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer conts </span>£6405.55</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer pay </span>£44544.90</td>
+              </tr>
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>3</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period start </span>01 April 2015</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period end </span>31 March 2016</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employee conts </span>£154.96</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">TPP </span>£1666.20</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer conts </span>£238.27</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer pay </span>£1666.20</td>
+              </tr>
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>3</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period start </span>01 April 2016</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period end </span>31 March 2017</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employee conts </span>£209.97</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">TPP </span>£2257.74</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer conts </span>£322.86</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer pay </span>£2257.74</td>
+              </tr>
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>3</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period start </span>01 April 2017</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period end </span>31 March 2018</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employee conts </span>£76.76</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">TPP </span>£825.31</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer conts </span>£118.68</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer pay </span>£825.31</td>
+              </tr>
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>3</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period start </span>01 April 2018</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period end </span>31 March 2019</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employee conts </span>£844.37</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">TPP </span>£9079.24</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer conts </span>£1305.60</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer pay </span>£9079.24</td>
+              </tr>
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>3</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period start </span>01 April 2019</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period end </span>31 March 2020</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employee conts </span>£1247.04</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">TPP </span>£13409.03</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer conts </span>£1928.21</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer pay </span>£13409.03</td>
+              </tr>
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>3</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period start </span>01 April 2020</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period end </span>31 March 2021</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employee conts </span>£147.17</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">TPP </span>£1582.42</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer conts </span>£227.55</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer pay </span>£1582.42</td>
+              </tr>
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>3</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period start </span>01 April 2021</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period end </span>31 March 2022</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employee conts </span>£755.70</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">TPP </span>£8125.74</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer conts </span>£1168.47</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer pay </span>£8125.74</td>
+              </tr>
+              <tr class="nhsuk-table__row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14 highlighted-mismatch" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>3</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14 highlighted-mismatch" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period start </span>01 April 2022</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14 highlighted-mismatch" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Period end </span>31 March 2023</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14 highlighted-mismatch" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employee conts </span>£496.26</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14 highlighted-mismatch" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">TPP </span>£5063.88</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14 highlighted-mismatch" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer conts </span>£730.11</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14 highlighted-mismatch" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer pay </span>£5063.88</td>
+              </tr>
+            </tbody>
+          </table>
+          {% endcall %}
+          {% endcall %}
+
+
+        </div>
+        <div class="nhsuk-task-list__status" id="your-health-3-status">
+          <strong class="nhsuk-tag nhsuk-tag--red">
+            Error
+          </strong>
+        </div>
+      </li>
+      <li class="nhsuk-task-list__item nhsuk-task-list__item--with-link">
+        <div class="nhsuk-task-list__name-and-hint">
+          {% call details({
+          summaryText: "Hours History"
+          }) %}
+          {{ table({
+          panel: false,
+          caption: "Detected errors",
+          firstCellIsHeader: false,
+          head: [
+          {
+          text: "Description"
+          },
+          {
+          text: "Count on 12345678"
+          }
+          ],
+          rows: [
+          [
+          {
+          text: "Employment ID 3 mismatch, employment id 5 missing"
+          },
+          {
+          text: "1"
+          }
+          ]
+          ]
+          }) }}
+
+          {% call details({
+          summaryText: "View table",
+          classes: "nhsuk-expander"
+          }) %}
+          <button class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button" onclick="toggleRows()">Show/hide
+            correct rows</button>
+          <table class="nhsuk-table-responsive" role="table">
+            <caption class="nhsuk-table__caption">Hours history</caption>
+            <thead class="nhsuk-table__head">
+              <tr role="row">
+                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employer ID</th>
+                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Start date</th>
+                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">End date</th>
+                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Part time hours
+                </th>
+              </tr>
+            </thead>
+            <tbody class="nhsuk-table__body">
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>1</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>10 November 2014</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31 March 2015</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>613</td>
+              </tr>
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>2</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01 April 2015</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31 March 2016</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>1574</td>
+              </tr>
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>2</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01 April 2016</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31 March 2017</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>1596</td>
+              </tr>
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>2</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01 April 2017</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31 March 2018</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>1574</td>
+              </tr>
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>2</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01 April 2018</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31 March 2019</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>1564</td>
+              </tr>
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>2</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01 April 2019</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31 March 2020</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>1620</td>
+              </tr>
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>2</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01 April 2020</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31 March 2021</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>1799</td>
+              </tr>
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>2</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01 April 2021</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31 March 2022</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>1762</td>
+              </tr>
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>2</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01 April 2022</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31 March 2023</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>1799</td>
+              </tr>
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>2</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01 April 2023</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31 March 2024</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>1799</td>
+              </tr>
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>2</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01 April 2024</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31 March 2025</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>1799</td>
+              </tr>
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>3</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01 April 2015</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31 March 2016</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>82</td>
+              </tr>
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>3</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01 April 2016</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31 March 2017</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>103</td>
+              </tr>
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>3</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01 April 2017</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31 March 2018</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>38</td>
+              </tr>
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>3</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01 April 2018</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31 March 2019</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>357</td>
+              </tr>
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>3</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01 April 2019</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31 March 2020</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>177</td>
+              </tr>
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>3</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01 April 2020</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31 March 2021</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>53</td>
+              </tr>
+              <tr class="nhsuk-table__row hidden-row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>3</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01 April 2021</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31 March 2022</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>193</td>
+              </tr>
+              <tr class="nhsuk-table__row" role="row">
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14 highlighted-mismatch" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>3</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14 highlighted-mismatch" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01 April 2022</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14 highlighted-mismatch" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31 March 2023</td>
+
+                <td class="nhsuk-table__cell nhsuk-u-font-size-14 highlighted-mismatch" role="cell"><span
+                    class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>156</td>
+              </tr>
+            </tbody>
+          </table>
+          {% endcall %}
+          {% endcall %}
+
+        </div>
+        <div class="nhsuk-task-list__status" id="your-health-3-status">
+          <strong class="nhsuk-tag nhsuk-tag--red">
+            Error
+          </strong>
+        </div>
+      </li>
+
+    </ul>
+
+
+    <!-- ****************
+        SERVICE HISTORY
+      ***************** -->
+
+    {% call details({
+    summaryText: "Service History",
+    classes: "nhsuk-expander"
+    }) %}
+
+    {{ table({
+    responsive: true,
+    panel: false,
+    firstCellIsHeader: false,
+    head: [
+    {
+    text: "Employment ID",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    text: "Scheme code",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    text: "Start date",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    text: "End date",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    text: "Updated",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    text: "Member Status",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    text: "End reason code",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    text: "Group",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    rows: [
+    [
+    {
+    header: "Employment ID",
+    text: "1",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Scheme code",
+    text: "2008",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Start date",
+    text: "01 April 2013",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "End date",
+    text: "31 March 2015",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Updated",
+    text: "31 March 2015",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Status",
+    text: "Active",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "End reason code",
+    text: "15",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Group",
+    text: "1",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employment ID",
+    text: "2",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Scheme code",
+    text: "2015",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Start date",
+    text: "01 April 2015",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "End date",
+    text: "",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Updated",
+    text: "31 March 2025",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Status",
+    text: "Active",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "End reason code",
+    text: "5",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Group",
+    text: "2",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employment ID",
+    text: "3",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Scheme code",
+    text: "2015",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Start date",
+    text: "01 April 2015",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "End date",
+    text: "",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Updated",
+    text: "31 March 2023",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Status",
+    text: "Active",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "End reason code",
+    text: "5",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Group",
+    text: "2",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employment ID",
+    text: "5",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Scheme code",
+    text: "2015",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Start date",
+    text: "01 April 2015",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "End date",
+    text: "",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Updated",
+    text: "31 March 2023",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Status",
+    text: "Active",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "End reason code",
+    text: "5",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Group",
+    text: "2",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ]
+    ]
+    }) }}
+    {% endcall %}
+
+    <!-- ****************
+        EMPLOYMENT HISTORY
+      ***************** -->
+
+    {% call details({
+    summaryText: "Service Group",
+    classes: "nhsuk-expander"
+    }) %}
+    {{ table({
+    responsive: true,
+    panel: false,
+    firstCellIsHeader: false,
+    head: [
+    {
+    text: "Group ID",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    text: "Scheme code",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    text: "Start date",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    text: "End date",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    text: "Status",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    text: "End reason code",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    rows: [
+    [
+    {
+    header: "Group ID",
+    text: "1",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Scheme code",
+    text: "2008",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Start Date",
+    text: "01 April 2013",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "End Date",
+    text: "",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Status",
+    text: "Active",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "End reason code",
+    text: "25",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Group ID",
+    text: "2",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Scheme code",
+    text: "2015",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Start Date",
+    text: "01 April 2015",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "End Date",
+    text: "",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Status",
+    text: "Active",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "End reason code",
+    text: "",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ]
+    ]
+    }) }}
+    {% endcall %}
+
+    <!-- ****************
+        EMPLOYMENT HISTORY
+      ***************** -->
+
+    {% call details({
+    summaryText: "Employment History",
+    classes: "nhsuk-expander"
+    }) %}
+    {{ table({
+    responsive: true,
+    panel: false,
+    firstCellIsHeader: false,
+    head: [
+    {
+    text: "Employment ID",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    text: "Employer code",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    text: "Start date",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    text: "End date",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    text: "Whole/part time",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    text: "Employment type",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    text: "Actual hours",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    rows: [
+    [
+    {
+    header: "Employment ID",
+    text: "1",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer code",
+    text: "5266",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Start Date",
+    text: "01 April 2013",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "End Date",
+    text: "09 November 2014",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Whole/part-time",
+    text: "Whole time",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employment type",
+    text: "8",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Actual hours",
+    text: "",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employment ID",
+    text: "1",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer code",
+    text: "5266",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Start Date",
+    text: "10 November 2014",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "End Date",
+    text: "31 March 2015",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Whole/part-time",
+    text: "Part time",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employment type",
+    text: "8",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Actual hours",
+    text: "30",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employment ID",
+    text: "2",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer code",
+    text: "5266",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Start Date",
+    text: "01 April 2015",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "End Date",
+    text: "",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Whole/part-time",
+    text: "Part time",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employment type",
+    text: "8",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Actual hours",
+    text: "30",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ]
+    ]
+    }) }}
+    {% endcall %}
+
+    <!-- ****************
+        PENSION CONTRIBUTIONS
+      ***************** -->
+
+    {% call details({
+    summaryText: "Pension Contributions (Conts & TPP)",
+    classes: "nhsuk-expander"
+    }) %}
+    {{ table({
+    responsive: true,
+    panel: false,
+    firstCellIsHeader: false,
+    head: [
+    {
+    text: "Employer ID",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    text: "Period start",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    text: "Period end",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    text: "Employee conts",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    text: "TPP",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    text: "Employer conts",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    text: "Employer pay",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    rows: [
+    [
+    {
+    header: "Employer ID",
+    text: "1",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period start",
+    text: "01 April 2013",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period end",
+    text: "31 March 2014",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employee conts",
+    html: "&pound;2758.45",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "TPP",
+    html: "&pound;30649.19",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer conts",
+    html: "&pound;4290.88",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer pay",
+    html: "&pound;30649.19",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "1",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period start",
+    text: "01 April 2014",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period end",
+    text: "31 March 2015",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employee conts",
+    html: "&pound;2543.26",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "TPP",
+    html: "&pound;27346.81",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer conts",
+    html: "&pound;3828.55",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer pay",
+    html: "&pound;27346.81",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "2",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period start",
+    text: "01 April 2015",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period end",
+    text: "31 March 2016",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employee conts",
+    html: "&pound;2561.40",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "TPP",
+    html: "&pound;27541.88",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer conts",
+    html: "&pound;3938.50",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer pay",
+    html: "&pound;27541.88",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "2",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period start",
+    text: "01 April 2016",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period end",
+    text: "31 March 2017",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employee conts",
+    html: "&pound;2606.68",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "TPP",
+    html: "&pound;28028.77",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer conts",
+    html: "&pound;4008.11",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer pay",
+    html: "&pound;28028.77",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "2",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period start",
+    text: "01 April 2017",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period end",
+    text: "31 March 2018",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employee conts",
+    html: "&pound;2676.32",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "TPP",
+    html: "&pound;28777.58",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer conts",
+    html: "&pound;4138.22",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer pay",
+    html: "&pound;28777.58",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "2",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period start",
+    text: "01 April 2018",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period end",
+    text: "31 March 2019",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employee conts",
+    html: "&pound;2796.78",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "TPP",
+    html: "&pound;30072.69",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer conts",
+    html: "&pound;4324.45",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer pay",
+    html: "&pound;30072.69",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "2",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period start",
+    text: "01 April 2019",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period end",
+    text: "31 March 2020",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employee conts",
+    html: "&pound;3013.71",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "TPP",
+    html: "&pound;32405.39",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer conts",
+    html: "&pound;4659.89",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer pay",
+    html: "&pound;32405.39",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "2",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period start",
+    text: "01 April 2020",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period end",
+    text: "31 March 2021",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employee conts",
+    html: "&pound;2781.95",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "TPP",
+    html: "&pound;29913.84",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer conts",
+    html: "&pound;4301.60",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer pay",
+    html: "&pound;29913.84",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "2",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period start",
+    text: "01 April 2021",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period end",
+    text: "31 March 2022",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employee conts",
+    html: "&pound;3067.51",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "TPP",
+    html: "&pound;32984.12",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer conts",
+    html: "&pound;4743.11",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer pay",
+    html: "&pound;32984.12",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "2",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period start",
+    text: "01 April 2022",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period end",
+    text: "31 March 2023",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employee conts",
+    html: "&pound;3661.75",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "TPP",
+    html: "&pound;38306.89",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer conts",
+    html: "&pound;5508.53",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer pay",
+    html: "&pound;38306.89",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "2",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period start",
+    text: "01 April 2023",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period end",
+    text: "31 March 2024",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employee conts",
+    html: "&pound;4037.04",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "TPP",
+    html: "&pound;41845.03",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer conts",
+    html: "&pound;5918.68",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer pay",
+    html: "&pound;41845.03",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "2",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period start",
+    text: "01 April 2024",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period end",
+    text: "31 March 2025",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employee conts",
+    html: "&pound;4365.41",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "TPP",
+    html: "&pound;44544.90",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer conts",
+    html: "&pound;6405.55",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer pay",
+    html: "&pound;44544.90",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "3",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period start",
+    text: "01 April 2015",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period end",
+    text: "31 March 2016",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employee conts",
+    html: "&pound;154.96",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "TPP",
+    html: "&pound;1666.20",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer conts",
+    html: "&pound;238.27",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer pay",
+    html: "&pound;1666.20",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "3",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period start",
+    text: "01 April 2016",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period end",
+    text: "31 March 2017",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employee conts",
+    html: "&pound;209.97",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "TPP",
+    html: "&pound;2257.74",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer conts",
+    html: "&pound;322.86",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer pay",
+    html: "&pound;2257.74",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "3",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period start",
+    text: "01 April 2017",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period end",
+    text: "31 March 2018",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employee conts",
+    html: "&pound;76.76",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "TPP",
+    html: "&pound;825.31",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer conts",
+    html: "&pound;118.68",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer pay",
+    html: "&pound;825.31",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "3",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period start",
+    text: "01 April 2018",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period end",
+    text: "31 March 2019",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employee conts",
+    html: "&pound;844.37",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "TPP",
+    html: "&pound;9079.24",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer conts",
+    html: "&pound;1305.60",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer pay",
+    html: "&pound;9079.24",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "3",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period start",
+    text: "01 April 2019",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period end",
+    text: "31 March 2020",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employee conts",
+    html: "&pound;1247.04",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "TPP",
+    html: "&pound;13409.03",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer conts",
+    html: "&pound;1928.21",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer pay",
+    html: "&pound;13409.03",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "3",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period start",
+    text: "01 April 2020",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period end",
+    text: "31 March 2021",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employee conts",
+    html: "&pound;147.17",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "TPP",
+    html: "&pound;1582.42",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer conts",
+    html: "&pound;227.55",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer pay",
+    html: "&pound;1582.42",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "3",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period start",
+    text: "01 April 2021",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period end",
+    text: "31 March 2022",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employee conts",
+    html: "&pound;755.70",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "TPP",
+    html: "&pound;8125.74",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer conts",
+    html: "&pound;1168.47",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer pay",
+    html: "&pound;8125.74",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "3",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period start",
+    text: "01 April 2022",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Period end",
+    text: "31 March 2023",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employee conts",
+    html: "&pound;496.26",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "TPP",
+    html: "&pound;5063.88",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer conts",
+    html: "&pound;730.11",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Employer pay",
+    html: "&pound;5063.88",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ]
+    ]
+    }) }}
+    {% endcall %}
+
+    <!-- ****************
+        HOURS HISTORY
+      ***************** -->
+
+    {% call details({
+    summaryText: "Hours History",
+    classes: "nhsuk-expander"
+    }) %}
+    {{ table({
+    responsive: true,
+    panel: false,
+    firstCellIsHeader: false,
+    head: [
+    {
+    text: "Employer ID",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    text: "Start date",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    text: "End date",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    text: "Part time hours",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    rows: [
+    [
+    {
+    header: "Employer ID",
+    text: "1",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Start date",
+    text: "10 November 2014",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "End date",
+    text: "31 March 2015",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Part time hours",
+    html: "613",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "2",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Start date",
+    text: "01 April 2015",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "End date",
+    text: "31 March 2016",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Part time hours",
+    html: "1574",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "2",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Start date",
+    text: "01 April 2016",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "End date",
+    text: "31 March 2017",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Part time hours",
+    html: "1596",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "2",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Start date",
+    text: "01 April 2017",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "End date",
+    text: "31 March 2018",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Part time hours",
+    html: "1574",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "2",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Start date",
+    text: "01 April 2018",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "End date",
+    text: "31 March 2019",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Part time hours",
+    html: "1564",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "2",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Start date",
+    text: "01 April 2019",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "End date",
+    text: "31 March 2020",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Part time hours",
+    html: "1620",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "2",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Start date",
+    text: "01 April 2020",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "End date",
+    text: "31 March 2021",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Part time hours",
+    html: "1799",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "2",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Start date",
+    text: "01 April 2021",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "End date",
+    text: "31 March 2022",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Part time hours",
+    html: "1762",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "2",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Start date",
+    text: "01 April 2022",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "End date",
+    text: "31 March 2023",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Part time hours",
+    html: "1799",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "2",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Start date",
+    text: "01 April 2023",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "End date",
+    text: "31 March 2024",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Part time hours",
+    html: "1799",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "2",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Start date",
+    text: "01 April 2024",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "End date",
+    text: "31 March 2025",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Part time hours",
+    html: "1799",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "3",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Start date",
+    text: "01 April 2015",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "End date",
+    text: "31 March 2016",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Part time hours",
+    html: "82",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "3",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Start date",
+    text: "01 April 2016",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "End date",
+    text: "31 March 2017",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Part time hours",
+    html: "103",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "3",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Start date",
+    text: "01 April 2017",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "End date",
+    text: "31 March 2018",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Part time hours",
+    html: "38",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "3",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Start date",
+    text: "01 April 2018",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "End date",
+    text: "31 March 2019",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Part time hours",
+    html: "357",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "3",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Start date",
+    text: "01 April 2019",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "End date",
+    text: "31 March 2020",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Part time hours",
+    html: "177",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "3",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Start date",
+    text: "01 April 2020",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "End date",
+    text: "31 March 2021",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Part time hours",
+    html: "53",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "3",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Start date",
+    text: "01 April 2021",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "End date",
+    text: "31 March 2022",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Part time hours",
+    html: "193",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Employer ID",
+    text: "3",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Start date",
+    text: "01 April 2022",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "End date",
+    text: "31 March 2023",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Part time hours",
+    html: "156",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ]
+    ]
+    }) }}
+    {% endcall %}
+
+    <!-- ****************
+        LINKED EMPLOYMENT
+      ***************** -->
+
+    {% call details({
+    summaryText: "Linked Employment",
+    classes: "nhsuk-expander"
+    }) %}
+    {{ table({
+    responsive: true,
+    panel: false,
+    firstCellIsHeader: false,
+    head: [
+    {
+    text: "Pre-remedy employment ID",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    text: "Remedy employment ID",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    text: "Post-remedy employment ID",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    rows: [
+    [
+    {
+    header: "Pre-remedy employment ID",
+    text: "1",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Remedy employment ID",
+    text: "",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Post-remedy employment ID",
+    text: "2",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ],
+    [
+    {
+    header: "Pre-remedy employment ID",
+    text: "3",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Remedy employment ID",
+    text: "",
+    classes: "nhsuk-u-font-size-14"
+    },
+    {
+    header: "Post-remedy employment ID",
+    text: "5",
+    classes: "nhsuk-u-font-size-14"
+    }
+    ]
+    ]
+    }) }}
+
+    {% endcall %}
+
+  </div>
+</div>
+
+<script>
+  function toggleRows() {
+    const rows = document.querySelectorAll('.hidden-row');
+    rows.forEach(row => {
+      row.classList.toggle('hidden');
+    });
+  }
+</script>
+{% endblock %}

@@ -9608,6 +9608,22 @@ b {
   background-color: #fff9c4;
 }
 
+.nhsuk-table-responsive .nhsuk-table__body .nhsuk-table__row.hidden-row {
+  display: table-row;
+}
+
+.nhsuk-table-responsive .nhsuk-table__body .nhsuk-table__row.hidden {
+  display: none;
+}
+
+.nhsuk-table__row .highlight {
+  background-color: #fff9c4;
+}
+
+.nhsuk-task-list__item--with-link:hover {
+  background: transparent;
+}
+
 .table-scroll-hint,
 .table-scroll-header {
   display: none;
