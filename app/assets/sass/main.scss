@@ -3,21 +3,24 @@
 
 // Add your custom CSS/Sass styles below.
 
-.highlighted-mismatch{
-    background-color:nhsuk-colour("pale-yellow") ;
+.highlighted-mismatch {
+    background-color: nhsuk-colour("pale-yellow");
     border-bottom-width: 3px;
     border-bottom-style: solid;
     border-bottom-color: nhsuk-colour("warm-yellow");
 }
-.mismatchCards{
-    .nhsuk-card__heading{
-        max-width:72%;
+
+.mismatchCards {
+    .nhsuk-card__heading {
+        max-width: 72%;
     }
+
     .nhsuk-table__row:hover {
         background-color: transparent;
     }
 }
-.tagPlacement{
+
+.tagPlacement {
     position: absolute;
     right: 32px;
     top: 32px;
@@ -28,44 +31,69 @@
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+
     table {
-        width: 100%; 
-        min-width: 800px; /* adjust as needed */
+        width: 100%;
+        min-width: 800px;
+        /* adjust as needed */
         border-collapse: collapse;
     }
-    .highlighted{
-        background-color:nhsuk-colour("pale-yellow") ;
-    }
-  }
-  .nhsuk-table-responsive .nhsuk-table__body .nhsuk-table__row.hidden-row {
-    display: table-row;
-  }
-  .nhsuk-table-responsive .nhsuk-table__body .nhsuk-table__row.hidden {
-    display: none;
-  }
-  .nhsuk-table__row{
-    .highlight{
-        background-color:nhsuk-colour("pale-yellow") ;
-    }
-  }
 
-  .nhsuk-task-list__item--with-link:hover{
-    background: transparent;
-  }
-  
-  .table-scroll-hint,
-  .table-scroll-header {
+    .highlighted {
+        background-color: nhsuk-colour("pale-yellow");
+    }
+}
+
+.nhsuk-table-responsive .nhsuk-table__body .nhsuk-table__row.hidden-row {
+    display: table-row;
+}
+
+.nhsuk-table-responsive .nhsuk-table__body .nhsuk-table__row.hidden {
     display: none;
-  }
-  @media (max-width: 600px) {
-    .table-scroll-header{
+}
+
+.nhsuk-table__row {
+    .highlight {
+        background-color: nhsuk-colour("pale-yellow");
+    }
+}
+
+.nhsuk-task-list__item--with-link:hover {
+    background: transparent;
+}
+
+.table-scroll-hint,
+.table-scroll-header {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .table-scroll-header {
         display: block;
     }
+
     .table-scroll-hint {
-      display: block;
-      font-size: 0.9em;
-      color: #666;
-      margin-bottom: 0.5em;
+        display: block;
+        font-size: 0.9em;
+        color: #666;
+        margin-bottom: 0.5em;
     }
-  }
-  
+}
+
+// Complex 2
+.nhsuk-expander{
+    .nhsuk-tag{
+        float: right;
+    }
+}
+.errorHighlight{
+    border-left:4px solid $nhsuk-error-colour;
+    font-weight: bold;
+    .nhsuk-table__cell:first-of-type{
+        padding-left:16px;
+    }
+    .errorTxt{
+        color: $nhsuk-error-colour;
+        text-decoration: underline;
+    }
+}

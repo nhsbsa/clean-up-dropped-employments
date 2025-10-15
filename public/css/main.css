@@ -9601,7 +9601,8 @@ b {
 }
 .nhsuk-table-responsive-custom table {
   width: 100%;
-  min-width: 800px; /* adjust as needed */
+  min-width: 800px;
+  /* adjust as needed */
   border-collapse: collapse;
 }
 .nhsuk-table-responsive-custom .highlighted {
@@ -9639,4 +9640,19 @@ b {
     color: #666;
     margin-bottom: 0.5em;
   }
+}
+.nhsuk-expander .nhsuk-tag {
+  float: right;
+}
+
+.errorHighlight {
+  border-left: 4px solid #d5281b;
+  font-weight: bold;
+}
+.errorHighlight .nhsuk-table__cell:first-of-type {
+  padding-left: 16px;
+}
+.errorHighlight .errorTxt {
+  color: #d5281b;
+  text-decoration: underline;
 }/*# sourceMappingURL=main.css.map */
