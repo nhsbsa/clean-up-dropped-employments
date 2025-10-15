@@ -324,9 +324,8 @@
                 </div>
             </div>
 
-          <button class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button" onclick="toggleRows()">Show/hide
-            correct rows</button>
-          <table class="nhsuk-table-responsive" role="table">
+            <button id="toggleButtonConts" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button" onclick="toggleRows()">Hide correct rows</button>
+            <table class="nhsuk-table-responsive" role="table">
             <thead class="nhsuk-table__head" role="rowgroup">
               <tr role="row">
                 <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employer ID</th>
@@ -830,9 +829,8 @@
                 </div>
             </div>
 
-            <button class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button" onclick="toggleRows()">Show/hide correct rows</button>
+            <button id="toggleButton" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button" onclick="toggleRows()">Hide correct rows</button>
             <table class="nhsuk-table-responsive" role="table">
-                <caption class="nhsuk-table__caption">Hours history</caption>
                 <thead class="nhsuk-table__head">
                   <tr role="row">
                     <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employer ID</th>
@@ -1153,11 +1151,24 @@
 </div>
 
 <script>
-  function toggleRows() {
-    const rows = document.querySelectorAll('.hidden-row');
-    rows.forEach(row => {
-      row.classList.toggle('hidden');
-    });
-  }
+    function toggleRows() {
+      const rows = document.querySelectorAll('.hidden-row');
+      const button = document.getElementById('toggleButton');
+      const buttonConts = document.getElementById('toggleButtonConts');
+  
+      let anyHidden = false;
+  
+      // Toggle each row and check if any are becoming visible
+      rows.forEach(row => {
+        row.classList.toggle('hidden');
+        if (!row.classList.contains('hidden')) {
+          anyHidden = true;
+        }
+      });
+  
+      // Update button text based on visibility
+      button.textContent = anyHidden ? 'Hide correct rows' : 'Show correct rows';
+      buttonConts.textContent = anyHidden ? 'Hide correct rows' : 'Show correct rows';
+    }
 </script>
 {% endblock %}
