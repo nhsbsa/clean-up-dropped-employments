@@ -71,35 +71,122 @@
               <div class="nhsuk-grid-row">
                 <div class="nhsuk-grid-column-two-thirds">
                   <span class="nhsuk-details__summary-text">
-                    Iteration 1
+                    Trial versions - results
                   </span>
                 </div>
                 <div class="nhsuk-grid-column-one-third nhsuk-u-text-align-right">
-                  <strong class="nhsuk-tag nhsuk-tag--blue">DESIGN</strong>
+                  <strong class="nhsuk-tag nhsuk-tag--red">RETIRED</strong>
                 </div>
               </div>
             </summary>
             <div class="nhsuk-details__text">
               <h3 class="nhsuk-heading-s">Design</h3>
-              This release includes an additional table which shows the employment mismatches. Highlighting the error to the user.
-              <h3 class="nhsuk-heading-s">User research</h3>
-              <p>TBC</p>
-              
-              
-              <hr>
-              {{ button({
-                "text": "View Iteration 1",
-                "href": "/iteration-1/search"
-              }) }}
-              {{ button({
-                "text": "View Iteration 1 - Card Design",
-                "href": "/iteration-1/search-cards"
-              }) }}
-              <br/>
-              {{ actionLink({
-                "classes": "nhsuk-u-margin-bottom-3",
-                "text": "View user journey on Miro",
-                "href": "https://miro.com/app/board/uXjVJGRiT-8=/?share_link_id=109589333112"
+              <p>These designs were creating during the testing and planning phase of the MVP and were iterated upon throughout the UR sessions and stake holder meetings.</p>
+              {{ summaryList({
+                rows: [
+                  {
+                    key: {
+                      text: "MVP Simple"
+                    },
+                    value: {
+                      text: "Initially the mvp was going to simply just show the core tables from Compendia in a unified view"
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/test-versions/results-simple",
+                          text: "View",
+                          visuallyHiddenText: "simple"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Combined Table"
+                    },
+                    value: {
+                      text: "This view uses a combined table to highlight the mismatches"
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/test-versions/results-table",
+                          text: "View",
+                          visuallyHiddenText: "combined table"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Card design"
+                    },
+                    value: {
+                      text: "This view uses the card component to highlight the mismatches"
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/test-versions/results-cards",
+                          text: "View",
+                          visuallyHiddenText: "card design"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Flagged descriptions"
+                    },
+                    value: {
+                      text: "This view uses descriptions of validations to highlight the mismatches"
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/test-versions/results-flagged",
+                          text: "View",
+                          visuallyHiddenText: "flagged descriptions"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Tabbed view"
+                    },
+                    value: {
+                      text: "This is a simple view of the core tables using the tab component rather than the expander."
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/test-versions/results-tabbed",
+                          text: "View",
+                          visuallyHiddenText: "tabbed view"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Complex view"
+                    },
+                    value: {
+                      text: "This view uses a a combination of components to show the errors within the core tables"
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/test-versions/results-complex",
+                          text: "View",
+                          visuallyHiddenText: "combined components"
+                        }
+                      ]
+                    }
+                  }
+                ]
               }) }}
             </div>
           </details>
