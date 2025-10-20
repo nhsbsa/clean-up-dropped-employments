@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "Which member are you looking for?"%}
+{% set pageTitle = "Find a member"%}
 {% set hideBack ="true"%}
 
 {% block pageTitle %}
@@ -17,10 +17,10 @@
               <h1 class="nhsuk-fieldset__heading">{{pageTitle}} </h1>
             </legend>
 
+            <label class="nhsuk-label" for="my-autocomplete">Enter member number</label>
             <div class="nhsuk-hint" id="contact-hint">
-              Enter the members membership number, for example, 12345678
+              For example, 12345678
             </div>
-            <label class="nhsuk-label" for="my-autocomplete">Member ID</label>
             <input class="nhsuk-input" id="example" name="example" type="text">
           </fieldset>
         </div>
