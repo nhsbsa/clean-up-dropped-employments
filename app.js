@@ -63,6 +63,7 @@ const appViews = [
   join(__dirname, 'lib/prototype-admin/'),
   join(__dirname, 'lib/templates/'),
   join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk/components'),
+  join(__dirname, 'node_modules/@nhsbsa/cookie-consent-component/component'),
   join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk/macros'),
   join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk'),
   join(__dirname, 'node_modules/nhsuk-frontend/dist')
@@ -197,6 +198,8 @@ app.use(
   '/nhsuk-frontend',
   express.static(join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk'))
 )
+app.use(
+  express.static('./node_modules/@nhsbsa/cookie-consent-component/dist'))
 
 // Use custom application routes
 app.use('/', routes)

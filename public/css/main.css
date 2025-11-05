@@ -9573,6 +9573,115 @@ b {
 
 
 
+.nhsuk-cookie-banner {
+  background: white;
+  position: relative;
+  box-shadow: 0 0 4px 0 #212b32;
+  padding: 24px 0 19px;
+  width: 100%;
+  z-index: 1;
+}
+
+h2 {
+  display: block;
+  font-weight: 600;
+  color: #212b32;
+  margin-top: 0;
+  font-size: 18px;
+  line-height: 1.125;
+}
+h2 {
+  margin-bottom: 16px;
+}
+@media (min-width: 40.0625em) {
+  h2 {
+    margin-bottom: 24px;
+  }
+}
+@media (min-width: 40.0625em) {
+  h2 {
+    font-size: 22px;
+    line-height: 1.375;
+  }
+}
+
+p {
+  display: block;
+  margin-top: 0;
+  font-size: 16px;
+  line-height: 1.5;
+}
+p {
+  margin-bottom: 16px;
+}
+@media (min-width: 40.0625em) {
+  p {
+    margin-bottom: 24px;
+  }
+}
+@media (min-width: 40.0625em) {
+  p {
+    font-size: 19px;
+    line-height: 1.47368;
+  }
+}
+
+a {
+  font-weight: normal;
+}
+
+.nhsuk-button {
+  display: inline-block;
+  vertical-align: top;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.nhsuk-button {
+  margin-bottom: 12px;
+}
+@media (min-width: 40.0625em) {
+  .nhsuk-button {
+    margin-bottom: 12px;
+  }
+}
+@media (min-width: 40.0625em) {
+  .nhsuk-button {
+    font-size: 19px;
+    line-height: 1.47368;
+  }
+}
+
+ul, li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media (min-width: 48.0625em) {
+  li {
+    display: inline;
+    margin-right: 20px;
+  }
+}
+.nhsuk-success-banner {
+  background-color: #007f3b;
+  color: #ffffff;
+  padding: 8px 0 8px 0;
+  position: relative;
+}
+.nhsuk-success-banner p {
+  margin: 0;
+}
+.nhsuk-success-banner a,
+.nhsuk-success-banner a:visited {
+  color: #ffffff;
+}
+.nhsuk-success-banner a:hover,
+.nhsuk-success-banner a:focus {
+  color: #212b32;
+}
+
 .highlighted-mismatch {
   background-color: #fff9c4;
   border-bottom-width: 3px;
