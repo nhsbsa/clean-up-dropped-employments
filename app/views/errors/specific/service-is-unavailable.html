@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Sorry, the service is unavailable"%}
+{% set hideBack = "true" %}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+
+  <div class="nhsuk-grid-column-two-thirds">
+    <div class="nhsuk-u-reading-width">
+
+      <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-5">{{pageTitle}}</h1>
+
+      <p>
+        You will be able to use the service from 9am on Tuesday 9 April 2024.
+      </p>
+
+    
+
+      <p>If you have an urgent query, contact the NHS Pensions team:</p>
+      <p><a href="#">TBC</a></p>
+
+    </div>
+
+  </div>
+
+</div>
+{% endblock %}
