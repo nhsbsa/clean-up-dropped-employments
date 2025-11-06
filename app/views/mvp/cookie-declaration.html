@@ -1,7 +1,8 @@
 {% extends 'layout.html' %}
+{% set hideBack ="true"%}
 
 {% block pageTitle %}
-Details about the cookies we use - Contact the NHS Business Services Authority (NHSBSA)
+Details about the cookies we use - {{serviceName}}
 {% endblock %}
 
 {% block content %}
@@ -70,7 +71,7 @@ Details about the cookies we use - Contact the NHS Business Services Authority (
         <legend id="cookie-statistics" class="nhsuk-u-visually-hidden">
           Do you want to allow cookies to measure your website use?
         </legend>
-        <div class="nhsuk-radios nhsuk-radios--inline nhsuk-u-margin-bottom-6">
+        <div class="nhsuk-radios nhsuk-radios--inline nhsuk-u-margin-bottom-6" data-module="nhsuk-radios">
           <div class="nhsuk-radios__item">
             <input class="nhsuk-radios__input" id="input-statistics-1" name="input-statistics" type="radio" value="on">
             <label class="nhsuk-label nhsuk-radios__label" for="input-statistics-1">

@@ -1,7 +1,8 @@
 {% extends 'layout.html' %}
+{% set hideBack ="true"%}
 
 {% block pageTitle %}
-Cookies on Clean Up Scheme - Dropped Employments
+Cookies on {{serviceName}}
 {% endblock %}
 
 {% block content %}
@@ -10,7 +11,7 @@ Cookies on Clean Up Scheme - Dropped Employments
 
   <div class="nhsuk-grid-column-two-thirds">
     <h1>
-      Cookies on Clean Up Scheme - Dropped Employments
+      Cookies on {{serviceName}}
     </h1>
 
     <p>
@@ -103,18 +104,10 @@ Cookies on Clean Up Scheme - Dropped Employments
       These cookies can help us make our website better, but we'll only use them if you say it's OK.
     </p>
 
-    <div class="nhsuk-action-link">
-      <a class="nhsuk-action-link__link" href="cookie-declaration">
-        <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-          aria-hidden="true">
-          <path d="M0 0h24v24H0z" fill="none"></path>
-          <path
-            d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z">
-          </path>
-        </svg>
-        <span class="nhsuk-action-link__text">Choose which cookies we use</span>
-      </a>
-    </div>
+    {{ actionLink({
+      text: "Choose which cookies we use",
+      href: "cookie-declaration"
+    }) }}
 
   </div>
 
