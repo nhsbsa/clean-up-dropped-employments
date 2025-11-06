@@ -9581,8 +9581,7 @@ b {
   width: 100%;
   z-index: 1;
 }
-
-h2 {
+.nhsuk-cookie-banner h2 {
   display: block;
   font-weight: 600;
   color: #212b32;
@@ -9590,76 +9589,72 @@ h2 {
   font-size: 18px;
   line-height: 1.125;
 }
-h2 {
+.nhsuk-cookie-banner h2 {
   margin-bottom: 16px;
 }
 @media (min-width: 40.0625em) {
-  h2 {
+  .nhsuk-cookie-banner h2 {
     margin-bottom: 24px;
   }
 }
 @media (min-width: 40.0625em) {
-  h2 {
+  .nhsuk-cookie-banner h2 {
     font-size: 22px;
     line-height: 1.375;
   }
 }
-
-p {
+.nhsuk-cookie-banner p {
   display: block;
   margin-top: 0;
   font-size: 16px;
   line-height: 1.5;
 }
-p {
+.nhsuk-cookie-banner p {
   margin-bottom: 16px;
 }
 @media (min-width: 40.0625em) {
-  p {
+  .nhsuk-cookie-banner p {
     margin-bottom: 24px;
   }
 }
 @media (min-width: 40.0625em) {
-  p {
+  .nhsuk-cookie-banner p {
     font-size: 19px;
     line-height: 1.47368;
   }
 }
-
-a {
+.nhsuk-cookie-banner a {
   font-weight: normal;
 }
-
-.nhsuk-button {
+.nhsuk-cookie-banner .nhsuk-button {
   display: inline-block;
   vertical-align: top;
   font-family: inherit;
   font-size: 16px;
   line-height: 1.5;
 }
-.nhsuk-button {
+.nhsuk-cookie-banner .nhsuk-button {
   margin-bottom: 12px;
 }
 @media (min-width: 40.0625em) {
-  .nhsuk-button {
+  .nhsuk-cookie-banner .nhsuk-button {
     margin-bottom: 12px;
   }
 }
 @media (min-width: 40.0625em) {
-  .nhsuk-button {
+  .nhsuk-cookie-banner .nhsuk-button {
     font-size: 19px;
     line-height: 1.47368;
   }
 }
-
-ul, li {
+.nhsuk-cookie-banner ul, .nhsuk-cookie-banner li {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
 @media (min-width: 48.0625em) {
-  li {
+  .nhsuk-cookie-banner li {
     display: inline;
     margin-right: 20px;
   }
