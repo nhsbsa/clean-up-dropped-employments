@@ -1,0 +1,123 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "John Smith"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    <button id="toggleButtonTable" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button" onclick="toggleRows()">Hide correct rows</button>
+            
+    <table id="myTable" class="nhsuk-table-responsive" role="table"></table>
+    <nav id="pagination" class="nhsuk-pagination nhsuk-pagination--numbered" role="navigation" aria-label="Table pagination"></nav>
+
+            <script>
+            const tableData = [
+                { firstName: 'Alice', age: 30, role: 'Nurse' },
+                { firstName: 'Bob', age: 40, role: 'Doctor' },
+                { firstName: 'Charlie', age: 25, role: 'Admin' },
+                { firstName: 'David', age: 50, role: 'Surgeon' },
+                { firstName: 'Eva', age: 35, role: 'Nurse' },
+                { firstName: 'Frank', age: 45, role: 'Doctor' },
+                { firstName: 'Grace', age: 28, role: 'Admin' }
+            ];
+
+            const columnTitles = {
+                firstName: 'First Name',
+                age: 'Age',
+                role: 'Job Role'
+            };
+
+            const pageSize = 3;
+            let currentPage = 1;
+
+            function renderTable(data, highlightColumn = 'age', highlightThreshold = 35) {
+                const start = (currentPage - 1) * pageSize;
+                const end = start + pageSize;
+                const pageData = data.slice(start, end);
+
+                const table = document.getElementById('myTable');
+                const headers = Object.keys(data[0]);
+
+                let html = '<thead><tr>';
+                headers.forEach(header => {
+                    const title = columnTitles[header] || header;
+                    html += `<th class="nhsuk-table__header">${title}</th>`;
+                });
+                html += '</tr></thead><tbody>';
+
+                pageData.forEach(row => {
+                    let rowClass = (highlightColumn && row[highlightColumn] > highlightThreshold) ? 'nhsuk-table__row--highlight' : '';
+                    html += `<tr class="${rowClass}">`;
+                    headers.forEach(header => {
+                        html += `<td class="nhsuk-table__cell">${row[header]}</td>`;
+                    });
+                    html += '</tr>';
+                });
+
+                html += '</tbody>';
+                table.innerHTML = html;
+
+                renderPagination(data.length);
+            }
+
+            function renderPagination(totalRows) {
+                const totalPages = Math.ceil(totalRows / pageSize);
+                const pagination = document.getElementById('pagination');
+                let html = 
+                '<ul class="nhsuk-pagination__list">'
+                ;
+
+                if (currentPage > 1) {
+                    html += `<a href="#" class="nhsuk-pagination__previous" rel="prev" data-page="${currentPage-1}">
+                            <svg class="nhsuk-icon nhsuk-icon--arrow-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+                                <path d="M10.7 6.3c.4.4.4 1 0 1.4L7.4 11H19a1 1 0 0 1 0 2H7.4l3.3 3.3c.4.4.4 1 0 1.4a1 1 0 0 1-1.4 0l-5-5A1 1 0 0 1 4 12c0-.3.1-.5.3-.7l5-5a1 1 0 0 1 1.4 0Z" />
+                            </svg>
+                            <span class="nhsuk-pagination__title">Previous
+                                <span class="nhsuk-u-visually-hidden"> page</span>
+                            </span>
+                            </a>`;
+                }
+
+                for (let i = 1; i <= totalPages; i++) {
+                    const activeClass = i === currentPage ? 'nhsuk-pagination__item--current' : '';
+                    html += `<li class="nhsuk-pagination__item  ${activeClass}">
+                                <a href="#" class="nhsuk-pagination__link" aria-label="Page ${i}" aria-current="page" data-page="${i}">${i}</a>
+                            </li>`;
+                }
+
+                html += '</ul>';
+
+                if (currentPage < totalPages) {
+                    html += `<a href="#" class="nhsuk-pagination__next" data-page="${currentPage+1}" rel="next">
+                                <span class="nhsuk-pagination__title">
+                                Next<span class="nhsuk-u-visually-hidden"> page</span>
+                                </span>
+                                <svg class="nhsuk-icon nhsuk-icon--arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+                                <path d="m14.7 6.3 5 5c.2.2.3.4.3.7 0 .3-.1.5-.3.7l-5 5a1 1 0 0 1-1.4-1.4l3.3-3.3H5a1 1 0 0 1 0-2h11.6l-3.3-3.3a1 1 0 1 1 1.4-1.4Z" />
+                                </svg>
+                            </a>`;
+                }
+                pagination.innerHTML = html;
+
+                pagination.querySelectorAll('a[data-page]').forEach(link => {
+                    link.addEventListener('click', e => {
+                        e.preventDefault();
+                        currentPage = parseInt(link.dataset.page);
+                        renderTable(tableData);
+                    });
+                });
+            }
+
+            renderTable(tableData);
+            </script>
+
+  </div>
+</div>
+
+
+
+{% endblock %}
