@@ -32,12 +32,33 @@
        cookieVersion: 1
     }) }}
 
+  {% if not hideLogin %}
   {{ header({
     service: {
       text: serviceName,
       href: "/"
+    },
+    account: {
+      items: [
+        {
+          text: "Jane Doe",
+          icon: true
+        },
+        {
+          text: "Log out",
+          href: "#"
+        }
+      ]
     }
   }) }}
+  {% else %}
+    {{ header({
+      service: {
+        text: serviceName,
+        href: "/"
+      }
+    }) }}
+  {% endif %}
 
   <!-- <div class="beta-banner">
     <div class="nhsuk-width-container">
