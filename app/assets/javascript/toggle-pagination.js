@@ -73,7 +73,12 @@ function createTableManager(tableId, paginationId, toggleBtnId, options = {}) {
             let html = `<ul class="nhsuk-pagination__list">`;
 
             if (this.currentPage > 1) {
-                html += `<a href="#" class="nhsuk-pagination__previous" data-page="${this.currentPage - 1}">Previous</a>`;
+                html += `<a href="#" class="nhsuk-pagination__previous" data-page="${this.currentPage - 1}" rel="prev">
+                <svg class="nhsuk-icon nhsuk-icon--arrow-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+                <path d="M10.7 6.3c.4.4.4 1 0 1.4L7.4 11H19a1 1 0 0 1 0 2H7.4l3.3 3.3c.4.4.4 1 0 1.4a1 1 0 0 1-1.4 0l-5-5A1 1 0 0 1 4 12c0-.3.1-.5.3-.7l5-5a1 1 0 0 1 1.4 0Z" />
+                </svg>
+                <span class="nhsuk-pagination__title">Previous<span class="nhsuk-u-visually-hidden"> page</span>
+                </span></a>`;
             }
 
             for (let i = 1; i <= totalPages; i++) {
@@ -87,7 +92,13 @@ function createTableManager(tableId, paginationId, toggleBtnId, options = {}) {
             html += `</ul>`;
 
             if (this.currentPage < totalPages) {
-                html += `<a href="#"class="nhsuk-pagination__next" data-page="${this.currentPage + 1}">Next</a>`;
+                html += `<a href="#"class="nhsuk-pagination__next" data-page="${this.currentPage + 1}" rel="next">
+                <span class="nhsuk-pagination__title">
+                Next<span class="nhsuk-u-visually-hidden"> page</span>
+                </span>
+                <svg class="nhsuk-icon nhsuk-icon--arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+                  <path d="m14.7 6.3 5 5c.2.2.3.4.3.7 0 .3-.1.5-.3.7l-5 5a1 1 0 0 1-1.4-1.4l3.3-3.3H5a1 1 0 0 1 0-2h11.6l-3.3-3.3a1 1 0 1 1 1.4-1.4Z" />
+                </svg></a>`;
             }
 
             pagination.innerHTML = html;
