@@ -10151,6 +10151,14 @@ b {
   display: none;
 }
 
+.nhsuk-table-responsive .hidden-row {
+  display: table-row;
+}
+
+.nhsuk-table-responsive .hidden {
+  display: none;
+}
+
 .nhsuk-table__row .highlight {
   background-color: #fff9c4;
 }

@@ -54,6 +54,14 @@
     display: none;
 }
 
+.nhsuk-table-responsive .hidden-row {
+    display: table-row;
+}
+
+.nhsuk-table-responsive .hidden {
+    display: none;
+}
+
 .nhsuk-table__row {
     .highlight {
         background-color: nhsuk-colour("pale-yellow");
