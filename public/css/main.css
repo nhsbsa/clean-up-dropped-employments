@@ -10199,6 +10199,11 @@ b {
   text-decoration: underline;
 }
 
+.sortableLink {
+  display: flex;
+  vertical-align: top;
+}
+
 .beta-banner {
   padding: 16px 0;
   background-color: #ffffff;
