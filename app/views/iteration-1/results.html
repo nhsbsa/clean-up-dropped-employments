@@ -96,11 +96,77 @@
             <p>Any issues are highlighted and must be fixed before the case can be processed.</p>
         </div>
 
+        <button class="nhsuk-button nhsuk-button--secondary" aria-expanded="false" aria-controls="filters-panel" id="filters-toggle">
+          Show filters
+        </button>
+
+        <div id="filters-panel" hidden>
+            <form id="table-selector-form">
+              <div class="nhsuk-form-group">
+                <fieldset class="nhsuk-fieldset">
+                  <legend class="nhsuk-fieldset__legend--m">
+                    Choose which data sets to display
+                  </legend>
+            
+                  <div class="nhsuk-checkboxes">
+            
+                    <div class="nhsuk-checkboxes__item">
+                      <input class="nhsuk-checkboxes__input" id="serviceHistory-checkbox" name="tables" type="checkbox" value="serviceHistory" checked>
+                      <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceHistory-checkbox">
+                        Service history
+                      </label>
+                    </div>
+            
+                    <div class="nhsuk-checkboxes__item">
+                      <input class="nhsuk-checkboxes__input" id="serviceGroup-checkbox" name="tables" type="checkbox" value="serviceGroup" checked>
+                      <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceGroup-checkbox">
+                        Service group
+                      </label>
+                    </div>
+            
+                    <div class="nhsuk-checkboxes__item">
+                      <input class="nhsuk-checkboxes__input" id="employmentHistory-checkbox" name="tables" type="checkbox" value="employmentHistory" checked>
+                      <label class="nhsuk-label nhsuk-checkboxes__label" for="employmentHistory-checkbox">
+                        Employment History
+                      </label>
+                    </div>
+            
+                    <div class="nhsuk-checkboxes__item">
+                      <input class="nhsuk-checkboxes__input" id="contsTpp-checkbox" name="tables" type="checkbox" value="contsTpp" checked>
+                      <label class="nhsuk-label nhsuk-checkboxes__label" for="contsTpp-checkbox">
+                        Conts &amp; TPP (Pension contributions)
+                      </label>
+                    </div>
+            
+                    <div class="nhsuk-checkboxes__item">
+                      <input class="nhsuk-checkboxes__input" id="hoursHistory-checkbox" name="tables" type="checkbox" value="hoursHistory" checked>
+                      <label class="nhsuk-label nhsuk-checkboxes__label" for="hoursHistory-checkbox">
+                        Hours history
+                      </label>
+                    </div>
+            
+                    <div class="nhsuk-checkboxes__item">
+                      <input class="nhsuk-checkboxes__input" id="linkedEmployment-checkbox" name="tables" type="checkbox" value="linkedEmployment" checked>
+                      <label class="nhsuk-label nhsuk-checkboxes__label" for="linkedEmployment-checkbox">
+                        Linked employment
+                      </label>
+                    </div>
+            
+                  </div>
+                </fieldset>
+              </div>
+            
+              <button class="nhsuk-button" type="submit">Apply filters</button>
+            </form>
+        </div>
+        
+
+
        <!-- ****************
         SERVICE HISTORY
       ***************** -->
 
-      <details class="nhsuk-details nhsuk-expander">
+      <details class="nhsuk-details nhsuk-expander" id="serviceHistory">
         <summary class="nhsuk-details__summary">
           <span class="nhsuk-details__summary-text">
             Service history
@@ -186,7 +252,7 @@
           SERVICE GROUP
         ***************** -->
 
-      <details class="nhsuk-details nhsuk-expander">
+      <details class="nhsuk-details nhsuk-expander" id="serviceGroup">
         <summary class="nhsuk-details__summary">
           <span class="nhsuk-details__summary-text">
             Service group
@@ -230,7 +296,7 @@
         EMPLOYMENT HISTORY
       ***************** -->
 
-      <details class="nhsuk-details nhsuk-expander">
+      <details class="nhsuk-details nhsuk-expander" id="employmentHistory">
         <summary class="nhsuk-details__summary">
           <span class="nhsuk-details__summary-text">
             Employment history
@@ -331,10 +397,10 @@
         <!-- ****************
         PENSION CONTRIBUTIONS
         ***************** -->
-        <details class="nhsuk-details nhsuk-expander">
+        <details class="nhsuk-details nhsuk-expander" id="contsTpp">
             <summary class="nhsuk-details__summary">
                 <span class="nhsuk-details__summary-text">
-                    Pension contributions (Conts &amp; TPP)
+                    Conts &amp; TPP (Pension contributions)
                 </span>
                 <strong class="nhsuk-tag nhsuk-tag--red">
                     1 issue found
@@ -368,7 +434,7 @@
         HOURS HISTORY
         ***************** -->
 
-        <details class="nhsuk-details nhsuk-expander">
+        <details class="nhsuk-details nhsuk-expander" id="hoursHistory">
             <summary class="nhsuk-details__summary">
                 <span class="nhsuk-details__summary-text">
                     Hours history
@@ -406,7 +472,7 @@
         ***************** -->
 
 
-        <details class="nhsuk-details nhsuk-expander">
+        <details class="nhsuk-details nhsuk-expander" id="linkedEmployment">
             <summary class="nhsuk-details__summary">
                 <span class="nhsuk-details__summary-text">
                     Linked employment
@@ -441,6 +507,7 @@
 </div>
 
 
+<script src="/js/application.js"></script>
 <script src="/js/toggle-pagination.js"></script>
 <script>
     // ------------ Datasets located in HTML ------------

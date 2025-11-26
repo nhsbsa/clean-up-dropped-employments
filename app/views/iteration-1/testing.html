@@ -9,6 +9,70 @@
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-full">
 
+      <form id="table-selector-form">
+        <div class="nhsuk-form-group">
+          <fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend--l">
+              Choose which tables to display
+            </legend>
+      
+            <div class="nhsuk-checkboxes">
+      
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="tableA-checkbox" name="tables" type="checkbox" value="tableA" checked>
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="tableA-checkbox">
+                  Show Table A
+                </label>
+              </div>
+      
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="tableB-checkbox" name="tables" type="checkbox" value="tableB" checked>
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="tableB-checkbox">
+                  Show Table B
+                </label>
+              </div>
+      
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="tableC-checkbox" name="tables" type="checkbox" value="tableC" checked>
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="tableC-checkbox">
+                  Show Table C
+                </label>
+              </div>
+      
+            </div>
+          </fieldset>
+        </div>
+      
+        <button class="nhsuk-button" type="submit">Apply filters</button>
+      </form>
+      
+      <!-- TABLES -->
+      <table id="tableA" class="nhsuk-table">
+        <caption class="nhsuk-table__caption">Skin symptoms and possible causes</caption>
+        <thead class="nhsuk-table__head">
+          <tr>
+            <th scope="col" class="nhsuk-table__header">Skin symptoms</th>
+            <th scope="col" class="nhsuk-table__header">Possible cause</th>
+          </tr>
+        </thead>
+        <tbody class="nhsuk-table__body">
+          <tr class="nhsuk-table__row">
+            <td class="nhsuk-table__cell">Blisters on lips or around the mouth</td>
+            <td class="nhsuk-table__cell">Cold sores</td>
+          </tr>
+          <tr class="nhsuk-table__row">
+            <td class="nhsuk-table__cell">Itchy, dry, cracked, sore</td>
+            <td class="nhsuk-table__cell">Eczema</td>
+          </tr>
+          <tr class="nhsuk-table__row">
+            <td class="nhsuk-table__cell">Itchy blisters</td>
+            <td class="nhsuk-table__cell">Shingles, chickenpox</td>
+          </tr>
+        </tbody></table>
+      <table id="tableB">…</table>
+      <table id="tableC">…</table>
+      
+
       <table class="nhsuk-table">
         <thead class="nhsuk-table__head" role="rowgroup">
           <tr role="row">
@@ -193,6 +257,7 @@
 
     </div>
 </div>
+
 
 <script src="/js/toggle-pagination.js"></script>
 <script>
