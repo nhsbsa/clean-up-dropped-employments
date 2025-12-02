@@ -193,10 +193,88 @@
             <table class="nhsuk-table-responsive" role="table">
                 <thead class="nhsuk-table__head" role="rowgroup">
                   <tr role="row">
-                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employment ID</th>
+                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">
+                        <a href="?sort=empIdSH&direction={% if sort == 'empIdSH' and direction == 'asc' %}desc{% else %}asc{% endif %}" class="sortableLink">
+                          Employment ID
+                          {% if sort == "empIdSH" %}
+                            {% if direction == "asc" %}
+                              <span aria-hidden="true" class="sortable">
+                                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M6.5625 15.5L11 6.63125L15.4375 15.5H6.5625Z" fill="currentColor"></path>
+                                </svg>
+                              </span>
+                            {% elseif direction == "desc" %}
+                              <span aria-hidden="true" class="sortable">
+                                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M15.4375 7L11 15.8687L6.5625 7L15.4375 7Z" fill="currentColor"></path>
+                                </svg>
+                              </span>
+                            {% endif %}
+                          {% else %}
+                              <span aria-hidden="true" class="sortable">
+                                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
+                                  <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
+                                </svg>
+                              </span>
+                          {% endif %}
+                        </a>
+                      </th>
                       <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Scheme code</th>
-                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Start date</th>
-                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">End date</th>
+                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">
+                        <a href="?sort=startSH&direction={% if sort == 'startSH' and direction == 'asc' %}desc{% else %}asc{% endif %}" class="sortableLink">
+                          Start date
+                          {% if sort == "startSH" %}
+                            {% if direction == "asc" %}
+                              <span aria-hidden="true" class="sortable">
+                                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M6.5625 15.5L11 6.63125L15.4375 15.5H6.5625Z" fill="currentColor"></path>
+                                </svg>
+                              </span>
+                            {% elseif direction == "desc" %}
+                              <span aria-hidden="true" class="sortable">
+                                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M15.4375 7L11 15.8687L6.5625 7L15.4375 7Z" fill="currentColor"></path>
+                                </svg>
+                              </span>
+                            {% endif %}
+                          {% else %}
+                              <span aria-hidden="true" class="sortable">
+                                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
+                                  <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
+                                </svg>
+                              </span>
+                          {% endif %}
+                        </a>
+                      </th>
+                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">
+                        <a href="?sort=endSH&direction={% if sort == 'endSH' and direction == 'asc' %}desc{% else %}asc{% endif %}" class="sortableLink">
+                          End date
+                          {% if sort == "endSH" %}
+                            {% if direction == "asc" %}
+                              <span aria-hidden="true" class="sortable">
+                                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M6.5625 15.5L11 6.63125L15.4375 15.5H6.5625Z" fill="currentColor"></path>
+                                </svg>
+                              </span>
+                            {% elseif direction == "desc" %}
+                              <span aria-hidden="true" class="sortable">
+                                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M15.4375 7L11 15.8687L6.5625 7L15.4375 7Z" fill="currentColor"></path>
+                                </svg>
+                              </span>
+                            {% endif %}
+                          {% else %}
+                              <span aria-hidden="true" class="sortable">
+                                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
+                                  <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
+                                </svg>
+                              </span>
+                          {% endif %}
+                        </a>
+                      </th>
                       <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Updated</th>
                       <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Member status</th>
                       <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">End reason code</th>
@@ -204,46 +282,31 @@
                   </tr>
                 </thead>
                 <tbody class="nhsuk-table__body">
-                  <tr class="nhsuk-table__row" role="row">
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employment ID </span>1</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Scheme code </span>2008</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01/04/2013</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31/03/2015</td>                       <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Updated </span>31/03/2015</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Status </span>Active</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End reason code </span>15</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Group </span>1</td>
-                  </tr>
-                  <tr class="nhsuk-table__row" role="row">
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employment ID </span>2</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Scheme code </span>2015</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01/04/2015</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span></td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Updated </span>31/03/2025</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Status </span>Active</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End reason code </span>5</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Group </span>2</td>
-                  </tr>
-                  <tr class="nhsuk-table__row errorHighlight" id="shError" role="row">
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employment ID </span>3</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Scheme code </span>2015</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span><span class="errorTxt">01/04/2015</span></td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>-</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Updated </span><span class="errorTxt">31/03/2023</span></td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Status </span>Active</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End reason code </span>5</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Group </span>2</td>
-                  </tr>
-                  <tr class="nhsuk-table__row errorHighlight" role="row">
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employment ID </span>5</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Scheme code </span>2015</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span><span class="errorTxt">01/04/2015</span></td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span></td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Updated </span>31/03/2023</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Status </span>Active</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End reason code </span>5</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Group </span>2</td>
-                  </tr>
-                </tbody>
+                  {% for row in schemeHistoryData | sortBy(sort, direction) %}
+                    <tr class="nhsuk-table__row {% if row.error %}errorHighlight{% else %}hidden-row{% endif %}" role="row">
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.empId }}</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.scheme }}</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">
+                        {% if row.error %}
+                          <span class="errorTxt">{{ row.empId }}</span>
+                        {% else %}
+                          {{ row.start }}
+                        {% endif %}
+                      </td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.end }}</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">
+                        {% if row.error %}
+                            <span class="errorTxt">{{ row.empId }}</span>
+                        {% else %}
+                          {{ row.updated }}
+                        {% endif %}
+                      </td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.status }}</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.endReason }}</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.group }}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>                
             </table>
         </div>
       </details>
@@ -262,31 +325,103 @@
             <table class="nhsuk-table-responsive" role="table">
                 <thead class="nhsuk-table__head" role="rowgroup">
                   <tr role="row">
-                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Group ID</th>
+                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">
+                        <a href="?sort=groupID&direction={% if sort == 'groupID' and direction == 'asc' %}desc{% else %}asc{% endif %}" class="sortableLink">
+                          Group ID
+                          {% if sort == "groupID" %}
+                            {% if direction == "asc" %}
+                              <span aria-hidden="true" class="sortable">
+                                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M6.5625 15.5L11 6.63125L15.4375 15.5H6.5625Z" fill="currentColor"></path>
+                                </svg>
+                              </span>
+                            {% elseif direction == "desc" %}
+                              <span aria-hidden="true" class="sortable">
+                                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M15.4375 7L11 15.8687L6.5625 7L15.4375 7Z" fill="currentColor"></path>
+                                </svg>
+                              </span>
+                            {% endif %}
+                          {% else %}
+                              <span aria-hidden="true" class="sortable">
+                                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
+                                  <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
+                                </svg>
+                              </span>
+                          {% endif %}
+                        </a>
+                      </th>
                       <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Scheme code</th>
-                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Start date</th>
-                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">End date</th>
+                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">
+                        <a href="?sort=startGrp&direction={% if sort == 'startGrp' and direction == 'asc' %}desc{% else %}asc{% endif %}" class="sortableLink">
+                          Start date
+                          {% if sort == "startGrp" %}
+                            {% if direction == "asc" %}
+                              <span aria-hidden="true" class="sortable">
+                                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M6.5625 15.5L11 6.63125L15.4375 15.5H6.5625Z" fill="currentColor"></path>
+                                </svg>
+                              </span>
+                            {% elseif direction == "desc" %}
+                              <span aria-hidden="true" class="sortable">
+                                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M15.4375 7L11 15.8687L6.5625 7L15.4375 7Z" fill="currentColor"></path>
+                                </svg>
+                              </span>
+                            {% endif %}
+                          {% else %}
+                              <span aria-hidden="true" class="sortable">
+                                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
+                                  <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
+                                </svg>
+                              </span>
+                          {% endif %}
+                        </a>
+                      </th>
+                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">
+                        <a href="?sort=endGrp&direction={% if sort == 'endGrp' and direction == 'asc' %}desc{% else %}asc{% endif %}" class="sortableLink">
+                          End date
+                          {% if sort == "endGrp" %}
+                            {% if direction == "asc" %}
+                              <span aria-hidden="true" class="sortable">
+                                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M6.5625 15.5L11 6.63125L15.4375 15.5H6.5625Z" fill="currentColor"></path>
+                                </svg>
+                              </span>
+                            {% elseif direction == "desc" %}
+                              <span aria-hidden="true" class="sortable">
+                                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M15.4375 7L11 15.8687L6.5625 7L15.4375 7Z" fill="currentColor"></path>
+                                </svg>
+                              </span>
+                            {% endif %}
+                          {% else %}
+                              <span aria-hidden="true" class="sortable">
+                                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
+                                  <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
+                                </svg>
+                              </span>
+                          {% endif %}
+                        </a>
+                      </th>
                       <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Status</th>
                       <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">End reason code</th>
                   </tr>
                 </thead>
                 <tbody class="nhsuk-table__body">
-                  <tr class="nhsuk-table__row" role="row">
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Group ID </span>1</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Scheme code </span>2008</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Start Date </span>01/04/2013</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End Date </span></td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Status </span>Active</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End reason code </span>25</td>
-                  </tr>
-                  <tr class="nhsuk-table__row" role="row">
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Group ID </span>2</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Scheme code </span>2015</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Start Date </span>01/04/2015</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End Date </span></td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Status </span>Active</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End reason code </span></td>
-                  </tr>
+                  {% for row in groupTableData | sortBy(sort, direction) %}
+                    <tr class="nhsuk-table__row {% if row.error %}errorHighlight{% else %}hidden-row{% endif %}" role="row">
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.groupId }}</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.scheme }}</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.start }}</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.end }}</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.status }}</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.endReason }}</td>
+                    </tr>
+                  {% endfor %}
                 </tbody>
               </table>
         </div>
@@ -322,10 +457,88 @@
                 <caption class="nhsuk-table__caption">Employment history</caption>
                 <thead class="nhsuk-table__head" role="rowgroup">
                   <tr role="row">
-                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employment ID</th>
+                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">
+                        <a href="?sort=empIdEH&direction={% if sort == 'empIdEH' and direction == 'asc' %}desc{% else %}asc{% endif %}" class="sortableLink">
+                          Employment ID
+                          {% if sort == "empIdEH" %}
+                            {% if direction == "asc" %}
+                              <span aria-hidden="true" class="sortable">
+                                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M6.5625 15.5L11 6.63125L15.4375 15.5H6.5625Z" fill="currentColor"></path>
+                                </svg>
+                              </span>
+                            {% elseif direction == "desc" %}
+                              <span aria-hidden="true" class="sortable">
+                                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M15.4375 7L11 15.8687L6.5625 7L15.4375 7Z" fill="currentColor"></path>
+                                </svg>
+                              </span>
+                            {% endif %}
+                          {% else %}
+                              <span aria-hidden="true" class="sortable">
+                                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
+                                  <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
+                                </svg>
+                              </span>
+                          {% endif %}
+                        </a>
+                      </th>
                       <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employer code</th>
-                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Start date</th>
-                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">End date</th>
+                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">
+                        <a href="?sort=startEH&direction={% if sort == 'startEH' and direction == 'asc' %}desc{% else %}asc{% endif %}" class="sortableLink">
+                          Start date
+                          {% if sort == "startEH" %}
+                            {% if direction == "asc" %}
+                              <span aria-hidden="true" class="sortable">
+                                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M6.5625 15.5L11 6.63125L15.4375 15.5H6.5625Z" fill="currentColor"></path>
+                                </svg>
+                              </span>
+                            {% elseif direction == "desc" %}
+                              <span aria-hidden="true" class="sortable">
+                                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M15.4375 7L11 15.8687L6.5625 7L15.4375 7Z" fill="currentColor"></path>
+                                </svg>
+                              </span>
+                            {% endif %}
+                          {% else %}
+                              <span aria-hidden="true" class="sortable">
+                                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
+                                  <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
+                                </svg>
+                              </span>
+                          {% endif %}
+                        </a>
+                      </th>
+                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">
+                        <a href="?sort=endEH&direction={% if sort == 'endEH' and direction == 'asc' %}desc{% else %}asc{% endif %}" class="sortableLink">
+                          End date
+                          {% if sort == "endEH" %}
+                            {% if direction == "asc" %}
+                              <span aria-hidden="true" class="sortable">
+                                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M6.5625 15.5L11 6.63125L15.4375 15.5H6.5625Z" fill="currentColor"></path>
+                                </svg>
+                              </span>
+                            {% elseif direction == "desc" %}
+                              <span aria-hidden="true" class="sortable">
+                                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M15.4375 7L11 15.8687L6.5625 7L15.4375 7Z" fill="currentColor"></path>
+                                </svg>
+                              </span>
+                            {% endif %}
+                          {% else %}
+                              <span aria-hidden="true" class="sortable">
+                                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
+                                  <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
+                                </svg>
+                              </span>
+                          {% endif %}
+                        </a>
+                      </th>
                       <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Whole/part time</th>
                       <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Capacity code</th>
                       <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employment type</th>
@@ -334,62 +547,21 @@
                   </tr>
                 </thead>
                 <tbody class="nhsuk-table__body">
-                  <tr class="nhsuk-table__row" role="row">
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employment ID </span>1</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employer code </span>5266</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Start Date </span>01/04/2013</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End Date </span>09/11/2014</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Whole/part-time </span>Whole time</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Capacity code</span>1</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employment type </span>8</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Actual hours </span></td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Standard hours </span></td>
-                  </tr>
-                  <tr class="nhsuk-table__row" role="row">
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employment ID </span>1</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employer code </span>5266</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Start Date </span>10/11/2014</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End Date </span>31/03/2015</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Whole/part-time </span>Part time</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Capacity code</span>1</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employment type </span>8</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Actual hours </span>30</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Standard hours </span>37.5</td>
-                  </tr>
-                  <tr class="nhsuk-table__row" role="row">
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employment ID </span>2</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employer code </span>5266</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Start Date </span>01/04/2015</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End Date </span></td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Whole/part-time </span>Part time</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Capacity code</span>1</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employment type </span>8</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Actual hours </span>30</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Standard hours </span>37.5</td>
-                  </tr>
-                  <tr class="nhsuk-table__row errorHighlight" id="ehError" role="row">
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employment ID </span>-</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employer code </span>-</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Start Date </span>-</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End Date </span>-</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Whole/part-time </span>-</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Capacity code</span>-</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employment type </span>-</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Actual hours </span>-</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Standard hours </span>-</td>
-                  </tr>
-                  <tr class="nhsuk-table__row errorHighlight" role="row">
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employment ID </span>-</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employer code </span>-</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Start Date </span>-</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End Date </span>-</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Whole/part-time </span>-</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Capacity code</span>-</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employment type </span>-</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Actual hours </span>-</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Standard hours </span>-</td>
-                  </tr>
+                  {% for row in tableDataEH | sortBy(sort, direction) %}
+                    <tr class="nhsuk-table__row {% if row.error %}errorHighlight{% else %}hidden-row{% endif %}" role="row">
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.empId }}</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.empCode }}</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.start }}</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.end }}</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.wpt }}</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.cap }}</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.empType }}</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.actual }}</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.standard }}</td>
+                    </tr>
+                  {% endfor %}
                 </tbody>
+                
               </table>
         </div>
       </details>
@@ -421,10 +593,8 @@
                         </ul>
                     </div>
                 </div>
-                <button id="toggleBtnCT" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">Hide
-                    correct
-                    rows</button>
-                <table class="nhsuk-table">
+                <button id="toggleButtonConts" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button" onclick="toggleRows()">Hide correct rows</button>
+                <table  class="nhsuk-table-responsive" role="table">
                   <thead class="nhsuk-table__head" role="rowgroup">
                     <tr role="row">
           
@@ -528,8 +698,14 @@
                   
                   <tbody class="nhsuk-table__body">
                     {% for row in tableData | sortBy(sort, direction) %}
-                      <tr class="nhsuk-table__row" role="row">
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.empId }}</td>
+                    <tr class="nhsuk-table__row {% if row.error %}errorHighlight{% else %}hidden-row{% endif %}" role="row">
+                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">
+                          {% if row.error %}
+                            <span class="errorTxt">{{ row.empId }}</span>
+                          {% else %}
+                            {{ row.empId }}
+                          {% endif %}
+                        </td>
                         <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.start }}</td>
                         <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.end }}</td>
                         <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.empConts }}</td>
@@ -571,10 +747,8 @@
                         </ul>
                     </div>
                 </div>
-                <button id="toggleBtnHH" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">Hide
-                    correct
-                    rows</button>
-                    <table class="nhsuk-table-responsive" role="table">
+                <button id="toggleButton" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button" onclick="toggleRows()">Hide correct rows</button>
+                  <table class="nhsuk-table-responsive" role="table">
                       <thead class="nhsuk-table__head">
                         <tr role="row">
                           <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">
@@ -663,273 +837,22 @@
                         </tr>
                       </thead>
                       <tbody class="nhsuk-table__body">
-                        <tr class="nhsuk-table__row hidden-row" role="row">
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>1</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>10/11/2014</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31/03/2015</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>613</td>
-                        </tr>
-                        <tr class="nhsuk-table__row hidden-row" role="row">
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>2</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01/04/2015</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31/03/2016</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>1574</td>
-                        </tr>
-                        <tr class="nhsuk-table__row hidden-row" role="row">
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>2</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01/04/2016</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31/03/2017</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>1596</td>
-                        </tr>
-                        <tr class="nhsuk-table__row hidden-row" role="row">
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>2</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01/04/2017</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31/03/2018</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>1574</td>
-                        </tr>
-                        <tr class="nhsuk-table__row hidden-row" role="row">
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>2</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01/04/2018</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31/03/2019</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>1564</td>
-                        </tr>
-                        <tr class="nhsuk-table__row hidden-row" role="row">
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>2</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01/04/2019</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31/03/2020</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>1620</td>
-                        </tr>
-                        <tr class="nhsuk-table__row hidden-row" role="row">
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>2</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01/04/2020</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31/03/2021</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>1799</td>
-                        </tr>
-                        <tr class="nhsuk-table__row hidden-row" role="row">
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>2</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01/04/2021</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31/03/2022</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>1762</td>
-                        </tr>
-                        <tr class="nhsuk-table__row hidden-row" role="row">
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>2</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01/04/2022</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31/03/2023</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>1799</td>
-                        </tr>
-                        <tr class="nhsuk-table__row hidden-row" role="row">
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>2</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01/04/2023</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31/03/2024</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>1799</td>
-                        </tr>
-                        <tr class="nhsuk-table__row hidden-row" role="row">
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>2</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01/04/2024</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31/03/2025</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>1799</td>
-                        </tr>
-                        <tr class="nhsuk-table__row hidden-row" role="row">
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>3</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01/04/2015</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31/03/2016</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>82</td>
-                        </tr>
-                        <tr class="nhsuk-table__row hidden-row" role="row">
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>3</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01/04/2016</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31/03/2017</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>103</td>
-                        </tr>
-                        <tr class="nhsuk-table__row hidden-row" role="row">
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>3</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01/04/2017</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31/03/2018</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>38</td>
-                        </tr>
-                        <tr class="nhsuk-table__row hidden-row" role="row">
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>3</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01/04/2018</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31/03/2019</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>357</td>
-                        </tr>
-                        <tr class="nhsuk-table__row hidden-row" role="row">
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>3</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01/04/2019</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31/03/2020</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>177</td>
-                        </tr>
-                        <tr class="nhsuk-table__row hidden-row" role="row">
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>3</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01/04/2020</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31/03/2021</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>53</td>
-                        </tr>
-                        <tr class="nhsuk-table__row hidden-row" role="row">
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span>3</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01/04/2021</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31/03/2022</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>193</td>
-                        </tr>
-                        <tr class="nhsuk-table__row errorHighlight" id="hrsError" role="row">
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Employer ID </span><span class="errorTxt">3</span></td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01/04/2022</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31/03/2023</td>
-          
-                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
-                              class="nhsuk-table-responsive__heading" aria-hidden="true">Part time hours </span>156</td>
-                        </tr>
+                        {% for row in ptHoursData %}
+                        <tr class="nhsuk-table__row {% if row.error %}errorHighlight{% else %}hidden-row{% endif %}" role="row">
+                            <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">
+                              {% if row.error %}
+                                <span class="errorTxt">{{ row.empId }}</span>
+                              {% else %}
+                                {{ row.empId }}
+                              {% endif %}
+                            </td>
+                            <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.start }}</td>
+                            <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.end }}</td>
+                            <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.hours }}</td>
+                          </tr>
+                        {% endfor %}
                       </tbody>
+                      
                     </table>
             </div>
         </details>

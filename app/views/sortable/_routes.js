@@ -12,6 +12,26 @@ router.post('/search', function (req, res) {
 router.get('/results', function (req, res) {
     const sort = req.query.sort || 'empId'
     const direction = req.query.direction === 'desc' ? 'desc' : 'asc'
+
+    const schemeHistoryData = [
+        { empId: "1", scheme: "2008", start: "01/04/2013", end: "31/03/2015", updated: "31/03/2015", status: "Active", endReason: "15", group: "1" },
+        { empId: "2", scheme: "2015", start: "01/04/2015", end: "", updated: "31/03/2025", status: "Active", endReason: "5", group: "2" },
+        { empId: "3", scheme: "2015", start: "01/04/2015", end: "-", updated: "31/03/2023", status: "Active", endReason: "5", group: "2", error: true },
+        { empId: "5", scheme: "2015", start: "01/04/2015", end: "", updated: "31/03/2023", status: "Active", endReason: "5", group: "2", error: true }
+      ]      
+
+    const groupTableData = [
+        { groupId: "1", scheme: "2008", start: "01/04/2013", end: "", status: "Active", endReason: "25" },
+        { groupId: "2", scheme: "2015", start: "01/04/2015", end: "", status: "Active", endReason: "" }
+      ]
+
+    const tableDataEH = [
+        { empId: "1", empCode: "5266", start: "01/04/2013", end: "09/11/2014", wpt: "Whole time", cap: "1", empType: "8", actual: "", standard: "" },
+        { empId: "1", empCode: "5266", start: "10/11/2014", end: "31/03/2015", wpt: "Part time", cap: "1", empType: "8", actual: "30", standard: "37.5" },
+        { empId: "2", empCode: "5266", start: "01/04/2015", end: "", wpt: "Part time", cap: "1", empType: "8", actual: "30", standard: "37.5" },
+        { empId: "-", empCode: "-", start: "-", end: "-", wpt: "-", cap: "-", empType: "-", actual: "-", standard: "-", error: true },
+        { empId: "-", empCode: "-", start: "-", end: "-", wpt: "-", cap: "-", empType: "-", actual: "-", standard: "-", error: true }
+      ]
   
     const tableData = [
         { empId: '1', start: '01/04/2013', end: '31/03/2014', empConts: '£2758.45', tpp: '£30649.19', employerConts: '£4290.88', empPay: '£30649.19' },
@@ -33,10 +53,32 @@ router.get('/results', function (req, res) {
         { empId: '3', start: '01/04/2019', end: '31/03/2020', empConts: '£1247.04', tpp: '£13409.03', employerConts: '£1928.21', empPay: '£13409.03' },
         { empId: '3', start: '01/04/2020', end: '31/03/2021', empConts: '£147.17', tpp: '£1582.42', employerConts: '£227.55', empPay: '£1582.42' },
         { empId: '3', start: '01/04/2021', end: '31/03/2022', empConts: '£755.70', tpp: '£8125.74', employerConts: '£1168.47', empPay: '£8125.74' },
-        { empId: '3', start: '01/04/2022', end: '31/03/2023', empConts: '£496.26', tpp: '£5063.88', employerConts: '£730.11', empPay: '£5063.88', rowClass: 'errorHighlight' }
+        { empId: '3', start: '01/04/2022', end: '31/03/2023', empConts: '£496.26', tpp: '£5063.88', employerConts: '£730.11', empPay: '£5063.88', error: true }
     ]
+
+    const ptHoursData = [
+        { empId: "1", start: "10/11/2014", end: "31/03/2015", hours: "613" },
+        { empId: "2", start: "01/04/2015", end: "31/03/2016", hours: "1574" },
+        { empId: "2", start: "01/04/2016", end: "31/03/2017", hours: "1596" },
+        { empId: "2", start: "01/04/2017", end: "31/03/2018", hours: "1574" },
+        { empId: "2", start: "01/04/2018", end: "31/03/2019", hours: "1564" },
+        { empId: "2", start: "01/04/2019", end: "31/03/2020", hours: "1620" },
+        { empId: "2", start: "01/04/2020", end: "31/03/2021", hours: "1799" },
+        { empId: "2", start: "01/04/2021", end: "31/03/2022", hours: "1762" },
+        { empId: "2", start: "01/04/2022", end: "31/03/2023", hours: "1799" },
+        { empId: "2", start: "01/04/2023", end: "31/03/2024", hours: "1799" },
+        { empId: "2", start: "01/04/2024", end: "31/03/2025", hours: "1799" },
+        { empId: "3", start: "01/04/2015", end: "31/03/2016", hours: "82" },
+        { empId: "3", start: "01/04/2016", end: "31/03/2017", hours: "103" },
+        { empId: "3", start: "01/04/2017", end: "31/03/2018", hours: "38" },
+        { empId: "3", start: "01/04/2018", end: "31/03/2019", hours: "357" },
+        { empId: "3", start: "01/04/2019", end: "31/03/2020", hours: "177" },
+        { empId: "3", start: "01/04/2020", end: "31/03/2021", hours: "53" },
+        { empId: "3", start: "01/04/2021", end: "31/03/2022", hours: "193" },
+        { empId: "3", start: "01/04/2022", end: "31/03/2023", hours: "156", error: true }
+      ]      
   
-    res.render('sortable/results', { tableData, sort, direction })
+    res.render('sortable/results', { schemeHistoryData, groupTableData, tableData, tableDataEH, ptHoursData, sort, direction })
 })
 
 
