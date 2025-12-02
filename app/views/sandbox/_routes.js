@@ -36,7 +36,7 @@ router.get('/testing', function (req, res) {
         { empId: '3', start: '01/04/2022', end: '31/03/2023', empConts: '£496.26', tpp: '£5063.88', employerConts: '£730.11', empPay: '£5063.88', rowClass: 'errorHighlight' }
     ]
   
-    res.render('iteration-1/testing', { tableData, sort, direction })
+    res.render('sandbox/testing', { tableData, sort, direction })
 })
 
 

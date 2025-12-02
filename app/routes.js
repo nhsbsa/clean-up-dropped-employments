@@ -46,6 +46,9 @@ router.use('/', (req, res, next) => {
 // ****************************************
 
 router.use('/mvp', require('./views/mvp/_routes'));
-router.use('/iteration-1', require('./views/iteration-1/_routes'));
+router.use('/sandbox', require('./views/sandbox/_routes'));
+router.use('/filter', require('./views/filter/_routes'));
+router.use('/pagination', require('./views/pagination/_routes'));
+router.use('/sortable', require('./views/sortable/_routes'));
 
 module.exports = router

@@ -1,0 +1,519 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "John Smith"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+        <span class="nhsuk-caption-l">Member Details</span>
+        <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">{{pageTitle}}</h1>
+    
+        <div class="nhsuk-grid-row">
+          <div class="nhsuk-grid-column-one-half">
+            {{ summaryList({
+            rows: [
+            {
+            key: {
+            text: "Member number"
+            },
+            value: {
+            text: "12345678"
+            }
+            },
+            {
+            key: {
+            text: "NI number"
+            },
+            value: {
+            text: "QQ 12 34 45 D"
+            }
+            },
+            {
+            key: {
+            text: "Scheme"
+            },
+            value: {
+            html: "2015 Scheme"
+            }
+            }
+            ]
+            }) }}
+          </div>
+          <div class="nhsuk-grid-column-one-half">
+            {{ summaryList({
+            rows: [
+            {
+            key: {
+            text: "Date of birth (Age)"
+            },
+            value: {
+            text: "18 September 1959 (66year 02month)"
+            }
+            },
+            {
+            key: {
+            text: "Status"
+            },
+            value: {
+            html: "Active"
+            }
+            },
+            {
+            key: {
+            text: "Email"
+            },
+            value: {
+            html: 'john.smith@email.com'
+            }
+            }
+            ]
+            }) }}
+          </div>
+        </div>
+    
+        <!-- ****************
+            OVERVIEW
+          ***************** -->
+    
+        {% set notifyHtml %}
+        <p>
+          <b>8 validation issues</b> have been found for member 12345678
+        </p>
+        {% endset %}
+    
+        {{ insetText({
+        html: notifyHtml
+        }) }}
+    
+    
+        <h2>Core member data sets</h2>
+        <div class="nhsuk-hint" id="example-with-hint-text-hint">
+            <p>These data sets show core member details from Compendia. You can cross-reference them in one view.</p>
+            <p>Any issues are highlighted and must be fixed before the case can be processed.</p>
+        </div>
+        
+
+       <!-- ****************
+        SERVICE HISTORY
+      ***************** -->
+
+      <details class="nhsuk-details nhsuk-expander" id="serviceHistory">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Service history
+          </span>
+          <strong class="nhsuk-tag nhsuk-tag--red">
+            4 issues found
+          </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <div class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="nhsuk-error-summary">
+                <h2 class="nhsuk-error-summary__title" id="error-summary-title">
+                  Issues found
+                </h2>
+                <div class="nhsuk-error-summary__body">
+                  <p>There are 4 issues in the service history table. They must be fixed before the record can be processed.</p>
+                  <ul class="nhsuk-list nhsuk-error-summary__list" role="list">
+                    <li> <a href="#shError">Employment ID 3 and employment ID 5 cannot start on the same day</a></li>
+                    <li> <a href="#shError">Employment ID 3 end date missing</a></li>
+                    <li> <a href="#shError">Employment ID 3 update date incorrect</a></li>
+                    <li> <a href="#shError">Employment ID 5 start date incorrect</a></li>
+                  </ul>
+                </div>
+            </div>
+            <table class="nhsuk-table-responsive" role="table">
+                <thead class="nhsuk-table__head" role="rowgroup">
+                  <tr role="row">
+                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employment ID</th>
+                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Scheme code</th>
+                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Start date</th>
+                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">End date</th>
+                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Updated</th>
+                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Member status</th>
+                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">End reason code</th>
+                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Group</th>
+                  </tr>
+                </thead>
+                <tbody class="nhsuk-table__body">
+                  <tr class="nhsuk-table__row" role="row">
+                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employment ID </span>1</td>
+                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Scheme code </span>2008</td>
+                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01/04/2013</td>
+                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31/03/2015</td>                       <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Updated </span>31/03/2015</td>
+                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Status </span>Active</td>
+                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End reason code </span>15</td>
+                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Group </span>1</td>
+                  </tr>
+                  <tr class="nhsuk-table__row" role="row">
+                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employment ID </span>2</td>
+                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Scheme code </span>2015</td>
+                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01/04/2015</td>
+                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span></td>
+                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Updated </span>31/03/2025</td>
+                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Status </span>Active</td>
+                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End reason code </span>5</td>
+                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Group </span>2</td>
+                  </tr>
+                  <tr class="nhsuk-table__row errorHighlight" id="shError" role="row">
+                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employment ID </span>3</td>
+                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Scheme code </span>2015</td>
+                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span><span class="errorTxt">01/04/2015</span></td>
+                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>-</td>
+                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Updated </span><span class="errorTxt">31/03/2023</span></td>
+                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Status </span>Active</td>
+                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End reason code </span>5</td>
+                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Group </span>2</td>
+                  </tr>
+                  <tr class="nhsuk-table__row errorHighlight" role="row">
+                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employment ID </span>5</td>
+                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Scheme code </span>2015</td>
+                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span><span class="errorTxt">01/04/2015</span></td>
+                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span></td>
+                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Updated </span>31/03/2023</td>
+                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Status </span>Active</td>
+                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End reason code </span>5</td>
+                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Group </span>2</td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>
+      </details>
+
+      <!-- ****************
+          SERVICE GROUP
+        ***************** -->
+
+      <details class="nhsuk-details nhsuk-expander" id="serviceGroup">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Service group
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+            <table class="nhsuk-table-responsive" role="table">
+                <thead class="nhsuk-table__head" role="rowgroup">
+                  <tr role="row">
+                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Group ID</th>
+                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Scheme code</th>
+                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Start date</th>
+                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">End date</th>
+                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Status</th>
+                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">End reason code</th>
+                  </tr>
+                </thead>
+                <tbody class="nhsuk-table__body">
+                  <tr class="nhsuk-table__row" role="row">
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Group ID </span>1</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Scheme code </span>2008</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Start Date </span>01/04/2013</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End Date </span></td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Status </span>Active</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End reason code </span>25</td>
+                  </tr>
+                  <tr class="nhsuk-table__row" role="row">
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Group ID </span>2</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Scheme code </span>2015</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Start Date </span>01/04/2015</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End Date </span></td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Status </span>Active</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End reason code </span></td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+      </details>
+
+    <!-- ****************
+        EMPLOYMENT HISTORY
+      ***************** -->
+
+      <details class="nhsuk-details nhsuk-expander" id="employmentHistory">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Employment history
+          </span>
+          <strong class="nhsuk-tag nhsuk-tag--red">
+            2 issues found
+          </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <div class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="nhsuk-error-summary">
+                <h2 class="nhsuk-error-summary__title" id="error-summary-title">
+                  Issues found
+                </h2>
+                <div class="nhsuk-error-summary__body">
+                  <p>There are 2 issues in the employment history table. They must be fixed before the record can be processed. </p>
+                  <ul class="nhsuk-list nhsuk-error-summary__list" role="list">
+                    <li> <a href="#ehError">Employment ID 3 must appear in both service history and employment history</a></li>
+                    <li> <a href="#ehError">Employment ID 5 must appear in both service history and employment history</a></li>
+                  </ul>
+                </div>
+            </div>
+            <table class="nhsuk-table-responsive" role="table">
+                <caption class="nhsuk-table__caption">Employment history</caption>
+                <thead class="nhsuk-table__head" role="rowgroup">
+                  <tr role="row">
+                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employment ID</th>
+                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employer code</th>
+                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Start date</th>
+                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">End date</th>
+                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Whole/part time</th>
+                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Capacity code</th>
+                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employment type</th>
+                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Actual hours</th>
+                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Standard hours</th>
+                  </tr>
+                </thead>
+                <tbody class="nhsuk-table__body">
+                  <tr class="nhsuk-table__row" role="row">
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employment ID </span>1</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employer code </span>5266</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Start Date </span>01/04/2013</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End Date </span>09/11/2014</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Whole/part-time </span>Whole time</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Capacity code</span>1</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employment type </span>8</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Actual hours </span></td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Standard hours </span></td>
+                  </tr>
+                  <tr class="nhsuk-table__row" role="row">
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employment ID </span>1</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employer code </span>5266</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Start Date </span>10/11/2014</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End Date </span>31/03/2015</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Whole/part-time </span>Part time</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Capacity code</span>1</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employment type </span>8</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Actual hours </span>30</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Standard hours </span>37.5</td>
+                  </tr>
+                  <tr class="nhsuk-table__row" role="row">
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employment ID </span>2</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employer code </span>5266</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Start Date </span>01/04/2015</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End Date </span></td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Whole/part-time </span>Part time</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Capacity code</span>1</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employment type </span>8</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Actual hours </span>30</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Standard hours </span>37.5</td>
+                  </tr>
+                  <tr class="nhsuk-table__row errorHighlight" id="ehError" role="row">
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employment ID </span>-</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employer code </span>-</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Start Date </span>-</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End Date </span>-</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Whole/part-time </span>-</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Capacity code</span>-</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employment type </span>-</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Actual hours </span>-</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Standard hours </span>-</td>
+                  </tr>
+                  <tr class="nhsuk-table__row errorHighlight" role="row">
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employment ID </span>-</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employer code </span>-</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Start Date </span>-</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End Date </span>-</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Whole/part-time </span>-</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Capacity code</span>-</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employment type </span>-</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Actual hours </span>-</td>
+                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Standard hours </span>-</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+      </details>
+
+        <!-- ****************
+        PENSION CONTRIBUTIONS
+        ***************** -->
+        <details class="nhsuk-details nhsuk-expander" id="contsTpp">
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                    Conts &amp; TPP (Pension contributions)
+                </span>
+                <strong class="nhsuk-tag nhsuk-tag--red">
+                    1 issue found
+                </strong>
+            </summary>
+            <div class="nhsuk-details__text">
+                <div class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1"
+                    data-module="nhsuk-error-summary">
+                    <h2 class="nhsuk-error-summary__title" id="error-summary-title">
+                        Issue found
+                    </h2>
+                    <div class="nhsuk-error-summary__body">
+                        <p>There is 1 issue in the pension contributions table. They must be fixed before the record can
+                            be processed. </p>
+                        <ul class="nhsuk-list nhsuk-error-summary__list" role="list">
+                            <li> <a href="#contsError">Employment ID 3 must appear in both service history and
+                                    employment history</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <button id="toggleBtnCT" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">Hide
+                    correct
+                    rows</button>
+                <table id="tableCT" class="nhsuk-table-responsive" role="table"></table>
+                <nav id="paginationCT" class="nhsuk-pagination nhsuk-pagination--numbered" role="navigation"
+                    aria-label="Table pagination"></nav>
+            </div>
+        </details>
+
+        <!-- ****************
+        HOURS HISTORY
+        ***************** -->
+
+        <details class="nhsuk-details nhsuk-expander" id="hoursHistory">
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                    Hours history
+                </span>
+                <strong class="nhsuk-tag nhsuk-tag--red">
+                    1 issue found
+                </strong>
+            </summary>
+            <div class="nhsuk-details__text">
+                <div class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1"
+                    data-module="nhsuk-error-summary">
+                    <h2 class="nhsuk-error-summary__title" id="error-summary-title">
+                        Issue found
+                    </h2>
+                    <div class="nhsuk-error-summary__body">
+                        <p>There is 1 issue in the hours history table. It must be fixed before the record can be
+                            processed.</p>
+                        <ul class="nhsuk-list nhsuk-error-summary__list" role="list">
+                            <li> <a href="#hrsError">Employment ID 3 must appear in both service history and employment
+                                    history</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <button id="toggleBtnHH" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">Hide
+                    correct
+                    rows</button>
+                <table id="tableHH" class="nhsuk-table-responsive" role="table"></table>
+                <nav id="paginationHH" class="nhsuk-pagination nhsuk-pagination--numbered" role="navigation"
+                    aria-label="Table pagination"></nav>
+            </div>
+        </details>
+
+        <!-- ****************
+        LINKED EMPLOYMENT
+        ***************** -->
+
+
+        <details class="nhsuk-details nhsuk-expander" id="linkedEmployment">
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                    Linked employment
+                </span>
+            </summary>
+            <div class="nhsuk-details__text">
+                <table class="nhsuk-table-responsive" role="table">
+                    <thead class="nhsuk-table__head" role="rowgroup">
+                      <tr role="row">
+                          <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Pre-remedy employment ID</th>
+                          <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Remedy employment ID</th>
+                          <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Post-remedy employment ID</th>
+                      </tr>
+                    </thead>
+                    <tbody class="nhsuk-table__body">
+                      <tr class="nhsuk-table__row" role="row">
+                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Pre-remedy employment ID </span>1</td>
+                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Remedy employment ID </span>2</td>
+                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Post-remedy employment ID </span></td>
+                      </tr>
+                      <tr class="nhsuk-table__row" role="row">
+                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Pre-remedy employment ID </span>3</td>
+                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Remedy employment ID </span>5</td>
+                          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Post-remedy employment ID </span></td>
+                      </tr>
+                    </tbody>
+                </table>
+            </div>
+        </details>
+
+    </div>
+</div>
+
+<script src="/js/toggle-pagination.js"></script>
+<script>
+    // ------------ Datasets located in HTML ------------
+    const datasetCT = [
+        { empId: '1', start: '01/04/2013', end: '31/03/2014', empConts: '£2758.45', tpp: '£30649.19', employerConts: '£4290.88', empPay: '£30649.19' },
+        { empId: '1', start: '01/04/2014', end: '31/03/2015', empConts: '£2543.26', tpp: '£27346.81', employerConts: '£3828.55', empPay: '£27346.81' },
+        { empId: '2', start: '01/04/2015', end: '31/03/2016', empConts: '£2561.40', tpp: '£27541.88', employerConts: '£3938.50', empPay: '£27541.88' },
+        { empId: '2', start: '01/04/2016', end: '31/03/2017', empConts: '£2606.68', tpp: '£28028.77', employerConts: '£4008.11', empPay: '£28028.77' },
+        { empId: '2', start: '01/04/2017', end: '31/03/2018', empConts: '£2676.32', tpp: '£28777.58', employerConts: '£4138.22', empPay: '£28777.58' },
+        { empId: '2', start: '01/04/2018', end: '31/03/2019', empConts: '£2796.78', tpp: '£30072.69', employerConts: '£4324.45', empPay: '£30072.69' },
+        { empId: '2', start: '01/04/2019', end: '31/03/2020', empConts: '£3013.71', tpp: '£32405.39', employerConts: '£4659.89', empPay: '£32405.39' },
+        { empId: '2', start: '01/04/2020', end: '31/03/2021', empConts: '£2781.95', tpp: '£29913.84', employerConts: '£4301.60', empPay: '£29913.84' },
+        { empId: '2', start: '01/04/2021', end: '31/03/2022', empConts: '£3067.51', tpp: '£32984.12', employerConts: '£4743.11', empPay: '£32984.12' },
+        { empId: '2', start: '01/04/2022', end: '31/03/2023', empConts: '£3661.75', tpp: '£38306.89', employerConts: '£5508.53', empPay: '£38306.89' },
+        { empId: '2', start: '01/04/2023', end: '31/03/2024', empConts: '£4037.04', tpp: '£41845.03', employerConts: '£5918.68', empPay: '£41845.03' },
+        { empId: '2', start: '01/04/2024', end: '31/03/2025', empConts: '£4365.41', tpp: '£44544.90', employerConts: '£6405.55', empPay: '£44544.90' },
+        { empId: '3', start: '01/04/2015', end: '31/03/2016', empConts: '£154.96', tpp: '£1666.20', employerConts: '£238.27', empPay: '£1666.20' },
+        { empId: '3', start: '01/04/2016', end: '31/03/2017', empConts: '£209.97', tpp: '£2257.74', employerConts: '£322.86', empPay: '£2257.74' },
+        { empId: '3', start: '01/04/2017', end: '31/03/2018', empConts: '£76.76', tpp: '£825.31', employerConts: '£118.68', empPay: '£825.31' },
+        { empId: '3', start: '01/04/2018', end: '31/03/2019', empConts: '£844.37', tpp: '£9079.24', employerConts: '£1305.60', empPay: '£9079.24' },
+        { empId: '3', start: '01/04/2019', end: '31/03/2020', empConts: '£1247.04', tpp: '£13409.03', employerConts: '£1928.21', empPay: '£13409.03' },
+        { empId: '3', start: '01/04/2020', end: '31/03/2021', empConts: '£147.17', tpp: '£1582.42', employerConts: '£227.55', empPay: '£1582.42' },
+        { empId: '3', start: '01/04/2021', end: '31/03/2022', empConts: '£755.70', tpp: '£8125.74', employerConts: '£1168.47', empPay: '£8125.74' },
+        { empId: '3', start: '01/04/2022', end: '31/03/2023', empConts: '£496.26', tpp: '£5063.88', employerConts: '£730.11', empPay: '£5063.88', rowClass: 'errorHighlight' }
+    ];
+
+    const columnTitlesCT = {
+        empId: 'Employment ID',
+        start: 'Period start',
+        end: 'Period end',
+        empConts: 'Employee conts',
+        tpp: 'TPP',
+        employerConts: 'Employer conts',
+        empPay: 'Employer pay'
+    };
+
+    const datasetHH = [
+        { empId: '1', start: '10/11/2014', end: '31/03/2015', ptHrs: '613' },
+        { empId: '2', start: '01/04/2015', end: '31/03/2016', ptHrs: '1574' },
+        { empId: '2', start: '01/04/2016', end: '31/03/2017', ptHrs: '1596' },
+        { empId: '2', start: '01/04/2017', end: '31/03/2018', ptHrs: '1574' },
+        { empId: '2', start: '01/04/2018', end: '31/03/2019', ptHrs: '1564' },
+        { empId: '2', start: '01/04/2019', end: '31/03/2020', ptHrs: '1620' },
+        { empId: '2', start: '01/04/2020', end: '31/03/2021', ptHrs: '1799' },
+        { empId: '2', start: '01/04/2021', end: '31/03/2022', ptHrs: '1762' },
+        { empId: '2', start: '01/04/2022', end: '31/03/2023', ptHrs: '1799' },
+        { empId: '2', start: '01/04/2023', end: '31/03/2024', ptHrs: '1799' },
+        { empId: '2', start: '01/04/2024', end: '31/03/2025', ptHrs: '1799' },
+        { empId: '3', start: '01/04/2015', end: '31/03/2016', ptHrs: '82' },
+        { empId: '3', start: '01/04/2016', end: '31/03/2017', ptHrs: '103' },
+        { empId: '3', start: '01/04/2017', end: '31/03/2018', ptHrs: '38' },
+        { empId: '3', start: '01/04/2018', end: '31/03/2019', ptHrs: '357' },
+        { empId: '3', start: '01/04/2019', end: '31/03/2020', ptHrs: '177' },
+        { empId: '3', start: '01/04/2020', end: '31/03/2021', ptHrs: '53' },
+        { empId: '3', start: '01/04/2021', end: '31/03/2022', ptHrs: '193' },
+        { empId: '3', start: '01/04/2022', end: '31/03/2023', ptHrs: '£5063.88', rowClass: 'errorHighlight' }
+    ];
+
+    const columnTitlesHH = {
+        empId: 'Employment ID',
+        start: 'Start date',
+        end: 'End date',
+        ptHrs: 'Part time hours'
+    };
+
+    // ------------ Instantiate managers (from tables.js) ------------
+    const tableCT = createTableManager("tableCT", "paginationCT", "toggleBtnCT");
+    const tableHH = createTableManager("tableHH", "paginationHH", "toggleBtnHH");
+
+    // ------------ Load datasets into tables ------------
+    tableCT.load(datasetCT, columnTitlesCT);
+    tableHH.load(datasetHH, columnTitlesHH);
+</script>
+
+
+{% endblock %}
