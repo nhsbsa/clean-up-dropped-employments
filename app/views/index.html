@@ -21,7 +21,7 @@
                   </span>
                 </div>
                 <div class="nhsuk-grid-column-one-third nhsuk-u-text-align-right">
-                  <strong class="nhsuk-tag nhsuk-tag--blue">DESIGN</strong>
+                  <strong class="nhsuk-tag nhsuk-tag--green">DEV</strong>
                 </div>
               </div>
             </summary>
@@ -54,6 +54,82 @@
                 "classes": "nhsuk-u-margin-bottom-3",
                 "text": "View user journey on Miro",
                 "href": "https://miro.com/app/board/uXjVJGRiT-8=/?share_link_id=109589333112"
+              }) }}
+            </div>
+          </details>
+          <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+              <div class="nhsuk-grid-row">
+                <div class="nhsuk-grid-column-two-thirds">
+                  <span class="nhsuk-details__summary-text">
+                    Sandbox features - results
+                  </span>
+                </div>
+                <div class="nhsuk-grid-column-one-third nhsuk-u-text-align-right">
+                  <strong class="nhsuk-tag nhsuk-tag--blue">DESIGN</strong>
+                </div>
+              </div>
+            </summary>
+            <div class="nhsuk-details__text">
+              <h3 class="nhsuk-heading-s">Design</h3>
+              <p>These designs were created to explore different features which may be used for future iterations of the prototype.</p>
+              {{ summaryList({
+                rows: [
+                  {
+                    key: {
+                      text: "Filtering"
+                    },
+                    value: {
+                      html: "
+                      <p>Filtering data sets so when additional data sets are added in the future they may be filtered out depending what the user wants to see.</p>"
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/filter/results",
+                          text: "View",
+                          visuallyHiddenText: "filter"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Pagination"
+                    },
+                    value: {
+                      html: "
+                      <p>Pagination has been added to the tables which have 10 or more rows - currently Conts &amp; TPP and Hours History. This has been combined with the toggle to show/hide correct rows.</p>"
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/pagination/results",
+                          text: "View",
+                          visuallyHiddenText: "pagination"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Sortable tables"
+                    },
+                    value: {
+                      html: "
+                      <p>Making the tables sortable - the sort feature has only been added to certain columns which the user is more likely to require the sort by functionality.</p>"
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/sortable/results",
+                          text: "View",
+                          visuallyHiddenText: "Sortable tables"
+                        }
+                      ]
+                    }
+                  }
+                ]
               }) }}
             </div>
           </details>
