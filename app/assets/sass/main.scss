@@ -114,6 +114,18 @@
     vertical-align: top;
 }
 
+// Filter
+
+#filters-panel{
+    border-top:1px solid $nhsuk-border-colour;
+    padding-top:30px;
+    margin-bottom: 36px;
+    border-bottom:1px solid $nhsuk-border-colour;
+}
+.nhsuk-checkboxes-filter{
+    column-count: 3;
+}
+
 
 // Beta Banner
 

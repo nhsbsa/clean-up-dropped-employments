@@ -10204,6 +10204,17 @@ b {
   vertical-align: top;
 }
 
+#filters-panel {
+  border-top: 1px solid #d8dde0;
+  padding-top: 30px;
+  margin-bottom: 36px;
+  border-bottom: 1px solid #d8dde0;
+}
+
+.nhsuk-checkboxes-filter {
+  column-count: 3;
+}
+
 .beta-banner {
   padding: 16px 0;
   background-color: #ffffff;
