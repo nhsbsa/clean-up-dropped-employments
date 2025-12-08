@@ -124,60 +124,182 @@
                   </ul>
                 </div>
             </div>
+            <button class="nhsuk-button nhsuk-button--secondary" aria-expanded="false" aria-controls="filters-panel-data"
+            id="filters-toggle-data">
+            Customise data set
+            </button>
+
+            <div id="filters-panel-data" hidden>
+            <form id="table-custom-form">
+                <div class="nhsuk-form-group">
+                <fieldset class="nhsuk-fieldset">
+                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                    <h1 class="nhsuk-fieldset__heading">
+                        Choose which columns to display in this data set
+                    </h1>
+                    </legend>
+
+                    <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
+                    data-module="nhsuk-checkboxes">
+
+                    <div class="nhsuk-checkboxes__item">
+                        <input class="nhsuk-checkboxes__input" id="CstmEmpID-checkbox" name="columns" type="checkbox"
+                        value="CstmEmpID" checked>
+                        <label class="nhsuk-label nhsuk-checkboxes__label" for="CstmEmpID-checkbox">
+                        Employment ID
+                        </label>
+                    </div>
+
+                    <div class="nhsuk-checkboxes__item">
+                        <input class="nhsuk-checkboxes__input" id="CstmScheme-checkbox" name="columns" type="checkbox"
+                        value="CstmScheme" checked>
+                        <label class="nhsuk-label nhsuk-checkboxes__label" for="CstmScheme-checkbox">
+                        Scheme
+                        </label>
+                    </div>
+
+                    <div class="nhsuk-checkboxes__item">
+                        <input class="nhsuk-checkboxes__input" id="CstmStart-checkbox" name="columns" type="checkbox"
+                        value="CstmStart" checked>
+                        <label class="nhsuk-label nhsuk-checkboxes__label" for="CstmStart-checkbox">
+                        Start date
+                        </label>
+                    </div>
+
+                    <div class="nhsuk-checkboxes__item">
+                        <input class="nhsuk-checkboxes__input" id="CstmEnd-checkbox" name="columns" type="checkbox"
+                        value="CstmEnd" checked>
+                        <label class="nhsuk-label nhsuk-checkboxes__label" for="CstmEnd-checkbox">
+                        End date
+                        </label>
+                    </div>
+
+                    <div class="nhsuk-checkboxes__item">
+                        <input class="nhsuk-checkboxes__input" id="CstmUp-checkbox" name="columns" type="checkbox"
+                        value="CstmUp" checked>
+                        <label class="nhsuk-label nhsuk-checkboxes__label" for="CstmUp-checkbox">
+                        Updated
+                        </label>
+                    </div>
+
+                    <div class="nhsuk-checkboxes__item">
+                        <input class="nhsuk-checkboxes__input" id="CstmMem-checkbox" name="columns" type="checkbox"
+                        value="CstmMem" checked>
+                        <label class="nhsuk-label nhsuk-checkboxes__label" for="CstmMem-checkbox">
+                        Member status
+                        </label>
+                    </div>
+
+                    <div class="nhsuk-checkboxes__item">
+                        <input class="nhsuk-checkboxes__input" id="CstmErc-checkbox" name="columns" type="checkbox"
+                        value="CstmErc" checked>
+                        <label class="nhsuk-label nhsuk-checkboxes__label" for="CstmErc-checkbox">
+                        End reason code
+                        </label>
+                    </div>
+
+                    <div class="nhsuk-checkboxes__item">
+                        <input class="nhsuk-checkboxes__input" id="CstmG-checkbox" name="columns" type="checkbox"
+                        value="CstmG" checked>
+                        <label class="nhsuk-label nhsuk-checkboxes__label" for="CstmG-checkbox">
+                        Group
+                        </label>
+                    </div>
+
+                    </div>
+                </fieldset>
+                </div>
+
+                <button class="nhsuk-button" type="submit">Apply</button>
+            </form>
+            </div>
             <table class="nhsuk-table-responsive" role="table">
-                <thead class="nhsuk-table__head" role="rowgroup">
-                  <tr role="row">
-                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employment ID</th>
-                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Scheme code</th>
-                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Start date</th>
-                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">End date</th>
-                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Updated</th>
-                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Member status</th>
-                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">End reason code</th>
-                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Group</th>
-                  </tr>
-                </thead>
-                <tbody class="nhsuk-table__body">
-                  <tr class="nhsuk-table__row" role="row">
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employment ID </span>1</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Scheme code </span>2008</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01/04/2013</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31/03/2015</td>                       <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Updated </span>31/03/2015</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Status </span>Active</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End reason code </span>15</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Group </span>1</td>
-                  </tr>
-                  <tr class="nhsuk-table__row" role="row">
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employment ID </span>2</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Scheme code </span>2015</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01/04/2015</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span></td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Updated </span>31/03/2025</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Status </span>Active</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End reason code </span>5</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Group </span>2</td>
-                  </tr>
-                  <tr class="nhsuk-table__row errorHighlight" id="shError" role="row">
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employment ID </span>3</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Scheme code </span>2015</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span><span class="errorTxt">01/04/2015</span></td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>-</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Updated </span><span class="errorTxt">31/03/2023</span></td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Status </span>Active</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End reason code </span>5</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Group </span>2</td>
-                  </tr>
-                  <tr class="nhsuk-table__row errorHighlight" role="row">
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employment ID </span>5</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Scheme code </span>2015</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span><span class="errorTxt">01/04/2015</span></td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span></td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Updated </span>31/03/2023</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Status </span>Active</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End reason code </span>5</td>
-                        <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Group </span>2</td>
-                  </tr>
-                </tbody>
+              <thead class="nhsuk-table__head" role="rowgroup">
+                <tr role="row">
+                  <th scope="col" class="CstmEmpID nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employment ID</th>
+                  <th scope="col" class="CstmScheme nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Scheme code</th>
+                  <th scope="col" class="CstmStart nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Start date</th>
+                  <th scope="col" class="CstmEnd nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">End date</th>
+                  <th scope="col" class="CstmUp nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Updated</th>
+                  <th scope="col" class="CstmMem nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Member status</th>
+                  <th scope="col" class="CstmErc nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">End reason code</th>
+                  <th scope="col" class="CstmG nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Group</th>
+                </tr>
+              </thead>
+              <tbody class="nhsuk-table__body">
+                <tr class="nhsuk-table__row" role="row">
+                  <td class="CstmEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+                      aria-hidden="true">Employment ID </span>1</td>
+                  <td class="CstmScheme nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+                      aria-hidden="true">Scheme code </span>2008</td>
+                  <td class="CstmStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+                      aria-hidden="true">Start date </span>01/04/2013</td>
+                  <td class="CstmEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+                      aria-hidden="true">End date </span>31/03/2015</td>
+                  <td class="CstmUp nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+                      aria-hidden="true">Updated </span>31/03/2015</td>
+                  <td class="CstmMem nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+                      aria-hidden="true">Status </span>Active</td>
+                  <td class="CstmErc nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+                      aria-hidden="true">End reason code </span>15</td>
+                  <td class="CstmG nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+                      aria-hidden="true">Group </span>1</td>
+                </tr>
+                <tr class="nhsuk-table__row" role="row">
+                  <td class="CstmEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+                      aria-hidden="true">Employment ID </span>2</td>
+                  <td class="CstmScheme nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+                      aria-hidden="true">Scheme code </span>2015</td>
+                  <td class="CstmStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+                      aria-hidden="true">Start date </span>01/04/2015</td>
+                  <td class="CstmEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+                      aria-hidden="true">End date </span></td>
+                  <td class="CstmUp nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+                      aria-hidden="true">Updated </span>31/03/2025</td>
+                  <td class="CstmMem nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+                      aria-hidden="true">Status </span>Active</td>
+                  <td class="CstmErc nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+                      aria-hidden="true">End reason code </span>5</td>
+                  <td class="CstmG nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+                      aria-hidden="true">Group </span>2</td>
+                </tr>
+                <tr class="nhsuk-table__row errorHighlight" id="shError" role="row">
+                  <td class="CstmEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+                      aria-hidden="true">Employment ID </span>3</td>
+                  <td class="CstmScheme nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+                      aria-hidden="true">Scheme code </span>2015</td>
+                  <td class="CstmStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+                      aria-hidden="true">Start date </span><span class="errorTxt">01/04/2015</span></td>
+                  <td class="CstmEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+                      aria-hidden="true">End date </span>-</td>
+                  <td class="CstmUp nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+                      aria-hidden="true">Updated </span><span class="errorTxt">31/03/2023</span></td>
+                  <td class="CstmMem nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+                      aria-hidden="true">Status </span>Active</td>
+                  <td class="CstmErc nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+                      aria-hidden="true">End reason code </span>5</td>
+                  <td class="CstmG nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+                      aria-hidden="true">Group </span>2</td>
+                </tr>
+                <tr class="nhsuk-table__row errorHighlight" role="row">
+                  <td class="CstmEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+                      aria-hidden="true">Employment ID </span>5</td>
+                  <td class="CstmScheme nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+                      aria-hidden="true">Scheme code </span>2015</td>
+                  <td class="CstmStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+                      aria-hidden="true">Start date </span><span class="errorTxt">01/04/2015</span></td>
+                  <td class="CstmEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+                      aria-hidden="true">End date </span></td>
+                  <td class="CstmUp nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+                      aria-hidden="true">Updated </span>31/03/2023</td>
+                  <td class="CstmMem nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+                      aria-hidden="true">Status </span>Active</td>
+                  <td class="CstmErc nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+                      aria-hidden="true">End reason code </span>5</td>
+                  <td class="CstmG nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+                      aria-hidden="true">Group </span>2</td>
+                </tr>
+              </tbody>
             </table>
         </div>
       </details>
@@ -1180,6 +1302,8 @@
 
   </div>
 </div>
+
+<script src="/js/customise.js"></script>
 
 <script>
     function toggleRows() {

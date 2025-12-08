@@ -7,255 +7,424 @@
 
 {% block content %}
 <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-full">
+  <div class="nhsuk-grid-column-full">
 
-      <form id="table-selector-form">
+    <hr /> <!-- FILTER TABLE -->
+
+    <button class="nhsuk-button nhsuk-button--secondary" aria-expanded="false" aria-controls="filters-panel" id="filters-toggle">
+      Show filters
+    </button>
+    <div id="filters-panel" hidden>
+    <form id="table-selector-form">
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset">
+          <legend class="nhsuk-fieldset__legend--l">
+            Choose which tables to display
+          </legend>
+
+          <div class="nhsuk-checkboxes">
+
+            <div class="nhsuk-checkboxes__item">
+              <input class="nhsuk-checkboxes__input" id="tableA-checkbox" name="tables" type="checkbox" value="tableA"
+                checked>
+              <label class="nhsuk-label nhsuk-checkboxes__label" for="tableA-checkbox">
+                Show Table A
+              </label>
+            </div>
+
+            <div class="nhsuk-checkboxes__item">
+              <input class="nhsuk-checkboxes__input" id="tableB-checkbox" name="tables" type="checkbox" value="tableB"
+                checked>
+              <label class="nhsuk-label nhsuk-checkboxes__label" for="tableB-checkbox">
+                Show Table B
+              </label>
+            </div>
+
+            <div class="nhsuk-checkboxes__item">
+              <input class="nhsuk-checkboxes__input" id="tableC-checkbox" name="tables" type="checkbox" value="tableC"
+                checked>
+              <label class="nhsuk-label nhsuk-checkboxes__label" for="tableC-checkbox">
+                Show Table C
+              </label>
+            </div>
+
+          </div>
+        </fieldset>
+      </div>
+
+      <button class="nhsuk-button" type="submit">Apply filters</button>
+    </form>
+    </div>
+
+    <!-- TABLES -->
+    <table id="tableA" class="nhsuk-table tableA">
+      <thead class="nhsuk-table__head">
+        <tr>
+          <th scope="col" class="nhsuk-table__header">Skin symptoms</th>
+          <th scope="col" class="nhsuk-table__header">Possible cause</th>
+        </tr>
+      </thead>
+      <tbody class="nhsuk-table__body">
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">Blisters on lips or around the mouth</td>
+          <td class="nhsuk-table__cell">Cold sores</td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="tableB">
+      <thead class="nhsuk-table__head">
+        <tr>
+          <th scope="col" class="nhsuk-table__header">Skin symptoms BBBB</th>
+          <th scope="col" class="nhsuk-table__header">Possible cause BBBB</th>
+        </tr>
+      </thead>
+      <tbody class="nhsuk-table__body">
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">Blisters BBBB</td>
+          <td class="nhsuk-table__cell">Cold BBBB</td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="tableC">
+      <thead class="nhsuk-table__head">
+        <tr>
+          <th scope="col" class="nhsuk-table__header">Skin symptoms CCCC</th>
+          <th scope="col" class="nhsuk-table__header">Possible cause CCCC</th>
+        </tr>
+      </thead>
+      <tbody class="nhsuk-table__body">
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">BlistersCCCC</td>
+          <td class="nhsuk-table__cell">Cold sores CCCC</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr /> <!-- SORTABLE -->
+
+
+    <table class="nhsuk-table">
+      <thead class="nhsuk-table__head" role="rowgroup">
+        <tr role="row">
+
+          <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">
+            <a href="?sort=empId&direction={% if sort == 'empId' and direction == 'asc' %}desc{% else %}asc{% endif %}"
+              class="sortableLink">
+              Employment Id
+              {% if sort == "empId" %}
+              {% if direction == "asc" %}
+              <span aria-hidden="true" class="sortable">
+                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22"
+                  fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6.5625 15.5L11 6.63125L15.4375 15.5H6.5625Z" fill="currentColor"></path>
+                </svg>
+              </span>
+              {% elseif direction == "desc" %}
+              <span aria-hidden="true" class="sortable">
+                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22"
+                  fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15.4375 7L11 15.8687L6.5625 7L15.4375 7Z" fill="currentColor"></path>
+                </svg>
+              </span>
+              {% endif %}
+              {% else %}
+              <span aria-hidden="true" class="sortable">
+                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22"
+                  fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
+                  <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
+                </svg>
+              </span>
+              {% endif %}
+            </a>
+          </th>
+
+          <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">
+            <a href="?sort=start&direction={% if sort == 'start' and direction == 'asc' %}desc{% else %}asc{% endif %}"
+              class="sortableLink">
+              Period start
+              {% if sort == "start" %}
+              {% if direction == "asc" %}
+              <span aria-hidden="true" class="sortable">
+                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22"
+                  fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6.5625 15.5L11 6.63125L15.4375 15.5H6.5625Z" fill="currentColor"></path>
+                </svg>
+              </span>
+              {% elseif direction == "desc" %}
+              <span aria-hidden="true" class="sortable">
+                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22"
+                  fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15.4375 7L11 15.8687L6.5625 7L15.4375 7Z" fill="currentColor"></path>
+                </svg>
+              </span>
+              {% endif %}
+              {% else %}
+              <span aria-hidden="true" class="sortable">
+                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22"
+                  fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
+                  <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
+                </svg>
+              </span>
+              {% endif %}
+            </a>
+          </th>
+          <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">
+            <a href="?sort=end&direction={% if sort == 'end' and direction == 'asc' %}desc{% else %}asc{% endif %}"
+              class="sortableLink">
+              Period end
+              {% if sort == "end" %}
+              {% if direction == "asc" %}
+              <span aria-hidden="true" class="sortable">
+                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22"
+                  fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6.5625 15.5L11 6.63125L15.4375 15.5H6.5625Z" fill="currentColor"></path>
+                </svg>
+              </span>
+              {% elseif direction == "desc" %}
+              <span aria-hidden="true" class="sortable">
+                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22"
+                  fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15.4375 7L11 15.8687L6.5625 7L15.4375 7Z" fill="currentColor"></path>
+                </svg>
+              </span>
+              {% endif %}
+              {% else %}
+              <span aria-hidden="true" class="sortable">
+                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22"
+                  fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
+                  <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
+                </svg>
+              </span>
+              {% endif %}
+            </a>
+          </th>
+          <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">
+            Employee Conts
+          </th>
+          <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">
+            TPP
+          </th>
+          <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">
+            Employer Conts
+          </th>
+          <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">
+            Employer Pay
+          </th>
+
+        </tr>
+      </thead>
+
+      <tbody class="nhsuk-table__body">
+        {% for row in tableData | sortBy(sort, direction) %}
+        <tr class="nhsuk-table__row" role="row">
+          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.empId }}</td>
+          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.start }}</td>
+          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.end }}</td>
+          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.empConts }}</td>
+          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.tpp }}</td>
+          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.employerConts }}</td>
+          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.empPay }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <hr /> <!-- PAGINATION -->
+
+    <button id="toggleBtnCT" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">
+      Hide correct rows
+    </button>
+    <table id="tableCT" class="nhsuk-table-responsive" role="table"></table>
+    <nav id="paginationCT" class="nhsuk-pagination nhsuk-pagination--numbered" role="navigation"
+      aria-label="Table pagination"></nav>
+
+
+    <hr /> <!-- DATA SET FILTER -->
+
+
+    <button class="nhsuk-button nhsuk-button--secondary" aria-expanded="false" aria-controls="filters-panel-data"
+      id="filters-toggle-data">
+      Customise data set
+    </button>
+
+    <div id="filters-panel-data" hidden>
+      <form id="table-custom-form">
         <div class="nhsuk-form-group">
           <fieldset class="nhsuk-fieldset">
-            <legend class="nhsuk-fieldset__legend--l">
-              Choose which tables to display
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+              <h1 class="nhsuk-fieldset__heading">
+                Choose which columns to display in this data set
+              </h1>
             </legend>
-      
-            <div class="nhsuk-checkboxes">
-      
+
+            <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
+              data-module="nhsuk-checkboxes">
+
               <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input" id="tableA-checkbox" name="tables" type="checkbox" value="tableA" checked>
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="tableA-checkbox">
-                  Show Table A
+                <input class="nhsuk-checkboxes__input" id="CstmEmpID-checkbox" name="columns" type="checkbox"
+                  value="CstmEmpID" checked>
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="CstmEmpID-checkbox">
+                  Employment ID
                 </label>
               </div>
-      
+
               <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input" id="tableB-checkbox" name="tables" type="checkbox" value="tableB" checked>
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="tableB-checkbox">
-                  Show Table B
+                <input class="nhsuk-checkboxes__input" id="CstmScheme-checkbox" name="columns" type="checkbox"
+                  value="CstmScheme" checked>
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="CstmScheme-checkbox">
+                  Scheme
                 </label>
               </div>
-      
+
               <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input" id="tableC-checkbox" name="tables" type="checkbox" value="tableC" checked>
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="tableC-checkbox">
-                  Show Table C
+                <input class="nhsuk-checkboxes__input" id="CstmStart-checkbox" name="columns" type="checkbox"
+                  value="CstmStart" checked>
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="CstmStart-checkbox">
+                  Start date
                 </label>
               </div>
-      
+
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="CstmEnd-checkbox" name="columns" type="checkbox"
+                  value="CstmEnd" checked>
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="CstmEnd-checkbox">
+                  End date
+                </label>
+              </div>
+
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="CstmUp-checkbox" name="columns" type="checkbox"
+                  value="CstmUp" checked>
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="CstmUp-checkbox">
+                  Updated
+                </label>
+              </div>
+
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="CstmMem-checkbox" name="columns" type="checkbox"
+                  value="CstmMem" checked>
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="CstmMem-checkbox">
+                  Member status
+                </label>
+              </div>
+
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="CstmErc-checkbox" name="columns" type="checkbox"
+                  value="CstmErc" checked>
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="CstmErc-checkbox">
+                  End reason code
+                </label>
+              </div>
+
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="CstmG-checkbox" name="columns" type="checkbox"
+                  value="CstmG" checked>
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="CstmG-checkbox">
+                  Group
+                </label>
+              </div>
+
             </div>
           </fieldset>
         </div>
-      
-        <button class="nhsuk-button" type="submit">Apply filters</button>
+
+        <button class="nhsuk-button" type="submit">Apply</button>
       </form>
-      
-      <!-- TABLES -->
-      <table id="tableA" class="nhsuk-table">
-        <caption class="nhsuk-table__caption">Skin symptoms and possible causes</caption>
-        <thead class="nhsuk-table__head">
-          <tr>
-            <th scope="col" class="nhsuk-table__header">Skin symptoms</th>
-            <th scope="col" class="nhsuk-table__header">Possible cause</th>
-          </tr>
-        </thead>
-        <tbody class="nhsuk-table__body">
-          <tr class="nhsuk-table__row">
-            <td class="nhsuk-table__cell">Blisters on lips or around the mouth</td>
-            <td class="nhsuk-table__cell">Cold sores</td>
-          </tr>
-          <tr class="nhsuk-table__row">
-            <td class="nhsuk-table__cell">Itchy, dry, cracked, sore</td>
-            <td class="nhsuk-table__cell">Eczema</td>
-          </tr>
-          <tr class="nhsuk-table__row">
-            <td class="nhsuk-table__cell">Itchy blisters</td>
-            <td class="nhsuk-table__cell">Shingles, chickenpox</td>
-          </tr>
-        </tbody></table>
-      <table id="tableB">…</table>
-      <table id="tableC">…</table>
-      
-
-      <table class="nhsuk-table">
-        <thead class="nhsuk-table__head" role="rowgroup">
-          <tr role="row">
-
-            <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">
-              <a href="?sort=empId&direction={% if sort == 'empId' and direction == 'asc' %}desc{% else %}asc{% endif %}" class="sortableLink">
-                Employment Id
-                {% if sort == "empId" %}
-                  {% if direction == "asc" %}
-                    <span aria-hidden="true" class="sortable">
-                      <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6.5625 15.5L11 6.63125L15.4375 15.5H6.5625Z" fill="currentColor"></path>
-                      </svg>
-                    </span>
-                  {% elseif direction == "desc" %}
-                    <span aria-hidden="true" class="sortable">
-                      <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15.4375 7L11 15.8687L6.5625 7L15.4375 7Z" fill="currentColor"></path>
-                      </svg>
-                    </span>
-                  {% endif %}
-                {% else %}
-                    <span aria-hidden="true" class="sortable">
-                      <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
-                        <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
-                      </svg>
-                    </span>
-                {% endif %}
-              </a>
-            </th>
-
-            <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">
-              <a href="?sort=start&direction={% if sort == 'start' and direction == 'asc' %}desc{% else %}asc{% endif %}" class="sortableLink">
-                Period start
-                {% if sort == "start" %}
-                  {% if direction == "asc" %}
-                    <span aria-hidden="true" class="sortable">
-                      <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6.5625 15.5L11 6.63125L15.4375 15.5H6.5625Z" fill="currentColor"></path>
-                      </svg>
-                    </span>
-                  {% elseif direction == "desc" %}
-                    <span aria-hidden="true" class="sortable">
-                      <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15.4375 7L11 15.8687L6.5625 7L15.4375 7Z" fill="currentColor"></path>
-                      </svg>
-                    </span>
-                  {% endif %}
-                {% else %}
-                    <span aria-hidden="true" class="sortable">
-                      <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
-                        <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
-                      </svg>
-                    </span>
-                {% endif %}
-              </a>
-            </th>
-            <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">
-              <a href="?sort=end&direction={% if sort == 'end' and direction == 'asc' %}desc{% else %}asc{% endif %}" class="sortableLink">
-                Period end
-                {% if sort == "end" %}
-                  {% if direction == "asc" %}
-                    <span aria-hidden="true" class="sortable">
-                      <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6.5625 15.5L11 6.63125L15.4375 15.5H6.5625Z" fill="currentColor"></path>
-                      </svg>
-                    </span>
-                  {% elseif direction == "desc" %}
-                    <span aria-hidden="true" class="sortable">
-                      <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15.4375 7L11 15.8687L6.5625 7L15.4375 7Z" fill="currentColor"></path>
-                      </svg>
-                    </span>
-                  {% endif %}
-                {% else %}
-                    <span aria-hidden="true" class="sortable">
-                      <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
-                        <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
-                      </svg>
-                    </span>
-                {% endif %}
-              </a>
-            </th>
-            <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">
-              Employee Conts
-            </th>
-            <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">
-              TPP
-            </th>
-            <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">
-              Employer Conts
-            </th>
-            <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">
-              Employer Pay
-            </th>
-
-          </tr>
-        </thead>
-        
-        <tbody class="nhsuk-table__body">
-          {% for row in tableData | sortBy(sort, direction) %}
-            <tr class="nhsuk-table__row" role="row">
-              <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.empId }}</td>
-              <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.start }}</td>
-              <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.end }}</td>
-              <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.empConts }}</td>
-              <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.tpp }}</td>
-              <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.employerConts }}</td>
-              <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.empPay }}</td>
-            </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-
-      <button id="toggleBtnCT" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">Hide
-        correct
-        rows</button>
-    <table id="tableCT" class="nhsuk-table-responsive" role="table"></table>
-    <nav id="paginationCT" class="nhsuk-pagination nhsuk-pagination--numbered" role="navigation"
-        aria-label="Table pagination"></nav>
-
-
-
-      <!-- <table class="nhsuk-table-responsive" role="table">
-        <thead class="nhsuk-table__head" role="rowgroup">
-          <tr role="row">
-              <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employment ID</th>
-              <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Scheme code</th>
-              <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Start date</th>
-              <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">End date</th>
-              <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Updated</th>
-              <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Member status</th>
-              <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">End reason code</th>
-              <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Group</th>
-          </tr>
-        </thead>
-        <tbody class="nhsuk-table__body">
-          <tr class="nhsuk-table__row" role="row">
-                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employment ID </span>1</td>
-                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Scheme code </span>2008</td>
-                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01/04/2013</td>
-                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>31/03/2015</td>                       <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Updated </span>31/03/2015</td>
-                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Status </span>Active</td>
-                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End reason code </span>15</td>
-                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Group </span>1</td>
-          </tr>
-          <tr class="nhsuk-table__row" role="row">
-                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employment ID </span>2</td>
-                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Scheme code </span>2015</td>
-                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>01/04/2015</td>
-                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span></td>
-                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Updated </span>31/03/2025</td>
-                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Status </span>Active</td>
-                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End reason code </span>5</td>
-                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Group </span>2</td>
-          </tr>
-          <tr class="nhsuk-table__row errorHighlight" id="shError" role="row">
-                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employment ID </span>3</td>
-                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Scheme code </span>2015</td>
-                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span><span class="errorTxt">01/04/2015</span></td>
-                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>-</td>
-                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Updated </span><span class="errorTxt">31/03/2023</span></td>
-                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Status </span>Active</td>
-                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End reason code </span>5</td>
-                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Group </span>2</td>
-          </tr>
-          <tr class="nhsuk-table__row errorHighlight" role="row">
-                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Employment ID </span>5</td>
-                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Scheme code </span>2015</td>
-                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span><span class="errorTxt">01/04/2015</span></td>
-                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span></td>
-                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Updated </span>31/03/2023</td>
-                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Status </span>Active</td>
-                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End reason code </span>5</td>
-                <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Group </span>2</td>
-          </tr>
-        </tbody>
-      </table> -->
-
     </div>
+
+    <table class="nhsuk-table-responsive" role="table">
+      <thead class="nhsuk-table__head" role="rowgroup">
+        <tr role="row">
+          <th scope="col" class="CstmEmpID nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employment ID</th>
+          <th scope="col" class="CstmScheme nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Scheme code</th>
+          <th scope="col" class="CstmStart nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Start date</th>
+          <th scope="col" class="CstmEnd nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">End date</th>
+          <th scope="col" class="CstmUp nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Updated</th>
+          <th scope="col" class="CstmMem nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Member status</th>
+          <th scope="col" class="CstmErc nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">End reason code</th>
+          <th scope="col" class="CstmG nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Group</th>
+        </tr>
+      </thead>
+      <tbody class="nhsuk-table__body">
+        <tr class="nhsuk-table__row" role="row">
+          <td class="CstmEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+              aria-hidden="true">Employment ID </span>1</td>
+          <td class="CstmScheme nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+              aria-hidden="true">Scheme code </span>2008</td>
+          <td class="CstmStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+              aria-hidden="true">Start date </span>01/04/2013</td>
+          <td class="CstmEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+              aria-hidden="true">End date </span>31/03/2015</td>
+          <td class="CstmUp nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+              aria-hidden="true">Updated </span>31/03/2015</td>
+          <td class="CstmMem nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+              aria-hidden="true">Status </span>Active</td>
+          <td class="CstmErc nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+              aria-hidden="true">End reason code </span>15</td>
+          <td class="CstmG nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+              aria-hidden="true">Group </span>1</td>
+        </tr>
+        <tr class="nhsuk-table__row" role="row">
+          <td class="CstmEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+              aria-hidden="true">Employment ID </span>2</td>
+          <td class="CstmScheme nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+              aria-hidden="true">Scheme code </span>2015</td>
+          <td class="CstmStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+              aria-hidden="true">Start date </span>01/04/2015</td>
+          <td class="CstmEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+              aria-hidden="true">End date </span></td>
+          <td class="CstmUp nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+              aria-hidden="true">Updated </span>31/03/2025</td>
+          <td class="CstmMem nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+              aria-hidden="true">Status </span>Active</td>
+          <td class="CstmErc nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+              aria-hidden="true">End reason code </span>5</td>
+          <td class="CstmG nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+              aria-hidden="true">Group </span>2</td>
+        </tr>
+        <tr class="nhsuk-table__row errorHighlight" id="shError" role="row">
+          <td class="CstmEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+              aria-hidden="true">Employment ID </span>3</td>
+          <td class="CstmScheme nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+              aria-hidden="true">Scheme code </span>2015</td>
+          <td class="CstmStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+              aria-hidden="true">Start date </span><span class="errorTxt">01/04/2015</span></td>
+          <td class="CstmEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+              aria-hidden="true">End date </span>-</td>
+          <td class="CstmUp nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+              aria-hidden="true">Updated </span><span class="errorTxt">31/03/2023</span></td>
+          <td class="CstmMem nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+              aria-hidden="true">Status </span>Active</td>
+          <td class="CstmErc nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+              aria-hidden="true">End reason code </span>5</td>
+          <td class="CstmG nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+              aria-hidden="true">Group </span>2</td>
+        </tr>
+        <tr class="nhsuk-table__row errorHighlight" role="row">
+          <td class="CstmEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+              aria-hidden="true">Employment ID </span>5</td>
+          <td class="CstmScheme nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+              aria-hidden="true">Scheme code </span>2015</td>
+          <td class="CstmStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+              aria-hidden="true">Start date </span><span class="errorTxt">01/04/2015</span></td>
+          <td class="CstmEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+              aria-hidden="true">End date </span></td>
+          <td class="CstmUp nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+              aria-hidden="true">Updated </span>31/03/2023</td>
+          <td class="CstmMem nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+              aria-hidden="true">Status </span>Active</td>
+          <td class="CstmErc nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+              aria-hidden="true">End reason code </span>5</td>
+          <td class="CstmG nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading"
+              aria-hidden="true">Group </span>2</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
 </div>
 
 
@@ -264,76 +433,76 @@
 <!-- <script src="/js/toggle-pagination-sort.js"></script> -->
 <script src="/js/toggle-pagination.js"></script>
 <script>
-    // ------------ Datasets located in HTML ------------
-    const datasetCT = [
-        { empId: '1', start: '01/04/2013', end: '31/03/2014', empConts: '£2758.45', tpp: '£30649.19', employerConts: '£4290.88', empPay: '£30649.19' },
-        { empId: '1', start: '01/04/2014', end: '31/03/2015', empConts: '£2543.26', tpp: '£27346.81', employerConts: '£3828.55', empPay: '£27346.81' },
-        { empId: '2', start: '01/04/2015', end: '31/03/2016', empConts: '£2561.40', tpp: '£27541.88', employerConts: '£3938.50', empPay: '£27541.88' },
-        { empId: '2', start: '01/04/2016', end: '31/03/2017', empConts: '£2606.68', tpp: '£28028.77', employerConts: '£4008.11', empPay: '£28028.77' },
-        { empId: '2', start: '01/04/2017', end: '31/03/2018', empConts: '£2676.32', tpp: '£28777.58', employerConts: '£4138.22', empPay: '£28777.58' },
-        { empId: '2', start: '01/04/2018', end: '31/03/2019', empConts: '£2796.78', tpp: '£30072.69', employerConts: '£4324.45', empPay: '£30072.69' },
-        { empId: '2', start: '01/04/2019', end: '31/03/2020', empConts: '£3013.71', tpp: '£32405.39', employerConts: '£4659.89', empPay: '£32405.39' },
-        { empId: '2', start: '01/04/2020', end: '31/03/2021', empConts: '£2781.95', tpp: '£29913.84', employerConts: '£4301.60', empPay: '£29913.84' },
-        { empId: '2', start: '01/04/2021', end: '31/03/2022', empConts: '£3067.51', tpp: '£32984.12', employerConts: '£4743.11', empPay: '£32984.12' },
-        { empId: '2', start: '01/04/2022', end: '31/03/2023', empConts: '£3661.75', tpp: '£38306.89', employerConts: '£5508.53', empPay: '£38306.89' },
-        { empId: '2', start: '01/04/2023', end: '31/03/2024', empConts: '£4037.04', tpp: '£41845.03', employerConts: '£5918.68', empPay: '£41845.03' },
-        { empId: '2', start: '01/04/2024', end: '31/03/2025', empConts: '£4365.41', tpp: '£44544.90', employerConts: '£6405.55', empPay: '£44544.90' },
-        { empId: '3', start: '01/04/2015', end: '31/03/2016', empConts: '£154.96', tpp: '£1666.20', employerConts: '£238.27', empPay: '£1666.20' },
-        { empId: '3', start: '01/04/2016', end: '31/03/2017', empConts: '£209.97', tpp: '£2257.74', employerConts: '£322.86', empPay: '£2257.74' },
-        { empId: '3', start: '01/04/2017', end: '31/03/2018', empConts: '£76.76', tpp: '£825.31', employerConts: '£118.68', empPay: '£825.31' },
-        { empId: '3', start: '01/04/2018', end: '31/03/2019', empConts: '£844.37', tpp: '£9079.24', employerConts: '£1305.60', empPay: '£9079.24' },
-        { empId: '3', start: '01/04/2019', end: '31/03/2020', empConts: '£1247.04', tpp: '£13409.03', employerConts: '£1928.21', empPay: '£13409.03' },
-        { empId: '3', start: '01/04/2020', end: '31/03/2021', empConts: '£147.17', tpp: '£1582.42', employerConts: '£227.55', empPay: '£1582.42' },
-        { empId: '3', start: '01/04/2021', end: '31/03/2022', empConts: '£755.70', tpp: '£8125.74', employerConts: '£1168.47', empPay: '£8125.74' },
-        { empId: '3', start: '01/04/2022', end: '31/03/2023', empConts: '£496.26', tpp: '£5063.88', employerConts: '£730.11', empPay: '£5063.88', rowClass: 'errorHighlight' }
-    ];
+  // ------------ Datasets located in HTML ------------
+  const datasetCT = [
+    { empId: '1', start: '01/04/2013', end: '31/03/2014', empConts: '£2758.45', tpp: '£30649.19', employerConts: '£4290.88', empPay: '£30649.19' },
+    { empId: '1', start: '01/04/2014', end: '31/03/2015', empConts: '£2543.26', tpp: '£27346.81', employerConts: '£3828.55', empPay: '£27346.81' },
+    { empId: '2', start: '01/04/2015', end: '31/03/2016', empConts: '£2561.40', tpp: '£27541.88', employerConts: '£3938.50', empPay: '£27541.88' },
+    { empId: '2', start: '01/04/2016', end: '31/03/2017', empConts: '£2606.68', tpp: '£28028.77', employerConts: '£4008.11', empPay: '£28028.77' },
+    { empId: '2', start: '01/04/2017', end: '31/03/2018', empConts: '£2676.32', tpp: '£28777.58', employerConts: '£4138.22', empPay: '£28777.58' },
+    { empId: '2', start: '01/04/2018', end: '31/03/2019', empConts: '£2796.78', tpp: '£30072.69', employerConts: '£4324.45', empPay: '£30072.69' },
+    { empId: '2', start: '01/04/2019', end: '31/03/2020', empConts: '£3013.71', tpp: '£32405.39', employerConts: '£4659.89', empPay: '£32405.39' },
+    { empId: '2', start: '01/04/2020', end: '31/03/2021', empConts: '£2781.95', tpp: '£29913.84', employerConts: '£4301.60', empPay: '£29913.84' },
+    { empId: '2', start: '01/04/2021', end: '31/03/2022', empConts: '£3067.51', tpp: '£32984.12', employerConts: '£4743.11', empPay: '£32984.12' },
+    { empId: '2', start: '01/04/2022', end: '31/03/2023', empConts: '£3661.75', tpp: '£38306.89', employerConts: '£5508.53', empPay: '£38306.89' },
+    { empId: '2', start: '01/04/2023', end: '31/03/2024', empConts: '£4037.04', tpp: '£41845.03', employerConts: '£5918.68', empPay: '£41845.03' },
+    { empId: '2', start: '01/04/2024', end: '31/03/2025', empConts: '£4365.41', tpp: '£44544.90', employerConts: '£6405.55', empPay: '£44544.90' },
+    { empId: '3', start: '01/04/2015', end: '31/03/2016', empConts: '£154.96', tpp: '£1666.20', employerConts: '£238.27', empPay: '£1666.20' },
+    { empId: '3', start: '01/04/2016', end: '31/03/2017', empConts: '£209.97', tpp: '£2257.74', employerConts: '£322.86', empPay: '£2257.74' },
+    { empId: '3', start: '01/04/2017', end: '31/03/2018', empConts: '£76.76', tpp: '£825.31', employerConts: '£118.68', empPay: '£825.31' },
+    { empId: '3', start: '01/04/2018', end: '31/03/2019', empConts: '£844.37', tpp: '£9079.24', employerConts: '£1305.60', empPay: '£9079.24' },
+    { empId: '3', start: '01/04/2019', end: '31/03/2020', empConts: '£1247.04', tpp: '£13409.03', employerConts: '£1928.21', empPay: '£13409.03' },
+    { empId: '3', start: '01/04/2020', end: '31/03/2021', empConts: '£147.17', tpp: '£1582.42', employerConts: '£227.55', empPay: '£1582.42' },
+    { empId: '3', start: '01/04/2021', end: '31/03/2022', empConts: '£755.70', tpp: '£8125.74', employerConts: '£1168.47', empPay: '£8125.74' },
+    { empId: '3', start: '01/04/2022', end: '31/03/2023', empConts: '£496.26', tpp: '£5063.88', employerConts: '£730.11', empPay: '£5063.88', rowClass: 'errorHighlight' }
+  ];
 
-    const columnTitlesCT = {
-        empId: 'Employment ID',
-        start: 'Period start',
-        end: 'Period end',
-        empConts: 'Employee conts',
-        tpp: 'TPP',
-        employerConts: 'Employer conts',
-        empPay: 'Employer pay'
-    };
+  const columnTitlesCT = {
+    empId: 'Employment ID',
+    start: 'Period start',
+    end: 'Period end',
+    empConts: 'Employee conts',
+    tpp: 'TPP',
+    employerConts: 'Employer conts',
+    empPay: 'Employer pay'
+  };
 
-    const datasetHH = [
-        { empId: '1', start: '10/11/2014', end: '31/03/2015', ptHrs: '613' },
-        { empId: '2', start: '01/04/2015', end: '31/03/2016', ptHrs: '1574' },
-        { empId: '2', start: '01/04/2016', end: '31/03/2017', ptHrs: '1596' },
-        { empId: '2', start: '01/04/2017', end: '31/03/2018', ptHrs: '1574' },
-        { empId: '2', start: '01/04/2018', end: '31/03/2019', ptHrs: '1564' },
-        { empId: '2', start: '01/04/2019', end: '31/03/2020', ptHrs: '1620' },
-        { empId: '2', start: '01/04/2020', end: '31/03/2021', ptHrs: '1799' },
-        { empId: '2', start: '01/04/2021', end: '31/03/2022', ptHrs: '1762' },
-        { empId: '2', start: '01/04/2022', end: '31/03/2023', ptHrs: '1799' },
-        { empId: '2', start: '01/04/2023', end: '31/03/2024', ptHrs: '1799' },
-        { empId: '2', start: '01/04/2024', end: '31/03/2025', ptHrs: '1799' },
-        { empId: '3', start: '01/04/2015', end: '31/03/2016', ptHrs: '82' },
-        { empId: '3', start: '01/04/2016', end: '31/03/2017', ptHrs: '103' },
-        { empId: '3', start: '01/04/2017', end: '31/03/2018', ptHrs: '38' },
-        { empId: '3', start: '01/04/2018', end: '31/03/2019', ptHrs: '357' },
-        { empId: '3', start: '01/04/2019', end: '31/03/2020', ptHrs: '177' },
-        { empId: '3', start: '01/04/2020', end: '31/03/2021', ptHrs: '53' },
-        { empId: '3', start: '01/04/2021', end: '31/03/2022', ptHrs: '193' },
-        { empId: '3', start: '01/04/2022', end: '31/03/2023', ptHrs: '£5063.88', rowClass: 'errorHighlight' }
-    ];
+  const datasetHH = [
+    { empId: '1', start: '10/11/2014', end: '31/03/2015', ptHrs: '613' },
+    { empId: '2', start: '01/04/2015', end: '31/03/2016', ptHrs: '1574' },
+    { empId: '2', start: '01/04/2016', end: '31/03/2017', ptHrs: '1596' },
+    { empId: '2', start: '01/04/2017', end: '31/03/2018', ptHrs: '1574' },
+    { empId: '2', start: '01/04/2018', end: '31/03/2019', ptHrs: '1564' },
+    { empId: '2', start: '01/04/2019', end: '31/03/2020', ptHrs: '1620' },
+    { empId: '2', start: '01/04/2020', end: '31/03/2021', ptHrs: '1799' },
+    { empId: '2', start: '01/04/2021', end: '31/03/2022', ptHrs: '1762' },
+    { empId: '2', start: '01/04/2022', end: '31/03/2023', ptHrs: '1799' },
+    { empId: '2', start: '01/04/2023', end: '31/03/2024', ptHrs: '1799' },
+    { empId: '2', start: '01/04/2024', end: '31/03/2025', ptHrs: '1799' },
+    { empId: '3', start: '01/04/2015', end: '31/03/2016', ptHrs: '82' },
+    { empId: '3', start: '01/04/2016', end: '31/03/2017', ptHrs: '103' },
+    { empId: '3', start: '01/04/2017', end: '31/03/2018', ptHrs: '38' },
+    { empId: '3', start: '01/04/2018', end: '31/03/2019', ptHrs: '357' },
+    { empId: '3', start: '01/04/2019', end: '31/03/2020', ptHrs: '177' },
+    { empId: '3', start: '01/04/2020', end: '31/03/2021', ptHrs: '53' },
+    { empId: '3', start: '01/04/2021', end: '31/03/2022', ptHrs: '193' },
+    { empId: '3', start: '01/04/2022', end: '31/03/2023', ptHrs: '£5063.88', rowClass: 'errorHighlight' }
+  ];
 
-    const columnTitlesHH = {
-        empId: 'Employment ID',
-        start: 'Start date',
-        end: 'End date',
-        ptHrs: 'Part time hours'
-    };
+  const columnTitlesHH = {
+    empId: 'Employment ID',
+    start: 'Start date',
+    end: 'End date',
+    ptHrs: 'Part time hours'
+  };
 
-    // ------------ Instantiate managers (from tables.js) ------------
-    const tableCT = createTableManager("tableCT", "paginationCT", "toggleBtnCT");
-    const tableHH = createTableManager("tableHH", "paginationHH", "toggleBtnHH");
+  // ------------ Instantiate managers (from tables.js) ------------
+  const tableCT = createTableManager("tableCT", "paginationCT", "toggleBtnCT");
+  const tableHH = createTableManager("tableHH", "paginationHH", "toggleBtnHH");
 
-    // ------------ Load datasets into tables ------------
-    tableCT.load(datasetCT, columnTitlesCT);
-    tableHH.load(datasetHH, columnTitlesHH);
+  // ------------ Load datasets into tables ------------
+  tableCT.load(datasetCT, columnTitlesCT);
+  tableHH.load(datasetHH, columnTitlesHH);
 
 
 </script>

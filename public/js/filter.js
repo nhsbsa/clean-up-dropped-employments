@@ -29,4 +29,4 @@ toggleButton.addEventListener('click', () => {
     toggleButton.setAttribute('aria-expanded', 'true');
     toggleButton.textContent = 'Hide filters';
   }
-});//# sourceMappingURL=application copy.js.map
+});//# sourceMappingURL=filter.js.map

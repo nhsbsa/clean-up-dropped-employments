@@ -115,4 +115,4 @@ toggleTableFilter.addEventListener('click', () => {
       }
     });
   });
-})();//# sourceMappingURL=application-sandbox.js.map
+})();//# sourceMappingURL=sortable copy.js.map

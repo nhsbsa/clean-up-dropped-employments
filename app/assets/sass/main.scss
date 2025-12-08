@@ -91,38 +91,76 @@
 }
 
 // Complex 2
-.nhsuk-expander{
-    .nhsuk-tag{
+.nhsuk-expander {
+    .nhsuk-tag {
         float: right;
     }
 }
-.errorHighlight{
-    border-left:4px solid $nhsuk-error-colour;
+
+.errorHighlight {
+    border-left: 4px solid $nhsuk-error-colour;
     font-weight: bold;
-    .nhsuk-table__cell:first-of-type{
-        padding-left:16px;
+
+    .nhsuk-table__cell:first-of-type {
+        padding-left: 16px;
     }
-    .errorTxt{
+
+    .errorTxt {
         color: $nhsuk-error-colour;
         text-decoration: underline;
     }
 }
 
 // Sortable table
-.sortableLink{
-    display: flex;
-    vertical-align: top;
+// .sortableLink {
+//     display: flex;
+//     vertical-align: top;
+// }
+
+.sortable {
+    cursor: pointer;
+    color: $nhsuk-link-colour;
 }
+
+.sort-icon {
+    display: none; /* hide all icons by default */
+    margin-left: 0.25rem;
+    vertical-align: middle;
+  }
+  
+  .sort-icon svg {
+    width: 1rem;
+    height: 1rem;
+    fill: currentColor;
+  }
+  
+  /* Show double arrow by default when column is unsorted */
+  .sortable[aria-sort="none"] .sort-icon--default {
+    display: inline-block;
+  }
+  
+  /* Show ascending arrow */
+  .sortable[aria-sort="ascending"] .sort-icon--asc {
+    display: inline-block;
+  }
+  
+  /* Show descending arrow */
+  .sortable[aria-sort="descending"] .sort-icon--desc {
+    display: inline-block;
+  }
+  
+  
 
 // Filter
 
-#filters-panel{
-    border-top:1px solid $nhsuk-border-colour;
-    padding-top:30px;
+#filters-panel {
+    border-top: 1px solid $nhsuk-border-colour;
+    padding-top: 30px;
     margin-bottom: 36px;
-    border-bottom:1px solid $nhsuk-border-colour;
+    border-bottom: 1px solid $nhsuk-border-colour;
 }
-.nhsuk-checkboxes-filter{
+
+.nhsuk-checkboxes-filter {
     column-count: 3;
 }
 
@@ -134,23 +172,25 @@
     background-color: #ffffff;
     border-bottom: 1px solid #dcdcdc;
 }
+
 .nhsuk-phase-banner {
     padding-top: nhsuk-spacing(2);
     padding-bottom: nhsuk-spacing(2);
     border-bottom: 1px solid $nhsuk-border-colour;
 }
+
 .nhsuk-phase-banner__content {
-@include nhsuk-font(16);
-color: $nhsuk-text-colour;
-display: table;
-margin: 0;
+    @include nhsuk-font(16);
+    color: $nhsuk-text-colour;
+    display: table;
+    margin: 0;
 }
+
 .nhsuk-phase-banner__content__tag {
-margin-right: 10px ;
+    margin-right: 10px;
 }
+
 .nhsuk-phase-banner__text {
-display: table-cell;
-vertical-align: middle;
+    display: table-cell;
+    vertical-align: middle;
 }
-
-

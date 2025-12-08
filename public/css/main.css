@@ -10199,9 +10199,36 @@ b {
   text-decoration: underline;
 }
 
-.sortableLink {
-  display: flex;
-  vertical-align: top;
+.sortable {
+  cursor: pointer;
+  color: #005eb8;
+}
+
+.sort-icon {
+  display: none; /* hide all icons by default */
+  margin-left: 0.25rem;
+  vertical-align: middle;
+}
+
+.sort-icon svg {
+  width: 1rem;
+  height: 1rem;
+  fill: currentColor;
+}
+
+/* Show double arrow by default when column is unsorted */
+.sortable[aria-sort=none] .sort-icon--default {
+  display: inline-block;
+}
+
+/* Show ascending arrow */
+.sortable[aria-sort=ascending] .sort-icon--asc {
+  display: inline-block;
+}
+
+/* Show descending arrow */
+.sortable[aria-sort=descending] .sort-icon--desc {
+  display: inline-block;
 }
 
 #filters-panel {
