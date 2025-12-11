@@ -10242,6 +10242,29 @@ b {
   column-count: 3;
 }
 
+.compareRow {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.compareRow .compareCol {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 20px;
+}
+@media (min-width: 600px) {
+  .compareRow {
+    flex-direction: row;
+  }
+  .compareRow .compareCol {
+    width: 49%;
+  }
+}
+
+.tableScrollOuter {
+  overflow-x: auto;
+}
+
 .beta-banner {
   padding: 16px 0;
   background-color: #ffffff;

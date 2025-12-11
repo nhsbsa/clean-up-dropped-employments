@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+    //// RESULTS PAGE 
+
     const formCustom = document.getElementById('table-custom-form')
 
     if (!formCustom) return
@@ -21,7 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
             })
         })
     })
+
 })
+
+// SERVICE HISTORY
 
 const toggleTableFilter = document.getElementById('filters-toggle-data');
 const panelTF = document.getElementById('filters-panel-data');

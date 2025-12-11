@@ -96,6 +96,75 @@
         <p>Any issues are highlighted and must be fixed before the case can be processed.</p>
     </div>
 
+    <button class="nhsuk-button nhsuk-button--secondary" aria-expanded="false" aria-controls="filters-panel" id="filters-toggle">
+      Compare data sets
+    </button>
+
+    <div id="filters-panel" hidden>
+        <form id="compare-form" action="/{{folder}}/results" method="post" >
+          <div class="nhsuk-form-group">
+            <fieldset class="nhsuk-fieldset">
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                    <h1 class="nhsuk-fieldset__heading">
+                        Choose which two data sets you would like to compare
+                    </h1>
+              </legend>
+              <div id="checkboxError" class="error nhsuk-error-message" style="display:none; color:#d5281b; margin-top:10px;">
+                  <span class="nhsuk-u-visually-hidden">Error:</span> You can select a maximum of 2 options.
+              </div>
+        
+              <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter" data-module="nhsuk-checkboxes">
+        
+                <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input" id="contsTpp-checkbox" name="contsTpp" type="checkbox" value="contsTpp" >
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="contsTpp-checkbox">
+                      Conts &amp; TPP
+                    </label>
+                </div>
+        
+                <div class="nhsuk-checkboxes__item">
+                  <input class="nhsuk-checkboxes__input" id="employmentHistory-checkbox" name="employmentHistory" type="checkbox" value="employmentHistory" >
+                  <label class="nhsuk-label nhsuk-checkboxes__label" for="employmentHistory-checkbox">
+                    Employment History
+                  </label>
+                </div>
+        
+                <div class="nhsuk-checkboxes__item">
+                  <input class="nhsuk-checkboxes__input" id="hoursHistory-checkbox" name="hoursHistory" type="checkbox" value="hoursHistory" >
+                  <label class="nhsuk-label nhsuk-checkboxes__label" for="hoursHistory-checkbox">
+                    Hours history
+                  </label>
+                </div>
+        
+                <div class="nhsuk-checkboxes__item">
+                  <input class="nhsuk-checkboxes__input" id="linkedEmployment-checkbox" name="linkedEmployment" type="checkbox" value="linkedEmployment" >
+                  <label class="nhsuk-label nhsuk-checkboxes__label" for="linkedEmployment-checkbox">
+                    Linked employment
+                  </label>
+                </div>
+        
+                <div class="nhsuk-checkboxes__item">
+                  <input class="nhsuk-checkboxes__input" id="serviceGroup-checkbox" name="serviceGroup" type="checkbox" value="serviceGroup" >
+                  <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceGroup-checkbox">
+                    Service group
+                  </label>
+                </div>
+
+                <div class="nhsuk-checkboxes__item">
+                  <input class="nhsuk-checkboxes__input" id="serviceHistory-checkbox" name="serviceHistory" type="checkbox" value="serviceHistory" >
+                  <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceHistory-checkbox">
+                    Service history
+                  </label>
+                </div>
+        
+              </div>
+            </fieldset>
+          </div>
+        
+            <button class="nhsuk-button" data-module="nhsuk-button" type="submit">Compare</button> 
+        </form>
+    </div>
+
     <!-- ****************
         SERVICE HISTORY
       ***************** -->
@@ -196,22 +265,22 @@
             <table class="nhsuk-table-responsive" role="table">
                 <thead class="nhsuk-table__head" role="rowgroup">
                   <tr role="row">
-                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Group ID</th>
-                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Scheme code</th>
-                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Start date</th>
-                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">End date</th>
-                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Status</th>
-                      <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">End reason code</th>
+                      <th scope="col" class="sgGrpID nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Group ID</th>
+                      <th scope="col" class="sgScheme nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Scheme code</th>
+                      <th scope="col" class="sgStart nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Start date</th>
+                      <th scope="col" class="sgEnd nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">End date</th>
+                      <th scope="col" class="sgStatus nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Status</th>
+                      <th scope="col" class="sgErc nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">End reason code</th>
                   </tr>
                 </thead>
                 <tbody class="nhsuk-table__body">
                   <tr class="nhsuk-table__row" role="row">
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Group ID </span>1</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Scheme code </span>2008</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Start Date </span>01/04/2013</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End Date </span></td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Status </span>Active</td>
-                      <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End reason code </span>25</td>
+                      <td class="sgGrpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Group ID </span>1</td>
+                      <td class="sgScheme nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Scheme code </span>2008</td>
+                      <td class="sgStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Start Date </span>01/04/2013</td>
+                      <td class="sgEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End Date </span></td>
+                      <td class="sgStatus nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Status </span>Active</td>
+                      <td class="sgErc nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End reason code </span>25</td>
                   </tr>
                   <tr class="nhsuk-table__row" role="row">
                       <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Group ID </span>2</td>
@@ -222,7 +291,7 @@
                       <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End reason code </span></td>
                   </tr>
                 </tbody>
-              </table>
+            </table>
         </div>
       </details>
 
@@ -253,6 +322,7 @@
                 </div>
             </div>
             <table class="nhsuk-table-responsive" role="table">
+                <caption class="nhsuk-table__caption">Employment history</caption>
                 <thead class="nhsuk-table__head" role="rowgroup">
                   <tr role="row">
                       <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employment ID</th>
@@ -1179,6 +1249,8 @@
 
   </div>
 </div>
+
+<script src="/js/compare.js"></script>
 
 <script>
     function toggleRows() {

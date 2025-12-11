@@ -77,13 +77,27 @@
 {% block beforeContent %}
 
 {% from 'back-link/macro.njk' import backLink %}
+
+
+{% endblock %}
+
+{% block main %}
 {% if not hideBack %}
+  <div class="nhsuk-width-container">
     {{ backLink({
       "href": "javascript:history.go(-1)",
       "text": "Back"
     }) }}
+    </div>
 {% endif %}
+<div class="nhsuk-width-container-fluid">
 
+  <main class="nhsuk-main-wrapper" id="maincontent" role="main">
+      {% block content %}
+      {% endblock %}
+
+  </main>
+</div>
 {% endblock %}
 
 <!-- Edit the footer -->

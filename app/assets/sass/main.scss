@@ -112,10 +112,6 @@
 }
 
 // Sortable table
-// .sortableLink {
-//     display: flex;
-//     vertical-align: top;
-// }
 
 .sortable {
     cursor: pointer;
@@ -163,6 +159,31 @@
 .nhsuk-checkboxes-filter {
     column-count: 3;
 }
+
+// Compare
+
+.compareRow{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .compareCol{
+        width: 100%;
+        background-color:nhsuk-colour("white") ;
+        padding: 20px;
+    }
+
+    @media (min-width: 600px) {
+        flex-direction: row;
+        .compareCol{
+            width: 49%;
+        }
+    }
+}
+
+.tableScrollOuter{
+    overflow-x: auto;
+}
+
 
 
 // Beta Banner
