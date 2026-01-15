@@ -52,5 +52,6 @@ router.use('/concept-pagination', require('./views/concept-pagination/_routes'))
 router.use('/concept-sortable', require('./views/concept-sortable/_routes'));
 router.use('/concept-customise', require('./views/concept-customise/_routes'));
 router.use('/concept-compare', require('./views/concept-compare/_routes'));
+router.use('/concept-all', require('./views/concept-all/_routes'));
 
 module.exports = router

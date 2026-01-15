@@ -1,0 +1,1384 @@
+{% extends 'layout-wide.html' %}
+{% set pageTitle = "Compare data sets"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+        <span class="nhsuk-caption-l">John Smith</span>
+        <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">{{pageTitle}}</h1>
+        <div class="nhsuk-grid-row compareRow">
+
+            {% set serviceHistoryData %}
+                <!-- SERVICE HISTORY -->
+                <div class="nhsuk-grid-column-one-half compareCol">
+                    <button class="nhsuk-button nhsuk-button--secondary" aria-expanded="false" aria-controls="sh-panel-data" id="sh-toggle-data">
+                        Customise data set
+                    </button>
+                    <div id="sh-panel-data" hidden>
+                        <form id="sh-table-custom-form">
+                            <div class="nhsuk-form-group">
+                            <fieldset class="nhsuk-fieldset">
+                                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                                <h2 class="nhsuk-heading-xs">
+                                    Choose which columns to display in this data set
+                                </h1>
+                                </legend>
+
+                                <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
+                                data-module="nhsuk-checkboxes">
+
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="shEmpID-checkbox" name="shEmpID" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="shEmpID-checkbox">
+                                    Employment ID
+                                    </label>
+                                </div>
+
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="shScheme-checkbox" name="shScheme" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="shScheme-checkbox">
+                                    Scheme
+                                    </label>
+                                </div>
+
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="shStart-checkbox" name="shStart" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="shStart-checkbox">
+                                    Start date
+                                    </label>
+                                </div>
+
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="shEnd-checkbox" name="shEnd" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="shEnd-checkbox">
+                                    End date
+                                    </label>
+                                </div>
+
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="shUp-checkbox" name="shUp" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="shUp-checkbox">
+                                    Updated
+                                    </label>
+                                </div>
+
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="shMem-checkbox" name="shMem" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="shMem-checkbox">
+                                    Member status
+                                    </label>
+                                </div>
+
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="shErc-checkbox" name="shErc" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="shErc-checkbox">
+                                    End reason code
+                                    </label>
+                                </div>
+
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="shG-checkbox" name="shG" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="shG-checkbox">
+                                    Group
+                                    </label>
+                                </div>
+
+                                </div>
+                            </fieldset>
+                            </div>
+
+                            <button class="nhsuk-button" type="submit">Apply</button>
+                        </form>
+                    </div>
+                    <h3 class="nhsuk-heading-s">Service history</h3>
+                    <div class="nhsuk-hint nhsuk-u-font-size-14">
+                        You can scroll left and right to see all columns if the table does not fit on your screen
+                    </div>
+                    <div class="tableScrollOuter">
+                        <table class="nhsuk-table tableScroll" role="table">
+                                <thead class="nhsuk-table__head" role="rowgroup">
+                                <tr role="row">
+                                <th scope="col" class="shEmpID nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employment ID</th>
+                                <th scope="col" class="shScheme nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Scheme code</th>
+                                <th scope="col" class="shStart nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Start date</th>
+                                <th scope="col" class="shEnd nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">End date</th>
+                                <th scope="col" class="shUp nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Updated</th>
+                                <th scope="col" class="shMem nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Member status</th>
+                                <th scope="col" class="shErc nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">End reason code</th>
+                                <th scope="col" class="shG nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Group</th>
+                                </tr>
+                            </thead>
+                            <tbody class="nhsuk-table__body">
+                                <tr class="nhsuk-table__row" role="row">
+                                <td class="shEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell">1</td>
+                                <td class="shScheme nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2008</td>
+                                <td class="shStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2013</td>
+                                <td class="shEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2015</td>
+                                <td class="shUp nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2015</td>
+                                <td class="shMem nhsuk-table__cell nhsuk-u-font-size-14" role="cell">Active</td>
+                                <td class="shErc nhsuk-table__cell nhsuk-u-font-size-14" role="cell">15</td>
+                                <td class="shG nhsuk-table__cell nhsuk-u-font-size-14" role="cell">1</td>
+                                </tr>
+                                <tr class="nhsuk-table__row" role="row">
+                                <td class="shEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2</td>
+                                <td class="shScheme nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2015</td>
+                                <td class="shStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2015</td>
+                                <td class="shEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">&nbsp;</td>
+                                <td class="shUp nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2025</td>
+                                <td class="shMem nhsuk-table__cell nhsuk-u-font-size-14" role="cell">Active</td>
+                                <td class="shErc nhsuk-table__cell nhsuk-u-font-size-14" role="cell">5</td>
+                                <td class="shG nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2</td>
+                                </tr>
+                                <tr class="nhsuk-table__row errorHighlight" id="shError" role="row">
+                                <td class="shEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell">3</td>
+                                <td class="shScheme nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2015</td>
+                                <td class="shStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="errorTxt">01/04/2015</span></td>
+                                <td class="shEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">-</td>
+                                <td class="shUp nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="errorTxt">31/03/2023</span></td>
+                                <td class="shMem nhsuk-table__cell nhsuk-u-font-size-14" role="cell">Active</td>
+                                <td class="shErc nhsuk-table__cell nhsuk-u-font-size-14" role="cell">5</td>
+                                <td class="shG nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2</td>
+                                </tr>
+                                <tr class="nhsuk-table__row errorHighlight" role="row">
+                                <td class="shEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell">5</td>
+                                <td class="shScheme nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2015</td>
+                                <td class="shStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="errorTxt">01/04/2015</span></td>
+                                <td class="shEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">&nbsp;</td>
+                                <td class="shUp nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2023</td>
+                                <td class="shMem nhsuk-table__cell nhsuk-u-font-size-14" role="cell">Active</td>
+                                <td class="shErc nhsuk-table__cell nhsuk-u-font-size-14" role="cell">5</td>
+                                <td class="shG nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+
+                            const shformCustom = document.getElementById('sh-table-custom-form')
+
+                            if (!shformCustom) return
+
+                            shformCustom.addEventListener('submit', function (e) {
+                                e.preventDefault() // prevent page reload
+
+                                // Get all checkbox inputs in the form
+                                const checkboxes = shformCustom.querySelectorAll('input[value="columns"]')
+
+                                checkboxes.forEach(cb => {
+                                    const shtableClass = cb.name
+                                    const shtableEls = document.getElementsByClassName(shtableClass)
+
+                                    if (!shtableEls) return
+
+                                    // Show/hide the table based on whether the checkbox is ticked
+                                    Array.from(shtableEls).forEach(el => {
+                                        el.style.display = cb.checked ? '' : 'none'
+                                    })
+                                })
+                            })
+
+                        })
+                        const toggleTableSH = document.getElementById('sh-toggle-data');
+                        const panelSH = document.getElementById('sh-panel-data');
+
+                        toggleTableSH.addEventListener('click', () => {
+                            const isOpen = panelSH.hasAttribute('hidden') === false;
+
+                            if (isOpen) {
+                                panelSH.setAttribute('hidden', '');
+                                toggleTableSH.setAttribute('aria-expanded', 'false');
+                                toggleTableSH.textContent = 'Customise data set';
+                            } else {
+                                panelSH.removeAttribute('hidden');
+                                toggleTableSH.setAttribute('aria-expanded', 'true');
+                                toggleTableSH.textContent = 'Hide customisable data';
+                            }
+                        });
+                    </script>
+                </div>
+            {% endset %}
+            {% set serviceGroupData %}
+                <!-- SERVICE GROUP -->
+                <div class="nhsuk-grid-column-one-half compareCol">
+                    <button class="nhsuk-button nhsuk-button--secondary" aria-expanded="false" aria-controls="sg-panel-data" id="sg-toggle-data">
+                        Customise data set
+                    </button>
+                    <div id="sg-panel-data" hidden>
+                        <form id="sg-table-custom-form">
+                            <div class="nhsuk-form-group">
+                            <fieldset class="nhsuk-fieldset">
+                                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                                <h2 class="nhsuk-heading-xs">
+                                    Choose which columns to display in this data set
+                                </h1>
+                                </legend>
+            
+                                <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
+                                data-module="nhsuk-checkboxes">
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="sgGrpID-checkbox" name="sgGrpID" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="sgGrpID-checkbox">
+                                    Group ID
+                                    </label>
+                                </div>
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="sgScheme-checkbox" name="sgScheme" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="sgScheme-checkbox">
+                                    Scheme code
+                                    </label>
+                                </div>
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="sgStart-checkbox" name="sgStart" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="sgStart-checkbox">
+                                    Start date
+                                    </label>
+                                </div>
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="sgEnd-checkbox" name="sgEnd" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="sgEnd-checkbox">
+                                    End date
+                                    </label>
+                                </div>
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="sgStatus-checkbox" name="sgStatus" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="sgStatus-checkbox">
+                                    Status
+                                    </label>
+                                </div>
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="sgErc-checkbox" name="sgErc" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="sgErc-checkbox">
+                                    End reason code
+                                    </label>
+                                </div>
+            
+                                </div>
+                            </fieldset>
+                            </div>
+            
+                            <button class="nhsuk-button" type="submit">Apply</button>
+                        </form>
+                    </div>
+                    <h3 class="nhsuk-heading-s">Service group</h3>
+                    <div class="nhsuk-hint nhsuk-u-font-size-14">
+                        You can scroll left and right to see all columns if the table does not fit on your screen
+                    </div>
+                    <div class="tableScrollOuter">
+                        <table class="nhsuk-table tableScroll" role="table">
+                            <thead class="nhsuk-table__head" role="rowgroup">
+                            <tr role="row">
+                                <th scope="col" class="sgGrpID nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Group ID</th>
+                                <th scope="col" class="sgScheme nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Scheme code</th>
+                                <th scope="col" class="sgStart nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Start date</th>
+                                <th scope="col" class="sgEnd nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">End date</th>
+                                <th scope="col" class="sgStatus nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Status</th>
+                                <th scope="col" class="sgErc nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">End reason code</th>
+                            </tr>
+                            </thead>
+                            <tbody class="nhsuk-table__body">
+                            <tr class="nhsuk-table__row" role="row">
+                                <td class="sgGrpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell">1</td>
+                                <td class="sgScheme nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2008</td>
+                                <td class="sgStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2013</td>
+                                <td class="sgEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">&nbsp;</td>
+                                <td class="sgStatus nhsuk-table__cell nhsuk-u-font-size-14" role="cell">Active</td>
+                                <td class="sgErc nhsuk-table__cell nhsuk-u-font-size-14" role="cell">25</td>
+                            </tr>
+                            <tr class="nhsuk-table__row" role="row">
+                                <td class="sgGrpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2</td>
+                                <td class="sgScheme nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2015</td>
+                                <td class="sgStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2015</td>
+                                <td class="sgEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">&nbsp;</td>
+                                <td class="sgStatus nhsuk-table__cell nhsuk-u-font-size-14" role="cell">Active</td>
+                                <td class="sgErc nhsuk-table__cell nhsuk-u-font-size-14" role="cell">&nbsp;</td>
+                            </tr>
+                            </tbody>
+                        </table>  
+                    </div>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+
+                            const sgFormCustom = document.getElementById('sg-table-custom-form')
+
+                            if (!sgFormCustom) return
+
+                            sgFormCustom.addEventListener('submit', function (e) {
+                                e.preventDefault() // prevent page reload
+
+                                // Get all checkbox inputs in the form
+                                const checkboxes = sgFormCustom.querySelectorAll('input[value="columns"]')
+
+                                checkboxes.forEach(cb => {
+                                    const sgTableClass = cb.name
+                                    const sgTableEls = document.getElementsByClassName(sgTableClass)
+
+                                    if (!sgTableEls) return
+
+                                    // Show/hide the table based on whether the checkbox is ticked
+                                    Array.from(sgTableEls).forEach(el => {
+                                        el.style.display = cb.checked ? '' : 'none'
+                                    })
+                                })
+                            })
+
+                        })
+                        const toggleTableSG = document.getElementById('sg-toggle-data');
+                        const panelSG = document.getElementById('sg-panel-data');
+
+                        toggleTableSG.addEventListener('click', () => {
+                            const isOpen = panelSG.hasAttribute('hidden') === false;
+
+                            if (isOpen) {
+                                panelSG.setAttribute('hidden', '');
+                                toggleTableSG.setAttribute('aria-expanded', 'false');
+                                toggleTableSG.textContent = 'Customise data set';
+                            } else {
+                                panelSG.removeAttribute('hidden');
+                                toggleTableSG.setAttribute('aria-expanded', 'true');
+                                toggleTableSG.textContent = 'Hide customisable data';
+                            }
+                        });
+                    </script>                    
+                </div>
+            {% endset %}
+            {% set employmentHistoryData %}
+                <!-- EMPLOYMENT HISTORY -->
+                <div class="nhsuk-grid-column-one-half compareCol">
+                    <button class="nhsuk-button nhsuk-button--secondary" aria-expanded="false" aria-controls="eh-panel-data" id="eh-toggle-data">
+                        Customise data set
+                    </button>
+                    <div id="eh-panel-data" hidden>
+                        <form id="eh-table-custom-form">
+                            <div class="nhsuk-form-group">
+                            <fieldset class="nhsuk-fieldset">
+                                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                                <h2 class="nhsuk-heading-xs">
+                                    Choose which columns to display in this data set
+                                </h1>
+                                </legend>
+            
+                                <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
+                                data-module="nhsuk-checkboxes">
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="ehEmpID-checkbox" name="ehEmpID" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehEmpID-checkbox">
+                                    Employment ID
+                                    </label>
+                                </div>
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="ehEmpCode-checkbox" name="ehEmpCode" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehEmpCode-checkbox">
+                                    Employer code
+                                    </label>
+                                </div>
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="ehStart-checkbox" name="ehStart" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehStart-checkbox">
+                                    Start date
+                                    </label>
+                                </div>
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="ehEnd-checkbox" name="ehEnd" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehEnd-checkbox">
+                                    End date
+                                    </label>
+                                </div>
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="ehTime-checkbox" name="ehTime" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehTime-checkbox">
+                                        Whole/part time
+                                    </label>
+                                </div>
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="ehCapCode-checkbox" name="ehCapCode" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehCapCode-checkbox">
+                                    Capacity Code
+                                    </label>
+                                </div>
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="ehEmpType-checkbox" name="ehEmpType" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehEmpType-checkbox">
+                                    Employment type
+                                    </label>
+                                </div>
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="ehActHrs-checkbox" name="ehActHrs" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehActHrs-checkbox">
+                                    Actual hours
+                                    </label>
+                                </div>
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="ehStdHrs-checkbox" name="ehStdHrs" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehStdHrs-checkbox">
+                                    Standard Hours
+                                    </label>
+                                </div>
+            
+                                </div>
+                            </fieldset>
+                            </div>
+            
+                            <button class="nhsuk-button" type="submit">Apply</button>
+                        </form>
+                    </div>
+                    <h3 class="nhsuk-heading-s">Employment history</h3>
+                    <div class="nhsuk-hint nhsuk-u-font-size-14">
+                        You can scroll left and right to see all columns if the table does not fit on your screen
+                    </div>
+                    <div class="tableScrollOuter">
+                        <table class="nhsuk-table tableScroll" role="table">
+                            <thead class="nhsuk-table__head" role="rowgroup">
+                            <tr role="row">
+                                <th scope="col" class="ehEmpID nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employment ID</th>
+                                <th scope="col" class="ehEmpCode nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employer code</th>
+                                <th scope="col" class="ehStart nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Start date</th>
+                                <th scope="col" class="ehEnd nhsuk-u-font-size-14" role="columnheader">End date</th>
+                                <th scope="col" class="ehTime nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Whole/part time</th>
+                                <th scope="col" class="ehCapCode nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Capacity code</th>
+                                <th scope="col" class="ehEmpType nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employment type</th>
+                                <th scope="col" class="ehActHrs nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Actual hours</th>
+                                <th scope="col" class="ehStdHrs nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Standard hours</th>
+                            </tr>
+                            </thead>
+                            <tbody class="nhsuk-table__body">
+                            <tr class="nhsuk-table__row" role="row">
+                                <td class="ehEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell">1</td>
+                                <td class="ehEmpCode nhsuk-table__cell nhsuk-u-font-size-14" role="cell">5266</td>
+                                <td class="ehStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2013</td>
+                                <td class="ehEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">09/11/2014</td>
+                                <td class="ehTime nhsuk-table__cell nhsuk-u-font-size-14" role="cell">Whole time</td>
+                                <td class="ehCapCode nhsuk-table__cell nhsuk-u-font-size-14" role="cell">1</td>
+                                <td class="ehEmpType nhsuk-table__cell nhsuk-u-font-size-14" role="cell">8</td>
+                                <td class="ehActHrs nhsuk-table__cell nhsuk-u-font-size-14" role="cell">&nbsp;</td>
+                                <td class="ehStdHrs nhsuk-u-font-size-14" role="cell">&nbsp;</td>
+                            </tr>
+                            <tr class="nhsuk-table__row" role="row">
+                                <td class="ehEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell">1</td>
+                                <td class="ehEmpCode nhsuk-table__cell nhsuk-u-font-size-14" role="cell">5266</td>
+                                <td class="ehStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">10/11/2014</td>
+                                <td class="ehEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2015</td>
+                                <td class="ehTime nhsuk-table__cell nhsuk-u-font-size-14" role="cell">Part time</td>
+                                <td class="ehCapCode nhsuk-table__cell nhsuk-u-font-size-14" role="cell">1</td>
+                                <td class="ehEmpType nhsuk-table__cell nhsuk-u-font-size-14" role="cell">8</td>
+                                <td class="ehActHrs nhsuk-table__cell nhsuk-u-font-size-14" role="cell">30</td>
+                                <td class="ehStdHrs nhsuk-u-font-size-14" role="cell">37.5</td>
+                            </tr>
+                            <tr class="nhsuk-table__row" role="row">
+                                <td class="ehEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2</td>
+                                <td class="ehEmpCode nhsuk-table__cell nhsuk-u-font-size-14" role="cell">5266</td>
+                                <td class="ehStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2015</td>
+                                <td class="ehEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell"></td>
+                                <td class="ehTime nhsuk-table__cell nhsuk-u-font-size-14" role="cell">Part time</td>
+                                <td class="ehCapCode nhsuk-table__cell nhsuk-u-font-size-14" role="cell">1</td>
+                                <td class="ehEmpType nhsuk-table__cell nhsuk-u-font-size-14" role="cell">8</td>
+                                <td class="ehActHrs nhsuk-table__cell nhsuk-u-font-size-14" role="cell">30</td>
+                                <td class="ehStdHrs nhsuk-u-font-size-14" role="cell">37.5</td>
+                            </tr>
+                            <tr class="nhsuk-table__row errorHighlight" id="ehError" role="row">
+                                <td class="ehEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell">-</td>
+                                <td class="ehEmpCode nhsuk-table__cell nhsuk-u-font-size-14" role="cell">-</td>
+                                <td class="ehStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">-</td>
+                                <td class="ehEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">-</td>
+                                <td class="ehTime nhsuk-table__cell nhsuk-u-font-size-14" role="cell">-</td>
+                                <td class="ehCapCode nhsuk-table__cell nhsuk-u-font-size-14" role="cell">-</td>
+                                <td class="ehEmpType nhsuk-table__cell nhsuk-u-font-size-14" role="cell">-</td>
+                                <td class="ehActHrs nhsuk-table__cell nhsuk-u-font-size-14" role="cell">-</td>
+                                <td class="ehStdHrs nhsuk-u-font-size-14" role="cell">-</td>
+                            </tr>
+                            <tr class="nhsuk-table__row errorHighlight" role="row">
+                                <td class="ehEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell">-</td>
+                                <td class="ehEmpCode nhsuk-table__cell nhsuk-u-font-size-14" role="cell">-</td>
+                                <td class="ehStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">-</td>
+                                <td class="ehEnd nhsuk-u-font-size-14" role="cell">-</td>
+                                <td class="ehTime nhsuk-table__cell nhsuk-u-font-size-14" role="cell">-</td>
+                                <td class="ehCapCode nhsuk-u-font-size-14" role="cell">-</td>
+                                <td class="ehEmpType nhsuk-table__cell nhsuk-u-font-size-14" role="cell">-</td>
+                                <td class="ehActHrs nhsuk-table__cell nhsuk-u-font-size-14" role="cell">-</td>
+                                <td class="ehStdHrs nhsuk-u-font-size-14" role="cell">-</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                        const ehFormCustom = document.getElementById('eh-table-custom-form')
+
+                        if (!ehFormCustom) return
+
+                        ehFormCustom.addEventListener('submit', function (e) {
+                            e.preventDefault() // prevent page reload
+
+                            // Get all checkbox inputs in the form
+                            const checkboxes = ehFormCustom.querySelectorAll('input[value="columns"]')
+
+                            checkboxes.forEach(cb => {
+                                const ehTableClass = cb.name
+                                const ehTableEls = document.getElementsByClassName(ehTableClass)
+
+                                if (!ehTableEls) return
+
+                                // Show/hide the table based on whether the checkbox is ticked
+                                Array.from(ehTableEls).forEach(el => {
+                                    el.style.display = cb.checked ? '' : 'none'
+                                })
+                            })
+                        })
+                        })
+                        const toggleCustomEH = document.getElementById('eh-toggle-data');
+                        const panelEH = document.getElementById('eh-panel-data');
+
+                        toggleCustomEH.addEventListener('click', () => {
+                            const isOpen = panelEH.hasAttribute('hidden') === false;
+
+                            if (isOpen) {
+                                panelEH.setAttribute('hidden', '');
+                                toggleCustomEH.setAttribute('aria-expanded', 'false');
+                                toggleCustomEH.textContent = 'Customise data set';
+                            } else {
+                                panelEH.removeAttribute('hidden');
+                                toggleCustomEH.setAttribute('aria-expanded', 'true');
+                                toggleCustomEH.textContent = 'Hide customisable data';
+                            }
+                        });
+                    </script>
+                </div>
+            {% endset %}
+            {% set contsTppData %}
+                <!-- CONTS AND TPP -->
+                <div class="nhsuk-grid-column-one-half compareCol">
+                    <button class="nhsuk-button nhsuk-button--secondary" aria-expanded="false" aria-controls="ct-panel-data" id="ct-toggle-data">
+                        Customise data set
+                    </button>
+                    <div id="ct-panel-data" hidden>
+                        <form id="ct-table-custom-form">
+                            <div class="nhsuk-form-group">
+                            <fieldset class="nhsuk-fieldset">
+                                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                                <h2 class="nhsuk-heading-xs">
+                                    Choose which columns to display in this data set
+                                </h1>
+                                </legend>
+
+                                <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
+                                data-module="nhsuk-checkboxes">
+
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="ctEmpId-checkbox" name="ctEmpId" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ctEmpId-checkbox">
+                                    Employment ID
+                                    </label>
+                                </div>
+
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="ctStart-checkbox" name="ctStart" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ctStart-checkbox">
+                                    Period start
+                                    </label>
+                                </div>
+
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="ctEnd-checkbox" name="ctEnd" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ctEnd-checkbox">
+                                    Period end
+                                    </label>
+                                </div>
+
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="ctEmpConts-checkbox" name="ctEmpConts" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ctEmpConts-checkbox">
+                                    Employee conts
+                                    </label>
+                                </div>
+
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="ctTpp-checkbox" name="ctTpp" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ctTpp-checkbox">
+                                    TPP
+                                    </label>
+                                </div>
+
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="ctEmployerConts-checkbox" name="ctEmployerConts" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ctEmployerConts-checkbox">
+                                    Employer conts
+                                    </label>
+                                </div>
+
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="ctEmpPay-checkbox" name="ctEmpPay" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ctEmpPay-checkbox">
+                                    Employer pay
+                                    </label>
+                                </div>
+
+                                </div>
+                            </fieldset>
+                            </div>
+
+                            <button class="nhsuk-button" type="submit">Apply</button>
+                        </form>
+                    </div>
+                    <h3 class="nhsuk-heading-s">Conts and TPP (Pension contributions)</h3>
+                    <div class="nhsuk-hint nhsuk-u-font-size-14">
+                        You can scroll left and right to see all columns if the table does not fit on your screen
+                    </div>
+                    <div class="tableScrollOuter">
+                        <table class="nhsuk-table tableScroll" role="table">
+                            <thead class="nhsuk-table__head" role="rowgroup">
+                            <tr role="row">
+                                <th scope="col" class="ctEmpId nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employment ID</th>
+                                <th scope="col" class="ctStart nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Period start</th>
+                                <th scope="col" class="ctEnd nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Period end</th>
+                                <th scope="col" class="ctEmpConts nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employee conts</th>
+                                <th scope="col" class="ctTpp nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">TPP</th>
+                                <th scope="col" class="ctEmployerConts nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employer conts</th>
+                                <th scope="col" class="ctEmpPay nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employer pay</th>
+                            </tr>
+                            </thead>  
+                            <tbody class="nhsuk-table__body">
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="ctEmpId nhsuk-table__cell nhsuk-u-font-size-14" role="cell">1</td>
+                                <td class="ctStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2013</td>
+                                <td class="ctEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2014</td>
+                                <td class="ctEmpConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£2758.45</td>
+                                <td class="ctTpp nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£30649.19</td>
+                                <td class="ctEmployerConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£4290.88</td>
+                                <td class="ctEmpPay nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£30649.19</td>
+                                </tr>
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="ctEmpId nhsuk-table__cell nhsuk-u-font-size-14" role="cell">1</td>
+                                <td class="ctStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2014</td>
+                                <td class="ctEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2015</td>
+                                <td class="ctEmpConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£2543.26</td>
+                                <td class="ctTpp nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£27346.81</td>
+                                <td class="ctEmployerConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£3828.55</td>
+                                <td class="ctEmpPay nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£27346.81</td>
+                                </tr>
+                            
+                                <!-- Employee 2 -->
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="ctEmpId nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2</td>
+                                <td class="ctStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2015</td>
+                                <td class="ctEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2016</td>
+                                <td class="ctEmpConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£2561.40</td>
+                                <td class="ctTpp nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£27541.88</td>
+                                <td class="ctEmployerConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£3938.50</td>
+                                <td class="ctEmpPay nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£27541.88</td>
+                                </tr>
+                            
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="ctEmpId nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2</td>
+                                <td class="ctStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2016</td>
+                                <td class="ctEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2017</td>
+                                <td class="ctEmpConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£2606.68</td>
+                                <td class="ctTpp nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£28028.77</td>
+                                <td class="ctEmployerConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£4008.11</td>
+                                <td class="ctEmpPay nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£28028.77</td>
+                                </tr>
+                            
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="ctEmpId nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2</td>
+                                <td class="ctStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2017</td>
+                                <td class="ctEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2018</td>
+                                <td class="ctEmpConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£2676.32</td>
+                                <td class="ctTpp nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£28777.58</td>
+                                <td class="ctEmployerConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£4138.22</td>
+                                <td class="ctEmpPay nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£28777.58</td>
+                                </tr>
+                            
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="ctEmpId nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2</td>
+                                <td class="ctStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2018</td>
+                                <td class="ctEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2019</td>
+                                <td class="ctEmpConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£2796.78</td>
+                                <td class="ctTpp nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£30072.69</td>
+                                <td class="ctEmployerConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£4324.45</td>
+                                <td class="ctEmpPay nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£30072.69</td>
+                                </tr>
+                            
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="ctEmpId nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2</td>
+                                <td class="ctStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2019</td>
+                                <td class="ctEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2020</td>
+                                <td class="ctEmpConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£3013.71</td>
+                                <td class="ctTpp nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£32405.39</td>
+                                <td class="ctEmployerConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£4659.89</td>
+                                <td class="ctEmpPay nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£32405.39</td>
+                                </tr>
+                            
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="ctEmpId nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2</td>
+                                <td class="ctStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2020</td>
+                                <td class="ctEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2021</td>
+                                <td class="ctEmpConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£2781.95</td>
+                                <td class="ctTpp nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£29913.84</td>
+                                <td class="ctEmployerConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£4301.60</td>
+                                <td class="ctEmpPay nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£29913.84</td>
+                                </tr>
+                            
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="ctEmpId nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2</td>
+                                <td class="ctStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2021</td>
+                                <td class="ctEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2022</td>
+                                <td class="ctEmpConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£3067.51</td>
+                                <td class="ctTpp nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£32984.12</td>
+                                <td class="ctEmployerConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£4743.11</td>
+                                <td class="ctEmpPay nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£32984.12</td>
+                                </tr>
+                            
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="ctEmpId nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2</td>
+                                <td class="ctStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2022</td>
+                                <td class="ctEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2023</td>
+                                <td class="ctEmpConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£3661.75</td>
+                                <td class="ctTpp nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£38306.89</td>
+                                <td class="ctEmployerConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£5508.53</td>
+                                <td class="ctEmpPay nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£38306.89</td>
+                                </tr>
+                            
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="ctEmpId nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2</td>
+                                <td class="ctStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2023</td>
+                                <td class="ctEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2024</td>
+                                <td class="ctEmpConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£4037.04</td>
+                                <td class="ctTpp nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£41845.03</td>
+                                <td class="ctEmployerConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£5918.68</td>
+                                <td class="ctEmpPay nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£41845.03</td>
+                                </tr>
+                            
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="ctEmpId nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2</td>
+                                <td class="ctStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2024</td>
+                                <td class="ctEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2025</td>
+                                <td class="ctEmpConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£4365.41</td>
+                                <td class="ctTpp nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£44544.90</td>
+                                <td class="ctEmployerConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£6405.55</td>
+                                <td class="ctEmpPay nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£44544.90</td>
+                                </tr>
+                            
+                                <!-- Employee 3 -->
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="ctEmpId nhsuk-table__cell nhsuk-u-font-size-14" role="cell">3</td>
+                                <td class="ctStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2015</td>
+                                <td class="ctEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2016</td>
+                                <td class="ctEmpConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£154.96</td>
+                                <td class="ctTpp nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£1666.20</td>
+                                <td class="ctEmployerConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£238.27</td>
+                                <td class="ctEmpPay nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£1666.20</td>
+                                </tr>
+                            
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="ctEmpId nhsuk-table__cell nhsuk-u-font-size-14" role="cell">3</td>
+                                <td class="ctStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2016</td>
+                                <td class="ctEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2017</td>
+                                <td class="ctEmpConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£209.97</td>
+                                <td class="ctTpp nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£2257.74</td>
+                                <td class="ctEmployerConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£322.86</td>
+                                <td class="ctEmpPay nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£2257.74</td>
+                                </tr>
+                            
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="ctEmpId nhsuk-table__cell nhsuk-u-font-size-14" role="cell">3</td>
+                                <td class="ctStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2017</td>
+                                <td class="ctEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2018</td>
+                                <td class="ctEmpConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£76.76</td>
+                                <td class="ctTpp nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£825.31</td>
+                                <td class="ctEmployerConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£118.68</td>
+                                <td class="ctEmpPay nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£825.31</td>
+                                </tr>
+                            
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="ctEmpId nhsuk-table__cell nhsuk-u-font-size-14" role="cell">3</td>
+                                <td class="ctStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2018</td>
+                                <td class="ctEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2019</td>
+                                <td class="ctEmpConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£844.37</td>
+                                <td class="ctTpp nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£9079.24</td>
+                                <td class="ctEmployerConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£1305.60</td>
+                                <td class="ctEmpPay nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£9079.24</td>
+                                </tr>
+                            
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="ctEmpId nhsuk-table__cell nhsuk-u-font-size-14" role="cell">3</td>
+                                <td class="ctStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2019</td>
+                                <td class="ctEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2020</td>
+                                <td class="ctEmpConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£1247.04</td>
+                                <td class="ctTpp nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£13409.03</td>
+                                <td class="ctEmployerConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£1928.21</td>
+                                <td class="ctEmpPay nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£13409.03</td>
+                                </tr>
+                            
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="ctEmpId nhsuk-table__cell nhsuk-u-font-size-14" role="cell">3</td>
+                                <td class="ctStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2020</td>
+                                <td class="ctEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2021</td>
+                                <td class="ctEmpConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£147.17</td>
+                                <td class="ctTpp nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£1582.42</td>
+                                <td class="ctEmployerConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£227.55</td>
+                                <td class="ctEmpPay nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£1582.42</td>
+                                </tr>
+                            
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="ctEmpId nhsuk-table__cell nhsuk-u-font-size-14" role="cell">3</td>
+                                <td class="ctStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2021</td>
+                                <td class="ctEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2022</td>
+                                <td class="ctEmpConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£755.70</td>
+                                <td class="ctTpp nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£8125.74</td>
+                                <td class="ctEmployerConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£1168.47</td>
+                                <td class="ctEmpPay nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£8125.74</td>
+                                </tr>
+                            
+                                <!-- Error row -->
+                                <tr class="nhsuk-table__row hidden-row error-row" role="row">
+                                <td class="ctEmpId nhsuk-table__cell nhsuk-u-font-size-14" role="cell">3</td>
+                                <td class="ctStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2022</td>
+                                <td class="ctEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2023</td>
+                                <td class="ctEmpConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£790.36</td>
+                                <td class="ctTpp nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£8493.61</td>
+                                <td class="ctEmployerConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£1220.25</td>
+                                <td class="ctEmpPay nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£8493.61</td>
+                                </tr>  
+                            </tbody>                                                                       
+                        </table>
+                    </div>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            const ctFormCustom = document.getElementById('ct-table-custom-form')
+
+                            if (!ctFormCustom) return
+
+                            ctFormCustom.addEventListener('submit', function (e) {
+                                e.preventDefault() // prevent page reload
+
+                                // Get all checkbox inputs in the form
+                                const checkboxes = ctFormCustom.querySelectorAll('input[value="columns"]')
+
+                                checkboxes.forEach(cb => {
+                                    const ctTableClass = cb.name
+                                    const ctTableEls = document.getElementsByClassName(ctTableClass)
+
+                                    if (!ctTableEls) return
+
+                                    // Show/hide the table based on whether the checkbox is ticked
+                                    Array.from(ctTableEls).forEach(el => {
+                                        el.style.display = cb.checked ? '' : 'none'
+                                    })
+                                })
+                            })
+                        })
+                        const toggleCustomCT = document.getElementById('ct-toggle-data');
+                        const panelCT = document.getElementById('ct-panel-data');
+
+                        toggleCustomCT.addEventListener('click', () => {
+                            const isOpen = panelCT.hasAttribute('hidden') === false;
+
+                            if (isOpen) {
+                                panelCT.setAttribute('hidden', '');
+                                toggleCustomCT.setAttribute('aria-expanded', 'false');
+                                toggleCustomCT.textContent = 'Customise data set';
+                            } else {
+                                panelCT.removeAttribute('hidden');
+                                toggleCustomCT.setAttribute('aria-expanded', 'true');
+                                toggleCustomCT.textContent = 'Hide customisable data';
+                            }
+                        });
+                    </script>
+                </div>
+            {% endset %}
+            {% set hoursHistoryData %}
+                <!-- HOURS HISTORY -->
+                <div class="nhsuk-grid-column-one-half compareCol">
+                    <button class="nhsuk-button nhsuk-button--secondary" aria-expanded="false" aria-controls="hh-panel-data" id="hh-toggle-data">
+                        Customise data set
+                    </button>
+                    <div id="hh-panel-data" hidden>
+                        <form id="hh-table-custom-form">
+                            <div class="nhsuk-form-group">
+                            <fieldset class="nhsuk-fieldset">
+                                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                                <h2 class="nhsuk-heading-xs">
+                                    Choose which columns to display in this data set
+                                </h1>
+                                </legend>
+            
+                                <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
+                                data-module="nhsuk-checkboxes">
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="hhEmpId-checkbox" name="hhEmpId" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="hhEmpId-checkbox">
+                                        Employment ID
+                                    </label>
+                                </div>
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="hhStart-checkbox" name="hhStart" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="hhStart-checkbox">
+                                        Start date
+                                    </label>
+                                </div>
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="hhEnd-checkbox" name="hhEnd" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="hhEnd-checkbox">
+                                        End date
+                                    </label>
+                                </div>
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="hhPtHrs-checkbox" name="hhPtHrs" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="hhPtHrs-checkbox">
+                                        Part time hours
+                                    </label>
+                                </div>
+            
+                                </div>
+                            </fieldset>
+                            </div>
+                            <button class="nhsuk-button" type="submit">Apply</button>
+                        </form>
+                    </div>
+                    <h3 class="nhsuk-heading-s">Hours history</h3>
+                    <div class="nhsuk-hint nhsuk-u-font-size-14">
+                        You can scroll left and right to see all columns if the table does not fit on your screen
+                    </div>
+                    <div class="tableScrollOuter">
+                        <table class="nhsuk-table tableScroll" role="table">
+                            <thead class="nhsuk-table__head">
+                            <tr role="row">
+                                <th scope="col" class="hhEmpId  nhsuk-u-font-size-14" role="columnheader">Employment ID</th>
+                                <th scope="col" class="hhStart nhsuk-u-font-size-14" role="columnheader">Start date</th>
+                                <th scope="col" class="hhEnd nhsuk-u-font-size-14" role="columnheader">End date</th>
+                                <th scope="col" class="hhPtHrs nhsuk-u-font-size-14" role="columnheader">Part time hours
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody class="nhsuk-table__body">
+
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="hhEmpId nhsuk-table__cell nhsuk-u-font-size-14">1</td>
+                                <td class="hhStart nhsuk-table__cell nhsuk-u-font-size-14">10/11/2014</td>
+                                <td class="hhEnd nhsuk-table__cell nhsuk-u-font-size-14">31/03/2015</td>
+                                <td class="hhPtHrs nhsuk-table__cell nhsuk-u-font-size-14">613</td>
+                                </tr>
+                            
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="hhEmpId nhsuk-table__cell nhsuk-u-font-size-14">2</td>
+                                <td class="hhStart nhsuk-table__cell nhsuk-u-font-size-14">01/04/2015</td>
+                                <td class="hhEnd nhsuk-table__cell nhsuk-u-font-size-14">31/03/2016</td>
+                                <td class="hhPtHrs nhsuk-table__cell nhsuk-u-font-size-14">1574</td>
+                                </tr>
+                            
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="hhEmpId nhsuk-table__cell nhsuk-u-font-size-14">2</td>
+                                <td class="hhStart nhsuk-table__cell nhsuk-u-font-size-14">01/04/2016</td>
+                                <td class="hhEnd nhsuk-table__cell nhsuk-u-font-size-14">31/03/2017</td>
+                                <td class="hhPtHrs nhsuk-table__cell nhsuk-u-font-size-14">1596</td>
+                                </tr>
+                            
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="hhEmpId nhsuk-table__cell nhsuk-u-font-size-14">2</td>
+                                <td class="hhStart nhsuk-table__cell nhsuk-u-font-size-14">01/04/2017</td>
+                                <td class="hhEnd nhsuk-table__cell nhsuk-u-font-size-14">31/03/2018</td>
+                                <td class="hhPtHrs nhsuk-table__cell nhsuk-u-font-size-14">1574</td>
+                                </tr>
+                            
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="hhEmpId nhsuk-table__cell nhsuk-u-font-size-14">2</td>
+                                <td class="hhStart nhsuk-table__cell nhsuk-u-font-size-14">01/04/2018</td>
+                                <td class="hhEnd nhsuk-table__cell nhsuk-u-font-size-14">31/03/2019</td>
+                                <td class="hhPtHrs nhsuk-table__cell nhsuk-u-font-size-14">1564</td>
+                                </tr>
+                            
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="hhEmpId nhsuk-table__cell nhsuk-u-font-size-14">2</td>
+                                <td class="hhStart nhsuk-table__cell nhsuk-u-font-size-14">01/04/2019</td>
+                                <td class="hhEnd nhsuk-table__cell nhsuk-u-font-size-14">31/03/2020</td>
+                                <td class="hhPtHrs nhsuk-table__cell nhsuk-u-font-size-14">1620</td>
+                                </tr>
+                            
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="hhEmpId nhsuk-table__cell nhsuk-u-font-size-14">2</td>
+                                <td class="hhStart nhsuk-table__cell nhsuk-u-font-size-14">01/04/2020</td>
+                                <td class="hhEnd nhsuk-table__cell nhsuk-u-font-size-14">31/03/2021</td>
+                                <td class="hhPtHrs nhsuk-table__cell nhsuk-u-font-size-14">1799</td>
+                                </tr>
+                            
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="hhEmpId nhsuk-table__cell nhsuk-u-font-size-14">2</td>
+                                <td class="hhStart nhsuk-table__cell nhsuk-u-font-size-14">01/04/2021</td>
+                                <td class="hhEnd nhsuk-table__cell nhsuk-u-font-size-14">31/03/2022</td>
+                                <td class="hhPtHrs nhsuk-table__cell nhsuk-u-font-size-14">1762</td>
+                                </tr>
+                            
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="hhEmpId nhsuk-table__cell nhsuk-u-font-size-14">2</td>
+                                <td class="hhStart nhsuk-table__cell nhsuk-u-font-size-14">01/04/2022</td>
+                                <td class="hhEnd nhsuk-table__cell nhsuk-u-font-size-14">31/03/2023</td>
+                                <td class="hhPtHrs nhsuk-table__cell nhsuk-u-font-size-14">1799</td>
+                                </tr>
+                            
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="hhEmpId nhsuk-table__cell nhsuk-u-font-size-14">2</td>
+                                <td class="hhStart nhsuk-table__cell nhsuk-u-font-size-14">01/04/2023</td>
+                                <td class="hhEnd nhsuk-table__cell nhsuk-u-font-size-14">31/03/2024</td>
+                                <td class="hhPtHrs nhsuk-table__cell nhsuk-u-font-size-14">1799</td>
+                                </tr>
+                            
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="hhEmpId nhsuk-table__cell nhsuk-u-font-size-14">2</td>
+                                <td class="hhStart nhsuk-table__cell nhsuk-u-font-size-14">01/04/2024</td>
+                                <td class="hhEnd nhsuk-table__cell nhsuk-u-font-size-14">31/03/2025</td>
+                                <td class="hhPtHrs nhsuk-table__cell nhsuk-u-font-size-14">1799</td>
+                                </tr>
+                            
+                                <!-- Employment ID = 3 group -->
+                            
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="hhEmpId nhsuk-table__cell nhsuk-u-font-size-14">3</td>
+                                <td class="hhStart nhsuk-table__cell nhsuk-u-font-size-14">01/04/2015</td>
+                                <td class="hhEnd nhsuk-table__cell nhsuk-u-font-size-14">31/03/2016</td>
+                                <td class="hhPtHrs nhsuk-table__cell nhsuk-u-font-size-14">82</td>
+                                </tr>
+                            
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="hhEmpId nhsuk-table__cell nhsuk-u-font-size-14">3</td>
+                                <td class="hhStart nhsuk-table__cell nhsuk-u-font-size-14">01/04/2016</td>
+                                <td class="hhEnd nhsuk-table__cell nhsuk-u-font-size-14">31/03/2017</td>
+                                <td class="hhPtHrs nhsuk-table__cell nhsuk-u-font-size-14">103</td>
+                                </tr>
+                            
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="hhEmpId nhsuk-table__cell nhsuk-u-font-size-14">3</td>
+                                <td class="hhStart nhsuk-table__cell nhsuk-u-font-size-14">01/04/2017</td>
+                                <td class="hhEnd nhsuk-table__cell nhsuk-u-font-size-14">31/03/2018</td>
+                                <td class="hhPtHrs nhsuk-table__cell nhsuk-u-font-size-14">38</td>
+                                </tr>
+                            
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="hhEmpId nhsuk-table__cell nhsuk-u-font-size-14">3</td>
+                                <td class="hhStart nhsuk-table__cell nhsuk-u-font-size-14">01/04/2018</td>
+                                <td class="hhEnd nhsuk-table__cell nhsuk-u-font-size-14">31/03/2019</td>
+                                <td class="hhPtHrs nhsuk-table__cell nhsuk-u-font-size-14">357</td>
+                                </tr>
+                            
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="hhEmpId nhsuk-table__cell nhsuk-u-font-size-14">3</td>
+                                <td class="hhStart nhsuk-table__cell nhsuk-u-font-size-14">01/04/2019</td>
+                                <td class="hhEnd nhsuk-table__cell nhsuk-u-font-size-14">31/03/2020</td>
+                                <td class="hhPtHrs nhsuk-table__cell nhsuk-u-font-size-14">177</td>
+                                </tr>
+                            
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="hhEmpId nhsuk-table__cell nhsuk-u-font-size-14">3</td>
+                                <td class="hhStart nhsuk-table__cell nhsuk-u-font-size-14">01/04/2020</td>
+                                <td class="hhEnd nhsuk-table__cell nhsuk-u-font-size-14">31/03/2021</td>
+                                <td class="hhPtHrs nhsuk-table__cell nhsuk-u-font-size-14">53</td>
+                                </tr>
+                            
+                                <tr class="nhsuk-table__row hidden-row" role="row">
+                                <td class="hhEmpId nhsuk-table__cell nhsuk-u-font-size-14">3</td>
+                                <td class="hhStart nhsuk-table__cell nhsuk-u-font-size-14">01/04/2021</td>
+                                <td class="hhEnd nhsuk-table__cell nhsuk-u-font-size-14">31/03/2022</td>
+                                <td class="hhPtHrs nhsuk-table__cell nhsuk-u-font-size-14">193</td>
+                                </tr>
+                            
+                                <tr class="nhsuk-table__row errorHighlight" id="hrsError" role="row">
+                                <td class="hhEmpId nhsuk-table__cell nhsuk-u-font-size-14">
+                                    <span class="errorTxt">3</span>
+                                </td>
+                                <td class="hhStart nhsuk-table__cell nhsuk-u-font-size-14">
+                                    01/04/2022
+                                </td>
+                                <td class="hhEnd nhsuk-table__cell nhsuk-u-font-size-14">
+                                    31/03/2023
+                                </td>
+                                <td class="hhPtHrs nhsuk-table__cell nhsuk-u-font-size-14">
+                                    156
+                                </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                        const hhFormCustom = document.getElementById('hh-table-custom-form')
+
+                        if (!hhFormCustom) return
+
+                        hhFormCustom.addEventListener('submit', function (e) {
+                            e.preventDefault() // prevent page reload
+
+                            // Get all checkbox inputs in the form
+                            const checkboxes = hhFormCustom.querySelectorAll('input[value="columns"]')
+
+                            checkboxes.forEach(cb => {
+                                const hhTableClass = cb.name
+                                const hhTableEls = document.getElementsByClassName(hhTableClass)
+
+                                if (!hhTableEls) return
+
+                                // Show/hide the table based on whether the checkbox is ticked
+                                Array.from(hhTableEls).forEach(el => {
+                                    el.style.display = cb.checked ? '' : 'none'
+                                })
+                            })
+                        })
+                        })
+                        const toggleCustomHH = document.getElementById('hh-toggle-data');
+                        const panelHH = document.getElementById('hh-panel-data');
+
+                        toggleCustomHH.addEventListener('click', () => {
+                            const isOpen = panelHH.hasAttribute('hidden') === false;
+
+                            if (isOpen) {
+                                panelHH.setAttribute('hidden', '');
+                                toggleCustomHH.setAttribute('aria-expanded', 'false');
+                                toggleCustomHH.textContent = 'Customise data set';
+                            } else {
+                                panelHH.removeAttribute('hidden');
+                                toggleCustomHH.setAttribute('aria-expanded', 'true');
+                                toggleCustomHH.textContent = 'Hide customisable data';
+                            }
+                        });
+                    </script>
+                </div>
+            {% endset %}
+            {% set linkedEmploymentData %}
+                <!-- LINKED EMPLOYMENTS -->
+                <div class="nhsuk-grid-column-one-half compareCol">
+                    <button class="nhsuk-button nhsuk-button--secondary" aria-expanded="false" aria-controls="le-panel-data" id="le-toggle-data">
+                        Customise data set
+                    </button>
+                    <div id="le-panel-data" hidden>
+                        <form id="le-table-custom-form">
+                            <div class="nhsuk-form-group">
+                            <fieldset class="nhsuk-fieldset">
+                                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                                <h2 class="nhsuk-heading-xs">
+                                    Choose which columns to display in this data set
+                                </h1>
+                                </legend>
+            
+                                <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
+                                data-module="nhsuk-checkboxes">
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="lePre-checkbox" name="lePre" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="lePre-checkbox">
+                                        Pre-remedy employment ID
+                                    </label>
+                                </div>
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="leRem-checkbox" name="leRem" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="leRem-checkbox">
+                                        Remedy employment ID
+                                    </label>
+                                </div>
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="lePost-checkbox" name="lePost" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="lePost-checkbox">
+                                        Post-remedy employment ID
+                                    </label>
+                                </div>
+            
+                                </div>
+                            </fieldset>
+                            </div>
+                            <button class="nhsuk-button" type="submit">Apply</button>
+                        </form>
+                    </div>
+                    <h3 class="nhsuk-heading-s">Linked employment</h3>
+                    <div class="nhsuk-hint nhsuk-u-font-size-14">
+                        You can scroll left and right to see all columns if the table does not fit on your screen
+                    </div>
+                    <div class="tableScrollOuter">
+                        <table class="nhsuk-table tableScroll" role="table">
+                        
+                            <thead class="nhsuk-table__head" role="rowgroup">
+                                <tr role="row">
+                                    <th scope="col" class="lePre nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">
+                                        Pre-remedy employment ID
+                                    </th>
+                                    <th scope="col" class="leRem nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">
+                                        Remedy employment ID
+                                    </th>
+                                    <th scope="col" class="lePost nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">
+                                        Post-remedy employment ID
+                                    </th>
+                                </tr>
+                            </thead>
+                        
+                            <tbody class="nhsuk-table__body">
+                                <tr class="nhsuk-table__row" role="row">
+                                    <td class="lePre nhsuk-table__cell nhsuk-u-font-size-14" role="cell">1</td>
+                                    <td class="leRem nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2</td>
+                                    <td class="lePost nhsuk-table__cell nhsuk-u-font-size-14" role="cell"></td>
+                                </tr>
+                                <tr class="nhsuk-table__row" role="row">
+                                    <td class="lePre nhsuk-table__cell nhsuk-u-font-size-14" role="cell">3</td>
+                                    <td class="leRem nhsuk-table__cell nhsuk-u-font-size-14" role="cell">5</td>
+                                    <td class="lePost nhsuk-table__cell nhsuk-u-font-size-14" role="cell"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                        const leFormCustom = document.getElementById('le-table-custom-form')
+
+                        if (!leFormCustom) return
+
+                        leFormCustom.addEventListener('submit', function (e) {
+                            e.preventDefault() // prevent page reload
+
+                            // Get all checkbox inputs in the form
+                            const checkboxes = leFormCustom.querySelectorAll('input[value="columns"]')
+
+                            checkboxes.forEach(cb => {
+                                const leTableClass = cb.name
+                                const leTableEls = document.getElementsByClassName(leTableClass)
+
+                                if (!leTableEls) return
+
+                                // Show/hide the table based on whether the checkbox is ticked
+                                Array.from(leTableEls).forEach(el => {
+                                    el.style.display = cb.checked ? '' : 'none'
+                                })
+                            })
+                        })
+                        })
+                        const toggleCustomLE = document.getElementById('le-toggle-data');
+                        const panelLE = document.getElementById('le-panel-data');
+
+                        toggleCustomLE.addEventListener('click', () => {
+                            const isOpen = panelLE.hasAttribute('hidden') === false;
+
+                            if (isOpen) {
+                                panelLE.setAttribute('hidden', '');
+                                toggleCustomLE.setAttribute('aria-expanded', 'false');
+                                toggleCustomLE.textContent = 'Customise data set';
+                            } else {
+                                panelLE.removeAttribute('hidden');
+                                toggleCustomLE.setAttribute('aria-expanded', 'true');
+                                toggleCustomLE.textContent = 'Hide customisable data';
+                            }
+                        });
+                    </script>
+                </div>
+            {% endset %}
+
+            {% if data['serviceHistory'] | length > 0 and data['employmentHistory'] | length > 0 %}
+                {{ serviceHistoryData | safe }}
+                {{ employmentHistoryData | safe }}
+            {% elif data['serviceHistory'] | length > 0  and  data['serviceGroup'] | length > 0 %}
+                {{ serviceGroupData | safe }}
+                {{ serviceHistoryData | safe }}
+            {% elif data['serviceHistory'] | length > 0  and  data['contsTpp'] | length > 0 %}
+                {{ serviceHistoryData | safe }}
+                {{ contsTppData | safe }}
+            {% elif data['serviceHistory'] | length > 0  and  data['hoursHistory'] | length > 0 %}
+                {{ serviceHistoryData | safe }}
+                {{ hoursHistoryData | safe }}
+            {% elif data['serviceHistory'] | length > 0  and  data['linkedEmployment'] | length > 0 %}
+                {{ serviceHistoryData | safe }}
+                {{ linkedEmploymentData | safe }}
+            {% elif data['serviceGroup'] | length > 0  and data['employmentHistory'] | length > 0 %}
+                {{ serviceGroupData | safe }}
+                {{ employmentHistoryData | safe }}
+            {% elif data['serviceGroup'] | length > 0  and  data['contsTpp'] | length > 0 %}
+                {{ serviceGroupData | safe }}
+                {{ contsTppData | safe }}
+            {% elif data['serviceGroup'] | length > 0  and  data['hoursHistory'] | length > 0 %}
+                {{ serviceGroupData | safe }}
+                {{ hoursHistoryData | safe }}
+            {% elif data['serviceGroup'] | length > 0  and  data['linkedEmployment'] | length > 0 %}
+                {{ serviceGroupData | safe }}
+                {{ linkedEmploymentData | safe }}
+            {% elif data['employmentHistory'] | length > 0  and  data['contsTpp'] | length > 0 %}
+                {{ employmentHistoryData | safe }}
+                {{ contsTppData | safe }}
+            {% elif data['employmentHistory'] | length > 0  and  data['hoursHistory'] | length > 0 %}
+                {{ employmentHistoryData | safe }}
+                {{ hoursHistoryData | safe }}
+            {% elif data['employmentHistory'] | length > 0  and  data['linkedEmployment'] | length > 0 %}
+                {{ employmentHistoryData | safe }}
+                {{ linkedEmploymentData | safe }}
+            {% elif data['contsTpp'] | length > 0  and  data['hoursHistory'] | length > 0 %}
+                {{ contsTppData | safe }}
+                {{ hoursHistoryData | safe }}
+            {% elif data['contsTpp'] | length > 0  and  data['linkedEmployment'] | length > 0 %}
+                {{ contsTppData | safe }}
+                {{ linkedEmploymentData | safe }}
+            {% elif data['hoursHistory'] | length > 0  and  data['linkedEmployment'] | length > 0 %}
+                {{ hoursHistoryData | safe }}
+                {{ linkedEmploymentData | safe }}
+            {% else %}
+                <div class="nhsuk-grid-column-one-half compareCol">
+                    NO DATA SETS SELECTED
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

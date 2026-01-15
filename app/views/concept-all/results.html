@@ -1,0 +1,1150 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "John Smith"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+        <span class="nhsuk-caption-l">Member Details</span>
+        <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">{{pageTitle}}</h1>
+    
+        <div class="nhsuk-grid-row">
+          <div class="nhsuk-grid-column-one-half">
+            {{ summaryList({
+            rows: [
+            {
+            key: {
+            text: "Member number"
+            },
+            value: {
+            text: "12345678"
+            }
+            },
+            {
+            key: {
+            text: "NI number"
+            },
+            value: {
+            text: "QQ 12 34 45 D"
+            }
+            },
+            {
+            key: {
+            text: "Scheme"
+            },
+            value: {
+            html: "2015 Scheme"
+            }
+            }
+            ]
+            }) }}
+          </div>
+          <div class="nhsuk-grid-column-one-half">
+            {{ summaryList({
+            rows: [
+            {
+            key: {
+            text: "Date of birth (Age)"
+            },
+            value: {
+            text: "18 September 1959 (66year 02month)"
+            }
+            },
+            {
+            key: {
+            text: "Status"
+            },
+            value: {
+            html: "Active"
+            }
+            },
+            {
+            key: {
+            text: "Email"
+            },
+            value: {
+            html: 'john.smith@email.com'
+            }
+            }
+            ]
+            }) }}
+          </div>
+        </div>
+    
+        <!-- ****************
+            OVERVIEW
+          ***************** -->
+    
+        {% set notifyHtml %}
+        <p>
+          <b>8 validation issues</b> have been found for member 12345678
+        </p>
+        {% endset %}
+    
+        {{ insetText({
+        html: notifyHtml
+        }) }}
+    
+    
+        <h2>Core member data sets</h2>
+        <div class="nhsuk-hint" id="example-with-hint-text-hint">
+            <p>These data sets show core member details from Compendia. You can cross-reference them in one view.</p>
+            <p>Any issues are highlighted and must be fixed before the case can be processed.</p>
+        </div>
+
+        <button class="nhsuk-button nhsuk-button--secondary" aria-expanded="false" aria-controls="compare-panel" id="compare-toggle">
+          Compare data sets
+        </button>
+
+        <button class="nhsuk-button nhsuk-button--secondary" aria-expanded="false" aria-controls="filters-panel" id="filters-toggle">
+          Show filters
+        </button>
+    
+        <div id="compare-panel" hidden>
+            <form id="compare-form" action="/{{folder}}/results" method="post" >
+              <div class="nhsuk-form-group compareGroup">
+                <fieldset class="nhsuk-fieldset">
+                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                        <h1 class="nhsuk-fieldset__heading">
+                            Choose which two data sets you would like to compare
+                        </h1>
+                  </legend>
+                  <div id="checkboxError" class="error nhsuk-error-message" style="display:none; color:#d5281b; margin-top:10px;">
+                      <span class="nhsuk-u-visually-hidden">Error:</span> You can select a maximum of 2 options.
+                  </div>
+            
+                  <div class="nhsuk-checkboxes compareCheckboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter" data-module="nhsuk-checkboxes">
+            
+                    <div class="nhsuk-checkboxes__item">
+                        <input class="nhsuk-checkboxes__input compareCheckboxes__input" id="contsTpp-checkbox" name="contsTpp" type="checkbox" value="contsTpp" >
+                        <label class="nhsuk-label nhsuk-checkboxes__label" for="contsTpp-checkbox">
+                          Conts &amp; TPP
+                        </label>
+                    </div>
+            
+                    <div class="nhsuk-checkboxes__item">
+                      <input class="nhsuk-checkboxes__input compareCheckboxes__input" id="employmentHistory-checkbox" name="employmentHistory" type="checkbox" value="employmentHistory" >
+                      <label class="nhsuk-label nhsuk-checkboxes__label" for="employmentHistory-checkbox">
+                        Employment History
+                      </label>
+                    </div>
+            
+                    <div class="nhsuk-checkboxes__item">
+                      <input class="nhsuk-checkboxes__input compareCheckboxes__input" id="hoursHistory-checkbox" name="hoursHistory" type="checkbox" value="hoursHistory" >
+                      <label class="nhsuk-label nhsuk-checkboxes__label" for="hoursHistory-checkbox">
+                        Hours history
+                      </label>
+                    </div>
+            
+                    <div class="nhsuk-checkboxes__item">
+                      <input class="nhsuk-checkboxes__input compareCheckboxes__input" id="linkedEmployment-checkbox" name="linkedEmployment" type="checkbox" value="linkedEmployment" >
+                      <label class="nhsuk-label nhsuk-checkboxes__label" for="linkedEmployment-checkbox">
+                        Linked employment
+                      </label>
+                    </div>
+            
+                    <div class="nhsuk-checkboxes__item">
+                      <input class="nhsuk-checkboxes__input compareCheckboxes__input" id="serviceGroup-checkbox" name="serviceGroup" type="checkbox" value="serviceGroup" >
+                      <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceGroup-checkbox">
+                        Service group
+                      </label>
+                    </div>
+    
+                    <div class="nhsuk-checkboxes__item">
+                      <input class="nhsuk-checkboxes__input compareCheckboxes__input" id="serviceHistory-checkbox" name="serviceHistory" type="checkbox" value="serviceHistory" >
+                      <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceHistory-checkbox">
+                        Service history
+                      </label>
+                    </div>
+            
+                  </div>
+                </fieldset>
+              </div>
+            
+                <button class="nhsuk-button" data-module="nhsuk-button" type="submit">Compare</button> 
+            </form>
+        </div>
+
+        <div id="filters-panel" hidden>
+          <form id="table-selector-form">
+            <div class="nhsuk-form-group">
+              <fieldset class="nhsuk-fieldset">
+                  <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                      <h1 class="nhsuk-fieldset__heading">
+                          Choose which data sets to display
+                      </h1>
+                </legend>
+          
+                <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter" data-module="nhsuk-checkboxes">
+          
+                  <div class="nhsuk-checkboxes__item">
+                      <input class="nhsuk-checkboxes__input" id="contsTppFtr-checkbox" name="tables" type="checkbox" value="contsTppFtr" checked>
+                      <label class="nhsuk-label nhsuk-checkboxes__label" for="contsTppFtr-checkbox">
+                        Conts &amp; TPP
+                      </label>
+                  </div>
+          
+                  <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input" id="employmentHistoryFtr-checkbox" name="tables" type="checkbox" value="employmentHistoryFtr" checked>
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="employmentHistoryFtr-checkbox">
+                      Employment History
+                    </label>
+                  </div>
+          
+                  <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input" id="hoursHistoryFtr-checkbox" name="tables" type="checkbox" value="hoursHistoryFtr" checked>
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="hoursHistoryFtr-checkbox">
+                      Hours history
+                    </label>
+                  </div>
+          
+                  <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input" id="linkedEmploymentFtr-checkbox" name="tables" type="checkbox" value="linkedEmploymentFtr" checked>
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="linkedEmploymentFtr-checkbox">
+                      Linked employment
+                    </label>
+                  </div>
+          
+                  <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input" id="serviceGroupFtr-checkbox" name="tables" type="checkbox" value="serviceGroupFtr" checked>
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceGroupFtr-checkbox">
+                      Service group
+                    </label>
+                  </div>
+
+                  <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input" id="serviceHistoryFtr-checkbox" name="tables" type="checkbox" value="serviceHistoryFtr" checked>
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceHistoryFtr-checkbox">
+                      Service history
+                    </label>
+                  </div>
+          
+                </div>
+              </fieldset>
+            </div>
+          
+            <button class="nhsuk-button" type="submit">Apply filters</button>
+          </form>
+        </div>
+        
+
+       <!-- ****************
+        SERVICE HISTORY
+      ***************** -->
+
+      <details class="nhsuk-details nhsuk-expander" id="serviceHistoryFtr">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Service history 
+          </span>
+          <strong class="nhsuk-tag nhsuk-tag--red">
+            4 issues found
+          </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <div class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="nhsuk-error-summary">
+                <h2 class="nhsuk-error-summary__title" id="error-summary-title">
+                  Issues found
+                </h2>
+                <div class="nhsuk-error-summary__body">
+                  <p>There are 4 issues in the service history table. They must be fixed before the record can be processed.</p>
+                  <ul class="nhsuk-list nhsuk-error-summary__list" role="list">
+                    <li> <a href="#shError">Employment ID 3 and employment ID 5 cannot start on the same day</a></li>
+                    <li> <a href="#shError">Employment ID 3 end date missing</a></li>
+                    <li> <a href="#shError">Employment ID 3 update date incorrect</a></li>
+                    <li> <a href="#shError">Employment ID 5 start date incorrect</a></li>
+                  </ul>
+                </div>
+            </div>
+            <button class="nhsuk-button nhsuk-button--secondary" aria-expanded="false" aria-controls="sh-panel-data" id="sh-toggle-data">
+                Customise data set
+            </button>
+            <div id="sh-panel-data" hidden>
+                <form id="sh-table-custom-form">
+                    <div class="nhsuk-form-group">
+                    <fieldset class="nhsuk-fieldset">
+                        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                        <h2 class="nhsuk-heading-xs">
+                            Choose which columns to display in this data set
+                        </h1>
+                        </legend>
+
+                        <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
+                        data-module="nhsuk-checkboxes">
+
+                        <div class="nhsuk-checkboxes__item">
+                            <input class="nhsuk-checkboxes__input" id="shEmpID-checkbox" name="shEmpID" type="checkbox"
+                            value="columns" checked>
+                            <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="shEmpID-checkbox">
+                            Employment ID
+                            </label>
+                        </div>
+
+                        <div class="nhsuk-checkboxes__item">
+                            <input class="nhsuk-checkboxes__input" id="shScheme-checkbox" name="shScheme" type="checkbox"
+                            value="columns" checked>
+                            <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="shScheme-checkbox">
+                            Scheme
+                            </label>
+                        </div>
+
+                        <div class="nhsuk-checkboxes__item">
+                            <input class="nhsuk-checkboxes__input" id="shStart-checkbox" name="shStart" type="checkbox"
+                            value="columns" checked>
+                            <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="shStart-checkbox">
+                            Start date
+                            </label>
+                        </div>
+
+                        <div class="nhsuk-checkboxes__item">
+                            <input class="nhsuk-checkboxes__input" id="shEnd-checkbox" name="shEnd" type="checkbox"
+                            value="columns" checked>
+                            <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="shEnd-checkbox">
+                            End date
+                            </label>
+                        </div>
+
+                        <div class="nhsuk-checkboxes__item">
+                            <input class="nhsuk-checkboxes__input" id="shUp-checkbox" name="shUp" type="checkbox"
+                            value="columns" checked>
+                            <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="shUp-checkbox">
+                            Updated
+                            </label>
+                        </div>
+
+                        <div class="nhsuk-checkboxes__item">
+                            <input class="nhsuk-checkboxes__input" id="shMem-checkbox" name="shMem" type="checkbox"
+                            value="columns" checked>
+                            <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="shMem-checkbox">
+                            Member status
+                            </label>
+                        </div>
+
+                        <div class="nhsuk-checkboxes__item">
+                            <input class="nhsuk-checkboxes__input" id="shErc-checkbox" name="shErc" type="checkbox"
+                            value="columns" checked>
+                            <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="shErc-checkbox">
+                            End reason code
+                            </label>
+                        </div>
+
+                        <div class="nhsuk-checkboxes__item">
+                            <input class="nhsuk-checkboxes__input" id="shG-checkbox" name="shG" type="checkbox"
+                            value="columns" checked>
+                            <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="shG-checkbox">
+                            Group
+                            </label>
+                        </div>
+
+                        </div>
+                    </fieldset>
+                    </div>
+
+                    <button class="nhsuk-button" type="submit">Apply</button>
+                </form>
+            </div>
+            <table class="nhsuk-table" role="table">
+              <thead class="nhsuk-table__head" role="rowgroup">
+              <tr role="row">
+              <th scope="col" aria-sort="none" class="shEmpID nhsuk-table__header nhsuk-u-font-size-14 sortable" data-sort-type="date" tabindex="0" role="columnheader">
+                Employment ID
+                <span class="sort-icon sort-icon--default">
+                  <!-- Double arrow SVG -->
+                  <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
+                    <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
+                  </svg>
+                </span>
+                <span class="sort-icon sort-icon--asc">
+                  <!-- Ascending SVG -->
+                  <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.5625 15.5L11 6.63125L15.4375 15.5H6.5625Z" fill="currentColor"></path>
+                  </svg>
+                </span>
+                <span class="sort-icon sort-icon--desc">
+                  <!-- Descending SVG -->
+                  <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.4375 7L11 15.8687L6.5625 7L15.4375 7Z" fill="currentColor"></path>
+                  </svg>
+                </span>
+              </th>
+              <th scope="col" class="shScheme nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Scheme code</th>
+              <th scope="col" aria-sort="none" class="shStart nhsuk-table__header nhsuk-u-font-size-14 sortable" data-sort-type="date" tabindex="0" role="columnheader">
+                Start date
+                <span class="sort-icon sort-icon--default">
+                  <!-- Double arrow SVG -->
+                  <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
+                    <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
+                  </svg>
+                </span>
+                <span class="sort-icon sort-icon--asc">
+                  <!-- Ascending SVG -->
+                  <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.5625 15.5L11 6.63125L15.4375 15.5H6.5625Z" fill="currentColor"></path>
+                  </svg>
+                </span>
+                <span class="sort-icon sort-icon--desc">
+                  <!-- Descending SVG -->
+                  <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.4375 7L11 15.8687L6.5625 7L15.4375 7Z" fill="currentColor"></path>
+                  </svg>
+                </span>
+              </th>
+              <th scope="col" aria-sort="none" class="shEnd nhsuk-table__header nhsuk-u-font-size-14 sortable" data-sort-type="date" tabindex="0" role="columnheader">
+                End date
+                <span class="sort-icon sort-icon--default">
+                  <!-- Double arrow SVG -->
+                  <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
+                    <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
+                  </svg>
+                </span>
+                <span class="sort-icon sort-icon--asc">
+                  <!-- Ascending SVG -->
+                  <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.5625 15.5L11 6.63125L15.4375 15.5H6.5625Z" fill="currentColor"></path>
+                  </svg>
+                </span>
+                <span class="sort-icon sort-icon--desc">
+                  <!-- Descending SVG -->
+                  <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.4375 7L11 15.8687L6.5625 7L15.4375 7Z" fill="currentColor"></path>
+                  </svg>
+                </span>
+              </th>
+              <th scope="col" aria-sort="none" class="shUp nhsuk-table__header nhsuk-u-font-size-14 sortable" data-sort-type="date" tabindex="0" role="columnheader">
+                Updated
+                <span class="sort-icon sort-icon--default">
+                  <!-- Double arrow SVG -->
+                  <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
+                    <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
+                  </svg>
+                </span>
+                <span class="sort-icon sort-icon--asc">
+                  <!-- Ascending SVG -->
+                  <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.5625 15.5L11 6.63125L15.4375 15.5H6.5625Z" fill="currentColor"></path>
+                  </svg>
+                </span>
+                <span class="sort-icon sort-icon--desc">
+                  <!-- Descending SVG -->
+                  <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.4375 7L11 15.8687L6.5625 7L15.4375 7Z" fill="currentColor"></path>
+                  </svg>
+                </span>
+              </th>
+              <th scope="col" class="shMem nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Member status</th>
+              <th scope="col" class="shErc nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">End reason code</th>
+              <th scope="col" class="shG nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Group</th>
+              </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+              <tr class="nhsuk-table__row" role="row">
+              <td class="shEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell">1</td>
+              <td class="shScheme nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2008</td>
+              <td class="shStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2013</td>
+              <td class="shEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2015</td>
+              <td class="shUp nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2015</td>
+              <td class="shMem nhsuk-table__cell nhsuk-u-font-size-14" role="cell">Active</td>
+              <td class="shErc nhsuk-table__cell nhsuk-u-font-size-14" role="cell">15</td>
+              <td class="shG nhsuk-table__cell nhsuk-u-font-size-14" role="cell">1</td>
+              </tr>
+              <tr class="nhsuk-table__row" role="row">
+              <td class="shEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2</td>
+              <td class="shScheme nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2015</td>
+              <td class="shStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2015</td>
+              <td class="shEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">&nbsp;</td>
+              <td class="shUp nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2025</td>
+              <td class="shMem nhsuk-table__cell nhsuk-u-font-size-14" role="cell">Active</td>
+              <td class="shErc nhsuk-table__cell nhsuk-u-font-size-14" role="cell">5</td>
+              <td class="shG nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2</td>
+              </tr>
+              <tr class="nhsuk-table__row errorHighlight" id="shError" role="row">
+              <td class="shEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell">3</td>
+              <td class="shScheme nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2015</td>
+              <td class="shStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="errorTxt">01/04/2015</span></td>
+              <td class="shEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">-</td>
+              <td class="shUp nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="errorTxt">31/03/2023</span></td>
+              <td class="shMem nhsuk-table__cell nhsuk-u-font-size-14" role="cell">Active</td>
+              <td class="shErc nhsuk-table__cell nhsuk-u-font-size-14" role="cell">5</td>
+              <td class="shG nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2</td>
+              </tr>
+              <tr class="nhsuk-table__row errorHighlight" role="row">
+              <td class="shEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell">5</td>
+              <td class="shScheme nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2015</td>
+              <td class="shStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="errorTxt">01/04/2015</span></td>
+              <td class="shEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">&nbsp;</td>
+              <td class="shUp nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2023</td>
+              <td class="shMem nhsuk-table__cell nhsuk-u-font-size-14" role="cell">Active</td>
+              <td class="shErc nhsuk-table__cell nhsuk-u-font-size-14" role="cell">5</td>
+              <td class="shG nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2</td>
+              </tr>
+          </tbody>
+      </table>
+        </div>
+      </details>
+
+      <!-- ****************
+          SERVICE GROUP
+        ***************** -->
+
+      <details class="nhsuk-details nhsuk-expander" id="serviceGroupFtr">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Service group
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+            <button class="nhsuk-button nhsuk-button--secondary" aria-expanded="false" aria-controls="sg-panel-data" id="sg-toggle-data">
+                Customise data set
+            </button>
+            <div id="sg-panel-data" hidden>
+                <form id="sg-table-custom-form">
+                    <div class="nhsuk-form-group">
+                    <fieldset class="nhsuk-fieldset">
+                        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                        <h2 class="nhsuk-heading-xs">
+                            Choose which columns to display in this data set
+                        </h1>
+                        </legend>
+
+                        <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
+                        data-module="nhsuk-checkboxes">
+
+                        <div class="nhsuk-checkboxes__item">
+                            <input class="nhsuk-checkboxes__input" id="sgGrpID-checkbox" name="sgGrpID" type="checkbox"
+                            value="columns" checked>
+                            <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="sgGrpID-checkbox">
+                            Group ID
+                            </label>
+                        </div>
+
+                        <div class="nhsuk-checkboxes__item">
+                            <input class="nhsuk-checkboxes__input" id="sgScheme-checkbox" name="sgScheme" type="checkbox"
+                            value="columns" checked>
+                            <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="sgScheme-checkbox">
+                            Scheme code
+                            </label>
+                        </div>
+
+                        <div class="nhsuk-checkboxes__item">
+                            <input class="nhsuk-checkboxes__input" id="sgStart-checkbox" name="sgStart" type="checkbox"
+                            value="columns" checked>
+                            <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="sgStart-checkbox">
+                            Start date
+                            </label>
+                        </div>
+
+                        <div class="nhsuk-checkboxes__item">
+                            <input class="nhsuk-checkboxes__input" id="sgEnd-checkbox" name="sgEnd" type="checkbox"
+                            value="columns" checked>
+                            <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="sgEnd-checkbox">
+                            End date
+                            </label>
+                        </div>
+
+                        <div class="nhsuk-checkboxes__item">
+                            <input class="nhsuk-checkboxes__input" id="sgStatus-checkbox" name="sgStatus" type="checkbox"
+                            value="columns" checked>
+                            <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="sgStatus-checkbox">
+                            Status
+                            </label>
+                        </div>
+
+                        <div class="nhsuk-checkboxes__item">
+                            <input class="nhsuk-checkboxes__input" id="sgErc-checkbox" name="sgErc" type="checkbox"
+                            value="columns" checked>
+                            <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="sgErc-checkbox">
+                            End reason code
+                            </label>
+                        </div>
+
+                        </div>
+                    </fieldset>
+                    </div>
+
+                    <button class="nhsuk-button" type="submit">Apply</button>
+                </form>
+            </div>
+            <table class="nhsuk-table" role="table">
+                <thead class="nhsuk-table__head" role="rowgroup">
+                <tr role="row">
+                    <th scope="col" class="sgGrpID nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Group ID</th>
+                    <th scope="col" class="sgScheme nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Scheme code</th>
+                    <th scope="col" aria-sort="none" class="sgStart nhsuk-table__header nhsuk-u-font-size-14 sortable" data-sort-type="date" tabindex="0" role="columnheader">
+                        Start date
+                        <span class="sort-icon sort-icon--default">
+                          <!-- Double arrow SVG -->
+                          <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
+                            <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
+                          </svg>
+                        </span>
+                        <span class="sort-icon sort-icon--asc">
+                          <!-- Ascending SVG -->
+                          <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.5625 15.5L11 6.63125L15.4375 15.5H6.5625Z" fill="currentColor"></path>
+                          </svg>
+                        </span>
+                        <span class="sort-icon sort-icon--desc">
+                          <!-- Descending SVG -->
+                          <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.4375 7L11 15.8687L6.5625 7L15.4375 7Z" fill="currentColor"></path>
+                          </svg>
+                        </span>
+                    </th>
+                    <th scope="col" aria-sort="none" class="sgEnd nhsuk-table__header nhsuk-u-font-size-14 sortable" data-sort-type="date" tabindex="0" role="columnheader">
+                        End date
+                        <span class="sort-icon sort-icon--default">
+                          <!-- Double arrow SVG -->
+                          <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
+                            <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
+                          </svg>
+                        </span>
+                        <span class="sort-icon sort-icon--asc">
+                          <!-- Ascending SVG -->
+                          <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.5625 15.5L11 6.63125L15.4375 15.5H6.5625Z" fill="currentColor"></path>
+                          </svg>
+                        </span>
+                        <span class="sort-icon sort-icon--desc">
+                          <!-- Descending SVG -->
+                          <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.4375 7L11 15.8687L6.5625 7L15.4375 7Z" fill="currentColor"></path>
+                          </svg>
+                        </span>
+                    </th>
+                    <th scope="col" class="sgStatus nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Status</th>
+                    <th scope="col" class="sgErc nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">End reason code</th>
+                </tr>
+                </thead>
+                <tbody class="nhsuk-table__body">
+                <tr class="nhsuk-table__row" role="row">
+                    <td class="sgGrpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell">1</td>
+                    <td class="sgScheme nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2008</td>
+                    <td class="sgStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2013</td>
+                    <td class="sgEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">&nbsp;</td>
+                    <td class="sgStatus nhsuk-table__cell nhsuk-u-font-size-14" role="cell">Active</td>
+                    <td class="sgErc nhsuk-table__cell nhsuk-u-font-size-14" role="cell">25</td>
+                </tr>
+                <tr class="nhsuk-table__row" role="row">
+                    <td class="sgGrpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2</td>
+                    <td class="sgScheme nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2015</td>
+                    <td class="sgStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2015</td>
+                    <td class="sgEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">&nbsp;</td>
+                    <td class="sgStatus nhsuk-table__cell nhsuk-u-font-size-14" role="cell">Active</td>
+                    <td class="sgErc nhsuk-table__cell nhsuk-u-font-size-14" role="cell">&nbsp;</td>
+                </tr>
+                </tbody>
+            </table>  
+        </div>
+      </details>
+
+    <!-- ****************
+        EMPLOYMENT HISTORY
+      ***************** -->
+
+      <details class="nhsuk-details nhsuk-expander" id="employmentHistoryFtr">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Employment history
+          </span>
+          <strong class="nhsuk-tag nhsuk-tag--red">
+            2 issues found
+          </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <div class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="nhsuk-error-summary">
+                <h2 class="nhsuk-error-summary__title" id="error-summary-title">
+                  Issues found
+                </h2>
+                <div class="nhsuk-error-summary__body">
+                  <p>There are 2 issues in the employment history table. They must be fixed before the record can be processed. </p>
+                  <ul class="nhsuk-list nhsuk-error-summary__list" role="list">
+                    <li> <a href="#ehError">Employment ID 3 must appear in both service history and employment history</a></li>
+                    <li> <a href="#ehError">Employment ID 5 must appear in both service history and employment history</a></li>
+                  </ul>
+                </div>
+            </div>
+            <button class="nhsuk-button nhsuk-button--secondary" aria-expanded="false" aria-controls="eh-panel-data" id="eh-toggle-data">
+                Customise data set
+            </button>
+            <div id="eh-panel-data" hidden>
+                <form id="eh-table-custom-form">
+                    <div class="nhsuk-form-group">
+                    <fieldset class="nhsuk-fieldset">
+                        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                        <h2 class="nhsuk-heading-xs">
+                            Choose which columns to display in this data set
+                        </h1>
+                        </legend>
+    
+                        <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
+                        data-module="nhsuk-checkboxes">
+    
+                        <div class="nhsuk-checkboxes__item">
+                            <input class="nhsuk-checkboxes__input" id="ehEmpID-checkbox" name="ehEmpID" type="checkbox"
+                            value="columns" checked>
+                            <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehEmpID-checkbox">
+                            Employment ID
+                            </label>
+                        </div>
+    
+                        <div class="nhsuk-checkboxes__item">
+                            <input class="nhsuk-checkboxes__input" id="ehEmpCode-checkbox" name="ehEmpCode" type="checkbox"
+                            value="columns" checked>
+                            <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehEmpCode-checkbox">
+                            Employer code
+                            </label>
+                        </div>
+    
+                        <div class="nhsuk-checkboxes__item">
+                            <input class="nhsuk-checkboxes__input" id="ehStart-checkbox" name="ehStart" type="checkbox"
+                            value="columns" checked>
+                            <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehStart-checkbox">
+                            Start date
+                            </label>
+                        </div>
+    
+                        <div class="nhsuk-checkboxes__item">
+                            <input class="nhsuk-checkboxes__input" id="ehEnd-checkbox" name="ehEnd" type="checkbox"
+                            value="columns" checked>
+                            <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehEnd-checkbox">
+                            End date
+                            </label>
+                        </div>
+    
+                        <div class="nhsuk-checkboxes__item">
+                            <input class="nhsuk-checkboxes__input" id="ehTime-checkbox" name="ehTime" type="checkbox"
+                            value="columns" checked>
+                            <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehTime-checkbox">
+                                Whole/part time
+                            </label>
+                        </div>
+    
+                        <div class="nhsuk-checkboxes__item">
+                            <input class="nhsuk-checkboxes__input" id="ehCapCode-checkbox" name="ehCapCode" type="checkbox"
+                            value="columns" checked>
+                            <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehCapCode-checkbox">
+                            Capacity Code
+                            </label>
+                        </div>
+    
+                        <div class="nhsuk-checkboxes__item">
+                            <input class="nhsuk-checkboxes__input" id="ehEmpType-checkbox" name="ehEmpType" type="checkbox"
+                            value="columns" checked>
+                            <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehEmpType-checkbox">
+                            Employment type
+                            </label>
+                        </div>
+    
+                        <div class="nhsuk-checkboxes__item">
+                            <input class="nhsuk-checkboxes__input" id="ehActHrs-checkbox" name="ehActHrs" type="checkbox"
+                            value="columns" checked>
+                            <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehActHrs-checkbox">
+                            Actual hours
+                            </label>
+                        </div>
+    
+                        <div class="nhsuk-checkboxes__item">
+                            <input class="nhsuk-checkboxes__input" id="ehStdHrs-checkbox" name="ehStdHrs" type="checkbox"
+                            value="columns" checked>
+                            <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehStdHrs-checkbox">
+                            Standard Hours
+                            </label>
+                        </div>
+    
+                        </div>
+                    </fieldset>
+                    </div>
+    
+                    <button class="nhsuk-button" type="submit">Apply</button>
+                </form>
+            </div>
+            <table class="nhsuk-table" role="table">
+              <thead class="nhsuk-table__head" role="rowgroup">
+              <tr role="row">
+                  <th scope="col" aria-sort="none" class="ehEmpID nhsuk-table__header nhsuk-u-font-size-14 sortable" data-sort-type="date" tabindex="0" role="columnheader">
+                    Employment ID
+                    <span class="sort-icon sort-icon--default">
+                      <!-- Double arrow SVG -->
+                      <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
+                        <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
+                      </svg>
+                    </span>
+                    <span class="sort-icon sort-icon--asc">
+                      <!-- Ascending SVG -->
+                      <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.5625 15.5L11 6.63125L15.4375 15.5H6.5625Z" fill="currentColor"></path>
+                      </svg>
+                    </span>
+                    <span class="sort-icon sort-icon--desc">
+                      <!-- Descending SVG -->
+                      <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.4375 7L11 15.8687L6.5625 7L15.4375 7Z" fill="currentColor"></path>
+                      </svg>
+                    </span>
+                </th>
+                  <th scope="col" class="ehEmpCode nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employer code</th>
+                  <th scope="col" aria-sort="none" class="ehStart nhsuk-table__header nhsuk-u-font-size-14 sortable" data-sort-type="date" tabindex="0" role="columnheader">
+                    Start date
+                    <span class="sort-icon sort-icon--default">
+                      <!-- Double arrow SVG -->
+                      <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
+                        <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
+                      </svg>
+                    </span>
+                    <span class="sort-icon sort-icon--asc">
+                      <!-- Ascending SVG -->
+                      <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.5625 15.5L11 6.63125L15.4375 15.5H6.5625Z" fill="currentColor"></path>
+                      </svg>
+                    </span>
+                    <span class="sort-icon sort-icon--desc">
+                      <!-- Descending SVG -->
+                      <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.4375 7L11 15.8687L6.5625 7L15.4375 7Z" fill="currentColor"></path>
+                      </svg>
+                    </span>
+                </th>
+                <th scope="col" aria-sort="none" class="ehEnd nhsuk-u-font-size-14 sortable" data-sort-type="date" tabindex="0" role="columnheader">
+                    End date
+                    <span class="sort-icon sort-icon--default">
+                      <!-- Double arrow SVG -->
+                      <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
+                        <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
+                      </svg>
+                    </span>
+                    <span class="sort-icon sort-icon--asc">
+                      <!-- Ascending SVG -->
+                      <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.5625 15.5L11 6.63125L15.4375 15.5H6.5625Z" fill="currentColor"></path>
+                      </svg>
+                    </span>
+                    <span class="sort-icon sort-icon--desc">
+                      <!-- Descending SVG -->
+                      <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.4375 7L11 15.8687L6.5625 7L15.4375 7Z" fill="currentColor"></path>
+                      </svg>
+                    </span>
+                </th>
+                  <th scope="col" class="ehTime nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Whole/part time</th>
+                  <th scope="col" class="ehCapCode nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Capacity code</th>
+                  <th scope="col" class="ehEmpType nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employment type</th>
+                  <th scope="col" class="ehActHrs nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Actual hours</th>
+                  <th scope="col" class="ehStdHrs nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Standard hours</th>
+              </tr>
+              </thead>
+              <tbody class="nhsuk-table__body">
+              <tr class="nhsuk-table__row" role="row">
+                  <td class="ehEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell">1</td>
+                  <td class="ehEmpCode nhsuk-table__cell nhsuk-u-font-size-14" role="cell">5266</td>
+                  <td class="ehStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2013</td>
+                  <td class="ehEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">09/11/2014</td>
+                  <td class="ehTime nhsuk-table__cell nhsuk-u-font-size-14" role="cell">Whole time</td>
+                  <td class="ehCapCode nhsuk-table__cell nhsuk-u-font-size-14" role="cell">1</td>
+                  <td class="ehEmpType nhsuk-table__cell nhsuk-u-font-size-14" role="cell">8</td>
+                  <td class="ehActHrs nhsuk-table__cell nhsuk-u-font-size-14" role="cell">&nbsp;</td>
+                  <td class="ehStdHrs nhsuk-u-font-size-14" role="cell">&nbsp;</td>
+              </tr>
+              <tr class="nhsuk-table__row" role="row">
+                  <td class="ehEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell">1</td>
+                  <td class="ehEmpCode nhsuk-table__cell nhsuk-u-font-size-14" role="cell">5266</td>
+                  <td class="ehStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">10/11/2014</td>
+                  <td class="ehEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2015</td>
+                  <td class="ehTime nhsuk-table__cell nhsuk-u-font-size-14" role="cell">Part time</td>
+                  <td class="ehCapCode nhsuk-table__cell nhsuk-u-font-size-14" role="cell">1</td>
+                  <td class="ehEmpType nhsuk-table__cell nhsuk-u-font-size-14" role="cell">8</td>
+                  <td class="ehActHrs nhsuk-table__cell nhsuk-u-font-size-14" role="cell">30</td>
+                  <td class="ehStdHrs nhsuk-u-font-size-14" role="cell">37.5</td>
+              </tr>
+              <tr class="nhsuk-table__row" role="row">
+                  <td class="ehEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2</td>
+                  <td class="ehEmpCode nhsuk-table__cell nhsuk-u-font-size-14" role="cell">5266</td>
+                  <td class="ehStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2015</td>
+                  <td class="ehEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell"></td>
+                  <td class="ehTime nhsuk-table__cell nhsuk-u-font-size-14" role="cell">Part time</td>
+                  <td class="ehCapCode nhsuk-table__cell nhsuk-u-font-size-14" role="cell">1</td>
+                  <td class="ehEmpType nhsuk-table__cell nhsuk-u-font-size-14" role="cell">8</td>
+                  <td class="ehActHrs nhsuk-table__cell nhsuk-u-font-size-14" role="cell">30</td>
+                  <td class="ehStdHrs nhsuk-u-font-size-14" role="cell">37.5</td>
+              </tr>
+              <tr class="nhsuk-table__row errorHighlight" id="ehError" role="row">
+                  <td class="ehEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell">-</td>
+                  <td class="ehEmpCode nhsuk-table__cell nhsuk-u-font-size-14" role="cell">-</td>
+                  <td class="ehStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">-</td>
+                  <td class="ehEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">-</td>
+                  <td class="ehTime nhsuk-table__cell nhsuk-u-font-size-14" role="cell">-</td>
+                  <td class="ehCapCode nhsuk-table__cell nhsuk-u-font-size-14" role="cell">-</td>
+                  <td class="ehEmpType nhsuk-table__cell nhsuk-u-font-size-14" role="cell">-</td>
+                  <td class="ehActHrs nhsuk-table__cell nhsuk-u-font-size-14" role="cell">-</td>
+                  <td class="ehStdHrs nhsuk-u-font-size-14" role="cell">-</td>
+              </tr>
+              <tr class="nhsuk-table__row errorHighlight" role="row">
+                  <td class="ehEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell">-</td>
+                  <td class="ehEmpCode nhsuk-table__cell nhsuk-u-font-size-14" role="cell">-</td>
+                  <td class="ehStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">-</td>
+                  <td class="ehEnd nhsuk-u-font-size-14" role="cell">-</td>
+                  <td class="ehTime nhsuk-table__cell nhsuk-u-font-size-14" role="cell">-</td>
+                  <td class="ehCapCode nhsuk-u-font-size-14" role="cell">-</td>
+                  <td class="ehEmpType nhsuk-table__cell nhsuk-u-font-size-14" role="cell">-</td>
+                  <td class="ehActHrs nhsuk-table__cell nhsuk-u-font-size-14" role="cell">-</td>
+                  <td class="ehStdHrs nhsuk-u-font-size-14" role="cell">-</td>
+              </tr>
+              </tbody>
+          </table>
+        </div>
+      </details>
+
+        <!-- ****************
+        PENSION CONTRIBUTIONS
+        ***************** -->
+        <details class="nhsuk-details nhsuk-expander" id="contsTppFtr">
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                    Conts &amp; TPP (Pension contributions)
+                </span>
+                <strong class="nhsuk-tag nhsuk-tag--red">
+                    1 issue found
+                </strong>
+            </summary>
+            <div class="nhsuk-details__text">
+                <div class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1"
+                    data-module="nhsuk-error-summary">
+                    <h2 class="nhsuk-error-summary__title" id="error-summary-title">
+                        Issue found
+                    </h2>
+                    <div class="nhsuk-error-summary__body">
+                        <p>There is 1 issue in the pension contributions table. They must be fixed before the record can
+                            be processed. </p>
+                        <ul class="nhsuk-list nhsuk-error-summary__list" role="list">
+                            <li> <a href="#contsError">Employment ID 3 must appear in both service history and
+                                    employment history</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <button id="toggleBtnCT" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">Hide
+                    correct
+                    rows</button>
+                <table id="tableCT" class="nhsuk-table-responsive" role="table"></table>
+                <nav id="paginationCT" class="nhsuk-pagination nhsuk-pagination--numbered" role="navigation"
+                    aria-label="Table pagination"></nav>
+            </div>
+        </details>
+
+        <!-- ****************
+        HOURS HISTORY
+        ***************** -->
+
+        <details class="nhsuk-details nhsuk-expander" id="hoursHistoryFtr">
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                    Hours history
+                </span>
+                <strong class="nhsuk-tag nhsuk-tag--red">
+                    1 issue found
+                </strong>
+            </summary>
+            <div class="nhsuk-details__text">
+                <div class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1"
+                    data-module="nhsuk-error-summary">
+                    <h2 class="nhsuk-error-summary__title" id="error-summary-title">
+                        Issue found
+                    </h2>
+                    <div class="nhsuk-error-summary__body">
+                        <p>There is 1 issue in the hours history table. It must be fixed before the record can be
+                            processed.</p>
+                        <ul class="nhsuk-list nhsuk-error-summary__list" role="list">
+                            <li> <a href="#hrsError">Employment ID 3 must appear in both service history and employment
+                                    history</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <button id="toggleBtnHH" class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button">Hide
+                    correct
+                    rows</button>
+                <table id="tableHH" class="nhsuk-table-responsive" role="table"></table>
+                <nav id="paginationHH" class="nhsuk-pagination nhsuk-pagination--numbered" role="navigation"
+                    aria-label="Table pagination"></nav>
+            </div>
+        </details>
+
+        <!-- ****************
+        LINKED EMPLOYMENT
+        ***************** -->
+
+
+        <details class="nhsuk-details nhsuk-expander" id="linkedEmploymentFtr">
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                    Linked employment
+                </span>
+            </summary>
+            <div class="nhsuk-details__text">
+                <button class="nhsuk-button nhsuk-button--secondary" aria-expanded="false" aria-controls="le-panel-data" id="le-toggle-data">
+                    Customise data set
+                </button>
+                <div id="le-panel-data" hidden>
+                    <form id="le-table-custom-form">
+                        <div class="nhsuk-form-group">
+                        <fieldset class="nhsuk-fieldset">
+                            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                            <h2 class="nhsuk-heading-xs">
+                                Choose which columns to display in this data set
+                            </h1>
+                            </legend>
+        
+                            <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
+                            data-module="nhsuk-checkboxes">
+        
+                            <div class="nhsuk-checkboxes__item">
+                                <input class="nhsuk-checkboxes__input" id="lePre-checkbox" name="lePre" type="checkbox"
+                                value="columns" checked>
+                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="lePre-checkbox">
+                                    Pre-remedy employment ID
+                                </label>
+                            </div>
+        
+                            <div class="nhsuk-checkboxes__item">
+                                <input class="nhsuk-checkboxes__input" id="leRem-checkbox" name="leRem" type="checkbox"
+                                value="columns" checked>
+                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="leRem-checkbox">
+                                    Remedy employment ID
+                                </label>
+                            </div>
+        
+                            <div class="nhsuk-checkboxes__item">
+                                <input class="nhsuk-checkboxes__input" id="lePost-checkbox" name="lePost" type="checkbox"
+                                value="columns" checked>
+                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="lePost-checkbox">
+                                    Post-remedy employment ID
+                                </label>
+                            </div>
+        
+                            </div>
+                        </fieldset>
+                        </div>
+                        <button class="nhsuk-button" type="submit">Apply</button>
+                    </form>
+                </div>
+                <table class="nhsuk-table" role="table">
+                    <thead class="nhsuk-table__head" role="rowgroup">
+                        <tr role="row">
+                            <th scope="col" class="lePre nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">
+                                Pre-remedy employment ID
+                            </th>
+                            <th scope="col" class="leRem nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">
+                                Remedy employment ID
+                            </th>
+                            <th scope="col" class="lePost nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">
+                                Post-remedy employment ID
+                            </th>
+                        </tr>
+                    </thead>
+                
+                    <tbody class="nhsuk-table__body">
+                        <tr class="nhsuk-table__row" role="row">
+                            <td class="lePre nhsuk-table__cell nhsuk-u-font-size-14" role="cell">1</td>
+                            <td class="leRem nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2</td>
+                            <td class="lePost nhsuk-table__cell nhsuk-u-font-size-14" role="cell"></td>
+                        </tr>
+                        <tr class="nhsuk-table__row" role="row">
+                            <td class="lePre nhsuk-table__cell nhsuk-u-font-size-14" role="cell">3</td>
+                            <td class="leRem nhsuk-table__cell nhsuk-u-font-size-14" role="cell">5</td>
+                            <td class="lePost nhsuk-table__cell nhsuk-u-font-size-14" role="cell"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </details>
+
+    </div>
+</div>
+
+<script src="/js/concept-all.js"></script>
+<script src="/js/toggle-pagination.js"></script>
+<script>
+    // ------------ Datasets located in HTML ------------
+    const datasetCT = [
+        { empId: '1', start: '01/04/2013', end: '31/03/2014', empConts: '£2758.45', tpp: '£30649.19', employerConts: '£4290.88', empPay: '£30649.19' },
+        { empId: '1', start: '01/04/2014', end: '31/03/2015', empConts: '£2543.26', tpp: '£27346.81', employerConts: '£3828.55', empPay: '£27346.81' },
+        { empId: '2', start: '01/04/2015', end: '31/03/2016', empConts: '£2561.40', tpp: '£27541.88', employerConts: '£3938.50', empPay: '£27541.88' },
+        { empId: '2', start: '01/04/2016', end: '31/03/2017', empConts: '£2606.68', tpp: '£28028.77', employerConts: '£4008.11', empPay: '£28028.77' },
+        { empId: '2', start: '01/04/2017', end: '31/03/2018', empConts: '£2676.32', tpp: '£28777.58', employerConts: '£4138.22', empPay: '£28777.58' },
+        { empId: '2', start: '01/04/2018', end: '31/03/2019', empConts: '£2796.78', tpp: '£30072.69', employerConts: '£4324.45', empPay: '£30072.69' },
+        { empId: '2', start: '01/04/2019', end: '31/03/2020', empConts: '£3013.71', tpp: '£32405.39', employerConts: '£4659.89', empPay: '£32405.39' },
+        { empId: '2', start: '01/04/2020', end: '31/03/2021', empConts: '£2781.95', tpp: '£29913.84', employerConts: '£4301.60', empPay: '£29913.84' },
+        { empId: '2', start: '01/04/2021', end: '31/03/2022', empConts: '£3067.51', tpp: '£32984.12', employerConts: '£4743.11', empPay: '£32984.12' },
+        { empId: '2', start: '01/04/2022', end: '31/03/2023', empConts: '£3661.75', tpp: '£38306.89', employerConts: '£5508.53', empPay: '£38306.89' },
+        { empId: '2', start: '01/04/2023', end: '31/03/2024', empConts: '£4037.04', tpp: '£41845.03', employerConts: '£5918.68', empPay: '£41845.03' },
+        { empId: '2', start: '01/04/2024', end: '31/03/2025', empConts: '£4365.41', tpp: '£44544.90', employerConts: '£6405.55', empPay: '£44544.90' },
+        { empId: '3', start: '01/04/2015', end: '31/03/2016', empConts: '£154.96', tpp: '£1666.20', employerConts: '£238.27', empPay: '£1666.20' },
+        { empId: '3', start: '01/04/2016', end: '31/03/2017', empConts: '£209.97', tpp: '£2257.74', employerConts: '£322.86', empPay: '£2257.74' },
+        { empId: '3', start: '01/04/2017', end: '31/03/2018', empConts: '£76.76', tpp: '£825.31', employerConts: '£118.68', empPay: '£825.31' },
+        { empId: '3', start: '01/04/2018', end: '31/03/2019', empConts: '£844.37', tpp: '£9079.24', employerConts: '£1305.60', empPay: '£9079.24' },
+        { empId: '3', start: '01/04/2019', end: '31/03/2020', empConts: '£1247.04', tpp: '£13409.03', employerConts: '£1928.21', empPay: '£13409.03' },
+        { empId: '3', start: '01/04/2020', end: '31/03/2021', empConts: '£147.17', tpp: '£1582.42', employerConts: '£227.55', empPay: '£1582.42' },
+        { empId: '3', start: '01/04/2021', end: '31/03/2022', empConts: '£755.70', tpp: '£8125.74', employerConts: '£1168.47', empPay: '£8125.74' },
+        { empId: '3', start: '01/04/2022', end: '31/03/2023', empConts: '£496.26', tpp: '£5063.88', employerConts: '£730.11', empPay: '£5063.88', rowClass: 'errorHighlight' }
+    ];
+
+    const columnTitlesCT = {
+        empId: 'Employment ID',
+        start: 'Period start',
+        end: 'Period end',
+        empConts: 'Employee conts',
+        tpp: 'TPP',
+        employerConts: 'Employer conts',
+        empPay: 'Employer pay'
+    };
+
+    const datasetHH = [
+        { empId: '1', start: '10/11/2014', end: '31/03/2015', ptHrs: '613' },
+        { empId: '2', start: '01/04/2015', end: '31/03/2016', ptHrs: '1574' },
+        { empId: '2', start: '01/04/2016', end: '31/03/2017', ptHrs: '1596' },
+        { empId: '2', start: '01/04/2017', end: '31/03/2018', ptHrs: '1574' },
+        { empId: '2', start: '01/04/2018', end: '31/03/2019', ptHrs: '1564' },
+        { empId: '2', start: '01/04/2019', end: '31/03/2020', ptHrs: '1620' },
+        { empId: '2', start: '01/04/2020', end: '31/03/2021', ptHrs: '1799' },
+        { empId: '2', start: '01/04/2021', end: '31/03/2022', ptHrs: '1762' },
+        { empId: '2', start: '01/04/2022', end: '31/03/2023', ptHrs: '1799' },
+        { empId: '2', start: '01/04/2023', end: '31/03/2024', ptHrs: '1799' },
+        { empId: '2', start: '01/04/2024', end: '31/03/2025', ptHrs: '1799' },
+        { empId: '3', start: '01/04/2015', end: '31/03/2016', ptHrs: '82' },
+        { empId: '3', start: '01/04/2016', end: '31/03/2017', ptHrs: '103' },
+        { empId: '3', start: '01/04/2017', end: '31/03/2018', ptHrs: '38' },
+        { empId: '3', start: '01/04/2018', end: '31/03/2019', ptHrs: '357' },
+        { empId: '3', start: '01/04/2019', end: '31/03/2020', ptHrs: '177' },
+        { empId: '3', start: '01/04/2020', end: '31/03/2021', ptHrs: '53' },
+        { empId: '3', start: '01/04/2021', end: '31/03/2022', ptHrs: '193' },
+        { empId: '3', start: '01/04/2022', end: '31/03/2023', ptHrs: '£5063.88', rowClass: 'errorHighlight' }
+    ];
+
+    const columnTitlesHH = {
+        empId: 'Employment ID',
+        start: 'Start date',
+        end: 'End date',
+        ptHrs: 'Part time hours'
+    };
+
+    // ------------ Instantiate managers (from tables.js) ------------
+    const tableCT = createTableManager("tableCT", "paginationCT", "toggleBtnCT");
+    const tableHH = createTableManager("tableHH", "paginationHH", "toggleBtnHH");
+
+    // ------------ Load datasets into tables ------------
+    tableCT.load(datasetCT, columnTitlesCT);
+    tableHH.load(datasetHH, columnTitlesHH);
+</script>
+
+
+{% endblock %}
