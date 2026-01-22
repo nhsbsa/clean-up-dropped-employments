@@ -1,5 +1,4 @@
 {% extends 'layout.html' %}
-{% set hideBack ="true"%}
 
 {% block pageTitle %}
 Your cookie settings have been saved - {{serviceName}}
@@ -11,17 +10,19 @@ Your cookie settings have been saved - {{serviceName}}
 
   <div class="nhsuk-grid-column-two-thirds">
 
-    <h1>Your cookie settings have been saved</h1>
+    <h1 class="nhsuk-heading-l">Your cookie settings have been saved</h1>
+    <p>We'll save your settings for three months</p>
 
-    <p>We'll save your settings for a year.</p>
     <p>We'll ask you if you're still OK with us using cookies when either:</p>
-    <ul>
-        <li>it's been a year since you last saved your settings</li>
-        <li>we add any new cookies or change the cookies we use</li>
+    
+    <ul class="nhsuk-list nhsuk-list--bullet">
+      <li>it's been three months since you last saved your settings</li>
+      <li>we add any new cookies or change the cookies we use</li>
     </ul>
-    <p>You can also change your settings at any time using our <a
-            href="cookie-information">cookies page</a>.</p>
-    <p>Select 'Continue' to go back to the page you were looking at.</p>
+    
+    <p>You can also choose which cookies we use at any time.</p>
+    
+    <p>Select continue to go back to the page you were looking at.</p>
 
     <a class="nhsuk-button" href="/mvp/search">
         Continue
