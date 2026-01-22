@@ -17,18 +17,18 @@
 {% block header %}
   {%- from 'cookie-banner/macro.njk' import cookieBanner %}
   {{ cookieBanner({
-       policyUrl: "/mvp/cookies",
+       policyUrl: "/mvp/cookie-information",
        linkText: "read more about our cookies",
        cookieBannerHeading: "Cookies on Identify record issues",
        cookieBannerContent: [
           "We have put some small files called cookies on your device to make our site work.", 
           "We would also like to use analytics cookies. These send anonymous information about how our site is used to a service called Google Analytics. We use this information to improve our site.",
-          "Let us know if this is OK. We will use a cookie to save your choice across all our digital services for the next 3 calendar months. You can <a href=\"/mvp/cookies\">read more about our cookies</a> before you choose."],
+          "Let us know if this is OK. We will use a cookie to save your choice across all our digital services for the next 3 calendar months. You can <a href=\"/mvp/cookie-information\">read more about our cookies</a> before you choose."],
        okButtonText: "I'm OK with analytics cookies",
        notOkButtonText: "Do not use analytics cookies",
        successBannerMessage: "Cookie preferences - {{bannerSuccessHref}}",
        successLinkText: "Click here",
-       bannerSuccessHref: "/mvp/cookies",
+       bannerSuccessHref: "/mvp/cookie-information",
        cookieVersion: 1
     }) }}
 
@@ -111,7 +111,7 @@
           text: "Privacy policy"
         },
         {
-          href: "/mvp/cookies",
+          href: "/mvp/cookie-information",
           text: "Cookies"
         },
         {
