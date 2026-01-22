@@ -1,0 +1,123 @@
+{% extends 'layout.html' %}
+{% set hideBack ="true"%}
+
+{% block pageTitle %}
+Cookies on {{serviceName}}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+
+  <div class="nhsuk-grid-column-two-thirds">
+    <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-6">Cookies on the NHSBSA website</h1>
+
+    <h2 class="nhsuk-heading-m">What are cookies?</h2>
+    <p>Cookies are files saved on your phone, tablet or computer when you visit a website.</p>
+    <p>They store information about how you use the website, such as the pages you visit.</p>
+    <p>We use 2 types of cookie. You can choose which cookies you are happy for us to use.</p>
+
+    <h2 class="nhsuk-heading-m">How we use cookies</h2>
+    <p>We use these essential cookies to make our website work. They include:</p>
+    <ul>
+      <li>make our website work, for example by keeping it secure</li>
+      <li>remember your progress through a form (for example a licence application)</li>
+      <li>allow you to return to a previous page in your journey through the service</li>
+      <li>store your cookie consent choices</li>
+    </ul>
+
+    <details class="nhsuk-details">
+      <summary class="nhsuk-details__summary">
+        <span class="nhsuk-details__summary-text">
+          List of cookies that make our website work
+        </span>
+      </summary>
+      <div class="nhsuk-details__text">
+
+
+
+        <table class="nhsuk-table">
+          <thead class="nhsuk-table__head">
+            <tr>
+              <th scope="col" class="nhsuk-table__header">Name</th>
+              <th scope="col" class="nhsuk-table__header">Purpose</th>
+              <th scope="col" class="nhsuk-table__header">Expires</th>
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+            <tr class="nhsuk-table__row">
+
+              <td class="nhsuk-table__cell">_csrf</td>
+
+              <td class="nhsuk-table__cell">Helps protect your session and forms from Cross-Site Request Forgery (CSRF)
+                attacks. This cookie stores a unique token that must match the token submitted with forms or API
+                requests.</td>
+
+              <td class="nhsuk-table__cell">30 minutes</td>
+            </tr>
+            <tr class="nhsuk-table__row">
+
+              <td class="nhsuk-table__cell">nhsuk-cookie-consent</td>
+
+              <td class="nhsuk-table__cell">Tracks your journey through the site.</td>
+
+              <td class="nhsuk-table__cell">3 months</td>
+            </tr>
+            <tr class="nhsuk-table__row">
+
+              <td class="nhsuk-table__cell">cts-app.sid</td>
+
+              <td class="nhsuk-table__cell">Represents the session ID and stores the data entered throughout a journey.
+              </td>
+
+              <td class="nhsuk-table__cell">30 minutes</td>
+            </tr>
+            <tr class="nhsuk-table__row">
+
+              <td class="nhsuk-table__cell">lang</td>
+
+              <td class="nhsuk-table__cell">Used to set default language.</td>
+
+              <td class="nhsuk-table__cell">30 minutes</td>
+            </tr>
+            <tr class="nhsuk-table__row">
+
+              <td class="nhsuk-table__cell">isBrowserCookieEnabled</td>
+
+              <td class="nhsuk-table__cell">This cookie can be true or false. If this cookie does not exist the
+                application will show the cookies disabled page. It is used to check if user has cookies enabled.</td>
+
+              <td class="nhsuk-table__cell">Session</td>
+            </tr>
+          </tbody>
+        </table>
+
+
+
+      </div>
+    </details>
+
+    <h2>
+      Change your cookie settings
+    </h2>
+
+    <p>
+      Some cookies, like those used to measure how you use our website, are not needed for our website to work.
+    </p>
+    <p>
+      These cookies can help us make our website better, but we'll only use them if you say it's OK.
+    </p>
+
+    <a class="nhsuk-button" data-module="nhsuk-button" id="choose-which-cookies" href="choose-cookies"
+      draggable="false" role="button" data-nhsuk-button-init="">
+      Choose which cookies we use
+    </a>
+
+    <h2 class="nhsuk-heading-m">NHSBSA website privacy policy</h2>
+    <p>To find out how we collect, store and use information about you or your visit, see the <a
+        href="https://www.nhsbsa.nhs.uk/our-policies/privacy" id="privacy-policy-link">NHSBSA website privacy policy</a>
+    </p>
+  </div>
+
+</div>
+{% endblock %}
