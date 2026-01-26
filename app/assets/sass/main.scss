@@ -196,6 +196,26 @@
     overflow-x: auto;
 }
 
+// Scrollable Pane
+
+.nhsuk-scrollable-pane{
+    background: linear-gradient(90deg,#fff,#fff,#fff0 1.5em),radial-gradient(farthest-side at 0 50%,#0003,#fff0),linear-gradient(270deg,#fff,#fff,#fff0 1.5em),radial-gradient(farthest-side at 100% 50%,#0003,#fff0) 100%;
+    background-attachment: local,scroll,local,scroll;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-size: 100% 100%,.75em 100%,100% 100%,.75em 100%;
+    overflow-x: scroll;
+    
+    .nhsuk-hint{
+        display: none;
+    }
+    @media (max-width: 600px) {
+        .nhsuk-hint{
+            display: block;
+        }
+    }
+}
+
 
 
 // Beta Banner

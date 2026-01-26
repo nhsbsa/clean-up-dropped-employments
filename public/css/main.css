@@ -11292,6 +11292,23 @@ b {
   overflow-x: auto;
 }
 
+.nhsuk-scrollable-pane {
+  background: linear-gradient(90deg, #fff, #fff, rgba(255, 255, 255, 0) 1.5em), radial-gradient(farthest-side at 0 50%, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0)), linear-gradient(270deg, #fff, #fff, rgba(255, 255, 255, 0) 1.5em), radial-gradient(farthest-side at 100% 50%, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0)) 100%;
+  background-attachment: local, scroll, local, scroll;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-size: 100% 100%, 0.75em 100%, 100% 100%, 0.75em 100%;
+  overflow-x: scroll;
+}
+.nhsuk-scrollable-pane .nhsuk-hint {
+  display: none;
+}
+@media (max-width: 600px) {
+  .nhsuk-scrollable-pane .nhsuk-hint {
+    display: block;
+  }
+}
+
 .beta-banner {
   padding: 16px 0;
   background-color: #ffffff;
