@@ -1041,24 +1041,24 @@
 </div>
 
 <script>
-    function toggleRows() {
-        const rows = document.querySelectorAll('.hidden-row');
-        const button = document.getElementById('toggleButton');
-        const buttonConts = document.getElementById('toggleButtonConts');
+  function toggleRows() {
+    const rows = document.querySelectorAll('.hidden-row');
+    const button = document.getElementById('toggleButton');
+    const buttonConts = document.getElementById('toggleButtonConts');
 
-        let anyHidden = false;
+    let anyHidden = false;
 
-        // Toggle each row and check if any are becoming visible
-        rows.forEach(row => {
-            row.classList.toggle('hidden');
-            if (!row.classList.contains('hidden')) {
-                anyHidden = true;
-            }
-        });
+    // Toggle each row and check if any are becoming visible
+    rows.forEach(row => {
+      row.classList.toggle('hidden');
+      if (!row.classList.contains('hidden')) {
+        anyHidden = true;
+      }
+    });
 
-        // Update button text based on visibility
-        button.textContent = anyHidden ? 'Hide correct rows' : 'Show correct rows';
-        buttonConts.textContent = anyHidden ? 'Hide correct rows' : 'Show correct rows';
-    }
+    // Update button text based on visibility
+    button.textContent = anyHidden ? 'Hide correct rows' : 'Show correct rows';
+    buttonConts.textContent = anyHidden ? 'Hide correct rows' : 'Show correct rows';
+  }
 </script>
 {% endblock %}
