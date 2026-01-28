@@ -116,7 +116,7 @@ function createTableManager(tableId, paginationId, toggleBtnId, options = {}) {
             this.hideCorrectRows = !this.hideCorrectRows;
 
             document.getElementById(this.toggleBtnId).textContent =
-                this.hideCorrectRows ? "Show correct rows" : "Hide correct rows";
+                this.hideCorrectRows ? "Show all rows" : "Hide correct rows";
 
             if (!this.hideCorrectRows) this.currentPage = 1;
 

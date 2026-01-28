@@ -11211,6 +11211,10 @@ b {
   color: #d5281b;
 }
 
+.nhsuk-table {
+  min-width: 425px;
+}
+
 .sortable {
   cursor: pointer;
   color: #005eb8;

@@ -92,7 +92,7 @@ function createTableManager(tableId, paginationId, toggleBtnId, options = {}) {
     },
     toggleRows() {
       this.hideCorrectRows = !this.hideCorrectRows;
-      document.getElementById(this.toggleBtnId).textContent = this.hideCorrectRows ? "Show correct rows" : "Hide correct rows";
+      document.getElementById(this.toggleBtnId).textContent = this.hideCorrectRows ? "Show all rows" : "Hide correct rows";
       if (!this.hideCorrectRows) this.currentPage = 1;
       this.renderTable();
     }
