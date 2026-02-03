@@ -11303,11 +11303,12 @@ b {
   background-size: 100% 100%, 0.75em 100%, 100% 100%, 0.75em 100%;
   overflow-x: scroll;
 }
-.nhsuk-scrollable-pane .nhsuk-hint {
+
+.nhsuk-details__text .nhsuk-hint {
   display: none;
 }
 @media (max-width: 600px) {
-  .nhsuk-scrollable-pane .nhsuk-hint {
+  .nhsuk-details__text .nhsuk-hint {
     display: block;
   }
 }

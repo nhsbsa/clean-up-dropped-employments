@@ -211,7 +211,8 @@
     background-repeat: no-repeat;
     background-size: 100% 100%,.75em 100%,100% 100%,.75em 100%;
     overflow-x: scroll;
-    
+}
+.nhsuk-details__text{
     .nhsuk-hint{
         display: none;
     }
@@ -220,6 +221,7 @@
             display: block;
         }
     }
+
 }
 
 

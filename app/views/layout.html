@@ -91,6 +91,7 @@
 <div class="nhsuk-hint">You can scroll left and right to see all columns if the table does not fit on your screen</div>
 <div class="nhsuk-scrollable-pane" aria-label="Service history" tabindex="0">
   <table class="nhsuk-table" role="table">
+    <caption class="nhsuk-u-visually-hidden">Service history table</caption>
     <thead class="nhsuk-table__head" role="rowgroup">
       <tr role="row">
           <th scope="col" class="shEmpID nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employment ID</th>
@@ -127,9 +128,9 @@
         <tr class="nhsuk-table__row errorHighlight" id="shError" role="row">
         <td class="shEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell">3</td>
         <td class="shScheme nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2015</td>
-        <td class="shStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="errorTxt">01/04/2015</span></td>
-        <td class="shEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="errorTxt">No data</span></td>
-        <td class="shUp nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="errorTxt">31/03/2023</span></td>
+        <td class="shStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-u-visually-hidden">Error: Employment ID 3 and employment ID 5 cannot start on the same day</span><span class="errorTxt">01/04/2015</span></td>
+        <td class="shEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-u-visually-hidden">Error: Employment ID 3 end date missing</span><span class="errorTxt">No data</span></td>
+        <td class="shUp nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-u-visually-hidden">Error: Employment ID 3 update date incorrect</span><span class="errorTxt">31/03/2023</span></td>
         <td class="shMem nhsuk-table__cell nhsuk-u-font-size-14" role="cell">Active</td>
         <td class="shErc nhsuk-table__cell nhsuk-u-font-size-14" role="cell">5</td>
         <td class="shG nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2</td>
@@ -137,7 +138,7 @@
         <tr class="nhsuk-table__row errorHighlight" role="row">
         <td class="shEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell">5</td>
         <td class="shScheme nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2015</td>
-        <td class="shStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="errorTxt">01/04/2015</span></td>
+        <td class="shStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-u-visually-hidden">Error: Employment ID 5 start date incorrect</span><span class="errorTxt">01/04/2015</span></td>
         <td class="shEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">&nbsp;</td>
         <td class="shUp nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2023</td>
         <td class="shMem nhsuk-table__cell nhsuk-u-font-size-14" role="cell">Active</td>
@@ -152,6 +153,7 @@
 <div class="nhsuk-hint">You can scroll left and right to see all columns if the table does not fit on your screen</div>
 <div class="nhsuk-scrollable-pane" aria-label="Service group" tabindex="0">
   <table class="nhsuk-table" role="table">
+    <caption class="nhsuk-u-visually-hidden">Service group table</caption>
     <thead class="nhsuk-table__head" role="rowgroup">
       <tr role="row">
         <th scope="col" class="sgGrpID nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Group ID</th>
@@ -187,7 +189,8 @@
 <div class="nhsuk-hint">You can scroll left and right to see all columns if the table does not fit on your screen</div>
 <div class="nhsuk-scrollable-pane" aria-label="Employment history" tabindex="0">
   <table class="nhsuk-table" role="table">
-      <thead class="nhsuk-table__head" role="rowgroup">
+    <caption class="nhsuk-u-visually-hidden">Employment history table</caption>
+    <thead class="nhsuk-table__head" role="rowgroup">
         <tr role="row">
           <th scope="col" class="ehEmpID nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employment ID</th>
           <th scope="col" class="ehEmpCode nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employer code</th>
@@ -235,26 +238,26 @@
               <td class="ehStdHrs nhsuk-u-font-size-14" role="cell">37.5</td>
           </tr>
           <tr class="nhsuk-table__row errorHighlight" id="ehError" role="row">
-              <td class="ehEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="errorTxt">No data</span></td>
-              <td class="ehEmpCode nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="errorTxt">No data</span></td>
-              <td class="ehStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="errorTxt">No data</span></td>
-              <td class="ehEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="errorTxt">No data</span></td>
-              <td class="ehTime nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="errorTxt">No data</span></td>
-              <td class="ehCapCode nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="errorTxt">No data</span></td>
-              <td class="ehEmpType nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="errorTxt">No data</span></td>
-              <td class="ehActHrs nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="errorTxt">No data</span></td>
-              <td class="ehStdHrs nhsuk-u-font-size-14" role="cell"><span class="errorTxt">No data</span></td>
+              <td class="ehEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-u-visually-hidden">Error: Employment ID 3 must appear in both service history and employment history</span><span class="errorTxt">No data</span></td>
+              <td class="ehEmpCode nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-u-visually-hidden">Error: Employment ID 3 must appear in both service history and employment history</span><span class="errorTxt">No data</span></td>
+              <td class="ehStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-u-visually-hidden">Error: Employment ID 3 must appear in both service history and employment history</span><span class="errorTxt">No data</span></td>
+              <td class="ehEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-u-visually-hidden">Error: Employment ID 3 must appear in both service history and employment history</span><span class="errorTxt">No data</span></td>
+              <td class="ehTime nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-u-visually-hidden">Error: Employment ID 3 must appear in both service history and employment history</span><span class="errorTxt">No data</span></td>
+              <td class="ehCapCode nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-u-visually-hidden">Error: Employment ID 3 must appear in both service history and employment history</span><span class="errorTxt">No data</span></td>
+              <td class="ehEmpType nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-u-visually-hidden">Error: Employment ID 3 must appear in both service history and employment history</span><span class="errorTxt">No data</span></td>
+              <td class="ehActHrs nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-u-visually-hidden">Error: Employment ID 3 must appear in both service history and employment history</span><span class="errorTxt">No data</span></td>
+              <td class="ehStdHrs nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-u-visually-hidden">Error: Employment ID 3 must appear in both service history and employment history</span><span class="errorTxt">No data</span></td>
           </tr>
           <tr class="nhsuk-table__row errorHighlight" role="row">
-              <td class="ehEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="errorTxt">No data</span></td>
-              <td class="ehEmpCode nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="errorTxt">No data</span></td>
-              <td class="ehStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="errorTxt">No data</span></td>
-              <td class="ehEnd nhsuk-u-font-size-14" role="cell"><span class="errorTxt">No data</span></td>
-              <td class="ehTime nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="errorTxt">No data</span></td>
-              <td class="ehCapCode nhsuk-u-font-size-14" role="cell"><span class="errorTxt">No data</span></td>
-              <td class="ehEmpType nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="errorTxt">No data</span></td>
-              <td class="ehActHrs nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="errorTxt">No data</span></td>
-              <td class="ehStdHrs nhsuk-u-font-size-14" role="cell"><span class="errorTxt">No data</span></td>
+              <td class="ehEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-u-visually-hidden">Error: Employment ID 5 must appear in both service history and employment history</span><span class="errorTxt">No data</span></td>
+              <td class="ehEmpCode nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-u-visually-hidden">Error: Employment ID 5 must appear in both service history and employment history</span><span class="errorTxt">No data</span></td>
+              <td class="ehStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-u-visually-hidden">Error: Employment ID 5 must appear in both service history and employment history</span><span class="errorTxt">No data</span></td>
+              <td class="ehEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-u-visually-hidden">Error: Employment ID 5 must appear in both service history and employment history</span><span class="errorTxt">No data</span></td>
+              <td class="ehTime nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-u-visually-hidden">Error: Employment ID 5 must appear in both service history and employment history</span><span class="errorTxt">No data</span></td>
+              <td class="ehCapCode nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-u-visually-hidden">Error: Employment ID 5 must appear in both service history and employment history</span><span class="errorTxt">No data</span></td>
+              <td class="ehEmpType nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-u-visually-hidden">Error: Employment ID 5 must appear in both service history and employment history</span><span class="nhsuk-u-visually-hidden">Error: Employment ID 5 must appear in both service history and employment history</span><span class="errorTxt">No data</span></td>
+              <td class="ehActHrs nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-u-visually-hidden">Error: Employment ID 5 must appear in both service history and employment history</span><span class="errorTxt">No data</span></td>
+              <td class="ehStdHrs nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-u-visually-hidden">Error: Employment ID 5 must appear in both service history and employment history</span><span class="errorTxt">No data</span></td>
           </tr>
       </tbody>
   </table>
@@ -264,6 +267,7 @@
 <div class="nhsuk-hint">You can scroll left and right to see all columns if the table does not fit on your screen</div>
 <div class="nhsuk-scrollable-pane" aria-label="Conts and TPP" tabindex="0">
   <table class="nhsuk-table" role="table">
+    <caption class="nhsuk-u-visually-hidden">Conts and TPP (pensions contributions) table</caption>
     <thead class="nhsuk-table__head" role="rowgroup">
       <tr role="row">
         <th scope="col" class="ctEmpId nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employment ID</th>
@@ -469,7 +473,7 @@
     
         <!-- Error row -->
         <tr class="nhsuk-table__row errorHighlight" id="contsError" role="row">
-            <td class="ctEmpId nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span
+            <td class="ctEmpId nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-u-visually-hidden">Error: Employment ID 3 must appear in both service history and employment history</span><span
                     class="errorTxt">3</span></td>
             <td class="ctStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2022</td>
             <td class="ctEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2023</td>
@@ -486,6 +490,7 @@
 <div class="nhsuk-hint">You can scroll left and right to see all columns if the table does not fit on your screen</div>
 <div class="nhsuk-scrollable-pane" aria-label="Hours history" tabindex="0">
   <table class="nhsuk-table" role="table">
+    <caption class="nhsuk-u-visually-hidden">Hours history table</caption>
     <thead class="nhsuk-table__head">
       <tr role="row">
         <th scope="col" class="hhEmpId  nhsuk-u-font-size-14" role="columnheader">Employment ID</th>
@@ -626,7 +631,7 @@
     
         <tr class="nhsuk-table__row errorHighlight" id="hrsError" role="row">
         <td class="hhEmpId nhsuk-table__cell nhsuk-u-font-size-14">
-            <span class="errorTxt">3</span>
+          <span class="nhsuk-u-visually-hidden">Error: Employment ID 3 must appear in both service history and employment history</span><span class="errorTxt">3</span>
         </td>
         <td class="hhStart nhsuk-table__cell nhsuk-u-font-size-14">
             01/04/2022
@@ -646,6 +651,7 @@
 <div class="nhsuk-hint">You can scroll left and right to see all columns if the table does not fit on your screen</div>
 <div class="nhsuk-scrollable-pane" aria-label="Linked employments" tabindex="0">
   <table class="nhsuk-table" role="table">
+    <caption class="nhsuk-u-visually-hidden">Linked employment table</caption>
     <thead class="nhsuk-table__head" role="rowgroup">
       <tr role="row">
           <th scope="col" class="lePre nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Pre-remedy employment ID</th>
