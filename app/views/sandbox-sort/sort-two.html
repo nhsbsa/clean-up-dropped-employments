@@ -1,0 +1,135 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Sortable Table"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    <h1>Method two</h1>
+    <p>Table data just being stored within the table rather than being pulled.<br/><strong>Uses JS so it will work on the fly without page reload.</strong></p>
+    <hr/>
+    <!-- SORTABLE -->
+    <table class="nhsuk-table" role="table">
+      <thead class="nhsuk-table__head" role="rowgroup">
+        <tr role="row">
+            <th scope="col" aria-sort="none" class="nhsuk-table__header nhsuk-u-font-size-14 sortable" data-sort-type="number" tabindex="0" role="columnheader">
+              ID Number
+              <span class="sort-icon sort-icon--default">
+                <!-- Double arrow SVG -->
+                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
+                  <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
+                </svg>
+              </span>
+              <span class="sort-icon sort-icon--asc">
+                <!-- Ascending SVG -->
+                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6.5625 15.5L11 6.63125L15.4375 15.5H6.5625Z" fill="currentColor"></path>
+                </svg>
+              </span>
+              <span class="sort-icon sort-icon--desc">
+                <!-- Descending SVG -->
+                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15.4375 7L11 15.8687L6.5625 7L15.4375 7Z" fill="currentColor"></path>
+                </svg>
+              </span>
+            </th>
+            <th scope="col" aria-sort="none" class="nhsuk-table__header nhsuk-u-font-size-14 sortable" data-sort-type="date" tabindex="0" role="columnheader">
+              Start date
+              <span class="sort-icon sort-icon--default">
+                <!-- Double arrow SVG -->
+                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
+                  <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
+                </svg>
+              </span>
+              <span class="sort-icon sort-icon--asc">
+                <!-- Ascending SVG -->
+                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6.5625 15.5L11 6.63125L15.4375 15.5H6.5625Z" fill="currentColor"></path>
+                </svg>
+              </span>
+              <span class="sort-icon sort-icon--desc">
+                <!-- Descending SVG -->
+                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15.4375 7L11 15.8687L6.5625 7L15.4375 7Z" fill="currentColor"></path>
+                </svg>
+              </span>
+            </th>
+            <th scope="col" aria-sort="none" class="nhsuk-table__header nhsuk-u-font-size-14 sortable" data-sort-type="date" tabindex="0" role="columnheader">
+              End date
+              <span class="sort-icon sort-icon--default">
+                <!-- Double arrow SVG -->
+                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
+                  <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
+                </svg>
+              </span>
+              <span class="sort-icon sort-icon--asc">
+                <!-- Ascending SVG -->
+                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6.5625 15.5L11 6.63125L15.4375 15.5H6.5625Z" fill="currentColor"></path>
+                </svg>
+              </span>
+              <span class="sort-icon sort-icon--desc">
+                <!-- Descending SVG -->
+                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15.4375 7L11 15.8687L6.5625 7L15.4375 7Z" fill="currentColor"></path>
+                </svg>
+              </span>
+            </th>
+            <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Meal</th>
+            <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Food</th>
+        </tr>
+      </thead>
+      <tbody class="nhsuk-table__body">
+        <tr class="nhsuk-table__row" role="row">
+            <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">1</td>
+            <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2013</td>
+            <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2014</td>
+            <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">Breakfast</td>
+            <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">Cereal</td>
+        </tr>
+        <tr class="nhsuk-table__row" role="row">
+            <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2</td>
+            <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2014</td>
+            <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2015</td>
+            <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">Lunch</td>
+            <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">Chicken</td>
+        </tr>
+        <tr class="nhsuk-table__row" role="row">
+            <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">3</td>
+            <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2015</td>
+            <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2016</td>
+            <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">Breakfast</td>
+            <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">Eggs</td>
+        </tr>
+        <tr class="nhsuk-table__row" role="row">
+            <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">4</td>
+            <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2016</td>
+            <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2017</td>
+            <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">Dinner</td>
+            <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">Curry</td>
+        </tr>
+        <tr class="nhsuk-table__row" role="row">
+            <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">5</td>
+            <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2017</td>
+            <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2018</td>
+            <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">Lunch</td>
+            <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">Sandwich</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<script src="/js/sortable.js"></script>
+
+
+
+{% endblock %}

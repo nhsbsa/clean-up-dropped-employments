@@ -101,9 +101,9 @@
     border-left: 4px solid $nhsuk-error-colour;
     font-weight: bold;
 
-    .nhsuk-table__cell:first-of-type {
-        padding-left: 16px;
-    }
+    // .nhsuk-table__cell:first-of-type {
+    //     padding-left: 16px;
+    // }
 
     .errorTxt {
         color: $nhsuk-error-colour;
@@ -113,8 +113,12 @@
 
 // Tables
 
-.nhsuk-table{
+.nhsuk-table {
     min-width: 425px;
+
+    .nhsuk-table__cell:first-of-type {
+        padding-left: 16px;
+    }
 }
 
 // Sortable table
@@ -125,42 +129,49 @@
 }
 
 .sort-icon {
-    display: none; /* hide all icons by default */
+    display: none;
+    /* hide all icons by default */
     margin-left: 0.25rem;
     vertical-align: middle;
-  }
-  
-  .sort-icon svg {
-    width: 1rem;
-    height: 1rem;
-    fill: currentColor;
-  }
-  
-  /* Show double arrow by default when column is unsorted */
-  .sortable[aria-sort="none"] .sort-icon--default {
+
+    svg {
+        width: 1rem;
+        height: 1rem;
+        fill: currentColor;
+    }
+}
+
+/* Show double arrow by default when column is unsorted */
+.sortable[aria-sort="none"] .sort-icon--default {
     display: inline-block;
-  }
-  
-  /* Show ascending arrow */
-  .sortable[aria-sort="ascending"] .sort-icon--asc {
+}
+
+/* Show ascending arrow */
+.sortable[aria-sort="ascending"] .sort-icon--asc {
     display: inline-block;
-  }
-  
-  /* Show descending arrow */
-  .sortable[aria-sort="descending"] .sort-icon--desc {
+}
+
+/* Show descending arrow */
+.sortable[aria-sort="descending"] .sort-icon--desc {
     display: inline-block;
-  }
-  
-  
+}
+
+.sortableAlign {
+    .sortable {
+        cursor: pointer;
+        color: $nhsuk-link-colour;
+        position: absolute;
+    }
+}
 
 // Filter
 
-.buttonBlock{
+.buttonBlock {
     display: block;
 }
 
 #filters-panel,
-#compare-panel{
+#compare-panel {
     border-top: 1px solid $nhsuk-border-colour;
     padding: 30px 30px 0 30px;
     background-color: nhsuk-colour("white");
@@ -173,55 +184,84 @@
 }
 
 // Compare
-#compare-panel.details{
+#compare-panel.details {
     border-top: none;
     padding-top: 30px;
     background-color: transparent;
     margin-bottom: 36px;
     border-bottom: none;
 }
-.compareRow{
+
+.compareRow {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    .compareCol{
+
+    .compareCol {
         width: 100%;
-        background-color:nhsuk-colour("white") ;
+        background-color: nhsuk-colour("white");
         padding: 20px;
     }
 
     @media (min-width: 600px) {
         flex-direction: row;
-        .compareCol{
+
+        .compareCol {
             width: 49%;
         }
     }
 }
 
-.tableScrollOuter{
+.tableScrollOuter {
     overflow-x: auto;
 }
 
 // Scrollable Pane
 
-.nhsuk-scrollable-pane{
-    background: linear-gradient(90deg,#fff,#fff,#fff0 1.5em),radial-gradient(farthest-side at 0 50%,#0003,#fff0),linear-gradient(270deg,#fff,#fff,#fff0 1.5em),radial-gradient(farthest-side at 100% 50%,#0003,#fff0) 100%;
-    background-attachment: local,scroll,local,scroll;
+.nhsuk-scrollable-pane {
+    background: linear-gradient(90deg, #fff, #fff, #fff0 1.5em), radial-gradient(farthest-side at 0 50%, #0003, #fff0), linear-gradient(270deg, #fff, #fff, #fff0 1.5em), radial-gradient(farthest-side at 100% 50%, #0003, #fff0) 100%;
+    background-attachment: local, scroll, local, scroll;
     background-color: #fff;
     background-repeat: no-repeat;
-    background-size: 100% 100%,.75em 100%,100% 100%,.75em 100%;
+    background-size: 100% 100%, .75em 100%, 100% 100%, .75em 100%;
     overflow-x: scroll;
 }
-.nhsuk-details__text{
-    .nhsuk-hint{
+
+.nhsuk-details__text {
+    .nhsuk-hint {
         display: none;
     }
+
     @media (max-width: 600px) {
-        .nhsuk-hint{
+        .nhsuk-hint {
             display: block;
         }
     }
 
+}
+
+// Iteration 1
+.button--error {
+    width: calc(100% + 16px);
+    height: 100%;
+    padding: 16px;
+    margin: -16px;
+    background: nhsuk-colour("white");
+    border: none;
+    font-weight: bold;
+    color: nhsuk-colour("red");
+    display: block;
+
+    &:hover {
+        background-color: nhsuk-colour("grey-5");
+    }
+
+    &:focus {
+        background-color: nhsuk-colour("yellow");
+        outline: 4px solid transparent;
+        color: nhsuk-colour("black");
+        border-bottom: 4px solid nhsuk-colour("black");
+    }
 }
 
 

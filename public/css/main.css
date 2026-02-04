@@ -11204,15 +11204,15 @@ b {
   border-left: 4px solid #d5281b;
   font-weight: bold;
 }
-.errorHighlight .nhsuk-table__cell:first-of-type {
-  padding-left: 16px;
-}
 .errorHighlight .errorTxt {
   color: #d5281b;
 }
 
 .nhsuk-table {
   min-width: 425px;
+}
+.nhsuk-table .nhsuk-table__cell:first-of-type {
+  padding-left: 16px;
 }
 
 .sortable {
@@ -11221,11 +11221,11 @@ b {
 }
 
 .sort-icon {
-  display: none; /* hide all icons by default */
+  display: none;
+  /* hide all icons by default */
   margin-left: 0.25rem;
   vertical-align: middle;
 }
-
 .sort-icon svg {
   width: 1rem;
   height: 1rem;
@@ -11245,6 +11245,12 @@ b {
 /* Show descending arrow */
 .sortable[aria-sort=descending] .sort-icon--desc {
   display: inline-block;
+}
+
+.sortableAlign .sortable {
+  cursor: pointer;
+  color: #005eb8;
+  position: absolute;
 }
 
 .buttonBlock {
@@ -11311,6 +11317,27 @@ b {
   .nhsuk-details__text .nhsuk-hint {
     display: block;
   }
+}
+
+.button--error {
+  width: calc(100% + 16px);
+  height: 100%;
+  padding: 16px;
+  margin: -16px;
+  background: #ffffff;
+  border: none;
+  font-weight: bold;
+  color: #d5281b;
+  display: block;
+}
+.button--error:hover {
+  background-color: #f0f4f5;
+}
+.button--error:focus {
+  background-color: #ffeb3b;
+  outline: 4px solid transparent;
+  color: #212b32;
+  border-bottom: 4px solid #212b32;
 }
 
 .beta-banner {

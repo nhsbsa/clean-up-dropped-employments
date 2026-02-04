@@ -1,0 +1,147 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Sortable Table"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    <h1>Method one</h1>
+    <p>Pulls the table data from the routes file and reloads the page when the column header is selected.<br/><strong>Doesn't use JS so better for accessibility</strong></p>
+    <hr/>
+    <!-- SORTABLE -->
+
+    <table class="nhsuk-table sortableAlign">
+      <thead class="nhsuk-table__head" role="rowgroup">
+        <tr role="row">
+
+          <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">
+            <a href="?sort=empId&direction={% if sort == 'idNum' and direction == 'asc' %}desc{% else %}asc{% endif %}"
+              class="sortableLink">
+              ID Number
+              {% if sort == "empId" %}
+              {% if direction == "asc" %}
+              <span aria-hidden="true" class="sortable">
+                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22"
+                  fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6.5625 15.5L11 6.63125L15.4375 15.5H6.5625Z" fill="currentColor"></path>
+                </svg>
+              </span>
+              {% elseif direction == "desc" %}
+              <span aria-hidden="true" class="sortable">
+                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22"
+                  fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15.4375 7L11 15.8687L6.5625 7L15.4375 7Z" fill="currentColor"></path>
+                </svg>
+              </span>
+              {% endif %}
+              {% else %}
+              <span aria-hidden="true" class="sortable">
+                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22"
+                  fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
+                  <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
+                </svg>
+              </span>
+              {% endif %}
+            </a>
+          </th>
+
+          <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">
+            <a href="?sort=start&direction={% if sort == 'start' and direction == 'asc' %}desc{% else %}asc{% endif %}"
+              class="sortableLink">
+              Start date
+              {% if sort == "start" %}
+              {% if direction == "asc" %}
+              <span aria-hidden="true" class="sortable">
+                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22"
+                  fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6.5625 15.5L11 6.63125L15.4375 15.5H6.5625Z" fill="currentColor"></path>
+                </svg>
+              </span>
+              {% elseif direction == "desc" %}
+              <span aria-hidden="true" class="sortable">
+                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22"
+                  fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15.4375 7L11 15.8687L6.5625 7L15.4375 7Z" fill="currentColor"></path>
+                </svg>
+              </span>
+              {% endif %}
+              {% else %}
+              <span aria-hidden="true" class="sortable">
+                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22"
+                  fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
+                  <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
+                </svg>
+              </span>
+              {% endif %}
+            </a>
+          </th>
+          <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">
+            <a href="?sort=end&direction={% if sort == 'end' and direction == 'asc' %}desc{% else %}asc{% endif %}"
+              class="sortableLink">
+              End date
+              {% if sort == "end" %}
+              {% if direction == "asc" %}
+              <span aria-hidden="true" class="sortable">
+                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22"
+                  fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6.5625 15.5L11 6.63125L15.4375 15.5H6.5625Z" fill="currentColor"></path>
+                </svg>
+              </span>
+              {% elseif direction == "desc" %}
+              <span aria-hidden="true" class="sortable">
+                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22"
+                  fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15.4375 7L11 15.8687L6.5625 7L15.4375 7Z" fill="currentColor"></path>
+                </svg>
+              </span>
+              {% endif %}
+              {% else %}
+              <span aria-hidden="true" class="sortable">
+                <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22"
+                  fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
+                  <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
+                </svg>
+              </span>
+              {% endif %}
+            </a>
+          </th>
+          <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">
+            Meal
+          </th>
+          <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">
+            Food
+          </th>
+
+        </tr>
+      </thead>
+
+      <tbody class="nhsuk-table__body">
+        {% for row in tableData | sortBy(sort, direction) %}
+        <tr class="nhsuk-table__row" role="row">
+          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.idNum }}</td>
+          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.start }}</td>
+          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.end }}</td>
+          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.meal }}</td>
+          <td class="nhsuk-table__cell nhsuk-u-font-size-14" role="cell">{{ row.food }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    
+
+
+    
+
+  </div>
+</div>
+
+
+{% endblock %}
