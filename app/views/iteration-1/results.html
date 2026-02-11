@@ -113,7 +113,7 @@
             <div class="nhsuk-details__text">
                 {{ serviceHistoryErrors | safe }}
                 <button id="toggleButtonSh" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button"
-                    onclick="toggleRows()">Hide correct rows</button>
+                    onclick="toggleRows('rows-sh', this)">Hide correct rows</button>
                 {{ serviceHistoryTable | safe }}
             </div>
         </details>
@@ -160,7 +160,7 @@
                     </div>
                 </div>
                 <button id="toggleButtonEh" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button"
-                    onclick="toggleRows()">Hide correct rows</button>
+                    onclick="toggleRows('rows-eh', this)">Hide correct rows</button>
                 <div class="nhsuk-hint">You can scroll left and right to see all columns if the table does not fit on your screen</div>
                 <div class="nhsuk-scrollable-pane" aria-label="Employment history" tabindex="0">
                 <table class="nhsuk-table" role="table">
@@ -179,7 +179,7 @@
                     </tr>
                     </thead>
                     <tbody class="nhsuk-table__body">
-                        <tr class="nhsuk-table__row hidden-row" role="row">
+                        <tr class="nhsuk-table__row rows-eh hidden-row" role="row">
                             <td class="ehEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell">1</td>
                             <td class="ehEmpCode nhsuk-table__cell nhsuk-u-font-size-14" role="cell">5266</td>
                             <td class="ehStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2013</td>
@@ -190,7 +190,7 @@
                             <td class="ehActHrs nhsuk-table__cell nhsuk-u-font-size-14" role="cell">&nbsp;</td>
                             <td class="ehStdHrs nhsuk-u-font-size-14" role="cell">&nbsp;</td>
                         </tr>
-                        <tr class="nhsuk-table__row hidden-row" role="row">
+                        <tr class="nhsuk-table__row rows-eh hidden-row" role="row">
                             <td class="ehEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell">1</td>
                             <td class="ehEmpCode nhsuk-table__cell nhsuk-u-font-size-14" role="cell">5266</td>
                             <td class="ehStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">10/11/2014</td>
@@ -201,7 +201,7 @@
                             <td class="ehActHrs nhsuk-table__cell nhsuk-u-font-size-14" role="cell">30</td>
                             <td class="ehStdHrs nhsuk-u-font-size-14" role="cell">37.5</td>
                         </tr>
-                        <tr class="nhsuk-table__row hidden-row" role="row">
+                        <tr class="nhsuk-table__row rows-eh hidden-row" role="row">
                             <td class="ehEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2</td>
                             <td class="ehEmpCode nhsuk-table__cell nhsuk-u-font-size-14" role="cell">5266</td>
                             <td class="ehStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2015</td>
@@ -241,7 +241,7 @@
             <div class="nhsuk-details__text">
                 {{ contsTppErrors | safe }}
                 <button id="toggleButtonConts" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button"
-                    onclick="toggleRows()">Hide correct rows</button>
+                    onclick="toggleRows('rows-conts', this)">Hide correct rows</button>
                 {{ contsTppTable | safe }}
             </div>
         </details>
@@ -262,7 +262,7 @@
             <div class="nhsuk-details__text">
                 {{ hoursHistoryErrors | safe }}
                 <button id="toggleButton" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button"
-                    onclick="toggleRows()">Hide correct rows</button>
+                    onclick="toggleRows('rows-hh', this)">Hide correct rows</button>
                 {{ hoursHistoryTable | safe }}
             </div>
         </details>
@@ -286,28 +286,20 @@
 </div>
 
 <script>
-  function toggleRows() {
-    const rows = document.querySelectorAll('.hidden-row');
-    const button = document.getElementById('toggleButton');
-    const buttonConts = document.getElementById('toggleButtonConts');
-    const buttonSh = document.getElementById('toggleButtonSh');
-    const buttonEh = document.getElementById('toggleButtonEh');
+  function toggleRows(groupClass, button) {
+    const rows = document.querySelectorAll(`.${groupClass}`);
+    let anyVisible = false;
 
-    let anyHidden = false;
-
-    // Toggle each row and check if any are becoming visible
     rows.forEach(row => {
       row.classList.toggle('hidden');
       if (!row.classList.contains('hidden')) {
-        anyHidden = true;
+        anyVisible = true;
       }
     });
 
-    // Update button text based on visibility
-    button.textContent = anyHidden ? 'Hide correct rows' : 'Show all rows';
-    buttonConts.textContent = anyHidden ? 'Hide correct rows' : 'Show all rows';
-    buttonSh.textContent = anyHidden ? 'Hide correct rows' : 'Show all rows';
-    buttonEh.textContent = anyHidden ? 'Hide correct rows' : 'Show all rows';
+    button.textContent = anyVisible
+      ? 'Hide correct rows'
+      : 'Show all rows';
   }
 </script>
 {% endblock %}
