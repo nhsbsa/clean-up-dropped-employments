@@ -733,6 +733,25 @@
 </div>
 {% endset %}
 
+
+{% block main %}
+    {% if wideLayout %}
+      <div class="nhsuk-width-container">
+        {{ backLink({
+          "href": "javascript:history.go(-1)",
+          "text": "Back"
+        }) }}
+      </div>
+    {% endif %}
+
+    <div class="{{ 'nhsuk-width-container-fluid' if wideLayout else 'nhsuk-width-container' }}">
+      <main class="nhsuk-main-wrapper" id="maincontent" role="main">
+          {% block content %}
+          {% endblock %}
+      </main>
+    </div>
+{% endblock %}
+
 <!-- Edit the footer -->
 <!-- Footer code examples can be found at https://service-manual.nhs.uk/design-system/components/footer -->
 {% block footer %}
