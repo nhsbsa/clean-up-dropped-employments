@@ -1,0 +1,32 @@
+{% set cookiePolicyHref = '<a id="nhsuk-cookie-banner__link" href="' + params.policyUrl + '" data-policy-url=' + params.policyUrl + '">'+ params.linkText+ '</a>' %}
+{% set bannerSuccessHref = '<a id="nhsuk-cookie-banner__link" href="' + params.policyUrl + '" data-policy-url=' + params.policyUrl + '">'+ params.successLinkText+ '</a>' %}
+
+<div id="nhsuk-cookie-banner" data-nosnippet="true" >
+    <div class="nhsuk-cookie-banner" id="cookiebanner" style="display:none;" data-cookie-version="{{params.cookieVersion}}" data-policy-url="{{params.policyUrl}}">
+        <div class="nhsuk-width-container {{params.classes}}">
+            {% if params.bannerContentHTML %}
+                {{ params.bannerContentHTML | safe }}
+            {% else %}
+                <h2>{{ params.cookieBannerHeading }}</h2>
+                {% for text in params.cookieBannerContent %}
+                    <p>{{ text | replace("{{cookiePolicyHref}}", cookiePolicyHref) | safe }}</p>
+                {% endfor %}
+            {% endif %}
+
+            <ul>
+                <li>
+                    <button class='nhsuk-button' id="nhsuk-cookie-banner__link_accept_analytics" href="#">{{ params.okButtonText }}</button>
+                </li>
+                <li>
+                    <button class='nhsuk-button' id="nhsuk-cookie-banner__link_accept" href="#">{{ params.notOkButtonText }}</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="nhsuk-success-banner" id="nhsuk-cookie-confirmation-banner" style="display:none;">
+        <div class="nhsuk-width-container">
+            <p id="nhsuk-success-banner__message">{{ params.successBannerMessage | replace("{{bannerSuccessHref}}", bannerSuccessHref) | safe }}</p>
+        </div>
+    </div>
+</div>
