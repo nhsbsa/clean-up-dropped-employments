@@ -11,101 +11,426 @@
 
         <span class="nhsuk-caption-l">Generate report</span>
         <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">{{pageTitle}}</h1>
+        <div class="nhsuk-hint">
+            This report is being generated to send to service desk, you need to enter all of the correct details in each section of the form.
+        </div>
 
-    <hr>
+        <form id="reportForm">
+            <details class="nhsuk-details nhsuk-expander">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Requester details
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <p>This service desk ticket is being requested by:</p>
+          {{ input({
+            label: {
+            text: "Requester name"
+            },
+            id: "requesterName",
+            name: "requesterName",
+            classes: "nhsuk-input--width-20",
+            value: "Jane Doe"
+            }) }}
+      
+        </div>
+            </details>
 
-    <h3>Description</h3>
-    <div class="nhsuk-hint">
-        Corruptions have been added from the Identify record issues tool, you can remove any that aren't
-        required in your Service desk ticket or add any additional information they may need
+            <details class="nhsuk-details nhsuk-expander">
+                <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                    Incident form
+                </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                    {{ input({
+                        id: "subject",
+                        name: "subject",
+                        label: {
+                        text: "Subject"
+                        }
+                    }) }}
+                    {{ input({
+                        label: {
+                        text: "Member number"
+                        },
+                        id: "membershipNumber",
+                        name: "membershipNumber",
+                        classes: "nhsuk-input--width-10",
+                        value: "12345678"
+                    }) }}
+                    {{ input({
+                        label: {
+                        text: "Member first initial"
+                        },
+                        id: "memberFirstInitial",
+                        name: "memberFirstInitial",
+                        classes: "nhsuk-input--width-2",
+                        value: "J"
+                    }) }}
+                    {{ input({
+                        label: {
+                        text: "Member surname"
+                        },
+                        id: "memberSurname",
+                        name: "memberSurname",
+                        classes: "nhsuk-input--width-20",
+                        value: "Smith"
+                    }) }}
+                    {{ select({
+                        label: {
+                        text: "Type of record change"
+                        },
+                        id: "recordTypeChange",
+                        name: "recordTypeChange",
+                        value: "type",
+                        items: [
+                            {
+                            value: "type",
+                            text: "-- Type of record change --"
+                            },
+                            {
+                            value: "cancelAward",
+                            text: "Cancel award"
+                            },
+                            {
+                            value: "schemeChange",
+                            text: "Scheme change"
+                            },
+                            {
+                            value: "statueChange",
+                            text: "Status change"
+                            },
+                            {
+                            value: "serviceGroupChange",
+                            text: "Service group change"
+                            },
+                            {
+                            value: "deleteForm",
+                            text: "Deletion of form"
+                            },
+                            {
+                            value: "addConts",
+                            text: "Add conts"
+                            },
+                            {
+                            value: "addBasic",
+                            text: "Add basica"
+                            },
+                            {
+                            value: "additionalPension",
+                            text: "Additional pension"
+                            },
+                            {
+                            value: "other",
+                            text: "Other"
+                            }
+                        ]
+                    }) }}
+                    {{ select({
+                        label: {
+                        text: "Has a file been corrupted?"
+                        },
+                        id: "corrupted",
+                        name: "corrupted",
+                        value: "no",
+                        items: [
+                            {
+                            value: "no",
+                            text: "No"
+                            },
+                            {
+                            value: "yes",
+                            text: "Yes"
+                            }
+                        ]
+                    }) }}
+                    {{ select({
+                        label: {
+                        text: "Has a payment been affected?"
+                        },
+                        id: "payment",
+                        name: "payment",
+                        value: "no",
+                        items: [
+                            {
+                            value: "no",
+                            text: "No"
+                            },
+                            {
+                            value: "yes",
+                            text: "Yes"
+                            }
+                        ]
+                    }) }}
+            
+                </div>
+            </details>
+
+            <h3>Description</h3>
+            <div class="nhsuk-hint">
+                Corruptions have been added from the Identify record issues tool, you can remove any that aren't
+                required in your Service desk ticket or add any additional information they may need
+            </div>
+
+            <!-- Error summary (hidden by default) -->
+            <div id="errorSummary" class="nhsuk-error-summary" role="alert" style="display:none;">
+            <h2 class="nhsuk-error-summary__title">There is a problem</h2>
+            <div class="nhsuk-error-summary__body">
+                <ul class="nhsuk-list nhsuk-error-summary__list" id="errorList"></ul>
+            </div>
+            </div>
+
+            <table class="nhsuk-table" id="reportTable">
+                <caption class="nhsuk-table__caption">
+                    Corruption details
+                </caption>
+                <thead class="nhsuk-table__head">
+                <tr class="nhsuk-table__row">
+                    <th class="nhsuk-table__cell nhsuk-u-font-size-14 reportCell" scope="col">Sets</th>
+                    <th class="nhsuk-table__cell nhsuk-u-font-size-14 reportCell" scope="col">Fields</th>
+                    <th class="nhsuk-table__cell nhsuk-u-font-size-14" scope="col">Amendments to be made</th>
+                    <th class="nhsuk-table__cell nhsuk-u-font-size-14" scope="col">Remove</th>
+                </tr>
+                </thead>
+                <tbody class="nhsuk-table__body">
+
+                <!-- 8 pre-populated rows -->
+                <tr class="nhsuk-table__row">
+                    <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="sets[]" value="Service history" aria-label="Sets: Service history issue 1"></td>
+                    <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="fields[]" value="Start date" aria-label="Fields: Start date"></td>
+                    <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-u-font-size-14" type="text" name="amendments[]" value="Employment ID 3 and employment ID 5 cannot start on the same day" aria-label="Amendments: Employment ID 3 and employment ID 5 cannot start on the same day"></td>
+                    <td class="nhsuk-table__cell nhsuk-u-font-size-14"><a href="#" class="remove-row nhsuk-link">Remove <span class="nhsuk-u-visually-hidden">Employment ID 3 and employment ID 5 cannot start on the same day</span></a></td>
+                </tr>
+                <tr class="nhsuk-table__row">
+                    <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="sets[]" value="Service history" aria-label="Sets: Service history issue 2"></td>
+                    <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="fields[]" value="End date" aria-label="Fields: End date"></td>
+                    <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-u-font-size-14" type="text" name="amendments[]" value="Employment ID 3 end date missing" aria-label="Amendments: Employment ID 3 end date missing"></td>
+                    <td class="nhsuk-table__cell nhsuk-u-font-size-14"><a href="#" class="remove-row nhsuk-link">Remove <span class="nhsuk-u-visually-hidden">Employment ID 3 end date missing</span></a></td>
+                </tr>
+                <tr class="nhsuk-table__row">
+                    <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="sets[]" value="Service history" aria-label="Sets: Service history issue 3"></td>
+                    <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="fields[]" value="Last updated" aria-label="Fields: Last updated"></td>
+                    <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-u-font-size-14" type="text" name="amendments[]" value="Employment ID 3 update date incorrect" aria-label="Amendments: Employment ID 3 update date incorrect"></td>
+                    <td class="nhsuk-table__cell nhsuk-u-font-size-14"><a href="#" class="remove-row nhsuk-link">Remove <span class="nhsuk-u-visually-hidden">Employment ID 3 update date incorrect</span></a></td>
+                </tr>
+                <tr class="nhsuk-table__row">
+                    <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="sets[]" value="Service history" aria-label="Sets: Service history issue 4"></td>
+                    <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="fields[]" value="Start date" aria-label="Fields: start date"></td>
+                    <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-u-font-size-14" type="text" name="amendments[]" value="Employment ID 5 start date incorrect" aria-label="Amendment: Employment ID 5 start date incorrect"></td>
+                    <td class="nhsuk-table__cell nhsuk-u-font-size-14"><a href="#" class="remove-row nhsuk-link">Remove <span class="nhsuk-u-visually-hidden">Employment ID 5 start date incorrect</span></a></td>
+                </tr>
+                <tr class="nhsuk-table__row">
+                    <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="sets[]" value="Employment history" aria-label="Sets: Employment history issue 1"></td>
+                    <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="fields[]" value="Employment ID" aria-label="Fields: Employment ID"></td>
+                    <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-u-font-size-14" type="text" name="amendments[]" value="Employment ID 3 must appear in both service history and employment history" aria-label="Amendment: Employment ID 3 must appear in both service history and employment history"></td>
+                    <td class="nhsuk-table__cell nhsuk-u-font-size-14"><a href="#" class="remove-row nhsuk-link">Remove</a></td>
+                </tr>
+                <tr class="nhsuk-table__row">
+                    <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="sets[]" value="Employment history" aria-label="Sets: Employment history issue 1"></td>
+                    <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="fields[]" value="Employment ID" aria-label="Fields: Employment ID"></td>
+                    <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-u-font-size-14" type="text" name="amendments[]" value="Employment ID 5 must appear in both service history and employment history" aria-label="Amendment: Employment ID 3 must appear in both service history and employment history"></td>
+                    <td class="nhsuk-table__cell nhsuk-u-font-size-14"><a href="#" class="remove-row nhsuk-link">Remove</a></td>
+                </tr>
+                <tr class="nhsuk-table__row">
+                    <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="sets[]" value="Conts and TPP" aria-label="Sets: Conts and TPP issue 1"></td>
+                    <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="fields[]" value="Employment ID" aria-label="Fields: Employment ID"></td>
+                    <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-u-font-size-14" type="text" name="amendments[]" value="Employment ID 3 must appear in both service history and employment history" aria-label="Amendment: Employment ID 3 must appear in both service history and employment history"></td>
+                    <td class="nhsuk-table__cell nhsuk-u-font-size-14"><a href="#" class="remove-row nhsuk-link">Remove</a></td>
+                </tr>
+                <tr class="nhsuk-table__row">
+                    <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="sets[]" value="Hours history" aria-label="Sets: Hours history issue 1"></td>
+                    <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="fields[]" value="Employment ID" aria-label="Fields: Employment ID"></td>
+                    <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-u-font-size-14" type="text" name="amendments[]" value="Employment ID 3 must appear in both service history and employment history" aria-label="Amendment: Employment ID 3 must appear in both service history and employment history"></td>
+                    <td class="nhsuk-table__cell nhsuk-u-font-size-14"><a href="#" class="remove-row nhsuk-link">Remove</a></td>
+                </tr>
+
+                </tbody>
+            </table>
+
+            <button type="button" id="addRowButton" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small">Add another row</button>
+            <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+            <button type="submit" class="nhsuk-button">Continue</button>
+
+        </form>
+
     </div>
-    <!-- Error summary (hidden by default) -->
-    <div id="errorSummary" class="nhsuk-error-summary" role="alert" tabindex="-1" style="display:none;">
-      <h2 class="nhsuk-error-summary__title">There is a problem</h2>
-      <div class="nhsuk-error-summary__body">
-        <ul class="nhsuk-list nhsuk-error-summary__list" id="errorList"></ul>
-      </div>
-    </div>
-
-    <form id="reportForm">
-
-      <table class="nhsuk-table" id="reportTable">
-        <caption class="nhsuk-table__caption">
-            Corruption details
-        </caption>
-        <thead class="nhsuk-table__head">
-          <tr class="nhsuk-table__row">
-            <th class="nhsuk-table__cell nhsuk-u-font-size-14 reportCell" scope="col">Sets</th>
-            <th class="nhsuk-table__cell nhsuk-u-font-size-14 reportCell" scope="col">Fields</th>
-            <th class="nhsuk-table__cell nhsuk-u-font-size-14" scope="col">Amendments to be made</th>
-            <th class="nhsuk-table__cell nhsuk-u-font-size-14" scope="col">Remove</th>
-          </tr>
-        </thead>
-        <tbody class="nhsuk-table__body">
-
-          <!-- 8 pre-populated rows -->
-          <tr class="nhsuk-table__row">
-            <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="sets[]" value="Service history" aria-label="Sets: Service history issue 1"></td>
-            <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="fields[]" value="Start date" aria-label="Fields: Start date"></td>
-            <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-u-font-size-14" type="text" name="amendments[]" value="Employment ID 3 and employment ID 5 cannot start on the same day" aria-label="Amendments: Employment ID 3 and employment ID 5 cannot start on the same day"></td>
-            <td class="nhsuk-table__cell nhsuk-u-font-size-14"><a href="#" class="remove-row nhsuk-link">Remove <span class="nhsuk-u-visually-hidden">Employment ID 3 and employment ID 5 cannot start on the same day</span></a></td>
-          </tr>
-          <tr class="nhsuk-table__row">
-            <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="sets[]" value="Service history" aria-label="Sets: Service history issue 2"></td>
-            <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="fields[]" value="End date" aria-label="Fields: End date"></td>
-            <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-u-font-size-14" type="text" name="amendments[]" value="Employment ID 3 end date missing" aria-label="Amendments: Employment ID 3 end date missing"></td>
-            <td class="nhsuk-table__cell nhsuk-u-font-size-14"><a href="#" class="remove-row nhsuk-link">Remove <span class="nhsuk-u-visually-hidden">Employment ID 3 end date missing</span></a></td>
-          </tr>
-          <tr class="nhsuk-table__row">
-            <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="sets[]" value="Service history" aria-label="Sets: Service history issue 3"></td>
-            <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="fields[]" value="Last updated" aria-label="Fields: Last updated"></td>
-            <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-u-font-size-14" type="text" name="amendments[]" value="Employment ID 3 update date incorrect" aria-label="Amendments: Employment ID 3 update date incorrect"></td>
-            <td class="nhsuk-table__cell nhsuk-u-font-size-14"><a href="#" class="remove-row nhsuk-link">Remove <span class="nhsuk-u-visually-hidden">Employment ID 3 update date incorrect</span></a></td>
-          </tr>
-          <tr class="nhsuk-table__row">
-            <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="sets[]" value="Service history" aria-label="Sets: Service history issue 4"></td>
-            <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="fields[]" value="Field D" aria-label="Fields row 4"></td>
-            <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-u-font-size-14" type="text" name="amendments[]" value="Employment ID 5 start date incorrect" aria-label="Amendment: Employment ID 5 start date incorrect"></td>
-            <td class="nhsuk-table__cell nhsuk-u-font-size-14"><a href="#" class="remove-row nhsuk-link">Remove <span class="nhsuk-u-visually-hidden">Employment ID 5 start date incorrect</span></a></td>
-          </tr>
-          <tr class="nhsuk-table__row">
-            <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="sets[]" value="Employment history" aria-label="Sets: Employment history issue 1"></td>
-            <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="fields[]" value="Employment ID" aria-label="Fields: Employment ID"></td>
-            <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-u-font-size-14" type="text" name="amendments[]" value="Employment ID 3 must appear in both service history and employment history" aria-label="Amendment: Employment ID 3 must appear in both service history and employment history"></td>
-            <td class="nhsuk-table__cell nhsuk-u-font-size-14"><a href="#" class="remove-row nhsuk-link">Remove</a></td>
-          </tr>
-          <tr class="nhsuk-table__row">
-            <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="sets[]" value="Employment history" aria-label="Sets: Employment history issue 1"></td>
-            <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="fields[]" value="Employment ID" aria-label="Fields: Employment ID"></td>
-            <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-u-font-size-14" type="text" name="amendments[]" value="Employment ID 5 must appear in both service history and employment history" aria-label="Amendment: Employment ID 3 must appear in both service history and employment history"></td>
-            <td class="nhsuk-table__cell nhsuk-u-font-size-14"><a href="#" class="remove-row nhsuk-link">Remove</a></td>
-          </tr>
-          <tr class="nhsuk-table__row">
-            <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="sets[]" value="Conts and TPP" aria-label="Sets: Conts and TPP issue 1"></td>
-            <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="fields[]" value="Employment ID" aria-label="Fields: Employment ID"></td>
-            <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-u-font-size-14" type="text" name="amendments[]" value="Employment ID 3 must appear in both service history and employment history" aria-label="Amendment: Employment ID 3 must appear in both service history and employment history"></td>
-            <td class="nhsuk-table__cell nhsuk-u-font-size-14"><a href="#" class="remove-row nhsuk-link">Remove</a></td>
-          </tr>
-          <tr class="nhsuk-table__row">
-            <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="sets[]" value="Hours history" aria-label="Sets: Hours history issue 1"></td>
-            <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="fields[]" value="Employment ID" aria-label="Fields: Employment ID"></td>
-            <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-u-font-size-14" type="text" name="amendments[]" value="Employment ID 3 must appear in both service history and employment history" aria-label="Amendment: Employment ID 3 must appear in both service history and employment history"></td>
-            <td class="nhsuk-table__cell nhsuk-u-font-size-14"><a href="#" class="remove-row nhsuk-link">Remove</a></td>
-          </tr>
-
-        </tbody>
-      </table>
-
-      <button type="button" id="addRowButton" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small">Add another row</button>
-      <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
-      <button type="submit" class="nhsuk-button">Continue</button>
-
-    </form>
-
-  </div>
 </div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
 
-<script src="/js/reportScript.js"></script>
+const tableBody = document.querySelector('#reportTable tbody');
+const addButton = document.getElementById('addRowButton');
+const form = document.getElementById('reportForm');
+const errorSummary = document.getElementById('errorSummary');
+const errorList = document.getElementById('errorList');
+
+// Remove row
+function bindRemoveLinks() {
+    tableBody.querySelectorAll('.remove-row').forEach(link => {
+        link.removeEventListener('click', removeHandler);
+        link.addEventListener('click', removeHandler);
+    });
+}
+
+function removeHandler(e) {
+    e.preventDefault();
+    const row = e.target.closest('tr');
+    row.remove();
+}
+
+bindRemoveLinks();
+
+// Add new row
+addButton.addEventListener('click', function () {
+
+const rowCount = tableBody.querySelectorAll('tr').length + 1;
+
+const newRow = document.createElement('tr');
+newRow.classList.add('nhsuk-table__row');
+
+newRow.innerHTML = `
+  <td class="nhsuk-table__cell">
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label nhsuk-u-visually-hidden" for="sets-${rowCount}">
+        Sets row ${rowCount}
+      </label>
+      <input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14"
+             id="sets-${rowCount}"
+             name="sets[]"
+             type="text">
+    </div>
+  </td>
+
+  <td class="nhsuk-table__cell">
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label nhsuk-u-visually-hidden" for="fields-${rowCount}">
+        Fields row ${rowCount}
+      </label>
+      <input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14"
+             id="fields-${rowCount}"
+             name="fields[]"
+             type="text">
+    </div>
+  </td>
+
+  <td class="nhsuk-table__cell">
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label nhsuk-u-visually-hidden" for="amendments-${rowCount}">
+        Amendments row ${rowCount}
+      </label>
+      <input class="nhsuk-input nhsuk-u-font-size-14"
+             id="amendments-${rowCount}"
+             name="amendments[]"
+             type="text">
+    </div>
+  </td>
+
+  <td class="nhsuk-table__cell  nhsuk-u-font-size-14">
+    <a href="#" class="remove-row nhsuk-link">
+      Remove
+      <span class="nhsuk-u-visually-hidden">row ${rowCount}</span>
+    </a>
+  </td>
+`;
+
+tableBody.appendChild(newRow);
+bindRemoveLinks();
+});
+
+function validateField(input, message, errorsArray) {
+
+if (input.value.trim() === '') {
+
+    const formGroup = input.closest('.nhsuk-form-group');
+
+    formGroup.classList.add('nhsuk-form-group--error');
+    input.classList.add('nhsuk-input--error');
+
+    const errorId = input.id + "-error";
+
+    const errorMessage = document.createElement('span');
+    errorMessage.className = "nhsuk-error-message  nhsuk-u-font-size-14";
+    errorMessage.id = errorId;
+    errorMessage.innerHTML =
+        '<span class="nhsuk-u-visually-hidden">Error:</span> ' + message;
+
+    formGroup.insertBefore(errorMessage, input);
+
+    input.setAttribute('aria-describedby', errorId);
+
+    errorsArray.push({
+        input: input,
+        summaryText: message
+    });
+}
+}
+
+
+
+// Form validation
+form.addEventListener('submit', function (e) {
+
+const rows = Array.from(tableBody.querySelectorAll('tr'));
+let errors = [];
+
+errorList.innerHTML = '';
+errorSummary.style.display = 'none';
+
+// Clear previous errors
+tableBody.querySelectorAll('.nhsuk-form-group').forEach(group => {
+    group.classList.remove('nhsuk-form-group--error');
+
+    const errorMessage = group.querySelector('.nhsuk-error-message');
+    if (errorMessage) errorMessage.remove();
+
+    const input = group.querySelector('input');
+    input.classList.remove('nhsuk-input--error');
+    input.removeAttribute('aria-describedby');
+});
+
+rows.forEach((row, index) => {
+
+    const setsInput = row.querySelector('input[name="sets[]"]');
+    const fieldsInput = row.querySelector('input[name="fields[]"]');
+    const amendmentsInput = row.querySelector('input[name="amendments[]"]');
+
+    const allEmpty = [setsInput, fieldsInput, amendmentsInput]
+        .every(input => input.value.trim() === '');
+
+    if (allEmpty) {
+        row.remove();
+        return;
+    }
+
+    validateField(setsInput, "Enter the sets", errors);
+    validateField(fieldsInput, "Enter the fields", errors);
+    validateField(amendmentsInput, "Enter amendments", errors);
+
+});
+
+if (errors.length > 0) {
+    e.preventDefault();
+
+    errors.forEach(err => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = "#" + err.input.id;
+        a.textContent = err.summaryText;
+        li.appendChild(a);
+        errorList.appendChild(li);
+    });
+
+    errorSummary.style.display = 'block';
+    errorSummary.focus();
+}
+
+});
+
+
+});
+</script>
 
 {% endblock %}
