@@ -120,6 +120,15 @@
         padding-left: 16px;
     }
 }
+#reportTable{
+
+    .nhsuk-table__cell:first-of-type {
+        padding-left: 0;
+    }
+    .reportCell{
+        width: 150px;
+    }
+}
 
 // Sortable table
 

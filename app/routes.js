@@ -47,6 +47,7 @@ router.use('/', (req, res, next) => {
 
 router.use('/mvp', require('./views/mvp/_routes'));
 router.use('/iteration-1', require('./views/iteration-1/_routes'));
+router.use('/iteration-1-2', require('./views/iteration-1-2/_routes'));
 router.use('/sandbox', require('./views/sandbox/_routes'));
 router.use('/sandbox-sort', require('./views/sandbox-sort/_routes'));
 router.use('/concept-filter', require('./views/concept-filter/_routes'));
@@ -54,6 +55,7 @@ router.use('/concept-pagination', require('./views/concept-pagination/_routes'))
 router.use('/concept-sortable', require('./views/concept-sortable/_routes'));
 router.use('/concept-customise', require('./views/concept-customise/_routes'));
 router.use('/concept-compare', require('./views/concept-compare/_routes'));
+router.use('/concept-sdticket', require('./views/concept-sdticket/_routes'));
 router.use('/concept-all', require('./views/concept-all/_routes'));
 
 module.exports = router
