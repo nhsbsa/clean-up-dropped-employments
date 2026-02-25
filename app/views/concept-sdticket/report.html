@@ -15,7 +15,7 @@
             This report is being generated to send to service desk, you need to enter all of the correct details in each section of the form.
         </div>
 
-        <form id="reportForm">
+        <form action="/{{folder}}/report" method="post" id="reportForm">
             <details class="nhsuk-details nhsuk-expander">
         <summary class="nhsuk-details__summary">
           <span class="nhsuk-details__summary-text">
@@ -84,42 +84,42 @@
                         },
                         id: "recordTypeChange",
                         name: "recordTypeChange",
-                        value: "type",
+                        value: "-- Type of record change --",
                         items: [
                             {
-                            value: "type",
+                            value: "-- Type of record change --",
                             text: "-- Type of record change --"
                             },
                             {
-                            value: "cancelAward",
+                            value: "Cancel award",
                             text: "Cancel award"
                             },
                             {
-                            value: "schemeChange",
+                            value: "Scheme change",
                             text: "Scheme change"
                             },
                             {
-                            value: "statueChange",
+                            value: "Statue change",
                             text: "Status change"
                             },
                             {
-                            value: "serviceGroupChange",
+                            value: "Service group change",
                             text: "Service group change"
                             },
                             {
-                            value: "deleteForm",
+                            value: "Deletion of form",
                             text: "Deletion of form"
                             },
                             {
-                            value: "addConts",
+                            value: "Add conts",
                             text: "Add conts"
                             },
                             {
-                            value: "addBasic",
+                            value: "Add basic",
                             text: "Add basica"
                             },
                             {
-                            value: "additionalPension",
+                            value: "Additional pension",
                             text: "Additional pension"
                             },
                             {
