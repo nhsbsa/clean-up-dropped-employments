@@ -17,24 +17,24 @@
 
         <form action="/{{folder}}/report" method="post" id="reportForm">
             <details class="nhsuk-details nhsuk-expander">
-        <summary class="nhsuk-details__summary">
-          <span class="nhsuk-details__summary-text">
-            Requester details
-          </span>
-        </summary>
-        <div class="nhsuk-details__text">
-          <p>This service desk ticket is being requested by:</p>
-          {{ input({
-            label: {
-            text: "Requester name"
-            },
-            id: "requesterName",
-            name: "requesterName",
-            classes: "nhsuk-input--width-20",
-            value: "Jane Doe"
-            }) }}
-      
-        </div>
+                <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                    Requester details
+                </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                <p>This service desk ticket is being requested by:</p>
+                {{ input({
+                    label: {
+                    text: "Requester name"
+                    },
+                    id: "requesterName",
+                    name: "requesterName",
+                    classes: "nhsuk-input--width-20",
+                    value: "Jane Doe"
+                    }) }}
+        
+                </div>
             </details>
 
             <details class="nhsuk-details nhsuk-expander">
@@ -168,6 +168,8 @@
                 </div>
             </details>
 
+            <hr>
+
             <h3>Description</h3>
             <div class="nhsuk-hint">
                 Corruptions have been added from the Identify record issues tool, you can remove any that aren't
@@ -250,7 +252,69 @@
             </table>
 
             <button type="button" id="addRowButton" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small">Add another row</button>
+            
+            <hr>
+            <details class="nhsuk-details nhsuk-expander">
+                <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                    Basic information
+                </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                    {{ select({
+                        label: {
+                          text: "Urgency"
+                        },
+                        id: "urgency",
+                        name: "urgency",
+                        value: "highPriotiry",
+                        items: [
+                          {
+                            value: "highPriotiry",
+                            text: "High Priority"
+                          },
+                          {
+                            value: "medPriority",
+                            text: "Medium Priority"
+                          },
+                          {
+                            value: "lowPriority",
+                            text: "Low Priority"
+                          }
+                        ]
+                    }) }}
+                    {{ input({
+                        label: {
+                        text: "Site"
+                        },
+                        id: "siteName",
+                        name: "siteName",
+                        classes: "nhsuk-input--width-20"
+                    }) }}
+                    {{ input({
+                        label: {
+                        text: "Directorate"
+                        },
+                        id: "directorate",
+                        name: "directorate",
+                        classes: "nhsuk-input--width-20"
+                    }) }}
+                    {{ textarea({
+                        name: "additionalDsc",
+                        id: "additionalDsc",
+                        rows: "3",
+                        label: {
+                          text: "Ticket Description"
+                        },
+                        hint: {
+                          text: "Add a brief overview of the ticket information"
+                        }
+                    }) }}
+                </div>
+            </details>
+
             <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
             <button type="submit" class="nhsuk-button">Continue</button>
 
         </form>

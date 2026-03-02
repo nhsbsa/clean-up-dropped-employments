@@ -205,7 +205,7 @@
       </tr>
       </thead>
       <tbody class="nhsuk-table__body">
-          <tr class="nhsuk-table__row" role="row">
+          <tr class="nhsuk-table__row rows-eh hidden-row" role="row">
               <td class="ehEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell">1</td>
               <td class="ehEmpCode nhsuk-table__cell nhsuk-u-font-size-14" role="cell">5266</td>
               <td class="ehStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2013</td>
@@ -216,7 +216,7 @@
               <td class="ehActHrs nhsuk-table__cell nhsuk-u-font-size-14" role="cell">&nbsp;</td>
               <td class="ehStdHrs nhsuk-u-font-size-14" role="cell">&nbsp;</td>
           </tr>
-          <tr class="nhsuk-table__row" role="row">
+          <tr class="nhsuk-table__row rows-eh hidden-row" role="row">
               <td class="ehEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell">1</td>
               <td class="ehEmpCode nhsuk-table__cell nhsuk-u-font-size-14" role="cell">5266</td>
               <td class="ehStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">10/11/2014</td>
@@ -227,7 +227,7 @@
               <td class="ehActHrs nhsuk-table__cell nhsuk-u-font-size-14" role="cell">30</td>
               <td class="ehStdHrs nhsuk-u-font-size-14" role="cell">37.5</td>
           </tr>
-          <tr class="nhsuk-table__row" role="row">
+          <tr class="nhsuk-table__row rows-eh hidden-row" role="row">
               <td class="ehEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2</td>
               <td class="ehEmpCode nhsuk-table__cell nhsuk-u-font-size-14" role="cell">5266</td>
               <td class="ehStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2015</td>
@@ -678,9 +678,9 @@
 
 {% set serviceHistoryErrors %}
 <div class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="nhsuk-error-summary">
-  <h2 class="nhsuk-error-summary__title" id="error-summary-title">
-    Issues found
-  </h2>
+  <h3 class="nhsuk-error-summary__title" id="error-summary-title">
+    Issues found <span class="nhsuk-u-visually-hidden">in service history</span>
+  </h3>
   <div class="nhsuk-error-summary__body">
     <p>There are 4 issues in the service history table. They must be fixed before the record can be processed.</p>
     <ul class="nhsuk-list nhsuk-error-summary__list" role="list">
@@ -694,9 +694,9 @@
 {% endset %}
 {% set employmentHistoryErrors %}
 <div class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="nhsuk-error-summary">
-  <h2 class="nhsuk-error-summary__title" id="error-summary-title">
-    Issues found
-  </h2>
+  <h3 class="nhsuk-error-summary__title" id="error-summary-title">
+    Issues found <span class="nhsuk-u-visually-hidden">in employment history</span>
+  </h3>
   <div class="nhsuk-error-summary__body">
     <p>There are 2 issues in the employment history table. They must be fixed before the record can be processed. </p>
     <ul class="nhsuk-list nhsuk-error-summary__list" role="list">
@@ -708,9 +708,9 @@
 {% endset %}
 {% set contsTppErrors %}
 <div class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="nhsuk-error-summary">
-  <h2 class="nhsuk-error-summary__title" id="error-summary-title">
-    Issue found
-  </h2>
+  <h3 class="nhsuk-error-summary__title" id="error-summary-title">
+    Issue found <span class="nhsuk-u-visually-hidden">in conts and tpp</span>
+  </h3>
   <div class="nhsuk-error-summary__body">
     <p>There is 1 issue in the pension contributions table. They must be fixed before the record can be processed. </p>
     <ul class="nhsuk-list nhsuk-error-summary__list" role="list">
@@ -721,9 +721,9 @@
 {% endset %}
 {% set hoursHistoryErrors %}
 <div class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="nhsuk-error-summary">
-  <h2 class="nhsuk-error-summary__title" id="error-summary-title">
-    Issue found
-  </h2>
+  <h3 class="nhsuk-error-summary__title" id="error-summary-title">
+    Issue found <span class="nhsuk-u-visually-hidden">in hours history</span>
+  </h3>
   <div class="nhsuk-error-summary__body">
     <p>There is 1 issue in the hours history table. It must be fixed before the record can be processed.</p>
     <ul class="nhsuk-list nhsuk-error-summary__list" role="list">
