@@ -111,6 +111,15 @@
     }
 }
 
+.errorSummaryList{
+    border-left: 4px solid $nhsuk-error-colour;
+    padding-left: 16px;
+    .nhsuk-summary-list__key{
+        padding-left: 16px;
+        vertical-align: bottom;
+    }
+}
+
 // Tables
 
 .nhsuk-table {
