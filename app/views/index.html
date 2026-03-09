@@ -12,6 +12,47 @@
       </h1>
       <hr>
       <div class="nhsuk-grid-column-two-thirds">
+        <details class="nhsuk-details nhsuk-expander">
+          <summary class="nhsuk-details__summary">
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-two-thirds">
+                <span class="nhsuk-details__summary-text">
+                  Iteration 1.1
+                </span>
+              </div>
+              <div class="nhsuk-grid-column-one-third nhsuk-u-text-align-right">
+                <strong class="nhsuk-tag nhsuk-tag--green">DEV</strong>
+              </div>
+            </div>
+          </summary>
+          <div class="nhsuk-details__text">
+            <h3 class="nhsuk-heading-s">Design</h3>
+            <p></p>
+            <ul>
+              <li>Update content on the error pages to remove the additional 'the' in the content.</li>
+              <li>Update the intro text for the core data sets to include when the data was last updated.</li>
+              <li>Show all rows / hide correct rows button updated to a small button.</li>
+              <li>Show all rows / hide correct button added to all sets with issues.</li>
+              <li>Accessibility updates <a href="https://bsa2468.atlassian.net/wiki/x/LQBTaQE" target="_blank" title="View full update details in confluence"> here</a>.</li>
+            </ul>
+            <hr/>
+              <h3 class="nhsuk-heading-s">New error message</h3>
+              <ul class="nhsuk-list nhsuk-list--bullet">
+                <li><a href="/iteration-1/results-error">Member status incorrect</a></li>
+              </ul>
+            <hr>
+            {{ button({
+              "text": "View Iteration 1.1",
+              "href": "/iteration-1/search"
+            }) }}
+            <br/>
+            {{ actionLink({
+              "classes": "nhsuk-u-margin-bottom-3",
+              "text": "View UCD log entry",
+              "href": "https://bsa2468.atlassian.net/wiki/x/IgCjaQE"
+            }) }}
+          </div>
+        </details>
           <details class="nhsuk-details nhsuk-expander">
             <summary class="nhsuk-details__summary">
               <div class="nhsuk-grid-row">
@@ -21,7 +62,7 @@
                   </span>
                 </div>
                 <div class="nhsuk-grid-column-one-third nhsuk-u-text-align-right">
-                  <strong class="nhsuk-tag nhsuk-tag--green">DEV</strong>
+                  <strong class="nhsuk-tag nhsuk-tag--green">LIVE - FEB 2026</strong>
                 </div>
               </div>
             </summary>
@@ -65,6 +106,7 @@
                 </div>
                 <div class="nhsuk-grid-column-one-third nhsuk-u-text-align-right">
                   <strong class="nhsuk-tag nhsuk-tag--blue">DESIGN</strong>
+                  <strong class="nhsuk-tag nhsuk-tag--yellow">UR</strong>
                 </div>
               </div>
             </summary>
@@ -129,7 +171,7 @@
                   },
                   {
                     key: {
-                      text: "Customisable tables"
+                      text: "Customisable data sets"
                     },
                     value: {
                       html: "
@@ -141,6 +183,78 @@
                           href: "/concept-customise/results",
                           text: "View",
                           visuallyHiddenText: "Sortable tables"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Comparison view"
+                    },
+                    value: {
+                      html: "
+                      <p>Giving the users the ability to compare two datasets side by side. This feature also incorporates the customisable data sets feature.</p>"
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/concept-compare/results",
+                          text: "View",
+                          visuallyHiddenText: "Compare data sets"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Combined features"
+                    },
+                    value: {
+                      html: "
+                      <p>A view which combines all of the features listed into one prototype.</p>"
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/concept-all/results",
+                          text: "View",
+                          visuallyHiddenText: "Full feature example"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Refresh button"
+                    },
+                    value: {
+                      html: "
+                      <p>Small update to include an example of a refresh button which refreshes the browser window.</p>"
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/iteration-1-2/results",
+                          text: "View",
+                          visuallyHiddenText: "refresh button"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    key: {
+                      text: "SD Report"
+                    },
+                    value: {
+                      html: "
+                      <p>An additional feature to incorporate ticket creation into the tool.</p>"
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/concept-sdticket/results",
+                          text: "View",
+                          visuallyHiddenText: "SD ticket creation"
                         }
                       ]
                     }
@@ -163,6 +277,15 @@
               </div>
             </summary>
             <div class="nhsuk-details__text">
+              {% set html %}
+                <p class="nhsuk-notification-banner__heading">
+                  The following are no longer used as they are preliminary tests.
+                </p>
+              {% endset %}
+
+              {{ notificationBanner({
+                html: html
+              }) }}
               <h3 class="nhsuk-heading-s">Design</h3>
               <p>These designs were creating during the testing and planning phase of the MVP and were iterated upon throughout the UR sessions and stake holder meetings.</p>
               {{ summaryList({
