@@ -12,7 +12,11 @@ router.post('/results', function (req, res) {
 })
 
 router.post('/report', function (req, res) {
-    res.redirect('confirm-report');
+    res.redirect('check-your-report');
+})
+
+router.post('/check-your-report', function (req, res) {
+    res.redirect('report-submitted');
 })
 
 

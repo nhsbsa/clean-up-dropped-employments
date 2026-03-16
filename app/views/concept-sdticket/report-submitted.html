@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Report submitted successfully"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row confirmReport">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ panel({
+            titleText: "Your report has been submitted",
+            text: "Ticket number: XXXX1234"
+        }) }}
+
+        <h2 class="nhsuk-heading-m">What happens next</h2>
+
+        <p>
+            You'll get a response to your service desk report within XXX
+        </p>
+
+        <h2 class="nhsuk-heading-m">Give feedback</h2>
+
+        <p><a href="#">What did you think of this service?<span class="nhsuk-u-visually-hidden"> (opens in a new
+                    window)</span></a> (takes 30 seconds).</p>
+
+    </div>
+</div>
+
+
+{% endblock %}
