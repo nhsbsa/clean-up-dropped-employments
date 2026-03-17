@@ -101,13 +101,8 @@
     border-left: 4px solid $nhsuk-error-colour;
     font-weight: bold;
 
-    // .nhsuk-table__cell:first-of-type {
-    //     padding-left: 16px;
-    // }
-
     .errorTxt {
         color: $nhsuk-error-colour;
-        // text-decoration: underline;
     }
 }
 
@@ -269,28 +264,46 @@
 
 }
 
-// Iteration 1
-.button--error {
-    width: calc(100% + 16px);
-    height: 100%;
-    padding: 16px;
-    margin: -16px;
-    background: nhsuk-colour("white");
-    border: none;
-    font-weight: bold;
-    color: nhsuk-colour("red");
-    display: block;
-
-    &:hover {
-        background-color: nhsuk-colour("grey-5");
+//Member Header
+.memberHeader{
+    display: flex;
+    flex-direction: column;
+    @media (min-width: 600px) {
+        flex-direction: row;
     }
-
-    &:focus {
-        background-color: nhsuk-colour("yellow");
-        outline: 4px solid transparent;
-        color: nhsuk-colour("black");
-        border-bottom: 4px solid nhsuk-colour("black");
+    #memberName{
+        order: 2;
+        @media (min-width: 600px) {
+            order: 1;
+        }
     }
+    #memberNew{
+        order: 1;
+        @media (min-width: 600px) {
+            order: 2;
+            text-align: right;
+        }
+    }
+}
+
+// Back to the top
+.nhsuk-grid-column-full--long{
+    position: relative;
+}
+.app-back-to-top__icon {
+    display: inline-block;
+    width: .8em;
+    height: 1em;
+    margin-top: -5px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+
+//Pagination
+
+#tablePagination{
+    margin-top: 0;
 }
 
 

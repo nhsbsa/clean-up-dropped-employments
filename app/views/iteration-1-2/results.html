@@ -7,12 +7,18 @@
 
 {% block content %}
 <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-grid-column-full nhsuk-grid-column-full--long">
 
-        <span class="nhsuk-caption-l">Member Details</span>
-        <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">{{pageTitle}}</h1>
-
-        SEARCH NEW MEMBER RECORD / BACK TO THE TOP
+        <div class="nhsuk-grid-row memberHeader">
+            <div class="nhsuk-grid-column-one-half" id="memberName">
+                <span class="nhsuk-caption-l">Member Details</span>
+                <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">{{pageTitle}}</h1>
+            </div>
+            <div class="nhsuk-grid-column-one-half" id="memberNew">
+                <a href="/{{folder}}/search" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small">Search new
+                    member</a>
+            </div>
+        </div>
 
         <div class="nhsuk-grid-row">
             <div class="nhsuk-grid-column-one-half">
@@ -113,8 +119,8 @@
             </summary>
             <div class="nhsuk-details__text">
                 {{ serviceHistoryErrors | safe }}
-                <button id="toggleButtonSh" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button"
-                    onclick="toggleRows('rows-sh', this)">Hide correct rows</button>
+                <button id="toggleButtonSh" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small"
+                    data-module="nhsuk-button" onclick="toggleRows('rows-sh', this)">Hide correct rows</button>
                 {{ serviceHistoryTable | safe }}
             </div>
         </details>
@@ -149,12 +155,13 @@
             </summary>
             <div class="nhsuk-details__text">
                 {{ employmentHistoryErrors | safe }}
-                <button id="toggleButtonEh" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button"
-                    onclick="toggleRows('rows-eh', this)">Hide correct rows</button>
-                <div class="nhsuk-hint">You can scroll left and right to see all columns if the table does not fit on your screen</div>
+                <button id="toggleButtonEh" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small"
+                    data-module="nhsuk-button" onclick="toggleRows('rows-eh', this)">Hide correct rows</button>
+                <div class="nhsuk-hint">You can scroll left and right to see all columns if the table does not fit on
+                    your screen</div>
                 <div class="nhsuk-scrollable-pane" aria-label="Employment history" tabindex="0">
                     {{ employmentHistoryTable | safe }}
-                </div> 
+                </div>
             </div>
         </details>
 
@@ -174,8 +181,8 @@
             </summary>
             <div class="nhsuk-details__text">
                 {{ contsTppErrors | safe }}
-                <button id="toggleButtonConts" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button"
-                    onclick="toggleRows('rows-conts', this)">Hide correct rows</button>
+                <button id="toggleButtonConts" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small"
+                    data-module="nhsuk-button" onclick="toggleRows('rows-conts', this)">Hide correct rows</button>
                 {{ contsTppTable | safe }}
             </div>
         </details>
@@ -195,8 +202,8 @@
             </summary>
             <div class="nhsuk-details__text">
                 {{ hoursHistoryErrors | safe }}
-                <button id="toggleButton" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button"
-                    onclick="toggleRows('rows-hh', this)">Hide correct rows</button>
+                <button id="toggleButton" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small"
+                    data-module="nhsuk-button" onclick="toggleRows('rows-hh', this)">Hide correct rows</button>
                 {{ hoursHistoryTable | safe }}
             </div>
         </details>
@@ -216,24 +223,36 @@
             </div>
         </details>
 
+        <div class="app-back-to-top" data-module="app-back-to-top" data-app-back-to-top-init="">
+            <a class="nhsuk-link nhsuk-link--no-visited-state app-back-to-top__link" href="#top">
+                <svg role="presentation" focusable="false" class="app-back-to-top__icon"
+                    xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
+                    <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>
+                </svg>Back to top
+            </a>
+        </div>
+
     </div>
 </div>
 
+
+<script src="/assets/javascript/back-to-top.js"></script>
+
 <script>
-  function toggleRows(groupClass, button) {
-    const rows = document.querySelectorAll(`.${groupClass}`);
-    let anyVisible = false;
+    function toggleRows(groupClass, button) {
+        const rows = document.querySelectorAll(`.${groupClass}`);
+        let anyVisible = false;
 
-    rows.forEach(row => {
-      row.classList.toggle('hidden');
-      if (!row.classList.contains('hidden')) {
-        anyVisible = true;
-      }
-    });
+        rows.forEach(row => {
+            row.classList.toggle('hidden');
+            if (!row.classList.contains('hidden')) {
+                anyVisible = true;
+            }
+        });
 
-    button.textContent = anyVisible
-      ? 'Hide correct rows'
-      : 'Show all rows';
-  }
+        button.textContent = anyVisible
+            ? 'Hide correct rows'
+            : 'Show all rows';
+    }
 </script>
 {% endblock %}

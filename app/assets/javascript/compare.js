@@ -1,17 +1,17 @@
-const toggleButton = document.getElementById('filters-toggle');
-const panel = document.getElementById('filters-panel');
+const toggleButtonCmp = document.getElementById('compare-toggle');
+const panelCmp = document.getElementById('compare-panel');
 
-toggleButton.addEventListener('click', () => {
-    const isOpen = panel.hasAttribute('hidden') === false;
+toggleButtonCmp.addEventListener('click', () => {
+    const isOpen = panelCmp.hasAttribute('hidden') === false;
 
     if (isOpen) {
-        panel.setAttribute('hidden', '');
-        toggleButton.setAttribute('aria-expanded', 'false');
-        toggleButton.textContent = 'Compare data sets';
+        panelCmp.setAttribute('hidden', '');
+        toggleButtonCmp.setAttribute('aria-expanded', 'false');
+        toggleButtonCmp.textContent = 'Compare data sets';
     } else {
-        panel.removeAttribute('hidden');
-        toggleButton.setAttribute('aria-expanded', 'true');
-        toggleButton.textContent = 'Hide compare';
+        panelCmp.removeAttribute('hidden');
+        toggleButtonCmp.setAttribute('aria-expanded', 'true');
+        toggleButtonCmp.textContent = 'Hide compare';
     }
 });
 

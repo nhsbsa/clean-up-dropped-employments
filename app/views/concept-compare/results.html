@@ -95,11 +95,11 @@
       {{ introPara | safe }}
     </div>
 
-    <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="filters-panel" id="filters-toggle">
+    <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="compare-panel" id="compare-toggle">
       Compare data sets
     </button>
 
-    <div id="filters-panel" hidden>
+    <div id="compare-panel" hidden>
         <form id="compare-form" action="/{{folder}}/results" method="post" >
           <div class="nhsuk-form-group">
             <fieldset class="nhsuk-fieldset">
@@ -278,7 +278,7 @@
   </div>
 </div>
 
-<script src="/js/compare.js"></script>
+<script src="/assets/javascript/compare.js"></script>
 
 <script>
     function toggleRows() {

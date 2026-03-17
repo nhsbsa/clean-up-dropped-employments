@@ -202,7 +202,7 @@
           <th scope="col" class="ehEmpID nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employment ID</th>
           <th scope="col" class="ehEmpCode nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employer code</th>
           <th scope="col" class="ehStart nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Start date</th>
-          <th scope="col" class="ehEnd nhsuk-u-font-size-14" role="columnheader">End date</th>
+          <th scope="col" class="ehEnd nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">End date</th>
           <th scope="col" class="ehTime nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Whole/part time</th>
           <th scope="col" class="ehCapCode nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Capacity code</th>
           <th scope="col" class="ehEmpType nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employment type</th>
@@ -288,7 +288,7 @@
     </thead> 
     <tbody class="nhsuk-table__body">
       <!-- Error row -->
-      <tr class="nhsuk-table__row errorHighlight" id="contsError" role="row">
+      <tr class="nhsuk-table__row errorHighlight contsError" id="contsError" role="row">
           <td class="ctEmpId nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-u-visually-hidden">Error: Employment ID 3 must appear in both service history and employment history</span><span
                   class="errorTxt">3</span></td>
           <td class="ctStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2022</td>
@@ -485,15 +485,15 @@
     <caption class="nhsuk-u-visually-hidden">Hours history table</caption>
     <thead class="nhsuk-table__head">
       <tr role="row">
-        <th scope="col" class="hhEmpId  nhsuk-u-font-size-14" role="columnheader">Employment ID</th>
-        <th scope="col" class="hhStart nhsuk-u-font-size-14" role="columnheader">Start date</th>
-        <th scope="col" class="hhEnd nhsuk-u-font-size-14" role="columnheader">End date</th>
-        <th scope="col" class="hhPtHrs nhsuk-u-font-size-14" role="columnheader">Part time hours</th>
+        <th scope="col" class="hhEmpId nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Employment ID</th>
+        <th scope="col" class="hhStart nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Start date</th>
+        <th scope="col" class="hhEnd nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">End date</th>
+        <th scope="col" class="hhPtHrs nhsuk-table__header nhsuk-u-font-size-14" role="columnheader">Part time hours</th>
     </tr>
     </thead>
     <tbody class="nhsuk-table__body">
     
-      <tr class="nhsuk-table__row errorHighlight" id="hrsError" role="row">
+      <tr class="nhsuk-table__row errorHighlight hrsError" id="hrsError" role="row">
         <td class="hhEmpId nhsuk-table__cell nhsuk-u-font-size-14">
           <span class="nhsuk-u-visually-hidden">Error: Employment ID 3 must appear in both service history and employment history</span><span class="errorTxt">3</span>
         </td>
@@ -710,6 +710,28 @@
 </div>
 {% endset %}
 
+{% set sortableArrows %}
+<span class="sort-icon sort-icon--default">
+  <!-- Double arrow SVG -->
+  <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"></path>
+    <path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"></path>
+  </svg>
+</span>
+<span class="sort-icon sort-icon--asc">
+  <!-- Ascending SVG -->
+  <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M6.5625 15.5L11 6.63125L15.4375 15.5H6.5625Z" fill="currentColor"></path>
+  </svg>
+</span>
+<span class="sort-icon sort-icon--desc">
+  <!-- Descending SVG -->
+  <svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.4375 7L11 15.8687L6.5625 7L15.4375 7Z" fill="currentColor"></path>
+  </svg>
+</span>
+{% endset %}
+
 
 {% block main %}
     {% if wideLayout %}
@@ -722,7 +744,7 @@
     {% endif %}
 
     <div class="{{ 'nhsuk-width-container-fluid' if wideLayout else 'nhsuk-width-container' }}">
-      <main class="nhsuk-main-wrapper" id="maincontent" role="main">
+      <main class="nhsuk-main-wrapper" id="maincontent top" role="main">
           {% block content %}
           {% endblock %}
       </main>
