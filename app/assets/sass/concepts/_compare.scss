@@ -1,0 +1,41 @@
+//Compare
+
+#compare-panel {
+    border-top: 1px solid $nhsuk-border-colour;
+    padding: 30px 30px 0 30px;
+    background-color: nhsuk-colour("white");
+    margin-bottom: 36px;
+    border-bottom: 1px solid $nhsuk-border-colour;
+}
+
+#compare-panel.details {
+    border-top: none;
+    padding-top: 30px;
+    background-color: transparent;
+    margin-bottom: 36px;
+    border-bottom: none;
+}
+
+.compareRow {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .compareCol {
+        width: 100%;
+        background-color: nhsuk-colour("white");
+        padding: 20px;
+    }
+
+    @media (min-width: 600px) {
+        flex-direction: row;
+
+        .compareCol {
+            width: 49%;
+        }
+    }
+}
+
+// .tableScrollOuter {
+//     overflow-x: auto;
+// }

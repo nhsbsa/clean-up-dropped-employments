@@ -1,0 +1,22 @@
+#reportTable {
+
+    .nhsuk-table__cell:first-of-type {
+        padding-left: 0;
+    }
+
+    .reportCell {
+        width: 150px;
+    }
+
+    .nhsuk-form-group {
+        margin-bottom: 0;
+    }
+}
+
+.confirmReport {
+    .reportTable {
+        .reportCell {
+            width: 100px;
+        }
+    }
+}

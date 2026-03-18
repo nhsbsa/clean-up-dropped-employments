@@ -1,0 +1,17 @@
+// Filter
+
+.buttonBlock {
+    display: block;
+}
+
+#filters-panel {
+    border-top: 1px solid $nhsuk-border-colour;
+    padding: 30px 30px 0 30px;
+    background-color: nhsuk-colour("white");
+    margin-bottom: 36px;
+    border-bottom: 1px solid $nhsuk-border-colour;
+}
+
+.nhsuk-checkboxes-filter {
+    column-count: 3;
+}

@@ -1,0 +1,26 @@
+//Member Header
+.memberHeader {
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 600px) {
+        flex-direction: row;
+    }
+
+    #memberName {
+        order: 2;
+
+        @media (min-width: 600px) {
+            order: 1;
+        }
+    }
+
+    #memberNew {
+        order: 1;
+
+        @media (min-width: 600px) {
+            order: 2;
+            text-align: right;
+        }
+    }
+}
