@@ -20,21 +20,23 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     })
 
+    // const toggleFilter = document.getElementById('filters-toggle');
+    const toggleFilter = document.querySelector('button#filters-toggle');
+    const panelFilter = document.getElementById('filters-panel');
+
+    toggleFilter.addEventListener('click', () => {
+        const isOpen = panelFilter.hasAttribute('hidden') === false;
+
+        if (isOpen) {
+            panelFilter.setAttribute('hidden', '');
+            toggleFilter.setAttribute('aria-expanded', 'false');
+            toggleFilter.textContent = 'Show filters';
+        } else {
+            panelFilter.removeAttribute('hidden');
+            toggleFilter.setAttribute('aria-expanded', 'true');
+            toggleFilter.textContent = 'Hide filters';
+        }
+    });
+
 })
 
-const toggleFilter = document.getElementById('filters-toggle');
-const panelFilter = document.getElementById('filters-panel');
-
-toggleFilter.addEventListener('click', () => {
-    const isOpen = panelFilter.hasAttribute('hidden') === false;
-
-    if (isOpen) {
-        panelFilter.setAttribute('hidden', '');
-        toggleFilter.setAttribute('aria-expanded', 'false');
-        toggleFilter.textContent = 'Show filters';
-    } else {
-        panelFilter.removeAttribute('hidden');
-        toggleFilter.setAttribute('aria-expanded', 'true');
-        toggleFilter.textContent = 'Hide filters';
-    }
-});
