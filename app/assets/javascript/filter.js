@@ -22,19 +22,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 })
 
-const toggleButton = document.getElementById('filters-toggle');
-const panel = document.getElementById('filters-panel');
+const toggleFilter = document.getElementById('filters-toggle');
+const panelFilter = document.getElementById('filters-panel');
 
-toggleButton.addEventListener('click', () => {
-    const isOpen = panel.hasAttribute('hidden') === false;
+toggleFilter.addEventListener('click', () => {
+    const isOpen = panelFilter.hasAttribute('hidden') === false;
 
     if (isOpen) {
-        panel.setAttribute('hidden', '');
-        toggleButton.setAttribute('aria-expanded', 'false');
-        toggleButton.textContent = 'Show filters';
+        panelFilter.setAttribute('hidden', '');
+        toggleFilter.setAttribute('aria-expanded', 'false');
+        toggleFilter.textContent = 'Show filters';
     } else {
-        panel.removeAttribute('hidden');
-        toggleButton.setAttribute('aria-expanded', 'true');
-        toggleButton.textContent = 'Hide filters';
+        panelFilter.removeAttribute('hidden');
+        toggleFilter.setAttribute('aria-expanded', 'true');
+        toggleFilter.textContent = 'Hide filters';
     }
 });
