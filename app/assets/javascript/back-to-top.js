@@ -4,14 +4,29 @@ const container = document.querySelector('.nhsuk-grid-column-full');
 function handleScroll() {
     const rect = container.getBoundingClientRect();
 
-    if (rect.bottom <= window.innerHeight) {
-        button.style.position = 'relative';
-        button.style.bottom = '0';
-        button.style.left = '0';
+    // 👉 Hide until user scrolls past first viewport
+    if (window.scrollY < window.innerHeight) {
+        button.classList.remove('is-visible');
+        return;
     } else {
-        button.style.position = 'fixed';
+        button.classList.add('is-visible');
+    }
+
+    if (window.innerWidth < 1250) {
+        button.classList.add('is-relative');
+        button.classList.remove('is-fixed');
+        return;
+    } else {
+        button.classList.add('is-fixed');
+        button.classList.remove('is-relative');
+    }
+    
+
+    // 👉 Existing positioning logic
+    if (rect.bottom <= window.innerHeight - 60)  {
+        button.style.bottom = '150px';
+    } else {
         button.style.bottom = '20px';
-        button.style.left = '20px';
     }
 }
 
