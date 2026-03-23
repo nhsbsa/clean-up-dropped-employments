@@ -110,31 +110,33 @@
     <div id="filters-panel" hidden>
         <form id="table-selector-form">
           <div class="nhsuk-form-group">
-            <fieldset class="nhsuk-fieldset">
+            <fieldset class="nhsuk-fieldset" aria-describedby="filter-hint">
                 <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
                     <h1 class="nhsuk-fieldset__heading">
                         Choose which data sets to display
                     </h1>
-              </legend>
-        
+                </legend>
+                <div id="filter-hint" class="nhsuk-hint">
+                    Any data sets which contain issues cannot be hidden using the filter
+                </div>
               <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter" data-module="nhsuk-checkboxes">
         
                 <div class="nhsuk-checkboxes__item">
-                    <input class="nhsuk-checkboxes__input" id="contsTpp-flt-checkbox" name="tables" type="checkbox" value="contsTpp" checked>
+                    <input class="nhsuk-checkboxes__input" id="contsTpp-flt-checkbox" name="tables" type="checkbox" value="contsTpp" checked disabled>
                     <label class="nhsuk-label nhsuk-checkboxes__label" for="contsTpp-flt-checkbox">
                       Conts &amp; TPP
                     </label>
                 </div>
         
                 <div class="nhsuk-checkboxes__item">
-                  <input class="nhsuk-checkboxes__input" id="employmentHistory-flt-checkbox" name="tables" type="checkbox" value="employmentHistory" checked>
+                  <input class="nhsuk-checkboxes__input" id="employmentHistory-flt-checkbox" name="tables" type="checkbox" value="employmentHistory" checked disabled>
                   <label class="nhsuk-label nhsuk-checkboxes__label" for="employmentHistory-flt-checkbox">
                     Employment History
                   </label>
                 </div>
         
                 <div class="nhsuk-checkboxes__item">
-                  <input class="nhsuk-checkboxes__input" id="hoursHistory-flt-checkbox" name="tables" type="checkbox" value="hoursHistory" checked>
+                  <input class="nhsuk-checkboxes__input" id="hoursHistory-flt-checkbox" name="tables" type="checkbox" value="hoursHistory" checked disabled>
                   <label class="nhsuk-label nhsuk-checkboxes__label" for="hoursHistory-flt-checkbox">
                     Hours history
                   </label>
@@ -155,7 +157,7 @@
                 </div>
 
                 <div class="nhsuk-checkboxes__item">
-                  <input class="nhsuk-checkboxes__input" id="serviceHistory-flt-checkbox" name="tables" type="checkbox" value="serviceHistory" checked>
+                  <input class="nhsuk-checkboxes__input" id="serviceHistory-flt-checkbox" name="tables" type="checkbox" value="serviceHistory" checked disabled>
                   <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceHistory-flt-checkbox">
                     Service history
                   </label>
@@ -255,6 +257,8 @@
       </summary>
       <div class="nhsuk-details__text">
           {{ serviceHistoryErrors | safe }}
+          <button id="toggleButtonSh" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button"
+              onclick="toggleRows('rows-sh', this)">Hide correct rows</button>
           <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="sh-panel-data" id="sh-toggle-data">
               Customise data set
           </button>
@@ -270,14 +274,6 @@
 
                       <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
                       data-module="nhsuk-checkboxes">
-
-                      <div class="nhsuk-checkboxes__item">
-                          <input class="nhsuk-checkboxes__input" id="shEmpID-checkbox" name="shEmpID" type="checkbox"
-                          value="columns" checked>
-                          <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="shEmpID-checkbox">
-                          Employment ID
-                          </label>
-                      </div>
 
                       <div class="nhsuk-checkboxes__item">
                           <input class="nhsuk-checkboxes__input" id="shScheme-checkbox" name="shScheme" type="checkbox"
@@ -539,6 +535,8 @@
         </summary>
         <div class="nhsuk-details__text">
             {{ employmentHistoryErrors | safe }}
+            <button id="toggleButtonEh" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button"
+                onclick="toggleRows('rows-eh', this)">Hide correct rows</button>
             <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="eh-panel-data" id="eh-toggle-data">
                 Customise data set
             </button>
@@ -554,14 +552,6 @@
     
                         <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
                         data-module="nhsuk-checkboxes">
-    
-                        <div class="nhsuk-checkboxes__item">
-                            <input class="nhsuk-checkboxes__input" id="ehEmpID-checkbox" name="ehEmpID" type="checkbox"
-                            value="columns" checked>
-                            <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehEmpID-checkbox">
-                            Employment ID
-                            </label>
-                        </div>
     
                         <div class="nhsuk-checkboxes__item">
                             <input class="nhsuk-checkboxes__input" id="ehEmpCode-checkbox" name="ehEmpCode" type="checkbox"
@@ -750,14 +740,6 @@
                           data-module="nhsuk-checkboxes">
 
                           <div class="nhsuk-checkboxes__item">
-                              <input class="nhsuk-checkboxes__input" id="ctEmpId-checkbox" name="ctEmpId" type="checkbox"
-                              value="columns" checked>
-                              <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ctEmpId-checkbox">
-                              Employment ID
-                              </label>
-                          </div>
-
-                          <div class="nhsuk-checkboxes__item">
                               <input class="nhsuk-checkboxes__input" id="ctStart-checkbox" name="ctStart" type="checkbox"
                               value="columns" checked>
                               <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ctStart-checkbox">
@@ -922,10 +904,16 @@
                       <td class="ctEmployerConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£5918.68</td>
                       <td class="ctEmpPay nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£41845.03</td>
                       </tr>
-                      <tr class="nhsuk-table__row rows-conts hidden-row" role="row">
-                      <td class="ctEmpId nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2</td>
+                      <tr class="nhsuk-table__row errorHighlight contsError" role="row">
+                      <td class="ctEmpId nhsuk-table__cell nhsuk-u-font-size-14" role="cell">
+                        <span class="nhsuk-u-visually-hidden">This is an example error</span>
+                        <span class="errorTxt">2</span>
+                      </td>
                       <td class="ctStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2022</td>
-                      <td class="ctEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">31/03/2023</td>
+                      <td class="ctEnd nhsuk-table__cell nhsuk-u-font-size-14" role="cell">
+                        <span class="nhsuk-u-visually-hidden">This is an example error</span>
+                        <span class="errorTxt">31/03/2023</span>
+                      </td>
                       <td class="ctEmpConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£3661.75</td>
                       <td class="ctTpp nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£38306.89</td>
                       <td class="ctEmployerConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£5508.53</td>
@@ -1077,14 +1065,6 @@
       
                           <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
                           data-module="nhsuk-checkboxes">
-      
-                          <div class="nhsuk-checkboxes__item">
-                              <input class="nhsuk-checkboxes__input" id="hhEmpId-checkbox" name="hhEmpId" type="checkbox"
-                              value="columns" checked>
-                              <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="hhEmpId-checkbox">
-                                  Employment ID
-                              </label>
-                          </div>
       
                           <div class="nhsuk-checkboxes__item">
                               <input class="nhsuk-checkboxes__input" id="hhStart-checkbox" name="hhStart" type="checkbox"
@@ -1366,5 +1346,21 @@
 <script src="/assets/javascript/additional.js"></script>
 <script src="/assets/javascript/back-to-top.js"></script>
 
-
+<script>
+  function toggleRows(groupClass, button) {
+      const rows = document.querySelectorAll(`.${groupClass}`);
+      let anyVisible = false;
+  
+      rows.forEach(row => {
+      row.classList.toggle('hidden');
+      if (!row.classList.contains('hidden')) {
+          anyVisible = true;
+      }
+      });
+  
+      button.textContent = anyVisible
+      ? 'Hide correct rows'
+      : 'Show all rows';
+  }
+  </script>
 {% endblock %}

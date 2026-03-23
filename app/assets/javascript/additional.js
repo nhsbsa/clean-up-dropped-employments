@@ -13,3 +13,4 @@ document.getElementById("compare-form").addEventListener("submit", function (e) 
     }
 });
 
+
