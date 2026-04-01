@@ -1,0 +1,619 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "What the tool can detect and what is coming next"%}
+{% set hideBack ="true"%}
+{% set showMenu ="true"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row summeryPage">
+    <div class="nhsuk-grid-column-full">
+      <div class="nhsuk-u-reading-width">
+
+        <span class="nhsuk-caption-l">Summery</span>
+        <h1 class="nhsuk-heading-l">{{pageTitle}} </h1>
+        <p class="nhsuk-body">
+          Identify Record Issues surfaces data corruption and integrity failures when a member record is searched by member number. This page outlines every validation check delivered across releases, and improvements planned for upcoming iterations.
+        </p>
+
+        <ul class="nhsuk-grid-row nhsuk-card-group summeryCardCentre">
+          <li class="nhsuk-grid-column-one-quarter nhsuk-card-group__item">
+            {% call card({
+              clickable: false,
+              heading: "30+",
+              headingSize: "l",
+              headingClasses: "nhsuk-u-margin-bottom-1",
+              headingVisuallyHiddenText: "within the core data sets"
+            }) %}
+              Checks live
+            {% endcall %}
+          </li>
+          <li class="nhsuk-grid-column-one-quarter nhsuk-card-group__item">
+            {% call card({
+              clickable: false,
+              heading: "4",
+              headingSize: "l",
+              headingClasses: "nhsuk-u-margin-bottom-1",
+              headingVisuallyHiddenText: "Jobs"
+            }) %}
+              Fixes planned
+            {% endcall %}
+          </li>
+          <li class="nhsuk-grid-column-one-quarter nhsuk-card-group__item">
+            {% call card({
+              clickable: false,
+              heading: "6",
+              headingSize: "l",
+              headingClasses: "nhsuk-u-margin-bottom-1",
+              headingVisuallyHiddenText: "Services"
+            }) %}
+              Data Sets
+            {% endcall %}
+          </li>
+          <li class="nhsuk-grid-column-one-quarter nhsuk-card-group__item">
+            {% call card({
+              clickable: false,
+              heading: "2",
+              headingSize: "l",
+              headingClasses: "nhsuk-u-margin-bottom-1",
+              headingVisuallyHiddenText: "Messages"
+            }) %}
+              Releases done
+            {% endcall %}
+          </li>
+        </ul>
+
+        {{ summaryList({
+          rows: [
+            {
+              key: {
+                text: "Release 1 (MVP)"
+              },
+              value: {
+                text: "Initial launch. Core employment, service and pensions checks."
+              },
+              actions: {
+                items: [
+                  {
+                    html: tag({
+                      text: "Active",
+                      classes: "nhsuk-tag--green"
+                    }),
+                    visuallyHiddenText: "Release 1"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Release 1.1"
+              },
+              value: {
+                text: "Hours history, remedy ID's and service group validation added"
+              },
+              actions: {
+                items: [
+                  {
+                    html: tag({
+                      text: "Active",
+                      classes: "nhsuk-tag--green"
+                    }),
+                    visuallyHiddenText: "Release 1.1"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Release 1.2"
+              },
+              value: {
+                text: "False positive fixes, null handling and new corruption logic."
+              },
+              actions: {
+                items: [
+                  {
+                    html: tag({
+                      text: "In progress",
+                      classes: "nhsuk-tag--orange"
+                    }),
+                    visuallyHiddenText: "Release 1.2"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Future Releases"
+              },
+              value: {
+                text: "To be decided based on emerging data patterns"
+              },
+              actions: {
+                items: [
+                  {
+                    html: tag({
+                      text: "Pending",
+                      classes: "nhsuk-tag--red"
+                    }),
+                    visuallyHiddenText: "Future Releases"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+
+        <h2 class="nhsuk-heading-m">What the tool can do</h2>
+        <details class="nhsuk-details nhsuk-expander">
+          <summary class="nhsuk-details__summary">
+            <span class="nhsuk-details__summary-text">
+              Service history
+            </span>
+            <strong class="nhsuk-tag nhsuk-tag--green">
+                4 Checks
+            </strong>
+          </summary>
+          <div class="nhsuk-details__text">
+            {{ table({
+              head: [
+                {
+                  text: "Corruption"
+                },
+                {
+                  text: "Active"
+                }
+              ],
+              rows: [
+                [
+                  {
+                    text: "Enforces one row per Employment ID."
+                  },
+                  {
+                    html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
+                      <path d=\"M11.4 18.8a2 2 0 0 1-2.7.1h-.1L4 14.1a1.5 1.5 0 0 1 2.1-2L10 16l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z\" />
+                    </svg>",
+                    classes:"activeCorruption"
+                  }
+                ],
+                [
+                  {
+                    text: "Prevents overlapping service periods with different scheme codes."
+                  },
+                  {
+                    html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
+                      <path d=\"M11.4 18.8a2 2 0 0 1-2.7.1h-.1L4 14.1a1.5 1.5 0 0 1 2.1-2L10 16l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z\" />
+                    </svg>",
+                    classes:"activeCorruption"
+                  }
+                ],
+                [
+                  {
+                    text: "Ensures contribution periods (Conts & TPP) match the Service History start/end/updated dates."
+                  },
+                  {
+                    html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
+                      <path d=\"M11.4 18.8a2 2 0 0 1-2.7.1h-.1L4 14.1a1.5 1.5 0 0 1 2.1-2L10 16l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z\" />
+                    </svg>",
+                    classes:"activeCorruption"
+                  }
+                ],
+                [
+                  {
+                    text: "Validates that start ≤ end ≤ last updated."
+                  },
+                  {
+                    html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
+                      <path d=\"M11.4 18.8a2 2 0 0 1-2.7.1h-.1L4 14.1a1.5 1.5 0 0 1 2.1-2L10 16l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z\" />
+                    </svg>",
+                    classes:"activeCorruption"
+                  }
+                ]
+              ]
+            }) }}
+          </div>
+        </details>
+        <details class="nhsuk-details nhsuk-expander">
+          <summary class="nhsuk-details__summary">
+            <span class="nhsuk-details__summary-text">
+              Employment history
+            </span>
+            <strong class="nhsuk-tag nhsuk-tag--green">
+                4 Checks
+            </strong>
+          </summary>
+          <div class="nhsuk-details__text">
+            {{ table({
+              head: [
+                {
+                  text: "Corruption"
+                },
+                {
+                  text: "Active"
+                }
+              ],
+              rows: [
+                [
+                  {
+                    text: "Ensures Employment IDs appear in both Employment History and Service History."
+                  },
+                  {
+                    html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
+                      <path d=\"M11.4 18.8a2 2 0 0 1-2.7.1h-.1L4 14.1a1.5 1.5 0 0 1 2.1-2L10 16l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z\" />
+                    </svg>",
+                    classes:"activeCorruption"
+                  }
+                ],
+                [
+                  {
+                    text: "Flags duplicates and overlapping rows for the same Employment ID."
+                  },
+                  {
+                    html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
+                      <path d=\"M11.4 18.8a2 2 0 0 1-2.7.1h-.1L4 14.1a1.5 1.5 0 0 1 2.1-2L10 16l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z\" />
+                    </svg>",
+                    classes:"activeCorruption"
+                  }
+                ],
+                [
+                  {
+                    text: "Checks that each Employment ID + start date is used only once."
+                  },
+                  {
+                    html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
+                      <path d=\"M11.4 18.8a2 2 0 0 1-2.7.1h-.1L4 14.1a1.5 1.5 0 0 1 2.1-2L10 16l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z\" />
+                    </svg>",
+                    classes:"activeCorruption"
+                  }
+                ],
+                [
+                  {
+                    text: "Validates that the earliest and latest dates in Employment History match the corresponding Service History dates."
+                  },
+                  {
+                    html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
+                      <path d=\"M11.4 18.8a2 2 0 0 1-2.7.1h-.1L4 14.1a1.5 1.5 0 0 1 2.1-2L10 16l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z\" />
+                    </svg>",
+                    classes:"activeCorruption"
+                  }
+                ]
+              ]
+            }) }}
+          </div>
+        </details>
+        <details class="nhsuk-details nhsuk-expander">
+          <summary class="nhsuk-details__summary">
+            <span class="nhsuk-details__summary-text">
+              Service groups
+            </span>
+            <strong class="nhsuk-tag nhsuk-tag--green">
+                4 Checks
+            </strong>
+          </summary>
+          <div class="nhsuk-details__text">
+            {{ table({
+              head: [
+                {
+                  text: "Corruption"
+                },
+                {
+                  text: "Active"
+                }
+              ],
+              rows: [
+                [
+                  {
+                    text: "Ensures each Group ID is unique."
+                  },
+                  {
+                    html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
+                      <path d=\"M11.4 18.8a2 2 0 0 1-2.7.1h-.1L4 14.1a1.5 1.5 0 0 1 2.1-2L10 16l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z\" />
+                    </svg>",
+                    classes:"activeCorruption"
+                  }
+                ],
+                [
+                  {
+                    text: "Validates that each Group ID appears in Service History."
+                  },
+                  {
+                    html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
+                      <path d=\"M11.4 18.8a2 2 0 0 1-2.7.1h-.1L4 14.1a1.5 1.5 0 0 1 2.1-2L10 16l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z\" />
+                    </svg>",
+                    classes:"activeCorruption"
+                  }
+                ],
+                [
+                  {
+                    text: "The group start date must match the earliest Service History start date for that group."
+                  },
+                  {
+                    html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
+                      <path d=\"M11.4 18.8a2 2 0 0 1-2.7.1h-.1L4 14.1a1.5 1.5 0 0 1 2.1-2L10 16l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z\" />
+                    </svg>",
+                    classes:"activeCorruption"
+                  }
+                ],
+                [
+                  {
+                    text: "Scheme codes must match between Service Groups and Service History."
+                  },
+                  {
+                    html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
+                      <path d=\"M11.4 18.8a2 2 0 0 1-2.7.1h-.1L4 14.1a1.5 1.5 0 0 1 2.1-2L10 16l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z\" />
+                    </svg>",
+                    classes:"activeCorruption"
+                  }
+                ]
+              ]
+            }) }}
+          </div>
+        </details>
+        <details class="nhsuk-details nhsuk-expander">
+          <summary class="nhsuk-details__summary">
+            <span class="nhsuk-details__summary-text">
+              Conts and TPP (Pensions contributions)
+            </span>
+            <strong class="nhsuk-tag nhsuk-tag--green">
+                4 Checks
+            </strong>
+          </summary>
+          <div class="nhsuk-details__text">
+            {{ table({
+              head: [
+                {
+                  text: "Corruption"
+                },
+                {
+                  text: "Active"
+                }
+              ],
+              rows: [
+                [
+                  {
+                    text: "Ensures Employment IDs are present in both Employment and Service History."
+                  },
+                  {
+                    html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
+                      <path d=\"M11.4 18.8a2 2 0 0 1-2.7.1h-.1L4 14.1a1.5 1.5 0 0 1 2.1-2L10 16l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z\" />
+                    </svg>",
+                    classes:"activeCorruption"
+                  }
+                ],
+                [
+                  {
+                    text: "Prevents duplicate rows for the same Employment ID + start date."
+                  },
+                  {
+                    html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
+                      <path d=\"M11.4 18.8a2 2 0 0 1-2.7.1h-.1L4 14.1a1.5 1.5 0 0 1 2.1-2L10 16l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z\" />
+                    </svg>",
+                    classes:"activeCorruption"
+                  }
+                ],
+                [
+                  {
+                    text: "Checks for overlapping contribution periods."
+                  },
+                  {
+                    html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
+                      <path d=\"M11.4 18.8a2 2 0 0 1-2.7.1h-.1L4 14.1a1.5 1.5 0 0 1 2.1-2L10 16l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z\" />
+                    </svg>",
+                    classes:"activeCorruption"
+                  }
+                ],
+                [
+                  {
+                    text: "Validates that contribution records align with Service History structure and dates."
+                  },
+                  {
+                    html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
+                      <path d=\"M11.4 18.8a2 2 0 0 1-2.7.1h-.1L4 14.1a1.5 1.5 0 0 1 2.1-2L10 16l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z\" />
+                    </svg>",
+                    classes:"activeCorruption"
+                  }
+                ]
+              ]
+            }) }}
+          </div>
+        </details>
+        <details class="nhsuk-details nhsuk-expander">
+          <summary class="nhsuk-details__summary">
+            <span class="nhsuk-details__summary-text">
+              Hours History
+            </span>
+            <strong class="nhsuk-tag nhsuk-tag--green">
+                4 Checks
+            </strong>
+          </summary>
+          <div class="nhsuk-details__text">
+            {{ table({
+              head: [
+                {
+                  text: "Corruption"
+                },
+                {
+                  text: "Active"
+                }
+              ],
+              rows: [
+                [
+                  {
+                    text: "Ensures each part-time contribution period has matching hours records."
+                  },
+                  {
+                    html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
+                      <path d=\"M11.4 18.8a2 2 0 0 1-2.7.1h-.1L4 14.1a1.5 1.5 0 0 1 2.1-2L10 16l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z\" />
+                    </svg>",
+                    classes:"activeCorruption"
+                  }
+                ],
+                [
+                  {
+                    text: "Employment IDs must exist in both Service and (for part-time) Employment History."
+                  },
+                  {
+                    html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
+                      <path d=\"M11.4 18.8a2 2 0 0 1-2.7.1h-.1L4 14.1a1.5 1.5 0 0 1 2.1-2L10 16l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z\" />
+                    </svg>",
+                    classes:"activeCorruption"
+                  }
+                ],
+                [
+                  {
+                    text: "Validates that start and end dates are unique and non-overlapping."
+                  },
+                  {
+                    html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
+                      <path d=\"M11.4 18.8a2 2 0 0 1-2.7.1h-.1L4 14.1a1.5 1.5 0 0 1 2.1-2L10 16l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z\" />
+                    </svg>",
+                    classes:"activeCorruption"
+                  }
+                ],
+                [
+                  {
+                    text: "Checks that hours align with scheme years and part-time contract periods."
+                  },
+                  {
+                    html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
+                      <path d=\"M11.4 18.8a2 2 0 0 1-2.7.1h-.1L4 14.1a1.5 1.5 0 0 1 2.1-2L10 16l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z\" />
+                    </svg>",
+                    classes:"activeCorruption"
+                  }
+                ]
+              ]
+            }) }}
+          </div>
+        </details>
+        <details class="nhsuk-details nhsuk-expander">
+          <summary class="nhsuk-details__summary">
+            <span class="nhsuk-details__summary-text">
+              Linked employment
+            </span>
+            <strong class="nhsuk-tag nhsuk-tag--green">
+                4 Checks
+            </strong>
+          </summary>
+          <div class="nhsuk-details__text">
+            {{ table({
+              head: [
+                {
+                  text: "Corruption"
+                },
+                {
+                  text: "Active"
+                }
+              ],
+              rows: [
+                [
+                  {
+                    text: "Ensures pre-remedy, remedy, and post-remedy IDs are unique and exist in both Service and Employment History."
+                  },
+                  {
+                    html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
+                      <path d=\"M11.4 18.8a2 2 0 0 1-2.7.1h-.1L4 14.1a1.5 1.5 0 0 1 2.1-2L10 16l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z\" />
+                    </svg>",
+                    classes:"activeCorruption"
+                  }
+                ],
+                [
+                  {
+                    text: "Validates correct sequencing: Remedy must start the day after a closed pre‑remedy record ends (when linked)."
+                  },
+                  {
+                    html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
+                      <path d=\"M11.4 18.8a2 2 0 0 1-2.7.1h-.1L4 14.1a1.5 1.5 0 0 1 2.1-2L10 16l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z\" />
+                    </svg>",
+                    classes:"activeCorruption"
+                  }
+                ],
+                [
+                  {
+                    text: "Validates correct sequencing: Post-remedy must start the day after a closed remedy record ends (when linked)."
+                  },
+                  {
+                    html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
+                      <path d=\"M11.4 18.8a2 2 0 0 1-2.7.1h-.1L4 14.1a1.5 1.5 0 0 1 2.1-2L10 16l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z\" />
+                    </svg>",
+                    classes:"activeCorruption"
+                  }
+                ],
+                [
+                  {
+                    text: "Flags missing IDs or invalid chains."
+                  },
+                  {
+                    html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
+                      <path d=\"M11.4 18.8a2 2 0 0 1-2.7.1h-.1L4 14.1a1.5 1.5 0 0 1 2.1-2L10 16l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z\" />
+                    </svg>",
+                    classes:"activeCorruption"
+                  }
+                ]
+              ]
+            }) }}
+          </div>
+        </details>
+
+        <hr>
+        <h2 class="nhsuk-heading-m">What the tool cannot do yet</h2>
+        <details class="nhsuk-details nhsuk-expander">
+          <summary class="nhsuk-details__summary">
+            <span class="nhsuk-details__summary-text">
+              Null/blank field handling
+            </span>
+            <strong class="nhsuk-tag nhsuk-tag--orange">
+                1.2
+            </strong>
+          </summary>
+          <div class="nhsuk-details__text">
+            <p>Records containing null or blank values in key date or ID fields are not always handled gracefully — some edge cases may produce misleading results or fail to flag the issue correctly.</p>
+          </div>
+        </details>
+        <details class="nhsuk-details nhsuk-expander">
+          <summary class="nhsuk-details__summary">
+            <span class="nhsuk-details__summary-text">
+              False positive detection
+            </span>
+            <strong class="nhsuk-tag nhsuk-tag--orange">
+                1.2
+            </strong>
+          </summary>
+          <div class="nhsuk-details__text">
+            <p>Some records that have not been updated may be incorrectly flagged as overlapping.</p>
+            <p>The tool needs refinement to distinguish genuine corruption from records that are structurally valid but appear anomalous due to missing updates.</p>
+          </div>
+        </details>
+        <details class="nhsuk-details nhsuk-expander">
+          <summary class="nhsuk-details__summary">
+            <span class="nhsuk-details__summary-text">
+              New corruption logic
+            </span>
+            <strong class="nhsuk-tag nhsuk-tag--orange">
+                1.2
+            </strong>
+          </summary>
+          <div class="nhsuk-details__text">
+            <p>Emerging patterns — such as status mismatches between tables — are not yet detected. Additional corruption detection logic is required to cover these newly identified failure modes.</p>
+          </div>
+        </details>
+        <details class="nhsuk-details nhsuk-expander">
+          <summary class="nhsuk-details__summary">
+            <span class="nhsuk-details__summary-text">
+              Alignment and label consistency
+            </span>
+            <strong class="nhsuk-tag nhsuk-tag--orange">
+                1.2
+            </strong>
+          </summary>
+          <div class="nhsuk-details__text">
+            <p>Several table titles and terminology labels within the tool output are inconsistent — for example, discrepancies between "Service History" and "Service Group" column headings across different sections of the results view.</p>
+            <p>These will be standardised in the next release to improve readability and reduce user confusion.</p>
+          </div>
+        </details>
+
+      </div>
+    </div>
+</div>
+{% endblock %}

@@ -15,6 +15,19 @@
 @import "concepts/_sd-report";
 @import "concepts/_data-sets";
 
+// Summery page
+.summeryPage{
+    .nhsuk-table__cell:first-of-type {
+        padding-left: 0;
+    }
+}
+.summeryCardCentre{
+    text-align: center;
+}
+.activeCorruption{
+    color: $nhsuk-success-colour;
+}
+
 
 ////////////////////////
 // Test version CSS

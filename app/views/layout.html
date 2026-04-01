@@ -33,7 +33,38 @@
        cookieVersion: 1
     }) }}
 
-  {% if not hideLogin %}
+  {% if not hideLogin and showMenu %}
+  {{ header({
+    service: {
+      text: serviceName,
+      href: "/"
+    },
+    account: {
+      items: [
+        {
+          text: "Jane Doe",
+          icon: true
+        },
+        {
+          text: "Log out",
+          href: "#"
+        }
+      ]
+    },
+    navigation: {
+      items: [
+        {
+          text: "Home",
+          href: "search"
+        },
+        {
+          text: "Record issues summery",
+          href: "tool-summery"
+        }
+      ]
+    }
+  }) }}
+  {% elseif not hideLogin %}
   {{ header({
     service: {
       text: serviceName,
