@@ -12,7 +12,7 @@
     <div class="nhsuk-grid-column-full">
       <div class="nhsuk-u-reading-width">
 
-        <span class="nhsuk-caption-l">Summary</span>
+        <span class="nhsuk-caption-l">Validation summary</span>
         <h1 class="nhsuk-heading-l">{{pageTitle}} </h1>
         <p class="nhsuk-body">
           Identify Record Issues surfaces data corruption and integrity failures when a member record is searched by member number. This page outlines every validation check delivered across releases, and improvements planned for upcoming iterations.
@@ -160,19 +160,16 @@
             {{ table({
               head: [
                 {
-                  text: "Corruption",
-                  classes: "nhsuk-u-font-size-14"
+                  text: "Corruption"
                 },
                 {
-                  text: "Active",
-                  classes: "nhsuk-u-font-size-14"
+                  text: "Active"
                 }
               ],
               rows: [
                 [
                   {
-                    text: "Enforces one row per Employment ID.",
-                    classes: "nhsuk-u-font-size-14"
+                    text: "Enforces one row per Employment ID."
                   },
                   {
                     html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
@@ -183,8 +180,7 @@
                 ],
                 [
                   {
-                    text: "Prevents overlapping service periods with different scheme codes.",
-                    classes: "nhsuk-u-font-size-14"
+                    text: "Prevents overlapping service periods with different scheme codes."
                   },
                   {
                     html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
@@ -195,8 +191,7 @@
                 ],
                 [
                   {
-                    text: "Ensures contribution periods (Conts & TPP) match the Service History start/end/updated dates.",
-                    classes: "nhsuk-u-font-size-14"
+                    text: "Ensures contribution periods (Conts & TPP) match the Service History start/end/updated dates."
                   },
                   {
                     html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
@@ -207,8 +202,7 @@
                 ],
                 [
                   {
-                    text: "Validates that start ≤ end ≤ last updated.",
-                    classes: "nhsuk-u-font-size-14"
+                    text: "Validates that start ≤ end ≤ last updated."
                   },
                   {
                     html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
@@ -234,19 +228,16 @@
             {{ table({
               head: [
                 {
-                  text: "Corruption",
-                  classes: "nhsuk-u-font-size-14"
+                  text: "Corruption"
                 },
                 {
-                  text: "Active",
-                  classes: "nhsuk-u-font-size-14"
+                  text: "Active"
                 }
               ],
               rows: [
                 [
                   {
-                    text: "Ensures Employment IDs appear in both Employment History and Service History.",
-                    classes: "nhsuk-u-font-size-14"
+                    text: "Ensures Employment IDs appear in both Employment History and Service History."
                   },
                   {
                     html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
@@ -257,8 +248,7 @@
                 ],
                 [
                   {
-                    text: "Flags duplicates and overlapping rows for the same Employment ID.",
-                    classes: "nhsuk-u-font-size-14"
+                    text: "Flags duplicates and overlapping rows for the same Employment ID."
                   },
                   {
                     html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
@@ -269,8 +259,7 @@
                 ],
                 [
                   {
-                    text: "Checks that each Employment ID + start date is used only once.",
-                    classes: "nhsuk-u-font-size-14"
+                    text: "Checks that each Employment ID + start date is used only once."
                   },
                   {
                     html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
@@ -281,8 +270,7 @@
                 ],
                 [
                   {
-                    text: "Validates that the earliest and latest dates in Employment History match the corresponding Service History dates.",
-                    classes: "nhsuk-u-font-size-14"
+                    text: "Validates that the earliest and latest dates in Employment History match the corresponding Service History dates."
                   },
                   {
                     html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
@@ -308,19 +296,16 @@
             {{ table({
               head: [
                 {
-                  text: "Corruption",
-                  classes: "nhsuk-u-font-size-14"
+                  text: "Corruption"
                 },
                 {
-                  text: "Active",
-                  classes: "nhsuk-u-font-size-14"
+                  text: "Active"
                 }
               ],
               rows: [
                 [
                   {
-                    text: "Ensures each Group ID is unique.",
-                    classes: "nhsuk-u-font-size-14"
+                    text: "Ensures each Group ID is unique."
                   },
                   {
                     html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
@@ -331,8 +316,7 @@
                 ],
                 [
                   {
-                    text: "Validates that each Group ID appears in Service History.",
-                    classes: "nhsuk-u-font-size-14"
+                    text: "Validates that each Group ID appears in Service History."
                   },
                   {
                     html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
@@ -343,8 +327,7 @@
                 ],
                 [
                   {
-                    text: "The group start date must match the earliest Service History start date for that group.",
-                    classes: "nhsuk-u-font-size-14"
+                    text: "The group start date must match the earliest Service History start date for that group."
                   },
                   {
                     html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
@@ -355,8 +338,7 @@
                 ],
                 [
                   {
-                    text: "Scheme codes must match between Service Groups and Service History.",
-                    classes: "nhsuk-u-font-size-14"
+                    text: "Scheme codes must match between Service Groups and Service History."
                   },
                   {
                     html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
@@ -382,19 +364,16 @@
             {{ table({
               head: [
                 {
-                  text: "Corruption",
-                  classes: "nhsuk-u-font-size-14"
+                  text: "Corruption"
                 },
                 {
-                  text: "Active",
-                  classes: "nhsuk-u-font-size-14"
+                  text: "Active"
                 }
               ],
               rows: [
                 [
                   {
-                    text: "Ensures Employment IDs are present in both Employment and Service History.",
-                    classes: "nhsuk-u-font-size-14"
+                    text: "Ensures Employment IDs are present in both Employment and Service History."
                   },
                   {
                     html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
@@ -405,8 +384,7 @@
                 ],
                 [
                   {
-                    text: "Prevents duplicate rows for the same Employment ID + start date.",
-                    classes: "nhsuk-u-font-size-14"
+                    text: "Prevents duplicate rows for the same Employment ID + start date."
                   },
                   {
                     html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
@@ -417,8 +395,7 @@
                 ],
                 [
                   {
-                    text: "Checks for overlapping contribution periods.",
-                    classes: "nhsuk-u-font-size-14"
+                    text: "Checks for overlapping contribution periods."
                   },
                   {
                     html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
@@ -429,8 +406,7 @@
                 ],
                 [
                   {
-                    text: "Validates that contribution records align with Service History structure and dates.",
-                    classes: "nhsuk-u-font-size-14"
+                    text: "Validates that contribution records align with Service History structure and dates."
                   },
                   {
                     html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
@@ -456,19 +432,16 @@
             {{ table({
               head: [
                 {
-                  text: "Corruption",
-                  classes: "nhsuk-u-font-size-14"
+                  text: "Corruption"
                 },
                 {
-                  text: "Active",
-                  classes: "nhsuk-u-font-size-14"
+                  text: "Active"
                 }
               ],
               rows: [
                 [
                   {
-                    text: "Ensures each part-time contribution period has matching hours records.",
-                    classes: "nhsuk-u-font-size-14"
+                    text: "Ensures each part-time contribution period has matching hours records."
                   },
                   {
                     html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
@@ -479,8 +452,7 @@
                 ],
                 [
                   {
-                    text: "Employment IDs must exist in both Service and (for part-time) Employment History.",
-                    classes: "nhsuk-u-font-size-14"
+                    text: "Employment IDs must exist in both Service and (for part-time) Employment History."
                   },
                   {
                     html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
@@ -491,8 +463,7 @@
                 ],
                 [
                   {
-                    text: "Validates that start and end dates are unique and non-overlapping.",
-                    classes: "nhsuk-u-font-size-14"
+                    text: "Validates that start and end dates are unique and non-overlapping."
                   },
                   {
                     html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
@@ -503,8 +474,7 @@
                 ],
                 [
                   {
-                    text: "Checks that hours align with scheme years and part-time contract periods.",
-                    classes: "nhsuk-u-font-size-14"
+                    text: "Checks that hours align with scheme years and part-time contract periods."
                   },
                   {
                     html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
@@ -530,19 +500,16 @@
             {{ table({
               head: [
                 {
-                  text: "Corruption",
-                  classes: "nhsuk-u-font-size-14"
+                  text: "Corruption"
                 },
                 {
-                  text: "Active",
-                  classes: "nhsuk-u-font-size-14"
+                  text: "Active"
                 }
               ],
               rows: [
                 [
                   {
-                    text: "Ensures pre-remedy, remedy, and post-remedy IDs are unique and exist in both Service and Employment History.",
-                    classes: "nhsuk-u-font-size-14"
+                    text: "Ensures pre-remedy, remedy, and post-remedy IDs are unique and exist in both Service and Employment History."
                   },
                   {
                     html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
@@ -553,8 +520,7 @@
                 ],
                 [
                   {
-                    text: "Validates correct sequencing: Remedy must start the day after a closed pre‑remedy record ends (when linked).",
-                    classes: "nhsuk-u-font-size-14"
+                    text: "Validates correct sequencing: Remedy must start the day after a closed pre‑remedy record ends (when linked)."
                   },
                   {
                     html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
@@ -565,8 +531,7 @@
                 ],
                 [
                   {
-                    text: "Validates correct sequencing: Post-remedy must start the day after a closed remedy record ends (when linked).",
-                    classes: "nhsuk-u-font-size-14"
+                    text: "Validates correct sequencing: Post-remedy must start the day after a closed remedy record ends (when linked)."
                   },
                   {
                     html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
@@ -577,8 +542,7 @@
                 ],
                 [
                   {
-                    text: "Flags missing IDs or invalid chains.",
-                    classes: "nhsuk-u-font-size-14"
+                    text: "Flags missing IDs or invalid chains."
                   },
                   {
                     html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">

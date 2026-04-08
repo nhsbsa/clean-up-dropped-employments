@@ -28,6 +28,57 @@
     color: $nhsuk-success-colour;
 }
 
+// Error updates
+
+.nhsuk-detailsError{
+    .nhsuk-detailsError__summary{
+        padding-left:1.5rem;
+        cursor: pointer;
+        position: relative;
+        list-style: none;
+        color:$nhsuk-error-colour;
+        font-weight: bold;
+        text-decoration: underline;
+        &:hover{
+            text-decoration: none;
+        }
+        &:focus {
+            outline: 4px solid transparent;
+            background-color: #ffeb3b;
+            box-shadow: 0 -2px #ffeb3b, 0 4px #212b32;
+            text-decoration: none;
+            color:$nhsuk-text-colour ;
+        }
+        &:before {
+            border-color: transparent;
+            border-left-color: inherit;
+            border-style: solid;
+            border-width: .4375rem 0 .4375rem .75775rem;
+            bottom: 0;
+            -webkit-clip-path: polygon(0 0,100% 50%,0 100%);
+            clip-path: polygon(0 0,100% 50%,0 100%);
+            content: "";
+            display: block;
+            height: 0;
+            left: 0;
+            margin: auto;
+            position: absolute;
+            top: 0;
+            width: 0;
+        }
+    }
+    .nhsuk-detailsError__text{
+        border-left: 4px solid #d8dde0;
+        margin-top: 8px;
+        padding: 16px 0 16px 20px;
+        color:$nhsuk-error-colour;
+        a{
+            color:$nhsuk-error-colour;
+            font-weight: bold; 
+        }
+    }
+}
+
 
 ////////////////////////
 // Test version CSS
