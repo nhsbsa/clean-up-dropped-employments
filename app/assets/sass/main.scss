@@ -90,6 +90,13 @@
     width: 0;
 }
 
+.nhsuk-list--column{
+    column-count: 2;
+    @media (max-width: 600px) {
+        column-count: 1;
+    }
+}
+
 
 ////////////////////////
 // Test version CSS
