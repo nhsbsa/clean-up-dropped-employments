@@ -78,6 +78,17 @@
         }
     }
 }
+.nhsuk-details[open]>.nhsuk-details__summary:before {
+    border-color: transparent;
+    border-style: solid;
+    border-top-color: inherit;
+    border-width: .75775rem .4375rem 0;
+    -webkit-clip-path: polygon(0 0,50% 100%,100% 0);
+    clip-path: polygon(0 0,50% 100%,100% 0);
+    display: block;
+    height: 0;
+    width: 0;
+}
 
 
 ////////////////////////
