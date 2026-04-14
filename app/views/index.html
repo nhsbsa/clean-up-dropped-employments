@@ -12,47 +12,84 @@
       </h1>
       <hr>
       <div class="nhsuk-grid-column-two-thirds">
-        <details class="nhsuk-details nhsuk-expander">
-          <summary class="nhsuk-details__summary">
-            <div class="nhsuk-grid-row">
-              <div class="nhsuk-grid-column-two-thirds">
-                <span class="nhsuk-details__summary-text">
-                  Iteration 1.1
-                </span>
+          <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+              <div class="nhsuk-grid-row">
+                <div class="nhsuk-grid-column-two-thirds">
+                  <span class="nhsuk-details__summary-text">
+                    Iteration 1.2
+                  </span>
+                </div>
+                <div class="nhsuk-grid-column-one-third nhsuk-u-text-align-right">
+                  <strong class="nhsuk-tag nhsuk-tag--green">DEV</strong>
+                </div>
               </div>
-              <div class="nhsuk-grid-column-one-third nhsuk-u-text-align-right">
-                <strong class="nhsuk-tag nhsuk-tag--green">DEV</strong>
-              </div>
-            </div>
-          </summary>
-          <div class="nhsuk-details__text">
-            <h3 class="nhsuk-heading-s">Design</h3>
-            <p></p>
-            <ul>
-              <li>Update content on the error pages to remove the additional 'the' in the content.</li>
-              <li>Update the intro text for the core data sets to include when the data was last updated.</li>
-              <li>Show all rows / hide correct rows button updated to a small button.</li>
-              <li>Show all rows / hide correct button added to all sets with issues.</li>
-              <li>Accessibility updates <a href="https://bsa2468.atlassian.net/wiki/x/LQBTaQE" target="_blank" title="View full update details in confluence"> here</a>.</li>
-            </ul>
-            <hr/>
-              <h3 class="nhsuk-heading-s">New error message</h3>
-              <ul class="nhsuk-list nhsuk-list--bullet">
-                <li><a href="/iteration-1/results-error">Member status incorrect</a></li>
+            </summary>
+            <div class="nhsuk-details__text">
+              <h3 class="nhsuk-heading-s">Design</h3>
+              <p></p>
+              <ul>
+                <li>Adding new button to the top right which links back to the search page - 'Search new member'</li>
+                <li>Adding new button for page refresh - 'Update data sets'</li>
+                <li>Adding a back to the top link which follows the page down the left</li>
+                <li>Adding a new page for 'Validation summary' - This page explains what is currently included in the tool to the user, with this we have also added a top menu</li>
+                <li>Error message for status</li>
+                <li>Updated the issue messaging wording (in progress)</li>
               </ul>
-            <hr>
-            {{ button({
-              "text": "View Iteration 1.1",
-              "href": "/iteration-1/search"
-            }) }}
-            <br/>
-            {{ actionLink({
-              "classes": "nhsuk-u-margin-bottom-3",
-              "text": "View UCD log entry",
-              "href": "https://bsa2468.atlassian.net/wiki/x/IgCjaQE"
-            }) }}
-          </div>
-        </details>
+              <hr/>
+                <h3 class="nhsuk-heading-s">New error message</h3>
+                <ul class="nhsuk-list nhsuk-list--bullet">
+                  <li><a href="/iteration-1/results-error">Member status incorrect</a></li>
+                </ul>
+              <hr>
+              {{ button({
+                "text": "View Iteration 1.2",
+                "href": "/iteration-1-2/search"
+              }) }}
+              <br/>
+              <!-- {{ actionLink({
+                "classes": "nhsuk-u-margin-bottom-3",
+                "text": "View UCD log entry",
+                "href": "https://bsa2468.atlassian.net/wiki/x/IgCjaQE"
+              }) }} -->
+            </div>
+          </details>
+          <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+              <div class="nhsuk-grid-row">
+                <div class="nhsuk-grid-column-two-thirds">
+                  <span class="nhsuk-details__summary-text">
+                    Iteration 1.1
+                  </span>
+                </div>
+                <div class="nhsuk-grid-column-one-third nhsuk-u-text-align-right">
+                  <strong class="nhsuk-tag nhsuk-tag--green">LIVE - APRIL 2026</strong>
+                </div>
+              </div>
+            </summary>
+            <div class="nhsuk-details__text">
+              <h3 class="nhsuk-heading-s">Design</h3>
+              <p></p>
+              <ul>
+                <li>Update content on the error pages to remove the additional 'the' in the content.</li>
+                <li>Update the intro text for the core data sets to include when the data was last updated.</li>
+                <li>Show all rows / hide correct rows button updated to a small button.</li>
+                <li>Show all rows / hide correct button added to all sets with issues.</li>
+                <li>Accessibility updates <a href="https://bsa2468.atlassian.net/wiki/x/LQBTaQE" target="_blank" title="View full update details in confluence"> here</a>.</li>
+              </ul>
+              <hr>
+              {{ button({
+                "text": "View Iteration 1.1",
+                "href": "/iteration-1/search"
+              }) }}
+              <br/>
+              {{ actionLink({
+                "classes": "nhsuk-u-margin-bottom-3",
+                "text": "View UCD log entry",
+                "href": "https://bsa2468.atlassian.net/wiki/x/IgCjaQE"
+              }) }}
+            </div>
+          </details>
           <details class="nhsuk-details nhsuk-expander">
             <summary class="nhsuk-details__summary">
               <div class="nhsuk-grid-row">
@@ -255,6 +292,42 @@
                           href: "/concept-sdticket/results",
                           text: "View",
                           visuallyHiddenText: "SD ticket creation"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Validation summary"
+                    },
+                    value: {
+                      html: "
+                      <p>An additional page to show the user the corruptions covered by the tool.</p>"
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/iteration-1-2/tool-summary",
+                          text: "View",
+                          visuallyHiddenText: "Validation summary"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Error summary"
+                    },
+                    value: {
+                      html: "
+                      <p>Enhancing the error summary, example in employment history and adding abbreviations to data sets.</p>"
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/concept-errors/results",
+                          text: "View",
+                          visuallyHiddenText: "error summary"
                         }
                       ]
                     }

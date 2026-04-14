@@ -1,0 +1,18 @@
+// Summary page
+.summaryPage{
+    .nhsuk-table__cell:first-of-type {
+        padding-left: 0;
+    }
+}
+.summaryCardCentre{
+    text-align: center;
+}
+.activeCorruption{
+    color: $nhsuk-success-colour;
+}
+.nhsuk-list--column{
+    column-count: 2;
+    @media (max-width: 600px) {
+        column-count: 1;
+    }
+}

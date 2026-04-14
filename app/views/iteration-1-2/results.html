@@ -98,18 +98,163 @@
         html: notifyHtml
         }) }}
 
+        <hr>
 
-        <h2>Core member data sets</h2>
+        <div class="nhsuk-grid-row">
+            <div class="nhsuk-grid-column-two-thirds">
+                <h2>Core member data sets</h2>
+            </div>
+            <div class="nhsuk-grid-column-one-third alignRight">
+                <a href="" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small">Update data sets</a>
+            </div>
+        </div>
         <div class="nhsuk-hint" id="example-with-hint-text-hint">
             {{ introPara | safe }}
-            <a href="" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small">Update data sets</a>
         </div>
+
+        <button type="button" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="filters-panel" id="filters-toggle">
+            Show filters
+        </button>
+    
+        <div id="filters-panel" hidden>
+            <form id="table-selector-form">
+                <div class="nhsuk-form-group">
+                <fieldset class="nhsuk-fieldset" aria-describedby="filter-hint">
+                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                        <h1 class="nhsuk-fieldset__heading">
+                            Choose which data sets to display
+                        </h1>
+                    </legend>
+                    <div id="filter-hint" class="nhsuk-hint">
+                        Any data sets which contain issues cannot be hidden using the filter
+                    </div>
+                    <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter" data-module="nhsuk-checkboxes">
+            
+                    <div class="nhsuk-checkboxes__item">
+                        <input class="nhsuk-checkboxes__input" id="contsTpp-flt-checkbox" name="tables" type="checkbox" value="contsTpp" checked disabled>
+                        <label class="nhsuk-label nhsuk-checkboxes__label" for="contsTpp-flt-checkbox">
+                            Conts &amp; TPP
+                        </label>
+                    </div>
+            
+                    <div class="nhsuk-checkboxes__item">
+                        <input class="nhsuk-checkboxes__input" id="employmentHistory-flt-checkbox" name="tables" type="checkbox" value="employmentHistory" checked disabled>
+                        <label class="nhsuk-label nhsuk-checkboxes__label" for="employmentHistory-flt-checkbox">
+                        Employment
+                        </label>
+                    </div>
+            
+                    <div class="nhsuk-checkboxes__item">
+                        <input class="nhsuk-checkboxes__input" id="hoursHistory-flt-checkbox" name="tables" type="checkbox" value="hoursHistory" checked disabled>
+                        <label class="nhsuk-label nhsuk-checkboxes__label" for="hoursHistory-flt-checkbox">
+                        Hours history details
+                        </label>
+                    </div>
+            
+                    <div class="nhsuk-checkboxes__item">
+                        <input class="nhsuk-checkboxes__input" id="linkedEmployment-flt-checkbox" name="tables" type="checkbox" value="linkedEmployment" checked>
+                        <label class="nhsuk-label nhsuk-checkboxes__label" for="linkedEmployment-flt-checkbox">
+                        Linked employments
+                        </label>
+                    </div>
+            
+                    <div class="nhsuk-checkboxes__item">
+                        <input class="nhsuk-checkboxes__input" id="serviceGroup-flt-checkbox" name="tables" type="checkbox" value="serviceGroup" checked>
+                        <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceGroup-flt-checkbox">
+                        Service group
+                        </label>
+                    </div>
+    
+                    <div class="nhsuk-checkboxes__item">
+                        <input class="nhsuk-checkboxes__input" id="serviceHistory-flt-checkbox" name="tables" type="checkbox" value="serviceHistory" checked disabled>
+                        <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceHistory-flt-checkbox">
+                        Service history
+                        </label>
+                    </div>
+            
+                    </div>
+                </fieldset>
+                </div>
+            
+                <button class="nhsuk-button" type="submit">Apply filters</button>
+            </form>
+        </div>
+    
+        {% call details({
+            summaryText: "Compare two data sets side by side"
+        }) %}
+    
+        <div id="compare-panel" class="details">
+            <form id="compare-form" action="/{{folder}}/results" method="post" >
+            <div class="nhsuk-form-group compareGroup">
+                <fieldset class="nhsuk-fieldset">
+                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                        <h1 class="nhsuk-fieldset__heading">
+                            Choose which two data sets you would like to compare
+                        </h1>
+                </legend>
+                <div id="checkboxError" class="error nhsuk-error-message" style="display:none; color:#d5281b; margin-top:10px;">
+                    <span class="nhsuk-u-visually-hidden">Error:</span> You must select 2 data sets to compare 
+                </div>
+            
+                <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter" data-module="nhsuk-checkboxes">
+            
+                    <div class="nhsuk-checkboxes__item">
+                        <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="contsTpp-checkbox" name="contsTpp" type="checkbox" value="contsTpp" >
+                        <label class="nhsuk-label nhsuk-checkboxes__label" for="contsTpp-checkbox">
+                        Conts &amp; TPP
+                        </label>
+                    </div>
+            
+                    <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="employmentHistory-checkbox" name="employmentHistory" type="checkbox" value="employmentHistory" >
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="employmentHistory-checkbox">
+                        Employment
+                    </label>
+                    </div>
+            
+                    <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="hoursHistory-checkbox" name="hoursHistory" type="checkbox" value="hoursHistory" >
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="hoursHistory-checkbox">
+                        Hours history details
+                    </label>
+                    </div>
+            
+                    <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="linkedEmployment-checkbox" name="linkedEmployment" type="checkbox" value="linkedEmployment" >
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="linkedEmployment-checkbox">
+                        Linked employments
+                    </label>
+                    </div>
+            
+                    <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="serviceGroup-checkbox" name="serviceGroup" type="checkbox" value="serviceGroup" >
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceGroup-checkbox">
+                        Service groups
+                    </label>
+                    </div>
+    
+                    <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="serviceHistory-checkbox" name="serviceHistory" type="checkbox" value="serviceHistory" >
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceHistory-checkbox">
+                        Service history
+                    </label>
+                    </div>
+            
+                </div>
+                </fieldset>
+            </div>
+            
+                <button class="nhsuk-button" data-module="nhsuk-button" type="submit">Compare</button> 
+            </form>
+        </div>
+        {% endcall %}
 
         <!-- ****************
         SERVICE HISTORY
         ***************** -->
 
-        <details class="nhsuk-details nhsuk-expander">
+        <details class="nhsuk-details nhsuk-expander" id="serviceHistory">
             <summary class="nhsuk-details__summary">
                 <span class="nhsuk-details__summary-text">
                     Service history
@@ -130,10 +275,10 @@
           SERVICE GROUP
         ***************** -->
 
-        <details class="nhsuk-details nhsuk-expander">
+        <details class="nhsuk-details nhsuk-expander" id="serviceGroup">
             <summary class="nhsuk-details__summary">
                 <span class="nhsuk-details__summary-text">
-                    Service group
+                    Service groups
                 </span>
             </summary>
             <div class="nhsuk-details__text">
@@ -145,10 +290,10 @@
         EMPLOYMENT HISTORY
         ***************** -->
 
-        <details class="nhsuk-details nhsuk-expander">
+        <details class="nhsuk-details nhsuk-expander" id="employmentHistory">
             <summary class="nhsuk-details__summary">
                 <span class="nhsuk-details__summary-text">
-                    Employment history
+                    Employment
                 </span>
                 <strong class="nhsuk-tag nhsuk-tag--red">
                     2 issues found
@@ -171,10 +316,10 @@
         PENSION CONTRIBUTIONS
         ***************** -->
 
-        <details class="nhsuk-details nhsuk-expander">
+        <details class="nhsuk-details nhsuk-expander" id="contsTpp">
             <summary class="nhsuk-details__summary">
                 <span class="nhsuk-details__summary-text">
-                    Conts &amp; TPP (Pension contributions)
+                    Conts &amp; TPP
                 </span>
                 <strong class="nhsuk-tag nhsuk-tag--red">
                     1 issue found
@@ -192,10 +337,10 @@
         HOURS HISTORY
         ***************** -->
 
-        <details class="nhsuk-details nhsuk-expander">
+        <details class="nhsuk-details nhsuk-expander" id="hoursHistory">
             <summary class="nhsuk-details__summary">
                 <span class="nhsuk-details__summary-text">
-                    Hours history
+                    Hours history details
                 </span>
                 <strong class="nhsuk-tag nhsuk-tag--red">
                     1 issue found
@@ -213,10 +358,10 @@
         LINKED EMPLOYMENT
         ***************** -->
 
-        <details class="nhsuk-details nhsuk-expander">
+        <details class="nhsuk-details nhsuk-expander" id="linkedEmployment">
             <summary class="nhsuk-details__summary">
                 <span class="nhsuk-details__summary-text">
-                    Linked employment
+                    Linked employments
                 </span>
             </summary>
             <div class="nhsuk-details__text">
@@ -237,6 +382,8 @@
 </div>
 
 
+<script src="/assets/javascript/filter.js"></script>
+<script src="/assets/javascript/comparison.js"></script>
 <script src="/assets/javascript/back-to-top.js"></script>
 
 <script>

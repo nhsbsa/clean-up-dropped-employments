@@ -9,4 +9,10 @@ router.post('/search', function (req, res) {
 
 })
 
+router.post('/results', function (req, res) {
+ 
+    res.redirect('compare-wide');
+
+})
+
 module.exports = router;

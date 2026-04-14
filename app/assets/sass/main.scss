@@ -14,19 +14,12 @@
 @import "concepts/_filter";
 @import "concepts/_sd-report";
 @import "concepts/_data-sets";
+@import "concepts/_summary";
 
-// Summary page
-.summaryPage{
-    .nhsuk-table__cell:first-of-type {
-        padding-left: 0;
-    }
+.alignRight{
+    text-align: right;
 }
-.summaryCardCentre{
-    text-align: center;
-}
-.activeCorruption{
-    color: $nhsuk-success-colour;
-}
+
 
 // Error updates
 
@@ -90,12 +83,6 @@
     width: 0;
 }
 
-.nhsuk-list--column{
-    column-count: 2;
-    @media (max-width: 600px) {
-        column-count: 1;
-    }
-}
 
 
 ////////////////////////
