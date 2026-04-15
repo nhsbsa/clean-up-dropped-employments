@@ -58,5 +58,13 @@ router.use('/concept-compare', require('./views/concept-compare/_routes'));
 router.use('/concept-sdticket', require('./views/concept-sdticket/_routes'));
 router.use('/concept-all', require('./views/concept-all/_routes'));
 router.use('/issue-1', require('./views/issue-1/_routes'));
+// router.use('/issue-1', require('./views/issue-2/_routes'));
+// router.use('/issue-1', require('./views/issue-3/_routes'));
+router.use('/issue-1', require('./views/issue-4/_routes'));
+// router.use('/issue-1', require('./views/issue-5/_routes'));
+// router.use('/issue-1', require('./views/issue-6/_routes'));
+// router.use('/issue-1', require('./views/issue-7/_routes'));
+// router.use('/issue-1', require('./views/issue-8/_routes'));
+// router.use('/issue-1', require('./views/issue-9/_routes'));
 
 module.exports = router
