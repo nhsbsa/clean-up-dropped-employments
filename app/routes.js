@@ -57,5 +57,6 @@ router.use('/concept-customise', require('./views/concept-customise/_routes'));
 router.use('/concept-compare', require('./views/concept-compare/_routes'));
 router.use('/concept-sdticket', require('./views/concept-sdticket/_routes'));
 router.use('/concept-all', require('./views/concept-all/_routes'));
+router.use('/issue-1', require('./views/issue-1/_routes'));
 
 module.exports = router

@@ -147,10 +147,7 @@
                 {{ employmentHistoryErrors | safe }}
                 <button id="toggleButtonEh" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button"
                     onclick="toggleRows('rows-eh', this)">Hide correct rows</button>
-                <div class="nhsuk-hint">You can scroll left and right to see all columns if the table does not fit on your screen</div>
-                <div class="nhsuk-scrollable-pane" aria-label="Employment history" tabindex="0">
-                    {{ employmentHistoryTable | safe }}
-                </div> 
+                {{ employmentHistoryTable | safe }}
             </div>
         </details>
 
