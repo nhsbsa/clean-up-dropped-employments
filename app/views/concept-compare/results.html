@@ -1,17 +1,13 @@
 {% extends 'layout.html' %}
 {% set pageTitle = "John Smith"%}
-
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
 {% endblock %}
-
 {% block content %}
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
-
     <span class="nhsuk-caption-l">Member Details</span>
     <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">{{pageTitle}}</h1>
-
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-one-half">
         {{ summaryList({
@@ -74,31 +70,24 @@
         }) }}
       </div>
     </div>
-
     <!-- ****************
         OVERVIEW
       ***************** -->
-
     {% set notifyHtml %}
     <p>
       <b>8 validation issues</b> have been found for member 12345678
     </p>
     {% endset %}
-
     {{ insetText({
     html: notifyHtml
     }) }}
-
-
     <h2>Core member data sets</h2>
     <div class="nhsuk-hint" id="example-with-hint-text-hint">
       {{ introPara | safe }}
     </div>
-
     <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="compare-panel" id="compare-toggle">
       Compare data sets
     </button>
-
     <div id="compare-panel" hidden>
         <form id="compare-form" action="/{{folder}}/results" method="post" >
           <div class="nhsuk-form-group">
@@ -111,63 +100,52 @@
               <div id="checkboxError" class="error nhsuk-error-message" style="display:none; color:#d5281b; margin-top:10px;">
                   <span class="nhsuk-u-visually-hidden">Error:</span> You must select 2 data sets to compare
               </div>
-        
               <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter" data-module="nhsuk-checkboxes">
-        
-                <div class="nhsuk-checkboxes__item">
-                    <input class="nhsuk-checkboxes__input" id="contsTpp-checkbox" name="contsTpp" type="checkbox" value="contsTpp" >
-                    <label class="nhsuk-label nhsuk-checkboxes__label" for="contsTpp-checkbox">
-                      Conts &amp; TPP
-                    </label>
-                </div>
-        
-                <div class="nhsuk-checkboxes__item">
-                  <input class="nhsuk-checkboxes__input" id="employmentHistory-checkbox" name="employmentHistory" type="checkbox" value="employmentHistory" >
-                  <label class="nhsuk-label nhsuk-checkboxes__label" for="employmentHistory-checkbox">
-                    Employment History
-                  </label>
-                </div>
-        
-                <div class="nhsuk-checkboxes__item">
-                  <input class="nhsuk-checkboxes__input" id="hoursHistory-checkbox" name="hoursHistory" type="checkbox" value="hoursHistory" >
-                  <label class="nhsuk-label nhsuk-checkboxes__label" for="hoursHistory-checkbox">
-                    Hours history
-                  </label>
-                </div>
-        
-                <div class="nhsuk-checkboxes__item">
-                  <input class="nhsuk-checkboxes__input" id="linkedEmployment-checkbox" name="linkedEmployment" type="checkbox" value="linkedEmployment" >
-                  <label class="nhsuk-label nhsuk-checkboxes__label" for="linkedEmployment-checkbox">
-                    Linked employment
-                  </label>
-                </div>
-        
-                <div class="nhsuk-checkboxes__item">
-                  <input class="nhsuk-checkboxes__input" id="serviceGroup-checkbox" name="serviceGroup" type="checkbox" value="serviceGroup" >
-                  <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceGroup-checkbox">
-                    Service group
-                  </label>
-                </div>
-
                 <div class="nhsuk-checkboxes__item">
                   <input class="nhsuk-checkboxes__input" id="serviceHistory-checkbox" name="serviceHistory" type="checkbox" value="serviceHistory" >
                   <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceHistory-checkbox">
                     Service history
                   </label>
                 </div>
-        
+                <div class="nhsuk-checkboxes__item">
+                  <input class="nhsuk-checkboxes__input" id="serviceGroup-checkbox" name="serviceGroup" type="checkbox" value="serviceGroup" >
+                  <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceGroup-checkbox">
+                    Service group
+                  </label>
+                </div>
+                <div class="nhsuk-checkboxes__item">
+                  <input class="nhsuk-checkboxes__input" id="employmentHistory-checkbox" name="employmentHistory" type="checkbox" value="employmentHistory" >
+                  <label class="nhsuk-label nhsuk-checkboxes__label" for="employmentHistory-checkbox">
+                    Employment History
+                  </label>
+                </div>
+                <div class="nhsuk-checkboxes__item">
+                  <input class="nhsuk-checkboxes__input" id="contsTpp-checkbox" name="contsTpp" type="checkbox" value="contsTpp" >
+                  <label class="nhsuk-label nhsuk-checkboxes__label" for="contsTpp-checkbox">
+                    Conts &amp; TPP
+                  </label>
+                </div>
+                <div class="nhsuk-checkboxes__item">
+                  <input class="nhsuk-checkboxes__input" id="hoursHistory-checkbox" name="hoursHistory" type="checkbox" value="hoursHistory" >
+                  <label class="nhsuk-label nhsuk-checkboxes__label" for="hoursHistory-checkbox">
+                    Hours history
+                  </label>
+                </div>
+                <div class="nhsuk-checkboxes__item">
+                  <input class="nhsuk-checkboxes__input" id="linkedEmployment-checkbox" name="linkedEmployment" type="checkbox" value="linkedEmployment" >
+                  <label class="nhsuk-label nhsuk-checkboxes__label" for="linkedEmployment-checkbox">
+                    Linked employment
+                  </label>
+                </div>
               </div>
             </fieldset>
           </div>
-        
             <button class="nhsuk-button" data-module="nhsuk-button" type="submit">Compare</button> 
         </form>
     </div>
-
     <!-- ****************
     SERVICE HISTORY
     ***************** -->
-
     <details class="nhsuk-details nhsuk-expander">
       <summary class="nhsuk-details__summary">
           <span class="nhsuk-details__summary-text">
@@ -182,11 +160,9 @@
           {{ serviceHistoryTable | safe }}
       </div>
     </details>
-
     <!-- ****************
       SERVICE GROUP
     ***************** -->
-
     <details class="nhsuk-details nhsuk-expander">
         <summary class="nhsuk-details__summary">
             <span class="nhsuk-details__summary-text">
@@ -197,11 +173,9 @@
             {{ serviceGroupTable | safe }}
         </div>
     </details>
-
     <!-- ****************
     EMPLOYMENT HISTORY
     ***************** -->
-
     <details class="nhsuk-details nhsuk-expander">
         <summary class="nhsuk-details__summary">
             <span class="nhsuk-details__summary-text">
@@ -216,12 +190,9 @@
             {{ employmentHistoryTable | safe }}
         </div>
     </details>
-
-
     <!-- ****************
     PENSION CONTRIBUTIONS
     ***************** -->
-
     <details class="nhsuk-details nhsuk-expander">
         <summary class="nhsuk-details__summary">
             <span class="nhsuk-details__summary-text">
@@ -238,11 +209,9 @@
             {{ contsTppTable | safe }}
         </div>
     </details>
-
     <!-- ****************
     HOURS HISTORY
     ***************** -->
-
     <details class="nhsuk-details nhsuk-expander">
         <summary class="nhsuk-details__summary">
             <span class="nhsuk-details__summary-text">
@@ -259,11 +228,9 @@
             {{ hoursHistoryTable | safe }}
         </div>
     </details>
-
     <!-- ****************
     LINKED EMPLOYMENT
     ***************** -->
-
     <details class="nhsuk-details nhsuk-expander">
         <summary class="nhsuk-details__summary">
             <span class="nhsuk-details__summary-text">
@@ -274,20 +241,15 @@
             {{ linkedEmploymentTable | safe }}
         </div>
     </details>
-
   </div>
 </div>
-
 <script src="/assets/javascript/compare.js"></script>
-
 <script>
     function toggleRows() {
       const rows = document.querySelectorAll('.hidden-row');
       const button = document.getElementById('toggleButton');
       const buttonConts = document.getElementById('toggleButtonConts');
-  
       let anyHidden = false;
-  
       // Toggle each row and check if any are becoming visible
       rows.forEach(row => {
         row.classList.toggle('hidden');
@@ -295,7 +257,6 @@
           anyHidden = true;
         }
       });
-  
       // Update button text based on visibility
       button.textContent = anyHidden ? 'Hide correct rows' : 'Show all rows';
       buttonConts.textContent = anyHidden ? 'Hide correct rows' : 'Show all rows';

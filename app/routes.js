@@ -61,7 +61,7 @@ router.use('/issue-1', require('./views/issue-1/_routes'));
 router.use('/issue-1', require('./views/issue-2/_routes'));
 router.use('/issue-1', require('./views/issue-3/_routes'));
 router.use('/issue-1', require('./views/issue-4/_routes'));
-// router.use('/issue-1', require('./views/issue-5/_routes'));
+router.use('/issue-1', require('./views/issue-5/_routes'));
 // router.use('/issue-1', require('./views/issue-6/_routes'));
 // router.use('/issue-1', require('./views/issue-7/_routes'));
 // router.use('/issue-1', require('./views/issue-8/_routes'));

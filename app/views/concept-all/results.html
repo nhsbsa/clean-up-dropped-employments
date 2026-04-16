@@ -1,14 +1,11 @@
 {% extends 'layout.html' %}
 {% set pageTitle = "John Smith"%}
-
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
 {% endblock %}
-
 {% block content %}
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full nhsuk-grid-column-full--long">
-
     <div class="nhsuk-grid-row memberHeader">
         <div class="nhsuk-grid-column-one-half" id="memberName">
             <span class="nhsuk-caption-l">Member Details</span>
@@ -18,7 +15,6 @@
             <a href="/{{folder}}/search" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small">Search new member</a>
         </div>
     </div>
-
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-one-half">
         {{ summaryList({
@@ -81,32 +77,25 @@
         }) }}
       </div>
     </div>
-
     <!-- ****************
         OVERVIEW
       ***************** -->
-
     {% set notifyHtml %}
     <p>
       <b>8 validation issues</b> have been found for member 12345678
     </p>
     {% endset %}
-
     {{ insetText({
     html: notifyHtml
     }) }}
-
-
     <h2>Core member data sets</h2>
     <div class="nhsuk-hint" id="example-with-hint-text-hint">
       {{ introPara | safe }}
     </div>
     <a href="" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small">Update data sets</a>
-
     <button type="button" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="filters-panel" id="filters-toggle">
       Show filters
     </button>
-
     <div id="filters-panel" hidden>
         <form id="table-selector-form">
           <div class="nhsuk-form-group">
@@ -120,61 +109,51 @@
                     Any data sets which contain issues cannot be hidden using the filter
                 </div>
               <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter" data-module="nhsuk-checkboxes">
-        
-                <div class="nhsuk-checkboxes__item">
-                    <input class="nhsuk-checkboxes__input" id="contsTpp-flt-checkbox" name="tables" type="checkbox" value="contsTpp" checked disabled>
-                    <label class="nhsuk-label nhsuk-checkboxes__label" for="contsTpp-flt-checkbox">
-                      Conts &amp; TPP
-                    </label>
-                </div>
-        
-                <div class="nhsuk-checkboxes__item">
-                  <input class="nhsuk-checkboxes__input" id="employmentHistory-flt-checkbox" name="tables" type="checkbox" value="employmentHistory" checked disabled>
-                  <label class="nhsuk-label nhsuk-checkboxes__label" for="employmentHistory-flt-checkbox">
-                    Employment History
-                  </label>
-                </div>
-        
-                <div class="nhsuk-checkboxes__item">
-                  <input class="nhsuk-checkboxes__input" id="hoursHistory-flt-checkbox" name="tables" type="checkbox" value="hoursHistory" checked disabled>
-                  <label class="nhsuk-label nhsuk-checkboxes__label" for="hoursHistory-flt-checkbox">
-                    Hours history
-                  </label>
-                </div>
-        
-                <div class="nhsuk-checkboxes__item">
-                  <input class="nhsuk-checkboxes__input" id="linkedEmployment-flt-checkbox" name="tables" type="checkbox" value="linkedEmployment" checked>
-                  <label class="nhsuk-label nhsuk-checkboxes__label" for="linkedEmployment-flt-checkbox">
-                    Linked employment
-                  </label>
-                </div>
-        
-                <div class="nhsuk-checkboxes__item">
-                  <input class="nhsuk-checkboxes__input" id="serviceGroup-flt-checkbox" name="tables" type="checkbox" value="serviceGroup" checked>
-                  <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceGroup-flt-checkbox">
-                    Service group
-                  </label>
-                </div>
-
                 <div class="nhsuk-checkboxes__item">
                   <input class="nhsuk-checkboxes__input" id="serviceHistory-flt-checkbox" name="tables" type="checkbox" value="serviceHistory" checked disabled>
                   <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceHistory-flt-checkbox">
                     Service history
                   </label>
                 </div>
-        
+                <div class="nhsuk-checkboxes__item">
+                  <input class="nhsuk-checkboxes__input" id="serviceGroup-flt-checkbox" name="tables" type="checkbox" value="serviceGroup" checked>
+                  <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceGroup-flt-checkbox">
+                    Service group
+                  </label>
+                </div>
+                <div class="nhsuk-checkboxes__item">
+                  <input class="nhsuk-checkboxes__input" id="employmentHistory-flt-checkbox" name="tables" type="checkbox" value="employmentHistory" checked disabled>
+                  <label class="nhsuk-label nhsuk-checkboxes__label" for="employmentHistory-flt-checkbox">
+                    Employment History
+                  </label>
+                </div>
+                <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input" id="contsTpp-flt-checkbox" name="tables" type="checkbox" value="contsTpp" checked disabled>
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="contsTpp-flt-checkbox">
+                      Conts &amp; TPP
+                    </label>
+                </div>
+                <div class="nhsuk-checkboxes__item">
+                  <input class="nhsuk-checkboxes__input" id="hoursHistory-flt-checkbox" name="tables" type="checkbox" value="hoursHistory" checked disabled>
+                  <label class="nhsuk-label nhsuk-checkboxes__label" for="hoursHistory-flt-checkbox">
+                    Hours history
+                  </label>
+                </div>
+                <div class="nhsuk-checkboxes__item">
+                  <input class="nhsuk-checkboxes__input" id="linkedEmployment-flt-checkbox" name="tables" type="checkbox" value="linkedEmployment" checked>
+                  <label class="nhsuk-label nhsuk-checkboxes__label" for="linkedEmployment-flt-checkbox">
+                    Linked employment
+                  </label>
+                </div>
               </div>
             </fieldset>
           </div>
-        
           <button class="nhsuk-button" type="submit">Apply filters</button>
         </form>
     </div>
-
     {% call details({
       summaryText: "Compare two data sets side by side"
     }) %}
-
     <div id="compare-panel" class="details">
       <form id="compare-form" action="/{{folder}}/results" method="post" >
         <div class="nhsuk-form-group compareGroup">
@@ -187,65 +166,53 @@
             <div id="checkboxError" class="error nhsuk-error-message" style="display:none; color:#d5281b; margin-top:10px;">
                 <span class="nhsuk-u-visually-hidden">Error:</span> You must select 2 data sets to compare 
             </div>
-      
             <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter" data-module="nhsuk-checkboxes">
-      
-              <div class="nhsuk-checkboxes__item">
-                  <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="contsTpp-checkbox" name="contsTpp" type="checkbox" value="contsTpp" >
-                  <label class="nhsuk-label nhsuk-checkboxes__label" for="contsTpp-checkbox">
-                    Conts &amp; TPP
-                  </label>
-              </div>
-      
-              <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="employmentHistory-checkbox" name="employmentHistory" type="checkbox" value="employmentHistory" >
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="employmentHistory-checkbox">
-                  Employment History
-                </label>
-              </div>
-      
-              <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="hoursHistory-checkbox" name="hoursHistory" type="checkbox" value="hoursHistory" >
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="hoursHistory-checkbox">
-                  Hours history
-                </label>
-              </div>
-      
-              <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="linkedEmployment-checkbox" name="linkedEmployment" type="checkbox" value="linkedEmployment" >
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="linkedEmployment-checkbox">
-                  Linked employment
-                </label>
-              </div>
-      
-              <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="serviceGroup-checkbox" name="serviceGroup" type="checkbox" value="serviceGroup" >
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceGroup-checkbox">
-                  Service group
-                </label>
-              </div>
-
               <div class="nhsuk-checkboxes__item">
                 <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="serviceHistory-checkbox" name="serviceHistory" type="checkbox" value="serviceHistory" >
                 <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceHistory-checkbox">
                   Service history
                 </label>
               </div>
-      
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="serviceGroup-checkbox" name="serviceGroup" type="checkbox" value="serviceGroup" >
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceGroup-checkbox">
+                  Service group
+                </label>
+              </div>
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="employmentHistory-checkbox" name="employmentHistory" type="checkbox" value="employmentHistory" >
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="employmentHistory-checkbox">
+                  Employment History
+                </label>
+              </div>
+              <div class="nhsuk-checkboxes__item">
+                  <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="contsTpp-checkbox" name="contsTpp" type="checkbox" value="contsTpp" >
+                  <label class="nhsuk-label nhsuk-checkboxes__label" for="contsTpp-checkbox">
+                    Conts &amp; TPP
+                  </label>
+              </div>
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="hoursHistory-checkbox" name="hoursHistory" type="checkbox" value="hoursHistory" >
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="hoursHistory-checkbox">
+                  Hours history
+                </label>
+              </div>
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="linkedEmployment-checkbox" name="linkedEmployment" type="checkbox" value="linkedEmployment" >
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="linkedEmployment-checkbox">
+                  Linked employment
+                </label>
+              </div>
             </div>
           </fieldset>
         </div>
-      
           <button class="nhsuk-button" data-module="nhsuk-button" type="submit">Compare</button> 
       </form>
     </div>
     {% endcall %}
-
-
     <!-- ****************
     SERVICE HISTORY
     ***************** -->
-
     <details class="nhsuk-details nhsuk-expander" id="serviceHistory">
       <summary class="nhsuk-details__summary">
           <span class="nhsuk-details__summary-text">
@@ -271,10 +238,8 @@
                           Choose which columns to display in this data set
                       </h1>
                       </legend>
-
                       <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
                       data-module="nhsuk-checkboxes">
-
                       <div class="nhsuk-checkboxes__item">
                           <input class="nhsuk-checkboxes__input" id="shScheme-checkbox" name="shScheme" type="checkbox"
                           value="columns" checked>
@@ -282,7 +247,6 @@
                           Scheme
                           </label>
                       </div>
-
                       <div class="nhsuk-checkboxes__item">
                           <input class="nhsuk-checkboxes__input" id="shStart-checkbox" name="shStart" type="checkbox"
                           value="columns" checked>
@@ -290,7 +254,6 @@
                           Start date
                           </label>
                       </div>
-
                       <div class="nhsuk-checkboxes__item">
                           <input class="nhsuk-checkboxes__input" id="shEnd-checkbox" name="shEnd" type="checkbox"
                           value="columns" checked>
@@ -298,7 +261,6 @@
                           End date
                           </label>
                       </div>
-
                       <div class="nhsuk-checkboxes__item">
                           <input class="nhsuk-checkboxes__input" id="shUp-checkbox" name="shUp" type="checkbox"
                           value="columns" checked>
@@ -306,7 +268,6 @@
                           Updated
                           </label>
                       </div>
-
                       <div class="nhsuk-checkboxes__item">
                           <input class="nhsuk-checkboxes__input" id="shMem-checkbox" name="shMem" type="checkbox"
                           value="columns" checked>
@@ -314,7 +275,6 @@
                           Member status
                           </label>
                       </div>
-
                       <div class="nhsuk-checkboxes__item">
                           <input class="nhsuk-checkboxes__input" id="shErc-checkbox" name="shErc" type="checkbox"
                           value="columns" checked>
@@ -322,7 +282,6 @@
                           End reason code
                           </label>
                       </div>
-
                       <div class="nhsuk-checkboxes__item">
                           <input class="nhsuk-checkboxes__input" id="shG-checkbox" name="shG" type="checkbox"
                           value="columns" checked>
@@ -330,11 +289,9 @@
                           Group
                           </label>
                       </div>
-
                       </div>
                   </fieldset>
                   </div>
-
                   <button class="nhsuk-button" type="submit">Apply</button>
               </form>
           </div>
@@ -400,11 +357,9 @@
           </div>
       </div>
     </details>
-
     <!-- ****************
       SERVICE GROUP
     ***************** -->
-
     <details class="nhsuk-details nhsuk-expander" id="serviceGroup">
         <summary class="nhsuk-details__summary">
             <span class="nhsuk-details__summary-text">
@@ -424,10 +379,8 @@
                             Choose which columns to display in this data set
                         </h1>
                         </legend>
-
                         <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
                         data-module="nhsuk-checkboxes">
-
                         <div class="nhsuk-checkboxes__item">
                             <input class="nhsuk-checkboxes__input" id="sgGrpID-checkbox" name="sgGrpID" type="checkbox"
                             value="columns" checked>
@@ -435,7 +388,6 @@
                             Group ID
                             </label>
                         </div>
-
                         <div class="nhsuk-checkboxes__item">
                             <input class="nhsuk-checkboxes__input" id="sgScheme-checkbox" name="sgScheme" type="checkbox"
                             value="columns" checked>
@@ -443,7 +395,6 @@
                             Scheme code
                             </label>
                         </div>
-
                         <div class="nhsuk-checkboxes__item">
                             <input class="nhsuk-checkboxes__input" id="sgStart-checkbox" name="sgStart" type="checkbox"
                             value="columns" checked>
@@ -451,7 +402,6 @@
                             Start date
                             </label>
                         </div>
-
                         <div class="nhsuk-checkboxes__item">
                             <input class="nhsuk-checkboxes__input" id="sgEnd-checkbox" name="sgEnd" type="checkbox"
                             value="columns" checked>
@@ -459,7 +409,6 @@
                             End date
                             </label>
                         </div>
-
                         <div class="nhsuk-checkboxes__item">
                             <input class="nhsuk-checkboxes__input" id="sgStatus-checkbox" name="sgStatus" type="checkbox"
                             value="columns" checked>
@@ -467,7 +416,6 @@
                             Status
                             </label>
                         </div>
-
                         <div class="nhsuk-checkboxes__item">
                             <input class="nhsuk-checkboxes__input" id="sgErc-checkbox" name="sgErc" type="checkbox"
                             value="columns" checked>
@@ -475,11 +423,9 @@
                             End reason code
                             </label>
                         </div>
-
                         </div>
                     </fieldset>
                     </div>
-
                     <button class="nhsuk-button" type="submit">Apply</button>
                 </form>
             </div>
@@ -519,11 +465,9 @@
             </div>
         </div>
     </details>
-
     <!-- ****************
     EMPLOYMENT HISTORY
     ***************** -->
-
     <details class="nhsuk-details nhsuk-expander" id="employmentHistory">
         <summary class="nhsuk-details__summary">
             <span class="nhsuk-details__summary-text">
@@ -549,10 +493,8 @@
                             Choose which columns to display in this data set
                         </h1>
                         </legend>
-    
                         <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
                         data-module="nhsuk-checkboxes">
-    
                         <div class="nhsuk-checkboxes__item">
                             <input class="nhsuk-checkboxes__input" id="ehEmpCode-checkbox" name="ehEmpCode" type="checkbox"
                             value="columns" checked>
@@ -560,7 +502,6 @@
                             Employer code
                             </label>
                         </div>
-    
                         <div class="nhsuk-checkboxes__item">
                             <input class="nhsuk-checkboxes__input" id="ehStart-checkbox" name="ehStart" type="checkbox"
                             value="columns" checked>
@@ -568,7 +509,6 @@
                             Start date
                             </label>
                         </div>
-    
                         <div class="nhsuk-checkboxes__item">
                             <input class="nhsuk-checkboxes__input" id="ehEnd-checkbox" name="ehEnd" type="checkbox"
                             value="columns" checked>
@@ -576,7 +516,6 @@
                             End date
                             </label>
                         </div>
-    
                         <div class="nhsuk-checkboxes__item">
                             <input class="nhsuk-checkboxes__input" id="ehTime-checkbox" name="ehTime" type="checkbox"
                             value="columns" checked>
@@ -584,7 +523,6 @@
                                 Whole/part time
                             </label>
                         </div>
-    
                         <div class="nhsuk-checkboxes__item">
                             <input class="nhsuk-checkboxes__input" id="ehCapCode-checkbox" name="ehCapCode" type="checkbox"
                             value="columns" checked>
@@ -592,7 +530,6 @@
                             Capacity Code
                             </label>
                         </div>
-    
                         <div class="nhsuk-checkboxes__item">
                             <input class="nhsuk-checkboxes__input" id="ehEmpType-checkbox" name="ehEmpType" type="checkbox"
                             value="columns" checked>
@@ -600,7 +537,6 @@
                             Employment type
                             </label>
                         </div>
-    
                         <div class="nhsuk-checkboxes__item">
                             <input class="nhsuk-checkboxes__input" id="ehActHrs-checkbox" name="ehActHrs" type="checkbox"
                             value="columns" checked>
@@ -608,7 +544,6 @@
                             Actual hours
                             </label>
                         </div>
-    
                         <div class="nhsuk-checkboxes__item">
                             <input class="nhsuk-checkboxes__input" id="ehStdHrs-checkbox" name="ehStdHrs" type="checkbox"
                             value="columns" checked>
@@ -616,11 +551,9 @@
                             Standard Hours
                             </label>
                         </div>
-    
                         </div>
                     </fieldset>
                     </div>
-    
                     <button class="nhsuk-button" type="submit">Apply</button>
                 </form>
             </div>
@@ -702,12 +635,9 @@
             </div> 
         </div>
     </details>
-
-
     <!-- ****************
     PENSION CONTRIBUTIONS
     ***************** -->
-
     <details class="nhsuk-details nhsuk-expander" id="contsTpp">
         <summary class="nhsuk-details__summary">
             <span class="nhsuk-details__summary-text">
@@ -735,10 +665,8 @@
                               Choose which columns to display in this data set
                           </h1>
                           </legend>
-
                           <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
                           data-module="nhsuk-checkboxes">
-
                           <div class="nhsuk-checkboxes__item">
                               <input class="nhsuk-checkboxes__input" id="ctStart-checkbox" name="ctStart" type="checkbox"
                               value="columns" checked>
@@ -746,7 +674,6 @@
                               Period start
                               </label>
                           </div>
-
                           <div class="nhsuk-checkboxes__item">
                               <input class="nhsuk-checkboxes__input" id="ctEnd-checkbox" name="ctEnd" type="checkbox"
                               value="columns" checked>
@@ -754,7 +681,6 @@
                               Period end
                               </label>
                           </div>
-
                           <div class="nhsuk-checkboxes__item">
                               <input class="nhsuk-checkboxes__input" id="ctEmpConts-checkbox" name="ctEmpConts" type="checkbox"
                               value="columns" checked>
@@ -762,7 +688,6 @@
                               Employee conts
                               </label>
                           </div>
-
                           <div class="nhsuk-checkboxes__item">
                               <input class="nhsuk-checkboxes__input" id="ctTpp-checkbox" name="ctTpp" type="checkbox"
                               value="columns" checked>
@@ -770,7 +695,6 @@
                               TPP
                               </label>
                           </div>
-
                           <div class="nhsuk-checkboxes__item">
                               <input class="nhsuk-checkboxes__input" id="ctEmployerConts-checkbox" name="ctEmployerConts" type="checkbox"
                               value="columns" checked>
@@ -778,7 +702,6 @@
                               Employer conts
                               </label>
                           </div>
-
                           <div class="nhsuk-checkboxes__item">
                               <input class="nhsuk-checkboxes__input" id="ctEmpPay-checkbox" name="ctEmpPay" type="checkbox"
                               value="columns" checked>
@@ -786,11 +709,9 @@
                               Employer pay
                               </label>
                           </div>
-
                           </div>
                       </fieldset>
                       </div>
-
                       <button class="nhsuk-button" type="submit">Apply</button>
                   </form>
               </div>
@@ -885,7 +806,6 @@
                       <td class="ctEmpPay nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£1666.20</td>
                       </tr>
                       <!-- Employee 2 -->
-                  
                       <tr class="nhsuk-table__row rows-conts hidden-row" role="row">
                         <td class="ctEmpId nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2</td>
                         <td class="ctStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2024</td>
@@ -982,9 +902,7 @@
                       <td class="ctEmployerConts nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£3938.50</td>
                       <td class="ctEmpPay nhsuk-table__cell nhsuk-u-font-size-14" role="cell">£27541.88</td>
                       </tr>
-
                       <!-- Employment ID 1 -->
-
                       <tr class="nhsuk-table__row rows-conts hidden-row" role="row">
                       <td class="ctEmpId nhsuk-table__cell nhsuk-u-font-size-14" role="cell">1</td>
                       <td class="ctStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell">01/04/2014</td>
@@ -1015,9 +933,7 @@
                       Previous<span class="nhsuk-u-visually-hidden"> page</span>
                       </span>
                   </a>
-                  
                   <ul class="nhsuk-pagination__list" id="paginationList"></ul>
-                  
                   <a href="#" id="nextPage" class="nhsuk-pagination__next" rel="next">
                       <span class="nhsuk-pagination__title">
                       Next<span class="nhsuk-u-visually-hidden"> page</span>
@@ -1030,11 +946,9 @@
             </div>
         </div>
     </details>
-
     <!-- ****************
     HOURS HISTORY
     ***************** -->
-
     <details class="nhsuk-details nhsuk-expander" id="hoursHistory">
         <summary class="nhsuk-details__summary">
             <span class="nhsuk-details__summary-text">
@@ -1062,10 +976,8 @@
                               Choose which columns to display in this data set
                           </h1>
                           </legend>
-      
                           <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
                           data-module="nhsuk-checkboxes">
-      
                           <div class="nhsuk-checkboxes__item">
                               <input class="nhsuk-checkboxes__input" id="hhStart-checkbox" name="hhStart" type="checkbox"
                               value="columns" checked>
@@ -1073,7 +985,6 @@
                                   Start date
                               </label>
                           </div>
-      
                           <div class="nhsuk-checkboxes__item">
                               <input class="nhsuk-checkboxes__input" id="hhEnd-checkbox" name="hhEnd" type="checkbox"
                               value="columns" checked>
@@ -1081,7 +992,6 @@
                                   End date
                               </label>
                           </div>
-      
                           <div class="nhsuk-checkboxes__item">
                               <input class="nhsuk-checkboxes__input" id="hhPtHrs-checkbox" name="hhPtHrs" type="checkbox"
                               value="columns" checked>
@@ -1089,7 +999,6 @@
                                   Part time hours
                               </label>
                           </div>
-      
                           </div>
                       </fieldset>
                       </div>
@@ -1109,7 +1018,6 @@
                   </tr>
                   </thead>
                   <tbody class="nhsuk-table__body">
-                  
                     <tr class="nhsuk-table__row errorHighlight hrsError" id="hrsError" role="row">
                       <td class="hhEmpId nhsuk-table__cell nhsuk-u-font-size-14">
                         <span class="nhsuk-u-visually-hidden">Error: Employment ID 3 must appear in both service history and employment history</span><span class="errorTxt">3</span>
@@ -1166,9 +1074,7 @@
                       <td class="hhEnd nhsuk-table__cell nhsuk-u-font-size-14">31/03/2016</td>
                       <td class="hhPtHrs nhsuk-table__cell nhsuk-u-font-size-14">82</td>
                     </tr>
-
                     <!-- Employment ID 2 -->
-
                     <tr class="nhsuk-table__row rows-hh hidden-row" role="row">
                       <td class="hhEmpId nhsuk-table__cell nhsuk-u-font-size-14">2</td>
                       <td class="hhStart nhsuk-table__cell nhsuk-u-font-size-14">01/04/2024</td>
@@ -1229,9 +1135,7 @@
                       <td class="hhEnd nhsuk-table__cell nhsuk-u-font-size-14">31/03/2016</td>
                       <td class="hhPtHrs nhsuk-table__cell nhsuk-u-font-size-14">1574</td>
                     </tr>
-                    
                     <!-- Employment ID 1-->  
-
                     <tr class="nhsuk-table__row rows-hh hidden-row" role="row">
                       <td class="hhEmpId nhsuk-table__cell nhsuk-u-font-size-14">1</td>
                       <td class="hhStart nhsuk-table__cell nhsuk-u-font-size-14">10/11/2014</td>
@@ -1250,9 +1154,7 @@
                       Previous<span class="nhsuk-u-visually-hidden"> page</span>
                       </span>
                   </a>
-                  
                   <ul class="nhsuk-pagination__list" id="paginationList"></ul>
-                  
                   <a href="#" id="nextPage" class="nhsuk-pagination__next" rel="next">
                       <span class="nhsuk-pagination__title">
                       Next<span class="nhsuk-u-visually-hidden"> page</span>
@@ -1265,11 +1167,9 @@
             </div>
         </div>
     </details>
-
     <!-- ****************
     LINKED EMPLOYMENT
     ***************** -->
-
     <details class="nhsuk-details nhsuk-expander" id="linkedEmployment">
         <summary class="nhsuk-details__summary">
             <span class="nhsuk-details__summary-text">
@@ -1289,10 +1189,8 @@
                             Choose which columns to display in this data set
                         </h1>
                         </legend>
-    
                         <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
                         data-module="nhsuk-checkboxes">
-    
                         <div class="nhsuk-checkboxes__item">
                             <input class="nhsuk-checkboxes__input" id="lePre-checkbox" name="lePre" type="checkbox"
                             value="columns" checked>
@@ -1300,7 +1198,6 @@
                                 Pre-remedy employment ID
                             </label>
                         </div>
-    
                         <div class="nhsuk-checkboxes__item">
                             <input class="nhsuk-checkboxes__input" id="leRem-checkbox" name="leRem" type="checkbox"
                             value="columns" checked>
@@ -1308,7 +1205,6 @@
                                 Remedy employment ID
                             </label>
                         </div>
-    
                         <div class="nhsuk-checkboxes__item">
                             <input class="nhsuk-checkboxes__input" id="lePost-checkbox" name="lePost" type="checkbox"
                             value="columns" checked>
@@ -1316,7 +1212,6 @@
                                 Post-remedy employment ID
                             </label>
                         </div>
-    
                         </div>
                     </fieldset>
                     </div>
@@ -1326,7 +1221,6 @@
             {{ linkedEmploymentTable | safe }}
         </div>
     </details>
-
     <div class="app-back-to-top" data-module="app-back-to-top" data-app-back-to-top-init="">
         <a class="nhsuk-link nhsuk-link--no-visited-state app-back-to-top__link" href="#top">
             <svg role="presentation" focusable="false" class="app-back-to-top__icon"
@@ -1335,29 +1229,24 @@
             </svg>Back to top
         </a>
     </div>
-
   </div>
 </div>
-
 <script src="/assets/javascript/filter.js"></script>
 <script src="/assets/javascript/customise.js"></script>
 <script src="/assets/javascript/toggle-pagination.js"></script>
 <script src="/assets/javascript/sortable.js"></script>
 <script src="/assets/javascript/comparison.js"></script>
 <script src="/assets/javascript/back-to-top.js"></script>
-
 <script>
   function toggleRows(groupClass, button) {
       const rows = document.querySelectorAll(`.${groupClass}`);
       let anyVisible = false;
-  
       rows.forEach(row => {
       row.classList.toggle('hidden');
       if (!row.classList.contains('hidden')) {
           anyVisible = true;
       }
       });
-  
       button.textContent = anyVisible
       ? 'Hide correct rows'
       : 'Show all rows';
