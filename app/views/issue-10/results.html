@@ -1,0 +1,1981 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "John Smith"%}
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+        <div class="nhsuk-grid-row memberHeader">
+            <div class="nhsuk-grid-column-one-half" id="memberName">
+                <span class="nhsuk-caption-l">Member Details</span>
+                <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">{{pageTitle}}</h1>
+            </div>
+            <div class="nhsuk-grid-column-one-half" id="memberNew">
+                <a href="/{{folder}}/search" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small">Search new
+                    member</a>
+            </div>
+        </div>
+        <div class="nhsuk-grid-row">
+            <div class="nhsuk-grid-column-one-half">
+                {{ summaryList({
+                rows: [
+                {
+                key: {
+                text: "Member number"
+                },
+                value: {
+                text: "10918038"
+                }
+                },
+                {
+                key: {
+                text: "NI number"
+                },
+                value: {
+                text: "QQ 12 34 45 D"
+                }
+                },
+                {
+                key: {
+                text: "Scheme"
+                },
+                value: {
+                html: "2015 Scheme"
+                }
+                }
+                ]
+                }) }}
+            </div>
+            <div class="nhsuk-grid-column-one-half">
+                {{ summaryList({
+                rows: [
+                {
+                key: {
+                text: "Date of birth (Age)"
+                },
+                value: {
+                text: "18 September 1959 (66year 02month)"
+                }
+                },
+                {
+                key: {
+                text: "Status"
+                },
+                value: {
+                html: "Active"
+                }
+                },
+                {
+                key: {
+                text: "Email"
+                },
+                value: {
+                html: 'john.smith@email.com'
+                }
+                }
+                ]
+                }) }}
+            </div>
+        </div>
+        <!-- ****************
+        OVERVIEW
+      ***************** -->
+        {% set notifyHtml %}
+        <p>
+            <b>1 validation issue</b> have been found for member 10918038
+        </p>
+        {% endset %}
+        {{ insetText({
+        html: notifyHtml
+        }) }}
+        <hr>
+        <div class="nhsuk-grid-row">
+            <div class="nhsuk-grid-column-two-thirds">
+                <h2>Core member data sets</h2>
+            </div>
+            <div class="nhsuk-grid-column-one-third alignRight">
+                <a href="" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small">Update data sets</a>
+            </div>
+        </div>
+        <div class="nhsuk-hint" id="example-with-hint-text-hint">
+            {{ introPara | safe }}
+        </div>
+        <!-- ****************
+        SERVICE HISTORY
+        ***************** -->
+        <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                    Service history
+                </span>
+            </summary>
+            <div class="nhsuk-details__text">
+                <div class="nhsuk-hint">You can scroll left and right to see all columns if the table does not fit on
+                    your screen</div>
+                <div class="nhsuk-scrollable-pane" aria-label="Service History" tabindex="0">
+                    <table class="nhsuk-table employment-table" data-button-id="toggleRowsBtn_1"
+                        id="table-service-history" data-desc="true" data-orderbycolumnno="0,2">
+                        <caption class="nhsuk-u-visually-hidden">Service History records for the selected member
+                        </caption>
+                        <thead class="nhsuk-table__head">
+                            <tr>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14">Employment ID</th>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14">Scheme code</th>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14">Start date</th>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14">End date</th>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14">Updated</th>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14">Member status</th>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14">End reason code</th>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14">Group</th>
+                            </tr>
+                        </thead>
+                        <tbody class="nhsuk-table__body">
+                            <tr id="service-history-row-12" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="12">
+                                    12
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2015 Scheme">
+                                    2015 Scheme
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2025-04-01">
+                                    01/04/2025
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2025-10-31">
+                                    31/10/2025
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14"
+                                    data-sort-value="2025-10-31T00:00:00">
+                                    31/10/2025
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14"
+                                    data-sort-value="Status Change in Progress">
+                                    Status Change in Progress
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="01">
+                                    01
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2">
+                                    2
+                                </td>
+                            </tr>
+                            <tr id="service-history-row-11" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="11">
+                                    11
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2015 Scheme">
+                                    2015 Scheme
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2023-07-01">
+                                    01/07/2023
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2025-03-31">
+                                    31/03/2025
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14"
+                                    data-sort-value="2025-03-31T00:00:00">
+                                    31/03/2025
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14"
+                                    data-sort-value="Status Change in Progress">
+                                    Status Change in Progress
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="01">
+                                    01
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2">
+                                    2
+                                </td>
+                            </tr>
+                            <tr id="service-history-row-10" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="10">
+                                    10
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2015 Scheme">
+                                    2015 Scheme
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2016-12-01">
+                                    01/12/2016
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2017-03-12">
+                                    12/03/2017
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14"
+                                    data-sort-value="2017-03-12T00:00:00">
+                                    12/03/2017
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14"
+                                    data-sort-value="Status Change in Progress">
+                                    Status Change in Progress
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="01">
+                                    01
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2">
+                                    2
+                                </td>
+                            </tr>
+                            <tr id="service-history-row-7" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="7">
+                                    7
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2015 Scheme">
+                                    2015 Scheme
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2018-07-21">
+                                    21/07/2018
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2022-11-19">
+                                    19/11/2022
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14"
+                                    data-sort-value="2022-11-19T00:00:00">
+                                    19/11/2022
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14"
+                                    data-sort-value="Status Change in Progress">
+                                    Status Change in Progress
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="01">
+                                    01
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2">
+                                    2
+                                </td>
+                            </tr>
+                            <tr id="service-history-row-6" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="6">
+                                    6
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2015 Scheme">
+                                    2015 Scheme
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2017-03-19">
+                                    19/03/2017
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2018-07-20">
+                                    20/07/2018
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14"
+                                    data-sort-value="2018-07-20T00:00:00">
+                                    20/07/2018
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14"
+                                    data-sort-value="Status Change in Progress">
+                                    Status Change in Progress
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="01">
+                                    01
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2">
+                                    2
+                                </td>
+                            </tr>
+                            <tr id="service-history-row-5" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="5">
+                                    5
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1995 Section">
+                                    1995 Section
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2013-06-10">
+                                    10/06/2013
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2016-11-30">
+                                    30/11/2016
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14"
+                                    data-sort-value="2016-11-30T00:00:00">
+                                    30/11/2016
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="Pensioner">
+                                    Pensioner
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="15">
+                                    15
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1">
+                                    1
+                                </td>
+                            </tr>
+                            <tr id="service-history-row-4" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="4">
+                                    4
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1995 Section">
+                                    1995 Section
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2009-01-12">
+                                    12/01/2009
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2013-11-29">
+                                    29/11/2013
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14"
+                                    data-sort-value="2013-11-29T00:00:00">
+                                    29/11/2013
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="Pensioner">
+                                    Pensioner
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="01">
+                                    01
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1">
+                                    1
+                                </td>
+                            </tr>
+                            <tr id="service-history-row-3" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="3">
+                                    3
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1995 Section">
+                                    1995 Section
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2006-02-01">
+                                    01/02/2006
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2009-01-11">
+                                    11/01/2009
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14"
+                                    data-sort-value="2009-01-11T00:00:00">
+                                    11/01/2009
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="Pensioner">
+                                    Pensioner
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="01">
+                                    01
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1">
+                                    1
+                                </td>
+                            </tr>
+                            <tr id="service-history-row-2" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2">
+                                    2
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1995 Section">
+                                    1995 Section
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2002-09-30">
+                                    30/09/2002
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2005-09-30">
+                                    30/09/2005
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14"
+                                    data-sort-value="2005-09-30T00:00:00">
+                                    30/09/2005
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="Pensioner">
+                                    Pensioner
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="01">
+                                    01
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1">
+                                    1
+                                </td>
+                            </tr>
+                            <tr id="service-history-row-1" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1">
+                                    1
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1995 Section">
+                                    1995 Section
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2001-04-23">
+                                    23/04/2001
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2002-09-29">
+                                    29/09/2002
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14"
+                                    data-sort-value="2002-09-29T00:00:00">
+                                    29/09/2002
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="Pensioner">
+                                    Pensioner
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="01">
+                                    01
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1">
+                                    1
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </details>
+        <!-- ****************
+        SERVICE GROUP
+        ***************** -->
+        <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                    Service groups
+                </span>
+                <strong class="nhsuk-tag nhsuk-tag--red">
+                    1 issue found
+                </strong>
+            </summary>
+            <div class="nhsuk-details__text">
+                <div class="nhsuk-error-summary" aria-labelledby="error-summary-title" tabindex="-1">
+                    <h3 class="nhsuk-error-summary__title" id="error-summary-title">
+                        Issue found <span class="nhsuk-u-visually-hidden">in service groups data set</span>
+                    </h3>
+                    <p>There is 1 issue in the service groups table. They must be fixed before the record can be
+                        processed.
+                    </p>
+                    <div class="nhsuk-error-summary__body">
+                        <ul class="nhsuk-list nhsuk-error-summary__list">
+                            <li>
+                                <span class="nhsuk-u-visually-hidden"
+                                    id="service-group-error-GSTARTDTE-2-2015-04-01-visually-hidden">Error: The scheme
+                                    code must match in both service group and service history when the group ID is the
+                                    same</span>
+                                <a href="#service-group-row-2" id="service-group-error-GSTARTDTE-2-2015-04-01"
+                                    class="error-link"
+                                    aria-describedby="service-group-error-GSTARTDTE-2-2015-04-01-visually-hidden">
+                                    The scheme code must match in both service group and service history when the group
+                                    ID is the same
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <button id="toggleButtonSg" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small"
+                    data-module="nhsuk-button" onclick="toggleRows('rows-sg', this)">Hide correct rows</button>
+                <div class="nhsuk-hint">You can scroll left and right to see all columns if the table does not fit on
+                    your screen</div>
+                <div class="nhsuk-scrollable-pane" aria-label="Service Groups" tabindex="0">
+                    <table class="nhsuk-table employment-table" data-button-id="toggleRowsBtn_2"
+                        id="table-service-group" data-desc="false" data-orderbycolumnno="0,0">
+                        <caption class="nhsuk-u-visually-hidden">Service Groups records for the selected member
+                        </caption>
+                        <thead class="nhsuk-table__head">
+                            <tr>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14">Group ID</th>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14">Scheme code</th>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14">Start date</th>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14">End date</th>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14">Status</th>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14">End reason code</th>
+                            </tr>
+                        </thead>
+                        <tbody class="nhsuk-table__body">
+                            <tr id="service-group-row-1" class="nhsuk-table__row flagged-row errorHighlight">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1">
+                                    1
+                                </td>
+                                <td class="error-cell nhsuk-table__cell nhsuk-u-font-size-14"
+                                    data-error-fields="GSCHEME" data-error-values="2008 Section"
+                                    data-sort-value="2008 Section">
+                                    <span class="errorTxt">
+                                        2008 Section
+                                    </span>
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2001-04-23">
+                                    23/04/2001
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2022-11-19">
+                                    19/11/2022
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="Pensioner">
+                                    Pensioner
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="25">
+                                    25
+                                </td>
+                            </tr>
+                            <tr id="service-group-row-2" class="nhsuk-table__row rows-sg">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2">
+                                    2
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2015 Scheme">
+                                    2015 Scheme
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2016-12-01">
+                                    01/12/2016
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2025-10-31">
+                                    31/10/2025
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14"
+                                    data-sort-value="Status Change in Progress">
+                                    Status Change in Progress
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="01">
+                                    01
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </details>
+        <!-- ****************
+        EMPLOYMENT HISTORY
+        ***************** -->
+        <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                    Employment
+                </span>
+            </summary>
+            <div class="nhsuk-details__text">
+                <div class="nhsuk-hint">You can scroll left and right to see all columns if the table does not fit on
+                    your screen</div>
+                <div class="nhsuk-scrollable-pane" aria-label="Employment" tabindex="0">
+                    <table class="nhsuk-table employment-table" data-button-id="toggleRowsBtn_3"
+                        id="table-employment-history" data-desc="true" data-orderbycolumnno="0,2">
+                        <caption class="nhsuk-u-visually-hidden">Employment records for the selected member</caption>
+                        <thead class="nhsuk-table__head">
+                            <tr>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14">Employment ID</th>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14">Employer code</th>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14">Start date</th>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14"> End date</th>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14">Whole/part time</th>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14">Capacity code</th>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14">Employment type</th>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14">Actual hours</th>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14">Standard hours</th>
+                            </tr>
+                        </thead>
+                        <tbody class="nhsuk-table__body">
+                            <tr id="employment-history-row-12" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="12">
+                                    12
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="8367">
+                                    8367
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2025-04-01">
+                                    01/04/2025
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2025-10-31">
+                                    31/10/2025
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2">
+                                    2
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="04">
+                                    04
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1">
+                                    1
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="30.00">
+                                    30.00
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="37.50">
+                                    37.50
+                                </td>
+                            </tr>
+                            <tr id="employment-history-row-11" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="11">
+                                    11
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="8407">
+                                    8407
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2023-07-01">
+                                    01/07/2023
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2025-03-31">
+                                    31/03/2025
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2">
+                                    2
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="01">
+                                    01
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="8">
+                                    8
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="30.00">
+                                    30.00
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="37.50">
+                                    37.50
+                                </td>
+                            </tr>
+                            <tr id="employment-history-row-10" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="10">
+                                    10
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="4832">
+                                    4832
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2016-12-01">
+                                    01/12/2016
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2017-03-12">
+                                    12/03/2017
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1">
+                                    1
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="01">
+                                    01
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="8">
+                                    8
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="0.00">
+                                    0.00
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="0.00">
+                                    0.00
+                                </td>
+                            </tr>
+                            <tr id="employment-history-row-7" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="7">
+                                    7
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="8407">
+                                    8407
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2022-04-01">
+                                    01/04/2022
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2022-11-19">
+                                    19/11/2022
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1">
+                                    1
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="01">
+                                    01
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="8">
+                                    8
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="">
+                                    <span id="employment-history-error-msg-PTHRS-7" class="nhsuk-u-visually-hidden">No
+                                        data</span>
+                                    -
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="">
+                                    <span id="employment-history-error-msg-WTHRS-7" class="nhsuk-u-visually-hidden">No
+                                        data</span>
+                                    -
+                                </td>
+                            </tr>
+                            <tr id="employment-history-row-7" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="7">
+                                    7
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="8407">
+                                    8407
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2018-07-21">
+                                    21/07/2018
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2022-03-31">
+                                    31/03/2022
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1">
+                                    1
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="01">
+                                    01
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="8">
+                                    8
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="">
+                                    <span id="employment-history-error-msg-PTHRS-7" class="nhsuk-u-visually-hidden">No
+                                        data</span>
+                                    -
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="">
+                                    <span id="employment-history-error-msg-WTHRS-7" class="nhsuk-u-visually-hidden">No
+                                        data</span>
+                                    -
+                                </td>
+                            </tr>
+                            <tr id="employment-history-row-6" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="6">
+                                    6
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="6558">
+                                    6558
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2017-03-19">
+                                    19/03/2017
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2018-07-20">
+                                    20/07/2018
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1">
+                                    1
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="01">
+                                    01
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="8">
+                                    8
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="">
+                                    <span id="employment-history-error-msg-PTHRS-6" class="nhsuk-u-visually-hidden">No
+                                        data</span>
+                                    -
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="">
+                                    <span id="employment-history-error-msg-WTHRS-6" class="nhsuk-u-visually-hidden">No
+                                        data</span>
+                                    -
+                                </td>
+                            </tr>
+                            <tr id="employment-history-row-5" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="5">
+                                    5
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="4832">
+                                    4832
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2015-04-01">
+                                    01/04/2015
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2016-11-30">
+                                    30/11/2016
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1">
+                                    1
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="01">
+                                    01
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="8">
+                                    8
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="0.00">
+                                    0.00
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="0.00">
+                                    0.00
+                                </td>
+                            </tr>
+                            <tr id="employment-history-row-5" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="5">
+                                    5
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="4832">
+                                    4832
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2013-12-01">
+                                    01/12/2013
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2015-03-31">
+                                    31/03/2015
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1">
+                                    1
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="01">
+                                    01
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="8">
+                                    8
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="0.00">
+                                    0.00
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="0.00">
+                                    0.00
+                                </td>
+                            </tr>
+                            <tr id="employment-history-row-5" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="5">
+                                    5
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="4832">
+                                    4832
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2013-06-10">
+                                    10/06/2013
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2013-11-30">
+                                    30/11/2013
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2">
+                                    2
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="01">
+                                    01
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="8">
+                                    8
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="22.50">
+                                    22.50
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="37.50">
+                                    37.50
+                                </td>
+                            </tr>
+                            <tr id="employment-history-row-4" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="4">
+                                    4
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="4832">
+                                    4832
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2013-06-10">
+                                    10/06/2013
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2013-11-29">
+                                    29/11/2013
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2">
+                                    2
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="01">
+                                    01
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="8">
+                                    8
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="15.00">
+                                    15.00
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="37.50">
+                                    37.50
+                                </td>
+                            </tr>
+                            <tr id="employment-history-row-4" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="4">
+                                    4
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="4832">
+                                    4832
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2009-01-12">
+                                    12/01/2009
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2013-06-09">
+                                    09/06/2013
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1">
+                                    1
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="01">
+                                    01
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="8">
+                                    8
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="0.00">
+                                    0.00
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="0.00">
+                                    0.00
+                                </td>
+                            </tr>
+                            <tr id="employment-history-row-3" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="3">
+                                    3
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="4822">
+                                    4822
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2009-01-11">
+                                    11/01/2009
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2009-01-11">
+                                    11/01/2009
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2">
+                                    2
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="01">
+                                    01
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="8">
+                                    8
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="7.50">
+                                    7.50
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="37.50">
+                                    37.50
+                                </td>
+                            </tr>
+                            <tr id="employment-history-row-3" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="3">
+                                    3
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="4822">
+                                    4822
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2006-02-01">
+                                    01/02/2006
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2009-01-10">
+                                    10/01/2009
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1">
+                                    1
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="01">
+                                    01
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="8">
+                                    8
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="">
+                                    <span id="employment-history-error-msg-PTHRS-3" class="nhsuk-u-visually-hidden">No
+                                        data</span>
+                                    -
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="">
+                                    <span id="employment-history-error-msg-WTHRS-3" class="nhsuk-u-visually-hidden">No
+                                        data</span>
+                                    -
+                                </td>
+                            </tr>
+                            <tr id="employment-history-row-2" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2">
+                                    2
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="4822">
+                                    4822
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2002-09-30">
+                                    30/09/2002
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2005-09-30">
+                                    30/09/2005
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1">
+                                    1
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="01">
+                                    01
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="8">
+                                    8
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="0.00">
+                                    0.00
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="0.00">
+                                    0.00
+                                </td>
+                            </tr>
+                            <tr id="employment-history-row-1" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1">
+                                    1
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="4822">
+                                    4822
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2001-04-23">
+                                    23/04/2001
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2002-09-29">
+                                    29/09/2002
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2">
+                                    2
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="01">
+                                    01
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="8">
+                                    8
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="30.00">
+                                    30.00
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="37.50">
+                                    37.50
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </details>
+        <!-- ****************
+        PENSION CONTRIBUTIONS
+        ***************** -->
+        <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                    Conts &amp; TPP
+                </span>
+            </summary>
+            <div class="nhsuk-details__text">
+                <div class="nhsuk-hint">You can scroll left and right to see all columns if the table does not fit on
+                    your screen</div>
+                <div class="nhsuk-scrollable-pane" aria-label="Conts &amp; TPP" tabindex="0">
+                    <table class="nhsuk-table employment-table" data-button-id="toggleRowsBtn_4"
+                        id="table-earning-history" data-desc="true" data-orderbycolumnno="0,1">
+                        <caption class="nhsuk-u-visually-hidden">Conts &amp; TPP records for the selected member
+                        </caption>
+                        <thead class="nhsuk-table__head">
+                            <tr>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14">Employment ID</th>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14">Period start</th>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14"> Period end</th>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14"> Employee conts</th>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14">TPP</th>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14">Employer conts</th>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14">Employer pay</th>
+                            </tr>
+                        </thead>
+                        <tbody class="nhsuk-table__body">
+                            <tr id="earning-history-row-12" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="12">
+                                    12
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2025-04-01">
+                                    01/04/2025
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2025-10-31">
+                                    31/10/2025
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2767.03">
+                                    £2767.03
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="28234.6">
+                                    £28234.60
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="4060.21">
+                                    £4060.21
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="28234.6">
+                                    £28234.60
+                                </td>
+                            </tr>
+                            <tr id="earning-history-row-11" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="11">
+                                    11
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2024-04-01">
+                                    01/04/2024
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2025-03-31">
+                                    31/03/2025
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="4743.48">
+                                    £4743.48
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="48403.2">
+                                    £48403.20
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="6960.36">
+                                    £6960.36
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="48403.2">
+                                    £48403.20
+                                </td>
+                            </tr>
+                            <tr id="earning-history-row-11" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="11">
+                                    11
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2023-07-01">
+                                    01/07/2023
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2024-03-31">
+                                    31/03/2024
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="3372.12">
+                                    £3372.12
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="34409.43">
+                                    £34409.43
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="4948.11">
+                                    £4948.11
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="34409.43">
+                                    £34409.43
+                                </td>
+                            </tr>
+                            <tr id="earning-history-row-10" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="10">
+                                    10
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2016-12-01">
+                                    01/12/2016
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2017-03-12">
+                                    12/03/2017
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="885.97">
+                                    £885.97
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="9526.66">
+                                    £9526.66
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1362.31">
+                                    £1362.31
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="9526.66">
+                                    £9526.66
+                                </td>
+                            </tr>
+                            <tr id="earning-history-row-7" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="7">
+                                    7
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2022-04-01">
+                                    01/04/2022
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2022-11-19">
+                                    19/11/2022
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="4347.58">
+                                    £4347.58
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="35320.92">
+                                    £35320.92
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="5085.08">
+                                    £5085.08
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="35362.03">
+                                    £35362.03
+                                </td>
+                            </tr>
+                            <tr id="earning-history-row-7" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="7">
+                                    7
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2021-04-01">
+                                    01/04/2021
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2022-03-31">
+                                    31/03/2022
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="6618.59">
+                                    £6618.59
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="52948.88">
+                                    £52948.88
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="7614.07">
+                                    £7614.07
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="52948.88">
+                                    £52948.88
+                                </td>
+                            </tr>
+                            <tr id="earning-history-row-7" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="7">
+                                    7
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2020-04-01">
+                                    01/04/2020
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2021-03-31">
+                                    31/03/2021
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="4475.67">
+                                    £4475.67
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="48125.81">
+                                    £48125.81
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="6920.5">
+                                    £6920.50
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="48125.81">
+                                    £48125.81
+                                </td>
+                            </tr>
+                            <tr id="earning-history-row-7" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="7">
+                                    7
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2019-04-01">
+                                    01/04/2019
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2020-03-31">
+                                    31/03/2020
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="4197.75">
+                                    £4197.75
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="45136.77">
+                                    £45136.77
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="6490.65">
+                                    £6490.65
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="45136.77">
+                                    £45136.77
+                                </td>
+                            </tr>
+                            <tr id="earning-history-row-7" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="7">
+                                    7
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2018-07-21">
+                                    21/07/2018
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2019-03-31">
+                                    31/03/2019
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2786.92">
+                                    £2786.92
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="29966.72">
+                                    £29966.72
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="4309.18">
+                                    £4309.18
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="29966.72">
+                                    £29966.72
+                                </td>
+                            </tr>
+                            <tr id="earning-history-row-6" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="6">
+                                    6
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2018-04-01">
+                                    01/04/2018
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2018-07-20">
+                                    20/07/2018
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1330.4">
+                                    £1330.40
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="14305.43">
+                                    £14305.43
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2057.13">
+                                    £2057.13
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="14305.43">
+                                    £14305.43
+                                </td>
+                            </tr>
+                            <tr id="earning-history-row-6" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="6">
+                                    6
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2017-04-01">
+                                    01/04/2017
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2018-03-31">
+                                    31/03/2018
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="3887.07">
+                                    £3887.07
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="41796.51">
+                                    £41796.51
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="6010.34">
+                                    £6010.34
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="41796.51">
+                                    £41796.51
+                                </td>
+                            </tr>
+                            <tr id="earning-history-row-6" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="6">
+                                    6
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2017-03-19">
+                                    19/03/2017
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2017-03-31">
+                                    31/03/2017
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="114.48">
+                                    £114.48
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1230.98">
+                                    £1230.98
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="176.03">
+                                    £176.03
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1230.98">
+                                    £1230.98
+                                </td>
+                            </tr>
+                            <tr id="earning-history-row-5" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="5">
+                                    5
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2016-04-01">
+                                    01/04/2016
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2016-11-30">
+                                    30/11/2016
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2119.39">
+                                    £2119.39
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="22789.25">
+                                    £22789.25
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="3258.85">
+                                    £3258.85
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="22789.25">
+                                    £22789.25
+                                </td>
+                            </tr>
+                            <tr id="earning-history-row-5" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="5">
+                                    5
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2015-04-01">
+                                    01/04/2015
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2016-03-31">
+                                    31/03/2016
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="3019.4">
+                                    £3019.40
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="32466.32">
+                                    £32466.32
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="4642.72">
+                                    £4642.72
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="32466.32">
+                                    £32466.32
+                                </td>
+                            </tr>
+                            <tr id="earning-history-row-5" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="5">
+                                    5
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2014-04-01">
+                                    01/04/2014
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2015-03-31">
+                                    31/03/2015
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2892.16">
+                                    £2892.16
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="31098.68">
+                                    £31098.68
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="4353.8">
+                                    £4353.80
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="31098.68">
+                                    £31098.68
+                                </td>
+                            </tr>
+                            <tr id="earning-history-row-5" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="5">
+                                    5
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2013-06-10">
+                                    10/06/2013
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2014-03-31">
+                                    31/03/2014
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1691.71">
+                                    £1691.71
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="18796.71">
+                                    £18796.71
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2631.53">
+                                    £2631.53
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="18796.71">
+                                    £18796.71
+                                </td>
+                            </tr>
+                            <tr id="earning-history-row-4" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="4">
+                                    4
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2013-04-01">
+                                    01/04/2013
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2013-11-29">
+                                    29/11/2013
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="995.56">
+                                    £995.56
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="11972.58">
+                                    £11972.58
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1676.14">
+                                    £1676.14
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="11972.58">
+                                    £11972.58
+                                </td>
+                            </tr>
+                            <tr id="earning-history-row-4" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="4">
+                                    4
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2012-04-01">
+                                    01/04/2012
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2013-03-31">
+                                    31/03/2013
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2272.71">
+                                    £2272.71
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="28408.68">
+                                    £28408.68
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="3977.21">
+                                    £3977.21
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="28408.68">
+                                    £28408.68
+                                </td>
+                            </tr>
+                            <tr id="earning-history-row-4" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="4">
+                                    4
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2011-04-01">
+                                    01/04/2011
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2012-03-31">
+                                    31/03/2012
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1809.31">
+                                    £1809.31
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="27835.64">
+                                    £27835.64
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="3897">
+                                    £3897.00
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="27835.64">
+                                    £27835.64
+                                </td>
+                            </tr>
+                            <tr id="earning-history-row-4" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="4">
+                                    4
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2010-04-01">
+                                    01/04/2010
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2011-03-31">
+                                    31/03/2011
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1748.19">
+                                    £1748.19
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="26895.19">
+                                    £26895.19
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="3764.67">
+                                    £3764.67
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="26890.59">
+                                    £26890.59
+                                </td>
+                            </tr>
+                            <tr id="earning-history-row-4" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="4">
+                                    4
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2009-04-01">
+                                    01/04/2009
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2010-03-31">
+                                    31/03/2010
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1642.8">
+                                    £1642.80
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="25273.71">
+                                    £25273.71
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="3538.34">
+                                    £3538.34
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="25273.71">
+                                    £25273.71
+                                </td>
+                            </tr>
+                            <tr id="earning-history-row-4" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="4">
+                                    4
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2009-01-12">
+                                    12/01/2009
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2009-03-31">
+                                    31/03/2009
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="334.8">
+                                    £334.80
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="5150.77">
+                                    £5150.77
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="721.1">
+                                    £721.10
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="5150.77">
+                                    £5150.77
+                                </td>
+                            </tr>
+                            <tr id="earning-history-row-3" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="3">
+                                    3
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2008-04-01">
+                                    01/04/2008
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2009-01-11">
+                                    11/01/2009
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1555.46">
+                                    £1555.46
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="24028.03">
+                                    £24028.03
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="3363.96">
+                                    £3363.96
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="24028.03">
+                                    £24028.03
+                                </td>
+                            </tr>
+                            <tr id="earning-history-row-3" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="3">
+                                    3
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2007-04-01">
+                                    01/04/2007
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2008-03-31">
+                                    31/03/2008
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1489.87">
+                                    £1489.87
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="24831.23">
+                                    £24831.23
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="3476.38">
+                                    £3476.38
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="24831.23">
+                                    £24831.23
+                                </td>
+                            </tr>
+                            <tr id="earning-history-row-3" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="3">
+                                    3
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2006-04-01">
+                                    01/04/2006
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2007-03-31">
+                                    31/03/2007
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1422.57">
+                                    £1422.57
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="23709.59">
+                                    £23709.59
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="3319.35">
+                                    £3319.35
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="23709.59">
+                                    £23709.59
+                                </td>
+                            </tr>
+                            <tr id="earning-history-row-3" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="3">
+                                    3
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2006-02-01">
+                                    01/02/2006
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2006-03-31">
+                                    31/03/2006
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="725.25">
+                                    £725.25
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="3856.98">
+                                    £3856.98
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="539.97">
+                                    £539.97
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="3856.98">
+                                    £3856.98
+                                </td>
+                            </tr>
+                            <tr id="earning-history-row-2" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2">
+                                    2
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2005-04-01">
+                                    01/04/2005
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2005-09-30">
+                                    30/09/2005
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="493.83">
+                                    £493.83
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="8230.5">
+                                    £8230.50
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1152.27">
+                                    £1152.27
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="8230.5">
+                                    £8230.50
+                                </td>
+                            </tr>
+                            <tr id="earning-history-row-2" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2">
+                                    2
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2004-04-01">
+                                    01/04/2004
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2005-03-31">
+                                    31/03/2005
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="637.92">
+                                    £637.92
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="10631.04">
+                                    £10631.04
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1488.36">
+                                    £1488.36
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="10631.04">
+                                    £10631.04
+                                </td>
+                            </tr>
+                            <tr id="earning-history-row-2" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2">
+                                    2
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2003-04-01">
+                                    01/04/2003
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2004-03-31">
+                                    31/03/2004
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="618">
+                                    £618.00
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="10299">
+                                    £10299.00
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="720.96">
+                                    £720.96
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="10299">
+                                    £10299.00
+                                </td>
+                            </tr>
+                            <tr id="earning-history-row-2" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2">
+                                    2
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2002-09-30">
+                                    30/09/2002
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2003-03-31">
+                                    31/03/2003
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="0.02">
+                                    £0.02
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="0.1">
+                                    £0.10
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="0">
+                                    £0.00
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="0">
+                                    £0.00
+                                </td>
+                            </tr>
+                            <tr id="earning-history-row-1" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1">
+                                    1
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2002-04-01">
+                                    01/04/2002
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2002-09-29">
+                                    29/09/2002
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="357.2">
+                                    £357.20
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="5953.33">
+                                    £5953.33
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="416.73">
+                                    £416.73
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="5953.33">
+                                    £5953.33
+                                </td>
+                            </tr>
+                            <tr id="earning-history-row-1" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1">
+                                    1
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2001-04-23">
+                                    23/04/2001
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2002-03-31">
+                                    31/03/2002
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="515.5">
+                                    £515.50
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="8591.3">
+                                    £8591.30
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="601.39">
+                                    £601.39
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="8591.3">
+                                    £8591.30
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </details>
+        <!-- ****************
+        HOURS HISTORY
+        ***************** -->
+        <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                    Hours history details
+                </span>
+            </summary>
+            <div class="nhsuk-details__text">
+                <div class="nhsuk-hint">You can scroll left and right to see all columns if the table does not fit on
+                    your screen</div>
+                <div class="nhsuk-scrollable-pane" aria-label="Hours History Details" tabindex="0">
+                    <table class="nhsuk-table employment-table" data-button-id="toggleRowsBtn_5"
+                        id="table-hours-history" data-desc="true" data-orderbycolumnno="0,1">
+                        <caption class="nhsuk-u-visually-hidden">Hours History Details records for the selected member
+                        </caption>
+                        <thead class="nhsuk-table__head">
+                            <tr>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14">Employment ID</th>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14">Start date</th>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14"> End date</th>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14">Part time hours</th>
+                            </tr>
+                        </thead>
+                        <tbody class="nhsuk-table__body">
+                            <tr id="hours-history-row-12" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="12">
+                                    12
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2025-04-01">
+                                    01/04/2025
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2025-10-31">
+                                    31/10/2025
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="916">
+                                    916
+                                </td>
+                            </tr>
+                            <tr id="hours-history-row-11" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="11">
+                                    11
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2024-04-01">
+                                    01/04/2024
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2025-03-31">
+                                    31/03/2025
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1564">
+                                    1564
+                                </td>
+                            </tr>
+                            <tr id="hours-history-row-11" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="11">
+                                    11
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2023-07-01">
+                                    01/07/2023
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2024-03-31">
+                                    31/03/2024
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1173">
+                                    1173
+                                </td>
+                            </tr>
+                            <tr id="hours-history-row-5" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="5">
+                                    5
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2013-06-10">
+                                    10/06/2013
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2013-11-30">
+                                    30/11/2013
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="600">
+                                    600
+                                </td>
+                            </tr>
+                            <tr id="hours-history-row-4" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="4">
+                                    4
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2013-06-10">
+                                    10/06/2013
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2013-11-29">
+                                    29/11/2013
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="332">
+                                    332
+                                </td>
+                            </tr>
+                            <tr id="hours-history-row-3" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="3">
+                                    3
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2009-01-11">
+                                    11/01/2009
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2009-01-11">
+                                    11/01/2009
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2">
+                                    2
+                                </td>
+                            </tr>
+                            <tr id="hours-history-row-1" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1">
+                                    1
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2002-04-01">
+                                    01/04/2002
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2002-09-29">
+                                    29/09/2002
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="259">
+                                    259
+                                </td>
+                            </tr>
+                            <tr id="hours-history-row-1" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1">
+                                    1
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2001-04-23">
+                                    23/04/2001
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2002-03-31">
+                                    31/03/2002
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1469">
+                                    1469
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </details>
+        <!-- ****************
+        LINKED EMPLOYMENT
+        ***************** -->
+        <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                    Linked employments
+                </span>
+            </summary>
+            <div class="nhsuk-details__text">
+                <div class="nhsuk-hint">You can scroll left and right to see all columns if the table does not fit on
+                    your screen</div>
+                <div class="nhsuk-scrollable-pane" aria-label="Linked Employments" tabindex="0">
+                    <table class="nhsuk-table employment-table" data-button-id="toggleRowsBtn_6" id="table-emp-linked"
+                        data-desc="false" data-orderbycolumnno="0,0">
+                        <caption class="nhsuk-u-visually-hidden">Linked Employments records for the selected member
+                        </caption>
+                        <thead class="nhsuk-table__head">
+                            <tr>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14">Pre-remedy employment
+                                    ID</th>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14"> Remedy employment ID
+                                </th>
+                                <th scope="col" class="nhsuk-table__header nhsuk-u-font-size-14">Post-remedy employment
+                                    ID</th>
+                            </tr>
+                        </thead>
+                        <tbody class="nhsuk-table__body">
+                            <tr id="emp-linked-row-5" class="nhsuk-table__row">
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="5">
+                                    5
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="10">
+                                    10
+                                </td>
+                                <td class=" nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="0">
+                                    0
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </details>
+    </div>
+</div>
+<script>
+    function toggleRows(groupClass, button) {
+        const rows = document.querySelectorAll(`.${groupClass}`);
+        let anyVisible = false;
+        rows.forEach(row => {
+            row.classList.toggle('hidden');
+            if (!row.classList.contains('hidden')) {
+                anyVisible = true;
+            }
+        });
+        button.textContent = anyVisible
+            ? 'Hide correct rows'
+            : 'Show all rows';
+    }
+</script>
+{% endblock %}
