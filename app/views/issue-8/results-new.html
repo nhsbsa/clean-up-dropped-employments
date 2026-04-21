@@ -1,0 +1,301 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "John Smith"%}
+{% set showMenu ="true"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full nhsuk-grid-column-full--long">
+
+        <div class="nhsuk-grid-row memberHeader">
+            <div class="nhsuk-grid-column-one-half" id="memberName">
+                <span class="nhsuk-caption-l">Member Details</span>
+                <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">{{pageTitle}}</h1>
+            </div>
+            <div class="nhsuk-grid-column-one-half" id="memberNew">
+                <a href="/{{folder}}/search" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small">Search new
+                    member</a>
+            </div>
+        </div>
+
+        <div class="nhsuk-grid-row">
+            <div class="nhsuk-grid-column-one-half">
+                {{ summaryList({
+                rows: [
+                {
+                key: {
+                text: "Member number"
+                },
+                value: {
+                text: "12345678"
+                }
+                },
+                {
+                key: {
+                text: "NI number"
+                },
+                value: {
+                text: "QQ 12 34 45 D"
+                }
+                },
+                {
+                key: {
+                text: "Scheme"
+                },
+                value: {
+                html: "2015 Scheme"
+                }
+                }
+                ]
+                }) }}
+            </div>
+            <div class="nhsuk-grid-column-one-half">
+                {{ summaryList({
+                rows: [
+                {
+                key: {
+                text: "Date of birth (Age)"
+                },
+                value: {
+                text: "18 September 1959 (66year 02month)"
+                }
+                },
+                {
+                key: {
+                text: "Status"
+                },
+                value: {
+                html: "Active"
+                }
+                },
+                {
+                key: {
+                text: "Email"
+                },
+                value: {
+                html: 'john.smith@email.com'
+                }
+                }
+                ]
+                }) }}
+            </div>
+        </div>
+
+        <!-- ****************
+        OVERVIEW
+      ***************** -->
+
+        {% set notifyHtml %}
+        <p>
+            <b>8 validation issues</b> have been found for member 12345678
+        </p>
+        {% endset %}
+
+        {{ insetText({
+        html: notifyHtml
+        }) }}
+
+        <hr>
+
+        <div class="nhsuk-grid-row">
+            <div class="nhsuk-grid-column-two-thirds">
+                <h2>Core member data sets</h2>
+            </div>
+            <div class="nhsuk-grid-column-one-third alignRight">
+                <a href="" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small">Update data sets</a>
+            </div>
+        </div>
+        <div class="nhsuk-hint" id="example-with-hint-text-hint">
+            {{ introPara | safe }}
+        </div>
+
+        <!-- ****************
+        SERVICE HISTORY
+        ***************** -->
+        <details class="nhsuk-details nhsuk-expander" id="serviceHistory">
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                    Service history [SH]
+                </span>
+                <strong class="nhsuk-tag nhsuk-tag--red">
+                    4 issues found
+                </strong>
+            </summary>
+            <div class="nhsuk-details__text">
+                <div class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1"
+                    data-module="nhsuk-error-summary">
+                    <h3 class="nhsuk-error-summary__title" id="error-summary-title">
+                        Issues found <span class="nhsuk-u-visually-hidden">in service history</span>
+                    </h3>
+                    <div class="nhsuk-error-summary__body">
+                        <p>There are 4 issues in the service history table. They must be fixed before the record can be
+                            processed.</p>
+                        <ul class="nhsuk-list nhsuk-error-summary__list" role="list">
+                            <li> <a href="#shError">Duplicate start dates. Check Employment ID & Period start [CTPP]</a></li>
+                            <li> <a href="#shError">End date mismatch. Check [CTPP & SH]</a></li>
+                            <li> <a href="#shError">Employment record issue. Check [SH & EH]</a></li>
+                            <li> <a href="#shError">Start date mismatch. Check [SH, EH, CTPP]</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <button id="toggleButtonSh" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small"
+                    data-module="nhsuk-button" onclick="toggleRows('rows-sh', this)">Hide correct rows</button>
+                {{ serviceHistoryTable | safe }}
+            </div>
+        </details>
+
+        <!-- ****************
+        SERVICE GROUP
+        ***************** -->
+        <details class="nhsuk-details nhsuk-expander" id="serviceGroup">
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                    Service groups [SG]
+                </span>
+            </summary>
+            <div class="nhsuk-details__text">
+                {{ serviceGroupTable | safe }}
+            </div>
+        </details>
+
+        <!-- ****************
+        EMPLOYMENT HISTORY
+        ***************** -->
+        <details class="nhsuk-details nhsuk-expander" id="employmentHistory">
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                    Employment [EH]
+                </span>
+                <strong class="nhsuk-tag nhsuk-tag--red">
+                    2 issues found
+                </strong>
+            </summary>
+            <div class="nhsuk-details__text">
+                <div class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1"
+                    data-module="nhsuk-error-summary">
+                    <h3 class="nhsuk-error-summary__title" id="error-summary-title">
+                        Issues found <span class="nhsuk-u-visually-hidden">in employment history</span>
+                    </h3>
+                    <div class="nhsuk-error-summary__body">
+                        <p>There are 2 issues in the employment history table. They must be fixed before the record can
+                            be processed.</p>
+                        <ul class="nhsuk-list nhsuk-error-summary__list" role="list">
+                            <li> <a href="#ehError">Employment record issue. Check [SH & EH] </a></li>
+                            <li> <a href="#ehError">Employment record issue. Check [SH & EH]</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <button id="toggleButtonEh" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small"
+                    data-module="nhsuk-button" onclick="toggleRows('rows-eh', this)">Hide correct rows</button>
+                {{ employmentHistoryTable | safe }}
+            </div>
+        </details>
+
+        <!-- ****************
+        PENSION CONTRIBUTIONS
+        ***************** -->
+        <details class="nhsuk-details nhsuk-expander" id="contsTpp">
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                    Conts &amp; TPP [CTPP]
+                </span>
+                <strong class="nhsuk-tag nhsuk-tag--red">
+                    1 issue found
+                </strong>
+            </summary>
+            <div class="nhsuk-details__text">
+                <div class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1"
+                    data-module="nhsuk-error-summary">
+                    <h3 class="nhsuk-error-summary__title" id="error-summary-title">
+                        Issue found <span class="nhsuk-u-visually-hidden">in conts and tpp</span>
+                    </h3>
+                    <div class="nhsuk-error-summary__body">
+                        <p>There is 1 issue in the pension contributions table. They must be fixed before the record can
+                            be processed. </p>
+                        <ul class="nhsuk-list nhsuk-error-summary__list" role="list">
+                            <li> <a href="#contsError">Employment ID missing from a set. Check [SH, EH, CTPP]</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <button id="toggleButtonConts" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small"
+                    data-module="nhsuk-button" onclick="toggleRows('rows-conts', this)">Hide correct rows</button>
+                {{ contsTppTable | safe }}
+            </div>
+        </details>
+
+        <!-- ****************
+        HOURS HISTORY
+        ***************** -->
+        <details class="nhsuk-details nhsuk-expander" id="hoursHistory">
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                    Hours history details [HH]
+                </span>
+                <strong class="nhsuk-tag nhsuk-tag--red">
+                    1 issue found
+                </strong>
+            </summary>
+            <div class="nhsuk-details__text">
+                <div class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1"
+                    data-module="nhsuk-error-summary">
+                    <h3 class="nhsuk-error-summary__title" id="error-summary-title">
+                        Issue found <span class="nhsuk-u-visually-hidden">in hours history</span>
+                    </h3>
+                    <div class="nhsuk-error-summary__body">
+                        <p>There is 1 issue in the hours history table. It must be fixed before the record can be
+                            processed.</p>
+                        <ul class="nhsuk-list nhsuk-error-summary__list" role="list">
+                            <li> <a href="#hrsError">Employment ID missing from a set. Check [SH, EH, HH]</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <button id="toggleButton" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small"
+                    data-module="nhsuk-button" onclick="toggleRows('rows-hh', this)">Hide correct rows</button>
+                {{ hoursHistoryTable | safe }}
+            </div>
+        </details>
+
+        <!-- ****************
+        LINKED EMPLOYMENT
+        ***************** -->
+        <details class="nhsuk-details nhsuk-expander" id="linkedEmployment">
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                    Linked employments [LE]
+                </span>
+            </summary>
+            <div class="nhsuk-details__text">
+                {{ linkedEmploymentTable | safe }}
+            </div>
+        </details>
+
+        <div class="app-back-to-top" data-module="app-back-to-top" data-app-back-to-top-init="">
+            <a class="nhsuk-link nhsuk-link--no-visited-state app-back-to-top__link" href="#top">
+                <svg role="presentation" focusable="false" class="app-back-to-top__icon"
+                    xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
+                    <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>
+                </svg>Back to top
+            </a>
+        </div>
+    </div>
+</div>
+<script src="/assets/javascript/back-to-top.js"></script>
+<script>
+    function toggleRows(groupClass, button) {
+        const rows = document.querySelectorAll(`.${groupClass}`);
+        let anyVisible = false;
+        rows.forEach(row => {
+            row.classList.toggle('hidden');
+            if (!row.classList.contains('hidden')) {
+                anyVisible = true;
+            }
+        });
+        button.textContent = anyVisible
+            ? 'Hide correct rows'
+            : 'Show all rows';
+    }
+</script>
+{% endblock %}
