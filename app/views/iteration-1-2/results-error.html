@@ -1,0 +1,250 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "John Smith"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+        <span class="nhsuk-caption-l">Member Details</span>
+        <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">{{pageTitle}}</h1>
+
+        <div class="nhsuk-error-summary" data-module="nhsuk-error-summary">
+            <div role="alert">
+                <h2 class="nhsuk-error-summary__title">
+                Issue found <span class="nhsuk-u-visually-hidden">with the member status</span>
+                </h2>
+                <div class="nhsuk-error-summary__body">
+                    <ul class="nhsuk-list nhsuk-error-summary__list">
+                        <li>
+                        <a href="#statusIssue">Member status is invalid. It should be XXX. Check this with a subject matter expert.</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="nhsuk-grid-row">
+            <div class="nhsuk-grid-column-one-half">
+                {{ summaryList({
+                rows: [
+                {
+                key: {
+                text: "Member number"
+                },
+                value: {
+                text: "12345678"
+                }
+                },
+                {
+                key: {
+                text: "NI number"
+                },
+                value: {
+                text: "QQ 12 34 45 D"
+                }
+                },
+                {
+                key: {
+                text: "Scheme"
+                },
+                value: {
+                html: "2015 Scheme"
+                }
+                }
+                ]
+                }) }}
+            </div>
+            <div class="nhsuk-grid-column-one-half">
+                <dl class="nhsuk-summary-list">
+                <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                        Date of birth (Age)
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                        18 September 1959 (66year 02month)
+                    </dd>
+                </div>
+                <div class="nhsuk-summary-list__row errorSummaryList" id="statusIssue">
+                    <dt class="nhsuk-summary-list__key">
+                        Status
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                        <span id="example-error" class="nhsuk-error-message">
+                            <span class="nhsuk-u-visually-hidden">Error:</span> Status does not match
+                        </span>
+                        Active
+                    </dd>
+                </div>
+                <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                        Email
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                        john.smith@email.com
+                    </dd>
+                </div>
+                </dl>
+            </div>
+        </div>
+
+        <!-- ****************
+        OVERVIEW
+      ***************** -->
+
+        {% set notifyHtml %}
+        <p>
+            <b>8 validation issues</b> have been found for member 12345678
+        </p>
+        {% endset %}
+
+        {{ insetText({
+        html: notifyHtml
+        }) }}
+
+        <h2>Core member data sets</h2>
+        <div class="nhsuk-hint" id="example-with-hint-text-hint">
+            {{ introPara | safe }}
+        </div>
+
+        <!-- ****************
+        SERVICE HISTORY
+        ***************** -->
+
+        <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                    Service history
+                </span>
+                <strong class="nhsuk-tag nhsuk-tag--red">
+                    4 issues found
+                </strong>
+            </summary>
+            <div class="nhsuk-details__text">
+                {{ serviceHistoryErrors | safe }}
+                <button id="toggleButtonSh" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button"
+                    onclick="toggleRows('rows-sh', this)">Hide correct rows</button>
+                {{ serviceHistoryTable | safe }}
+            </div>
+        </details>
+
+        <!-- ****************
+          SERVICE GROUP
+        ***************** -->
+
+        <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                    Service group
+                </span>
+            </summary>
+            <div class="nhsuk-details__text">
+                {{ serviceGroupTable | safe }}
+            </div>
+        </details>
+
+        <!-- ****************
+        EMPLOYMENT HISTORY
+        ***************** -->
+
+        <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                    Employment history
+                </span>
+                <strong class="nhsuk-tag nhsuk-tag--red">
+                    2 issues found
+                </strong>
+            </summary>
+            <div class="nhsuk-details__text">
+                {{ employmentHistoryErrors | safe }}
+                <button id="toggleButtonEh" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button"
+                    onclick="toggleRows('rows-eh', this)">Hide correct rows</button>
+                <div class="nhsuk-hint">You can scroll left and right to see all columns if the table does not fit on your screen</div>
+                <div class="nhsuk-scrollable-pane" aria-label="Employment history" tabindex="0">
+                    {{ employmentHistoryTable | safe }}
+                </div> 
+            </div>
+        </details>
+
+
+        <!-- ****************
+        PENSION CONTRIBUTIONS
+        ***************** -->
+
+        <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                    Conts &amp; TPP (Pension contributions)
+                </span>
+                <strong class="nhsuk-tag nhsuk-tag--red">
+                    1 issue found
+                </strong>
+            </summary>
+            <div class="nhsuk-details__text">
+                {{ contsTppErrors | safe }}
+                <button id="toggleButtonConts" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button"
+                    onclick="toggleRows('rows-conts', this)">Hide correct rows</button>
+                {{ contsTppTable | safe }}
+            </div>
+        </details>
+
+        <!-- ****************
+        HOURS HISTORY
+        ***************** -->
+
+        <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                    Hours history
+                </span>
+                <strong class="nhsuk-tag nhsuk-tag--red">
+                    1 issue found
+                </strong>
+            </summary>
+            <div class="nhsuk-details__text">
+                {{ hoursHistoryErrors | safe }}
+                <button id="toggleButton" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button"
+                    onclick="toggleRows('rows-hh', this)">Hide correct rows</button>
+                {{ hoursHistoryTable | safe }}
+            </div>
+        </details>
+
+        <!-- ****************
+        LINKED EMPLOYMENT
+        ***************** -->
+
+        <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                    Linked employment
+                </span>
+            </summary>
+            <div class="nhsuk-details__text">
+                {{ linkedEmploymentTable | safe }}
+            </div>
+        </details>
+
+    </div>
+</div>
+
+<script>
+  function toggleRows(groupClass, button) {
+    const rows = document.querySelectorAll(`.${groupClass}`);
+    let anyVisible = false;
+
+    rows.forEach(row => {
+      row.classList.toggle('hidden');
+      if (!row.classList.contains('hidden')) {
+        anyVisible = true;
+      }
+    });
+
+    button.textContent = anyVisible
+      ? 'Hide correct rows'
+      : 'Show all rows';
+  }
+</script>
+{% endblock %}
