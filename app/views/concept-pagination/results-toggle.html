@@ -1,0 +1,274 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "John Smith"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+        <span class="nhsuk-caption-l">Member Details</span>
+        <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">{{pageTitle}}</h1>
+    
+        <div class="nhsuk-grid-row">
+          <div class="nhsuk-grid-column-one-half">
+            {{ summaryList({
+            rows: [
+            {
+            key: {
+            text: "Member number"
+            },
+            value: {
+            text: "12345678"
+            }
+            },
+            {
+            key: {
+            text: "NI number"
+            },
+            value: {
+            text: "QQ 12 34 45 D"
+            }
+            },
+            {
+            key: {
+            text: "Scheme"
+            },
+            value: {
+            html: "2015 Scheme"
+            }
+            }
+            ]
+            }) }}
+          </div>
+          <div class="nhsuk-grid-column-one-half">
+            {{ summaryList({
+            rows: [
+            {
+            key: {
+            text: "Date of birth (Age)"
+            },
+            value: {
+            text: "18 September 1959 (66year 02month)"
+            }
+            },
+            {
+            key: {
+            text: "Status"
+            },
+            value: {
+            html: "Active"
+            }
+            },
+            {
+            key: {
+            text: "Email"
+            },
+            value: {
+            html: 'john.smith@email.com'
+            }
+            }
+            ]
+            }) }}
+          </div>
+        </div>
+    
+        <!-- ****************
+            OVERVIEW
+          ***************** -->
+    
+        {% set notifyHtml %}
+        <p>
+          <b>8 validation issues</b> have been found for member 12345678
+        </p>
+        {% endset %}
+    
+        {{ insetText({
+        html: notifyHtml
+        }) }}
+    
+    
+        <h2>Core member data sets</h2>
+        <div class="nhsuk-hint" id="example-with-hint-text-hint">
+            {{ introPara | safe }}
+        </div>
+        
+
+       <!-- ****************
+        SERVICE HISTORY
+        ***************** -->
+
+        <details class="nhsuk-details nhsuk-expander">
+          <summary class="nhsuk-details__summary">
+              <span class="nhsuk-details__summary-text">
+                  Service history
+              </span>
+              <strong class="nhsuk-tag nhsuk-tag--red">
+                  4 issues found
+              </strong>
+          </summary>
+          <div class="nhsuk-details__text">
+              {{ serviceHistoryErrors | safe }}
+              {{ serviceHistoryTable | safe }}
+          </div>
+        </details>
+
+        <!-- ****************
+        SERVICE GROUP
+        ***************** -->
+
+        <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                    Service group
+                </span>
+            </summary>
+            <div class="nhsuk-details__text">
+                {{ serviceGroupTable | safe }}
+            </div>
+        </details>
+
+        <!-- ****************
+        EMPLOYMENT HISTORY
+        ***************** -->
+
+        <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                    Employment history
+                </span>
+                <strong class="nhsuk-tag nhsuk-tag--red">
+                    2 issues found
+                </strong>
+            </summary>
+            <div class="nhsuk-details__text">
+                {{ employmentHistoryErrors | safe }}
+                {{ employmentHistoryTable | safe }}
+            </div>
+        </details>
+
+        <!-- ****************
+        PENSION CONTRIBUTIONS
+        ***************** -->
+        <details class="nhsuk-details nhsuk-expander" id="contsTpp">
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                    Conts &amp; TPP (Pension contributions)
+                </span>
+                <strong class="nhsuk-tag nhsuk-tag--red">
+                    1 issue found
+                </strong>
+            </summary>
+            <div class="nhsuk-details__text">
+                {{ contsTppErrors | safe }}
+                <div class="paginated-table">
+                    <button class="toggleBtnCT nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button">Hide
+                    correct rows</button>
+                    {{ contsTppTable | safe }}
+                    <nav id="tablePagination" class="nhsuk-pagination nhsuk-pagination--numbered" role="navigation" aria-label="Pagination">
+                        <a href="#" id="prevPage" class="nhsuk-pagination__previous" rel="prev">
+                            <svg class="nhsuk-icon nhsuk-icon--arrow-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+                                <path d="M10.7 6.3c.4.4.4 1 0 1.4L7.4 11H19a1 1 0 0 1 0 2H7.4l3.3 3.3c.4.4.4 1 0 1.4a1 1 0 0 1-1.4 0l-5-5A1 1 0 0 1 4 12c0-.3.1-.5.3-.7l5-5a1 1 0 0 1 1.4 0Z" />
+                            </svg>                          
+                            <span class="nhsuk-pagination__title">
+                            Previous<span class="nhsuk-u-visually-hidden"> page</span>
+                            </span>
+                        </a>
+                        
+                        <ul class="nhsuk-pagination__list" id="paginationList"></ul>
+                        
+                        <a href="#" id="nextPage" class="nhsuk-pagination__next" rel="next">
+                            <span class="nhsuk-pagination__title">
+                            Next<span class="nhsuk-u-visually-hidden"> page</span>
+                            </span>
+                            <svg class="nhsuk-icon nhsuk-icon--arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+                            <path d="m14.7 6.3 5 5c.2.2.3.4.3.7 0 .3-.1.5-.3.7l-5 5a1 1 0 0 1-1.4-1.4l3.3-3.3H5a1 1 0 0 1 0-2h11.6l-3.3-3.3a1 1 0 1 1 1.4-1.4Z" />
+                            </svg>
+                        </a>                    
+                    </nav>
+                </div>
+            </div>
+        </details>
+
+        <!-- ****************
+        HOURS HISTORY
+        ***************** -->
+
+        <details class="nhsuk-details nhsuk-expander" id="hoursHistory">
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                    Hours history
+                </span>
+                <strong class="nhsuk-tag nhsuk-tag--red">
+                    1 issue found
+                </strong>
+            </summary>
+            <div class="nhsuk-details__text">
+                {{ hoursHistoryErrors | safe }}
+                <div class="paginated-table">
+                    <div class="nhsuk-grid-row">
+                        <div class="nhsuk-grid-column-one-half">
+                            <button class="toggleBtnHH nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button">Hide
+                            correct rows</button>
+                        </div>
+                        <div class="nhsuk-grid-column-one-half rowPages">
+                            <div class="nhsuk-form-group">
+                                <label class="nhsuk-label nhsuk-u-font-size-16" for="rowsPerPage">Rows per page:</label>
+                                <select class="nhsuk-select rows-per-page nhsuk-u-font-size-16" id="rowsPerPage" name="rowsPerPageToggle">
+                                    <option value="5">5</option>
+                                    <option value="10" selected>10</option>
+                                    <option value="all">All</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    {{ hoursHistoryTable | safe }}
+                    <nav id="tablePagination" class="nhsuk-pagination nhsuk-pagination--numbered" role="navigation" aria-label="Pagination">
+                        <a href="#" id="prevPage" class="nhsuk-pagination__previous" rel="prev">
+                            <svg class="nhsuk-icon nhsuk-icon--arrow-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+                                <path d="M10.7 6.3c.4.4.4 1 0 1.4L7.4 11H19a1 1 0 0 1 0 2H7.4l3.3 3.3c.4.4.4 1 0 1.4a1 1 0 0 1-1.4 0l-5-5A1 1 0 0 1 4 12c0-.3.1-.5.3-.7l5-5a1 1 0 0 1 1.4 0Z" />
+                            </svg>                          
+                            <span class="nhsuk-pagination__title">
+                            Previous<span class="nhsuk-u-visually-hidden"> page</span>
+                            </span>
+                        </a>
+                        
+                        <ul class="nhsuk-pagination__list" id="paginationList"></ul>
+                        
+                        <a href="#" id="nextPage" class="nhsuk-pagination__next" rel="next">
+                            <span class="nhsuk-pagination__title">
+                            Next<span class="nhsuk-u-visually-hidden"> page</span>
+                            </span>
+                            <svg class="nhsuk-icon nhsuk-icon--arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+                            <path d="m14.7 6.3 5 5c.2.2.3.4.3.7 0 .3-.1.5-.3.7l-5 5a1 1 0 0 1-1.4-1.4l3.3-3.3H5a1 1 0 0 1 0-2h11.6l-3.3-3.3a1 1 0 1 1 1.4-1.4Z" />
+                            </svg>
+                        </a>                    
+                    </nav>
+                </div>
+            </div>
+        </details>
+
+        <!-- ****************
+        LINKED EMPLOYMENT
+        ***************** -->
+
+        <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                    Linked employment
+                </span>
+            </summary>
+            <div class="nhsuk-details__text">
+                {{ linkedEmploymentTable | safe }}
+            </div>
+        </details>
+
+    </div>
+</div>
+
+<script src="/assets/javascript/toggle-pagination.js"></script>
+
+
+{% endblock %}

@@ -1,16 +1,26 @@
 document.querySelectorAll(".paginated-table").forEach(container => {
 
-    const rowsPerPage = 5
+    let rowsPerPage = 10
     let currentPage = 1
     let showingHidden = true
 
     const toggleBtns = container.querySelectorAll(".toggleBtnHH, .toggleBtnCT")
     const allRows = Array.from(container.querySelectorAll(".rows-hh, .hrsError, .rows-conts, .contsError"))
+    const rowsSelect = container.querySelector(".rows-per-page")
 
     const prevBtn = container.querySelector(".nhsuk-pagination__previous")
     const nextBtn = container.querySelector(".nhsuk-pagination__next")
     const paginationList = container.querySelector(".nhsuk-pagination__list")
     const pagination = container.querySelector(".nhsuk-pagination")
+
+    if (rowsSelect) {
+        rowsSelect.addEventListener("change", () => {
+            const value = rowsSelect.value
+            rowsPerPage = value === "all" ? Infinity : parseInt(value)
+            currentPage = 1
+            renderTable()
+        })
+    }
 
     // get the rows that should currently be visible
     function getVisibleRows() {
@@ -62,18 +72,28 @@ document.querySelectorAll(".paginated-table").forEach(container => {
         const visibleRows = getVisibleRows()
         const totalPages = Math.ceil(visibleRows.length / rowsPerPage) || 1
 
-        const start = (currentPage - 1) * rowsPerPage
-        const end = start + rowsPerPage
-
         allRows.forEach(row => row.style.display = "none")
 
-        visibleRows.slice(start, end).forEach(row => {
-            row.style.display = ""
-        })
+        if (rowsPerPage === Infinity) {
+            // Show all rows
+            visibleRows.forEach(row => {
+                row.style.display = ""
+            })
+        } else {
+            const start = (currentPage - 1) * rowsPerPage
+            const end = start + rowsPerPage
+
+            visibleRows.slice(start, end).forEach(row => {
+                row.style.display = ""
+            })
+        }
 
         renderPagination(totalPages)
 
-        pagination.style.display = showingHidden ? "block" : "none"
+        // pagination.style.display = showingHidden ? "block" : "none"
+        pagination.style.display = (rowsPerPage === Infinity || !showingHidden)
+        ? "none"
+        : "block"
     }
 
     prevBtn.addEventListener("click", e => {

@@ -3,3 +3,12 @@
 #tablePagination {
     margin-top: 0;
 }
+
+.paginated-table{
+    .rowPages{
+        text-align: right;
+    }
+    .nhsuk-button--secondary{
+        margin-top: 30px;
+    }
+}
