@@ -28,6 +28,10 @@
     .nhsuk-table__cell:first-of-type {
         padding-left: 16px;
     }
+
+    tr.selected{
+        background-color: $nhsuk-focus-colour;
+    }
 }
 
 .nhsuk-scrollable-pane {
