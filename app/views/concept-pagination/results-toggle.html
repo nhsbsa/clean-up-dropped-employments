@@ -164,8 +164,22 @@
             <div class="nhsuk-details__text">
                 {{ contsTppErrors | safe }}
                 <div class="paginated-table">
-                    <button class="toggleBtnCT nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button">Hide
-                    correct rows</button>
+                    <div class="nhsuk-grid-row">
+                        <div class="nhsuk-grid-column-one-half">
+                            <button class="toggleBtnCT nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button">Hide
+                            correct rows</button>
+                        </div>
+                        <div class="nhsuk-grid-column-one-half rowPages">
+                            <div class="nhsuk-form-group">
+                                <label class="nhsuk-label nhsuk-u-font-size-16" for="rowsPerPageCt">Rows per page:</label>
+                                <select class="nhsuk-select rows-per-page nhsuk-u-font-size-16" id="rowsPerPageCt" name="rowsPerPageToggle">
+                                    <option value="5">5</option>
+                                    <option value="10" selected>10</option>
+                                    <option value="all">All</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                     {{ contsTppTable | safe }}
                     <nav id="tablePagination" class="nhsuk-pagination nhsuk-pagination--numbered" role="navigation" aria-label="Pagination">
                         <a href="#" id="prevPage" class="nhsuk-pagination__previous" rel="prev">
