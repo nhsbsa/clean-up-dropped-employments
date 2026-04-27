@@ -20,6 +20,15 @@
     text-align: right;
 }
 
+.nhsuk-error-message{
+    a{
+        color:$nhsuk-error-colour ;
+        &:hover{
+            text-decoration: none;
+            color:$nhsuk-error-colour ;
+        }
+    }
+}
 
 // Error updates
 
