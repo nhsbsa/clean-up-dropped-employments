@@ -27,6 +27,9 @@
             text-decoration: none;
             color:$nhsuk-error-colour ;
         }
+        &:focus{
+            color:$nhsuk-focus-text-colour;
+        }
     }
 }
 
