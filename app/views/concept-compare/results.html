@@ -85,64 +85,67 @@
     <div class="nhsuk-hint" id="example-with-hint-text-hint">
       {{ introPara | safe }}
     </div>
-    <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="compare-panel" id="compare-toggle">
-      Compare data sets
-    </button>
-    <div id="compare-panel" hidden>
-        <form id="compare-form" action="/{{folder}}/results" method="post" >
-          <div class="nhsuk-form-group">
-            <fieldset class="nhsuk-fieldset">
-                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
-                    <h1 class="nhsuk-fieldset__heading">
-                        Choose which two data sets you would like to compare
-                    </h1>
-              </legend>
-              <div id="checkboxError" class="error nhsuk-error-message" style="display:none; color:#d5281b; margin-top:10px;">
-                  <span class="nhsuk-u-visually-hidden">Error:</span> You must select 2 data sets to compare
+
+    {% call details({
+      id: "compareDetails",
+      summaryText: "Compare two data sets side by side"
+    }) %}
+    <div id="compare-panel" class="details">
+      <form id="compare-form" action="/{{folder}}/results" method="post" >
+        <div class="nhsuk-form-group compareGroup">
+          <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                  <h1 class="nhsuk-fieldset__heading">
+                      Choose which two data sets you would like to compare
+                  </h1>
+            </legend>
+            <div id="checkboxError" class="error nhsuk-error-message" style="display:none; color:#d5281b; margin-top:10px;">
+                <span class="nhsuk-u-visually-hidden">Error:</span> You must select 2 data sets to compare 
+            </div>
+            <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter" data-module="nhsuk-checkboxes">
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="serviceHistory-checkbox" name="serviceHistory" type="checkbox" value="serviceHistory" >
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceHistory-checkbox">
+                  Service history
+                </label>
               </div>
-              <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter" data-module="nhsuk-checkboxes">
-                <div class="nhsuk-checkboxes__item">
-                  <input class="nhsuk-checkboxes__input" id="serviceHistory-checkbox" name="serviceHistory" type="checkbox" value="serviceHistory" >
-                  <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceHistory-checkbox">
-                    Service history
-                  </label>
-                </div>
-                <div class="nhsuk-checkboxes__item">
-                  <input class="nhsuk-checkboxes__input" id="serviceGroup-checkbox" name="serviceGroup" type="checkbox" value="serviceGroup" >
-                  <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceGroup-checkbox">
-                    Service group
-                  </label>
-                </div>
-                <div class="nhsuk-checkboxes__item">
-                  <input class="nhsuk-checkboxes__input" id="employmentHistory-checkbox" name="employmentHistory" type="checkbox" value="employmentHistory" >
-                  <label class="nhsuk-label nhsuk-checkboxes__label" for="employmentHistory-checkbox">
-                    Employment History
-                  </label>
-                </div>
-                <div class="nhsuk-checkboxes__item">
-                  <input class="nhsuk-checkboxes__input" id="contsTpp-checkbox" name="contsTpp" type="checkbox" value="contsTpp" >
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="serviceGroup-checkbox" name="serviceGroup" type="checkbox" value="serviceGroup" >
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceGroup-checkbox">
+                  Service group
+                </label>
+              </div>
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="employmentHistory-checkbox" name="employmentHistory" type="checkbox" value="employmentHistory" >
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="employmentHistory-checkbox">
+                  Employment History
+                </label>
+              </div>
+              <div class="nhsuk-checkboxes__item">
+                  <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="contsTpp-checkbox" name="contsTpp" type="checkbox" value="contsTpp" >
                   <label class="nhsuk-label nhsuk-checkboxes__label" for="contsTpp-checkbox">
                     Conts &amp; TPP
                   </label>
-                </div>
-                <div class="nhsuk-checkboxes__item">
-                  <input class="nhsuk-checkboxes__input" id="hoursHistory-checkbox" name="hoursHistory" type="checkbox" value="hoursHistory" >
-                  <label class="nhsuk-label nhsuk-checkboxes__label" for="hoursHistory-checkbox">
-                    Hours history
-                  </label>
-                </div>
-                <div class="nhsuk-checkboxes__item">
-                  <input class="nhsuk-checkboxes__input" id="linkedEmployment-checkbox" name="linkedEmployment" type="checkbox" value="linkedEmployment" >
-                  <label class="nhsuk-label nhsuk-checkboxes__label" for="linkedEmployment-checkbox">
-                    Linked employment
-                  </label>
-                </div>
               </div>
-            </fieldset>
-          </div>
-            <button class="nhsuk-button" data-module="nhsuk-button" type="submit">Compare</button> 
-        </form>
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="hoursHistory-checkbox" name="hoursHistory" type="checkbox" value="hoursHistory" >
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="hoursHistory-checkbox">
+                  Hours history
+                </label>
+              </div>
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="linkedEmployment-checkbox" name="linkedEmployment" type="checkbox" value="linkedEmployment" >
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="linkedEmployment-checkbox">
+                  Linked employment
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+          <button class="nhsuk-button" data-module="nhsuk-button" type="submit">Compare</button> 
+      </form>
     </div>
+    {% endcall %}
     <!-- ****************
     SERVICE HISTORY
     ***************** -->
@@ -157,6 +160,8 @@
       </summary>
       <div class="nhsuk-details__text">
           {{ serviceHistoryErrors | safe }}
+          <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn" data-target="serviceHistory-checkbox">
+            Compare dataset</button>
           {{ serviceHistoryTable | safe }}
       </div>
     </details>
@@ -170,6 +175,8 @@
             </span>
         </summary>
         <div class="nhsuk-details__text">
+            <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn" data-target="serviceGroup-checkbox">
+            Compare dataset</button>
             {{ serviceGroupTable | safe }}
         </div>
     </details>
@@ -187,6 +194,8 @@
         </summary>
         <div class="nhsuk-details__text">
             {{ employmentHistoryErrors | safe }}
+            <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn" data-target="employmentHistory-checkbox">
+              Compare dataset</button>
             {{ employmentHistoryTable | safe }}
         </div>
     </details>
@@ -204,8 +213,12 @@
         </summary>
         <div class="nhsuk-details__text">
             {{ contsTppErrors | safe }}
-            <button id="toggleButtonConts" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button"
-                onclick="toggleRows()">Hide correct rows</button>
+            <div class="nhsuk-button-group nhsuk-button-group--small">
+              <button id="toggleButtonConts" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button"
+                  onclick="toggleRows()">Hide correct rows</button>
+              <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn" data-target="contsTpp-checkbox">
+                Compare dataset</button>
+            </div>
             {{ contsTppTable | safe }}
         </div>
     </details>
@@ -223,8 +236,12 @@
         </summary>
         <div class="nhsuk-details__text">
             {{ hoursHistoryErrors | safe }}
-            <button id="toggleButton" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button"
-                onclick="toggleRows()">Hide correct rows</button>
+            <div class="nhsuk-button-group nhsuk-button-group--small">
+              <button id="toggleButton" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button"
+                  onclick="toggleRows()">Hide correct rows</button>
+              <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn" data-target="hoursHistory-checkbox">
+                Compare dataset</button>
+            </div>
             {{ hoursHistoryTable | safe }}
         </div>
     </details>
@@ -238,12 +255,13 @@
             </span>
         </summary>
         <div class="nhsuk-details__text">
-            {{ linkedEmploymentTable | safe }}
+          <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn" data-target="linkedEmployment-checkbox">Compare dataset</button>
+          {{ linkedEmploymentTable | safe }}
         </div>
     </details>
   </div>
 </div>
-<script src="/assets/javascript/compare.js"></script>
+<script src="/assets/javascript/comparison.js"></script>
 <script>
     function toggleRows() {
       const rows = document.querySelectorAll('.hidden-row');

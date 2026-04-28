@@ -88,11 +88,20 @@
     {{ insetText({
     html: notifyHtml
     }) }}
-    <h2>Core member data sets</h2>
+
+    <hr>
+
+    <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+            <h2>Core member data sets</h2>
+        </div>
+        <div class="nhsuk-grid-column-one-third alignRight">
+            <a href="" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small">Update data sets</a>
+        </div>
+    </div>
     <div class="nhsuk-hint" id="example-with-hint-text-hint">
       {{ introPara | safe }}
     </div>
-    <a href="" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small">Update data sets</a>
     <button type="button" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="filters-panel" id="filters-toggle">
       Show filters
     </button>
@@ -152,6 +161,7 @@
         </form>
     </div>
     {% call details({
+      id: "compareDetails",
       summaryText: "Compare two data sets side by side"
     }) %}
     <div id="compare-panel" class="details">
@@ -224,11 +234,14 @@
       </summary>
       <div class="nhsuk-details__text">
           {{ serviceHistoryErrors | safe }}
-          <button id="toggleButtonSh" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button"
-              onclick="toggleRows('rows-sh', this)">Hide correct rows</button>
-          <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="sh-panel-data" id="sh-toggle-data">
-              Customise data set
-          </button>
+          <div class="nhsuk-button-group nhsuk-button-group--small">
+            <button id="toggleButtonSh" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button"
+                onclick="toggleRows('rows-sh', this)">Hide correct rows</button>
+            <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn" data-target="serviceHistory-checkbox">Compare dataset</button>
+            <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="sh-panel-data" id="sh-toggle-data">
+                Customise data set
+            </button>
+          </div>
           <div id="sh-panel-data" hidden>
               <form id="sh-table-custom-form">
                   <div class="nhsuk-form-group">
@@ -367,9 +380,12 @@
             </span>
         </summary>
         <div class="nhsuk-details__text">
-            <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="sg-panel-data" id="sg-toggle-data">
-                Customise data set
-            </button>
+            <div class="nhsuk-button-group nhsuk-button-group--small">
+              <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn" data-target="serviceGroup-checkbox">Compare dataset</button>
+              <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="sg-panel-data" id="sg-toggle-data">
+                  Customise data set
+              </button>
+            </div>
             <div id="sg-panel-data" hidden>
                 <form id="sg-table-custom-form">
                     <div class="nhsuk-form-group">
@@ -479,11 +495,14 @@
         </summary>
         <div class="nhsuk-details__text">
             {{ employmentHistoryErrors | safe }}
-            <button id="toggleButtonEh" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button"
-                onclick="toggleRows('rows-eh', this)">Hide correct rows</button>
-            <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="eh-panel-data" id="eh-toggle-data">
-                Customise data set
-            </button>
+            <div class="nhsuk-button-group nhsuk-button-group--small">
+              <button id="toggleButtonEh" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button"
+                  onclick="toggleRows('rows-eh', this)">Hide correct rows</button>
+              <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn" data-target="employmentHistory-checkbox">Compare dataset</button>
+              <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="eh-panel-data" id="eh-toggle-data">
+              Customise data set
+              </button>
+            </div>
             <div id="eh-panel-data" hidden>
                 <form id="eh-table-custom-form">
                     <div class="nhsuk-form-group">
@@ -650,12 +669,29 @@
         <div class="nhsuk-details__text">
             {{ contsTppErrors | safe }}
             <div class="paginated-table">
-              <button class="toggleBtnCT nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button"
-                  onclick="toggleRows()">Hide correct rows
-              </button>
-              <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="ct-panel-data" id="ct-toggle-data">
-                Customise data set
-              </button>
+              <div class="nhsuk-grid-row">
+                  <div class="nhsuk-grid-column-two-thirds">
+                    <div class="nhsuk-button-group nhsuk-button-group--small">
+                      <button class="toggleBtnCT nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button"
+                          onclick="toggleRows()">Hide correct rows
+                      </button>
+                      <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn" data-target="contsTpp-checkbox">Compare dataset</button>
+                      <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="ct-panel-data" id="ct-toggle-data">
+                        Customise data set
+                      </button>
+                    </div>
+                  </div>
+                  <div class="nhsuk-grid-column-one-third rowPages">
+                      <div class="nhsuk-form-group">
+                          <label class="nhsuk-label nhsuk-u-font-size-16" for="rowsPerPage">Rows per page:</label>
+                          <select class="nhsuk-select rows-per-page nhsuk-u-font-size-16" id="rowsPerPage" name="rowsPerPageToggle">
+                              <option value="5">5</option>
+                              <option value="10" selected>10</option>
+                              <option value="all">All</option>
+                          </select>
+                      </div>
+                  </div>
+              </div>
               <div id="ct-panel-data" hidden>
                   <form id="ct-table-custom-form">
                       <div class="nhsuk-form-group">
@@ -961,12 +997,29 @@
         <div class="nhsuk-details__text">
             {{ hoursHistoryErrors | safe }}
             <div class="paginated-table">
-              <button class="toggleBtnHH nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button"
-                  onclick="toggleRows()">Hide correct rows
-              </button>
-              <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="hh-panel-data" id="hh-toggle-data">
-                  Customise data set
-              </button>
+              <div class="nhsuk-grid-row">
+                  <div class="nhsuk-grid-column-two-thirds">
+                    <div class="nhsuk-button-group nhsuk-button-group--small">
+                      <button class="toggleBtnHH nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button"
+                          onclick="toggleRows()">Hide correct rows
+                      </button>
+                      <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn" data-target="hoursHistory-checkbox">Compare dataset</button>
+                      <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="hh-panel-data" id="hh-toggle-data">
+                          Customise data set
+                      </button>
+                    </div>
+                  </div>
+                  <div class="nhsuk-grid-column-one-third rowPages">
+                      <div class="nhsuk-form-group">
+                          <label class="nhsuk-label nhsuk-u-font-size-16" for="rowsPerPage">Rows per page:</label>
+                          <select class="nhsuk-select rows-per-page nhsuk-u-font-size-16" id="rowsPerPage" name="rowsPerPageToggle">
+                              <option value="5">5</option>
+                              <option value="10" selected>10</option>
+                              <option value="all">All</option>
+                          </select>
+                      </div>
+                  </div>
+              </div>
               <div id="hh-panel-data" hidden>
                   <form id="hh-table-custom-form">
                       <div class="nhsuk-form-group">
@@ -1177,9 +1230,12 @@
             </span>
         </summary>
         <div class="nhsuk-details__text">
-            <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="le-panel-data" id="le-toggle-data">
-                Customise data set
-            </button>
+            <div class="nhsuk-button-group nhsuk-button-group--small">
+              <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn" data-target="linkedEmployment-checkbox">Compare dataset</button>
+              <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="le-panel-data" id="le-toggle-data">
+                  Customise data set
+              </button>
+            </div>
             <div id="le-panel-data" hidden>
                 <form id="le-table-custom-form">
                     <div class="nhsuk-form-group">
@@ -1237,6 +1293,7 @@
 <script src="/assets/javascript/sortable.js"></script>
 <script src="/assets/javascript/comparison.js"></script>
 <script src="/assets/javascript/back-to-top.js"></script>
+<script src="/assets/javascript/highlight.js"></script>
 <script>
   function toggleRows(groupClass, button) {
       const rows = document.querySelectorAll(`.${groupClass}`);

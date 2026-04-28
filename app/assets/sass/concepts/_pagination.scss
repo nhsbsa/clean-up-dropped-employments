@@ -5,6 +5,9 @@
 }
 
 .paginated-table{
+    .nhsuk-select {
+        min-width: 7ex;
+    }
     .rowPages{
         text-align: right;
     }
