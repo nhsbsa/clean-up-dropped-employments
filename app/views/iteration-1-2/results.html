@@ -181,6 +181,20 @@
         }) %}
     
         <div id="compare-panel" class="details">
+            <div class="nhsuk-error-summary" data-module="nhsuk-error-summary" id="compareErrorSummary" style="display:none;">
+                <div role="alert">
+                    <h2 class="nhsuk-error-summary__title">
+                    There is a problem <span class="nhsuk-u-visually-hidden">with your selection</span>
+                    </h2>
+                    <div class="nhsuk-error-summary__body">
+                        <ul class="nhsuk-list nhsuk-error-summary__list">
+                            <li> 
+                            <a href="#checkboxError">You must select 2 data sets to compare</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
             <form id="compare-form" action="/{{folder}}/results" method="post" >
             <div class="nhsuk-form-group compareGroup">
                 <fieldset class="nhsuk-fieldset">
