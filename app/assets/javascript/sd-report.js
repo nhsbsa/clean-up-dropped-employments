@@ -2,9 +2,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const tableBody = document.querySelector('#reportTable tbody');
     const addButton = document.getElementById('addRowButton');
-    const form = document.getElementById('reportForm');
-    const errorSummary = document.getElementById('errorSummary');
-    const errorList = document.getElementById('errorList');
+    //const form = document.getElementById('reportForm');
+    // const errorSummary = document.getElementById('errorSummary');
+    // const errorList = document.getElementById('errorList');
 
     // Remove row
     function bindRemoveLinks() {
@@ -32,51 +32,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
         newRow.innerHTML = `
         <td class="nhsuk-table__cell">
-        <div class="nhsuk-form-group">
-            <label class="nhsuk-label nhsuk-u-visually-hidden" for="sets-${rowCount}">
-            Sets row ${rowCount}
-            </label>
             <input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14"
                     id="sets-${rowCount}"
                     name="sets[]"
                     type="text">
-        </div>
         </td>
     
         <td class="nhsuk-table__cell">
-        <div class="nhsuk-form-group">
-            <label class="nhsuk-label nhsuk-u-visually-hidden" for="fields-${rowCount}">
-            Fields row ${rowCount}
-            </label>
             <input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14"
                     id="fields-${rowCount}"
                     name="fields[]"
                     type="text">
-        </div>
         </td>
     
         <td class="nhsuk-table__cell">
-        <div class="nhsuk-form-group">
-            <label class="nhsuk-label nhsuk-u-visually-hidden" for="amendments-${rowCount}">
-            Amendments row ${rowCount}
-            </label>
             <input class="nhsuk-input nhsuk-u-font-size-14"
                     id="amendments-${rowCount}"
                     name="amendments[]"
                     type="text">
-        </div>
         </td>
     
         <td class="nhsuk-table__cell">
-        <div class="nhsuk-form-group">
-        <label class="nhsuk-label nhsuk-u-visually-hidden" for="amendments-${rowCount}">
-            Reason row ${rowCount}
-        </label>
-        <input class="nhsuk-input nhsuk-u-font-size-14"
-                id="reason-${rowCount}"
-                name="reason[]"
-                type="text">
-        </div>
+            <input class="nhsuk-input nhsuk-u-font-size-14"
+                    id="reason-${rowCount}"
+                    name="reason[]"
+                    type="text">
         </td>
     
         <td class="nhsuk-table__cell  nhsuk-u-font-size-14">
@@ -91,94 +71,157 @@ document.addEventListener('DOMContentLoaded', function () {
         bindRemoveLinks();
     });
 
-    function validateField(input, message, errorsArray) {
+    const form = document.getElementById("reportForm");
+    const errorSummary = document.getElementById("errorSummary");
+    const errorList = document.getElementById("errorList");
 
-        if (input.value.trim() === '') {
+    const table = document.getElementById("reportTable");
 
-            const formGroup = input.closest('.nhsuk-form-group');
+    const fields = ["sets[]", "fields[]", "amendments[]", "reason[]"];
 
-            formGroup.classList.add('nhsuk-form-group--error');
-            input.classList.add('nhsuk-input--error');
+    // =========================
+    // SUBMIT VALIDATION
+    // =========================
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-            const errorId = input.id + "-error";
+        clearErrors();
 
-            const errorMessage = document.createElement('span');
-            errorMessage.className = "nhsuk-error-message  nhsuk-u-font-size-14";
-            errorMessage.id = errorId;
-            errorMessage.innerHTML =
-                '<span class="nhsuk-u-visually-hidden">Error:</span> ' + message;
-
-            formGroup.insertBefore(errorMessage, input);
-
-            input.setAttribute('aria-describedby', errorId);
-
-            errorsArray.push({
-                input: input,
-                summaryText: message
-            });
-        }
-    }
-
-
-
-    // Form validation
-    form.addEventListener('submit', function (e) {
-
-        const rows = Array.from(tableBody.querySelectorAll('tr'));
         let errors = [];
+        let firstErrorField = null;
 
-        errorList.innerHTML = '';
-        errorSummary.style.display = 'none';
+        const rows = table.querySelectorAll("tbody tr");
 
-        // Clear previous errors
-        tableBody.querySelectorAll('.nhsuk-form-group').forEach(group => {
-            group.classList.remove('nhsuk-form-group--error');
+        rows.forEach((row, rowIndex) => {
+            const inputs = getRowInputs(row);
 
-            const errorMessage = group.querySelector('.nhsuk-error-message');
-            if (errorMessage) errorMessage.remove();
+            const rowHasData = inputs.some(i => i.value.trim() !== "");
 
-            const input = group.querySelector('input');
-            input.classList.remove('nhsuk-input--error');
-            input.removeAttribute('aria-describedby');
-        });
+            // ignore empty rows completely
+            if (!rowHasData) return;
 
-        rows.forEach((row, index) => {
+            inputs.forEach((input, colIndex) => {
+                const message = getErrorMessage(colIndex);
 
-            const setsInput = row.querySelector('input[name="sets[]"]');
-            const fieldsInput = row.querySelector('input[name="fields[]"]');
-            const amendmentsInput = row.querySelector('input[name="amendments[]"]');
+                if (!input.value.trim()) {
+                    const errorId = ensureError(input, message, rowIndex);
 
-            const allEmpty = [setsInput, fieldsInput, amendmentsInput]
-                .every(input => input.value.trim() === '');
+                    errors.push(
+                        `<li><a href="#${errorId}">${message} (row ${rowIndex + 1})</a></li>`
+                    );
 
-            if (allEmpty) {
-                row.remove();
-                return;
-            }
-
-            validateField(setsInput, "Enter the sets", errors);
-            validateField(fieldsInput, "Enter the fields", errors);
-            validateField(amendmentsInput, "Enter amendments", errors);
-
+                    if (!firstErrorField) {
+                        firstErrorField = input;
+                    }
+                }
+            });
         });
 
         if (errors.length > 0) {
-            e.preventDefault();
+            errorList.innerHTML = errors.join("");
+            errorSummary.style.display = "block";
 
-            errors.forEach(err => {
-                const li = document.createElement('li');
-                const a = document.createElement('a');
-                a.href = "#" + err.input.id;
-                a.textContent = err.summaryText;
-                li.appendChild(a);
-                errorList.appendChild(li);
-            });
+            errorSummary.scrollIntoView({ behavior: "smooth" });
 
-            errorSummary.style.display = 'block';
-            errorSummary.focus();
+            if (firstErrorField) {
+                setTimeout(() => {
+                    firstErrorField.focus();
+                    firstErrorField.scrollIntoView({ behavior: "smooth", block: "center" });
+                }, 200);
+            }
+
+            return;
         }
 
+        form.submit();
     });
 
+    // =========================
+    // LIVE VALIDATION (on input)
+    // =========================
+    table.addEventListener("input", function (e) {
+        const input = e.target;
+
+        if (!input.matches("input")) return;
+
+        const cell = input.closest("td");
+
+        if (input.value.trim()) {
+            removeError(input, cell);
+        }
+    });
+
+    // =========================
+    // HELPERS
+    // =========================
+
+    function getRowInputs(row) {
+        return [
+            row.querySelector('input[name="sets[]"]'),
+            row.querySelector('input[name="fields[]"]'),
+            row.querySelector('input[name="amendments[]"]'),
+            row.querySelector('input[name="reason[]"]')
+        ];
+    }
+
+    function getErrorMessage(index) {
+        switch (index) {
+            case 0: 
+                return '<span class="nhsuk-u-visually-hidden">Error:</span>Enter the set';
+            case 1: 
+                return '<span class="nhsuk-u-visually-hidden">Error:</span>Enter the field';
+            case 2: 
+                return '<span class="nhsuk-u-visually-hidden">Error:</span>Enter the amendment';
+            case 3: 
+                return '<span class="nhsuk-u-visually-hidden">Error:</span>Enter the reason';
+            default: return 'This field is required';
+        }
+    }
+
+    function ensureError(input, message, rowIndex) {
+        const cell = input.closest("td");
+
+        cell.classList.add("nhsuk-form-group--error");
+
+        let error = cell.querySelector(".nhsuk-error-message");
+
+        if (!error) {
+            error = document.createElement("span");
+            error.className = "nhsuk-error-message nhsuk-u-font-size-14";
+            cell.insertBefore(error, input);
+        }
+
+        error.innerHTML = message;
+
+        const errorId = input.id || `row-${rowIndex}-${Math.random().toString(36).slice(2, 7)}`;
+
+        input.setAttribute("aria-describedby", errorId);
+        input.id = errorId;
+
+        return errorId;
+    }
+
+    function removeError(input, cell) {
+        if (!cell) return;
+
+        const error = cell.querySelector(".nhsuk-error-message");
+
+        if (error) error.remove();
+
+        cell.classList.remove("nhsuk-form-group--error");
+
+        input.removeAttribute("aria-describedby");
+    }
+
+    function clearErrors() {
+        errorList.innerHTML = "";
+        errorSummary.style.display = "none";
+
+        document.querySelectorAll(".nhsuk-form-group--error")
+            .forEach(el => el.classList.remove("nhsuk-form-group--error"));
+
+        document.querySelectorAll(".nhsuk-error-message")
+            .forEach(el => el.remove());
+    }
 
 });

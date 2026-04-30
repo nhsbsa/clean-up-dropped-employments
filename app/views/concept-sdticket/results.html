@@ -1,6 +1,7 @@
 {% extends 'layout.html' %}
 {% set pageTitle = "John Smith"%}
 {% set showMenu ="true"%}
+{% set sdMenu ="true"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -274,7 +275,7 @@
                                 <a href="#service-history-row-1" id="service-history-error-UPDDTE-1-2022-03-31"
                                     class="error-link"
                                     aria-describedby="End date mismatch. Check [CTPP & SH]">
-                                    End date mismatch. Check [CTPP & SH]
+                                    Employment ID 1 end date mismatch. Check [CTPP & SH]
                                 </a>
                             </li>
                         </ul>
@@ -1717,7 +1718,7 @@
 
         <hr>
         
-        <h2>Need to submit a service desk ticket?</h2>
+        <h2>Need to submit a service desk request?</h2>
         <p>If you need help from service desk to member record {{ data['memberNumber']}} complete the report and submit your request. </p>
         
         <form action="/{{folder}}/results" method="post" novalidate>

@@ -74,7 +74,11 @@
                     Member first initial
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                    J
+                    {% if (data['memberFirstInitial']) %}
+                    {{ data['memberFirstInitial']}}
+                    {% else %}
+                    Initial not entered
+                    {% endif %}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                     <a href="#">
@@ -87,7 +91,11 @@
                     Member surname
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                    Smith
+                    {% if (data['memberSurname']) %}
+                    {{ data['memberSurname']}}
+                    {% else %}
+                    Surname not entered
+                    {% endif %}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                     <a href="#">
@@ -174,19 +182,22 @@
                 </tr>
                 </thead>
                 <tbody class="nhsuk-table__body">
-
+                {% if data['sets']|length > 1 and data['sets'][0] %}
                 <tr class="nhsuk-table__row">
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['sets'][0]}}</td>
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['fields'][0]}}</td>
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['amendments'][0]}}</td>
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14 nhsuk-u-text-break-word">{{ data['reason'][0]}}</td>
                 </tr>
+                {% endif %}
+                {% if data['sets']|length > 1 and data['sets'][1] %}
                 <tr class="nhsuk-table__row">
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['sets'][1]}}</td>
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['fields'][1]}}</td>
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['amendments'][1]}}</td>
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14 nhsuk-u-text-break-word">{{ data['reason'][1]}}</td>
                 </tr>
+                {% endif %}
                 {% if data['sets']|length > 1 and data['sets'][2] %}
                 <tr class="nhsuk-table__row">
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['sets'][2]}}</td>

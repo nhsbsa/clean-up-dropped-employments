@@ -33,6 +33,36 @@
        cookieVersion: 1
     }) }}
 
+
+  {% set navItems = [
+    {
+      text: "Home",
+      href: "search"
+    },
+    {
+      text: "Validation summary",
+      href: "tool-summary"
+    }
+  ] %}
+    
+  {% if sdMenu %}
+  {% set navItems = navItems.concat([
+    {
+      text: "Service Desk Request",
+      href: "report"
+    }
+  ]) %}
+
+  {% elseif sdMenuBlank %}
+  {% set navItems = navItems.concat([
+    {
+      text: "Service Desk Request",
+      href: "report-blank"
+    }
+  ]) %}
+  {% endif %}
+
+
   {% if not hideLogin and showMenu %}
   {{ header({
     service: {
@@ -52,16 +82,7 @@
       ]
     },
     navigation: {
-      items: [
-        {
-          text: "Home",
-          href: "search"
-        },
-        {
-          text: "Validation summary",
-          href: "tool-summary"
-        }
-      ]
+      items: navItems
     }
   }) }}
   {% elseif not hideLogin %}

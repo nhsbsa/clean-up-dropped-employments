@@ -11,6 +11,12 @@
     .nhsuk-form-group {
         margin-bottom: 0;
     }
+
+    .nhsuk-form-group--error{
+        input{
+            border-color: $nhsuk-error-colour;
+        }
+    }
 }
 
 .confirmReport {
