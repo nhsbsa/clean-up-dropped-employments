@@ -8,7 +8,15 @@ router.post('/search', function (req, res) {
 })
 
 router.post('/results', function (req, res) {
-    res.redirect('report');
+    const action = req.body.action;
+
+    if (action === 'compareData') {
+        res.redirect('compare-wide');
+    } else if (action === 'createReport') {
+        res.redirect('report');
+    } else {
+        res.redirect('results');
+    }
 })
 
 router.post('/report', function (req, res) {

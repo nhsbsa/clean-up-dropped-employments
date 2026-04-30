@@ -1,0 +1,795 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Compare data sets"%}
+{% set wideLayout = "true" %}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+        <span class="nhsuk-caption-l">John Smith</span>
+        <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">{{pageTitle}}</h1>
+        <div class="nhsuk-grid-row compareRow">
+
+            {% set serviceHistoryData %}
+                <!-- SERVICE HISTORY -->
+                <div class="nhsuk-grid-column-one-half compareCol">
+                    <button id="toggleButtonSh" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button"
+                        onclick="toggleRows('rows-sh', this)">Hide correct rows</button>
+                    <!-- <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="sh-panel-data" id="sh-toggle-data">
+                        Customise data set
+                    </button> -->
+                    <div id="sh-panel-data" hidden>
+                        <form id="sh-table-custom-form">
+                            <div class="nhsuk-form-group">
+                            <fieldset class="nhsuk-fieldset">
+                                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                                <h2 class="nhsuk-heading-xs">
+                                    Choose which columns to display in this data set
+                                </h1>
+                                </legend>
+
+                                <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
+                                data-module="nhsuk-checkboxes">
+
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="shScheme-checkbox" name="shScheme" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="shScheme-checkbox">
+                                    Scheme
+                                    </label>
+                                </div>
+
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="shStart-checkbox" name="shStart" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="shStart-checkbox">
+                                    Start date
+                                    </label>
+                                </div>
+
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="shEnd-checkbox" name="shEnd" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="shEnd-checkbox">
+                                    End date
+                                    </label>
+                                </div>
+
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="shUp-checkbox" name="shUp" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="shUp-checkbox">
+                                    Updated
+                                    </label>
+                                </div>
+
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="shMem-checkbox" name="shMem" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="shMem-checkbox">
+                                    Member status
+                                    </label>
+                                </div>
+
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="shErc-checkbox" name="shErc" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="shErc-checkbox">
+                                    End reason code
+                                    </label>
+                                </div>
+
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="shG-checkbox" name="shG" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="shG-checkbox">
+                                    Group
+                                    </label>
+                                </div>
+
+                                </div>
+                            </fieldset>
+                            </div>
+
+                            <button class="nhsuk-button" type="submit">Apply</button>
+                        </form>
+                    </div>
+                    <h3 class="nhsuk-heading-s">Service history</h3>
+                    {{ serviceHistoryTable | safe }}
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+
+                            const shformCustom = document.getElementById('sh-table-custom-form')
+
+                            if (!shformCustom) return
+
+                            shformCustom.addEventListener('submit', function (e) {
+                                e.preventDefault() // prevent page reload
+
+                                // Get all checkbox inputs in the form
+                                const checkboxes = shformCustom.querySelectorAll('input[value="columns"]')
+
+                                checkboxes.forEach(cb => {
+                                    const shtableClass = cb.name
+                                    const shtableEls = document.getElementsByClassName(shtableClass)
+
+                                    if (!shtableEls) return
+
+                                    // Show/hide the table based on whether the checkbox is ticked
+                                    Array.from(shtableEls).forEach(el => {
+                                        el.style.display = cb.checked ? '' : 'none'
+                                    })
+                                })
+                            })
+
+                        })
+                        const toggleTableSH = document.getElementById('sh-toggle-data');
+                        const panelSH = document.getElementById('sh-panel-data');
+
+                        toggleTableSH.addEventListener('click', () => {
+                            const isOpen = panelSH.hasAttribute('hidden') === false;
+
+                            if (isOpen) {
+                                panelSH.setAttribute('hidden', '');
+                                toggleTableSH.setAttribute('aria-expanded', 'false');
+                                toggleTableSH.textContent = 'Customise data set';
+                            } else {
+                                panelSH.removeAttribute('hidden');
+                                toggleTableSH.setAttribute('aria-expanded', 'true');
+                                toggleTableSH.textContent = 'Hide customisable data';
+                            }
+                        });
+                    </script>
+                </div>
+            {% endset %}
+            {% set serviceGroupData %}
+                <!-- SERVICE GROUP -->
+                <div class="nhsuk-grid-column-one-half compareCol">
+                    <!-- <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="sg-panel-data" id="sg-toggle-data">
+                        Customise data set
+                    </button> -->
+                    <div id="sg-panel-data" hidden>
+                        <form id="sg-table-custom-form">
+                            <div class="nhsuk-form-group">
+                            <fieldset class="nhsuk-fieldset">
+                                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                                <h2 class="nhsuk-heading-xs">
+                                    Choose which columns to display in this data set
+                                </h1>
+                                </legend>
+            
+                                <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
+                                data-module="nhsuk-checkboxes">
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="sgGrpID-checkbox" name="sgGrpID" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="sgGrpID-checkbox">
+                                    Group ID
+                                    </label>
+                                </div>
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="sgScheme-checkbox" name="sgScheme" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="sgScheme-checkbox">
+                                    Scheme code
+                                    </label>
+                                </div>
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="sgStart-checkbox" name="sgStart" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="sgStart-checkbox">
+                                    Start date
+                                    </label>
+                                </div>
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="sgEnd-checkbox" name="sgEnd" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="sgEnd-checkbox">
+                                    End date
+                                    </label>
+                                </div>
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="sgStatus-checkbox" name="sgStatus" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="sgStatus-checkbox">
+                                    Status
+                                    </label>
+                                </div>
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="sgErc-checkbox" name="sgErc" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="sgErc-checkbox">
+                                    End reason code
+                                    </label>
+                                </div>
+            
+                                </div>
+                            </fieldset>
+                            </div>
+            
+                            <button class="nhsuk-button" type="submit">Apply</button>
+                        </form>
+                    </div>
+                    <h3 class="nhsuk-heading-s">Service groups</h3>
+                    {{ serviceGroupTable | safe }}
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+
+                            const sgFormCustom = document.getElementById('sg-table-custom-form')
+
+                            if (!sgFormCustom) return
+
+                            sgFormCustom.addEventListener('submit', function (e) {
+                                e.preventDefault() // prevent page reload
+
+                                // Get all checkbox inputs in the form
+                                const checkboxes = sgFormCustom.querySelectorAll('input[value="columns"]')
+
+                                checkboxes.forEach(cb => {
+                                    const sgTableClass = cb.name
+                                    const sgTableEls = document.getElementsByClassName(sgTableClass)
+
+                                    if (!sgTableEls) return
+
+                                    // Show/hide the table based on whether the checkbox is ticked
+                                    Array.from(sgTableEls).forEach(el => {
+                                        el.style.display = cb.checked ? '' : 'none'
+                                    })
+                                })
+                            })
+
+                        })
+                        const toggleTableSG = document.getElementById('sg-toggle-data');
+                        const panelSG = document.getElementById('sg-panel-data');
+
+                        toggleTableSG.addEventListener('click', () => {
+                            const isOpen = panelSG.hasAttribute('hidden') === false;
+
+                            if (isOpen) {
+                                panelSG.setAttribute('hidden', '');
+                                toggleTableSG.setAttribute('aria-expanded', 'false');
+                                toggleTableSG.textContent = 'Customise data set';
+                            } else {
+                                panelSG.removeAttribute('hidden');
+                                toggleTableSG.setAttribute('aria-expanded', 'true');
+                                toggleTableSG.textContent = 'Hide customisable data';
+                            }
+                        });
+                    </script>                    
+                </div>
+            {% endset %}
+            {% set employmentHistoryData %}
+                <!-- EMPLOYMENT HISTORY -->
+                <div class="nhsuk-grid-column-one-half compareCol">
+                    <button id="toggleButtonEh" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button"
+                        onclick="toggleRows('rows-eh', this)">Hide correct rows</button>
+                    <!-- <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="eh-panel-data" id="eh-toggle-data">
+                        Customise data set
+                    </button> -->
+                    <div id="eh-panel-data" hidden>
+                        <form id="eh-table-custom-form">
+                            <div class="nhsuk-form-group">
+                            <fieldset class="nhsuk-fieldset">
+                                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                                <h2 class="nhsuk-heading-xs">
+                                    Choose which columns to display in this data set
+                                </h1>
+                                </legend>
+            
+                                <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
+                                data-module="nhsuk-checkboxes">
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="ehEmpCode-checkbox" name="ehEmpCode" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehEmpCode-checkbox">
+                                    Employer code
+                                    </label>
+                                </div>
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="ehStart-checkbox" name="ehStart" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehStart-checkbox">
+                                    Start date
+                                    </label>
+                                </div>
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="ehEnd-checkbox" name="ehEnd" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehEnd-checkbox">
+                                    End date
+                                    </label>
+                                </div>
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="ehTime-checkbox" name="ehTime" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehTime-checkbox">
+                                        Whole/part time
+                                    </label>
+                                </div>
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="ehCapCode-checkbox" name="ehCapCode" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehCapCode-checkbox">
+                                    Capacity Code
+                                    </label>
+                                </div>
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="ehEmpType-checkbox" name="ehEmpType" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehEmpType-checkbox">
+                                    Employment type
+                                    </label>
+                                </div>
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="ehActHrs-checkbox" name="ehActHrs" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehActHrs-checkbox">
+                                    Actual hours
+                                    </label>
+                                </div>
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="ehStdHrs-checkbox" name="ehStdHrs" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehStdHrs-checkbox">
+                                    Standard Hours
+                                    </label>
+                                </div>
+            
+                                </div>
+                            </fieldset>
+                            </div>
+            
+                            <button class="nhsuk-button" type="submit">Apply</button>
+                        </form>
+                    </div>
+                    <h3 class="nhsuk-heading-s">Employment</h3>
+                    {{ employmentHistoryTable | safe }}
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                        const ehFormCustom = document.getElementById('eh-table-custom-form')
+
+                        if (!ehFormCustom) return
+
+                        ehFormCustom.addEventListener('submit', function (e) {
+                            e.preventDefault() // prevent page reload
+
+                            // Get all checkbox inputs in the form
+                            const checkboxes = ehFormCustom.querySelectorAll('input[value="columns"]')
+
+                            checkboxes.forEach(cb => {
+                                const ehTableClass = cb.name
+                                const ehTableEls = document.getElementsByClassName(ehTableClass)
+
+                                if (!ehTableEls) return
+
+                                // Show/hide the table based on whether the checkbox is ticked
+                                Array.from(ehTableEls).forEach(el => {
+                                    el.style.display = cb.checked ? '' : 'none'
+                                })
+                            })
+                        })
+                        })
+                        const toggleCustomEH = document.getElementById('eh-toggle-data');
+                        const panelEH = document.getElementById('eh-panel-data');
+
+                        toggleCustomEH.addEventListener('click', () => {
+                            const isOpen = panelEH.hasAttribute('hidden') === false;
+
+                            if (isOpen) {
+                                panelEH.setAttribute('hidden', '');
+                                toggleCustomEH.setAttribute('aria-expanded', 'false');
+                                toggleCustomEH.textContent = 'Customise data set';
+                            } else {
+                                panelEH.removeAttribute('hidden');
+                                toggleCustomEH.setAttribute('aria-expanded', 'true');
+                                toggleCustomEH.textContent = 'Hide customisable data';
+                            }
+                        });
+                    </script>
+                </div>
+            {% endset %}
+            {% set contsTppData %}
+                <!-- CONTS AND TPP -->
+                <div class="nhsuk-grid-column-one-half compareCol">
+                    <button id="toggleButtonConts" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button"
+                    onclick="toggleRows('rows-conts', this)">Hide correct rows</button>
+                    <!-- <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="ct-panel-data" id="ct-toggle-data">
+                        Customise data set
+                    </button> -->
+                    <div id="ct-panel-data" hidden>
+                        <form id="ct-table-custom-form">
+                            <div class="nhsuk-form-group">
+                            <fieldset class="nhsuk-fieldset">
+                                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                                <h2 class="nhsuk-heading-xs">
+                                    Choose which columns to display in this data set
+                                </h1>
+                                </legend>
+
+                                <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
+                                data-module="nhsuk-checkboxes">
+
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="ctStart-checkbox" name="ctStart" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ctStart-checkbox">
+                                    Period start
+                                    </label>
+                                </div>
+
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="ctEnd-checkbox" name="ctEnd" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ctEnd-checkbox">
+                                    Period end
+                                    </label>
+                                </div>
+
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="ctEmpConts-checkbox" name="ctEmpConts" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ctEmpConts-checkbox">
+                                    Employee conts
+                                    </label>
+                                </div>
+
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="ctTpp-checkbox" name="ctTpp" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ctTpp-checkbox">
+                                    TPP
+                                    </label>
+                                </div>
+
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="ctEmployerConts-checkbox" name="ctEmployerConts" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ctEmployerConts-checkbox">
+                                    Employer conts
+                                    </label>
+                                </div>
+
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="ctEmpPay-checkbox" name="ctEmpPay" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ctEmpPay-checkbox">
+                                    Employer pay
+                                    </label>
+                                </div>
+
+                                </div>
+                            </fieldset>
+                            </div>
+
+                            <button class="nhsuk-button" type="submit">Apply</button>
+                        </form>
+                    </div>
+                    <h3 class="nhsuk-heading-s">Conts and TPP (Pension contributions)</h3>
+                    {{ contsTppTable | safe }}
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            const ctFormCustom = document.getElementById('ct-table-custom-form')
+
+                            if (!ctFormCustom) return
+
+                            ctFormCustom.addEventListener('submit', function (e) {
+                                e.preventDefault() // prevent page reload
+
+                                // Get all checkbox inputs in the form
+                                const checkboxes = ctFormCustom.querySelectorAll('input[value="columns"]')
+
+                                checkboxes.forEach(cb => {
+                                    const ctTableClass = cb.name
+                                    const ctTableEls = document.getElementsByClassName(ctTableClass)
+
+                                    if (!ctTableEls) return
+
+                                    // Show/hide the table based on whether the checkbox is ticked
+                                    Array.from(ctTableEls).forEach(el => {
+                                        el.style.display = cb.checked ? '' : 'none'
+                                    })
+                                })
+                            })
+                        })
+                        const toggleCustomCT = document.getElementById('ct-toggle-data');
+                        const panelCT = document.getElementById('ct-panel-data');
+
+                        toggleCustomCT.addEventListener('click', () => {
+                            const isOpen = panelCT.hasAttribute('hidden') === false;
+
+                            if (isOpen) {
+                                panelCT.setAttribute('hidden', '');
+                                toggleCustomCT.setAttribute('aria-expanded', 'false');
+                                toggleCustomCT.textContent = 'Customise data set';
+                            } else {
+                                panelCT.removeAttribute('hidden');
+                                toggleCustomCT.setAttribute('aria-expanded', 'true');
+                                toggleCustomCT.textContent = 'Hide customisable data';
+                            }
+                        });
+                    </script>
+                </div>
+            {% endset %}
+            {% set hoursHistoryData %}
+                <!-- HOURS HISTORY -->
+                <div class="nhsuk-grid-column-one-half compareCol">
+                    <button id="toggleButton" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button"
+                    onclick="toggleRows('rows-hh', this)">Hide correct rows
+                    </button>
+                    <!-- <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="hh-panel-data" id="hh-toggle-data">
+                        Customise data set
+                    </button> -->
+                    <div id="hh-panel-data" hidden>
+                        <form id="hh-table-custom-form">
+                            <div class="nhsuk-form-group">
+                            <fieldset class="nhsuk-fieldset">
+                                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                                <h2 class="nhsuk-heading-xs">
+                                    Choose which columns to display in this data set
+                                </h1>
+                                </legend>
+            
+                                <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
+                                data-module="nhsuk-checkboxes">
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="hhStart-checkbox" name="hhStart" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="hhStart-checkbox">
+                                        Start date
+                                    </label>
+                                </div>
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="hhEnd-checkbox" name="hhEnd" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="hhEnd-checkbox">
+                                        End date
+                                    </label>
+                                </div>
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="hhPtHrs-checkbox" name="hhPtHrs" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="hhPtHrs-checkbox">
+                                        Part time hours
+                                    </label>
+                                </div>
+            
+                                </div>
+                            </fieldset>
+                            </div>
+                            <button class="nhsuk-button" type="submit">Apply</button>
+                        </form>
+                    </div>
+                    <h3 class="nhsuk-heading-s">Hours history details</h3>
+                    {{ hoursHistoryTable | safe }}
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                        const hhFormCustom = document.getElementById('hh-table-custom-form')
+
+                        if (!hhFormCustom) return
+
+                        hhFormCustom.addEventListener('submit', function (e) {
+                            e.preventDefault() // prevent page reload
+
+                            // Get all checkbox inputs in the form
+                            const checkboxes = hhFormCustom.querySelectorAll('input[value="columns"]')
+
+                            checkboxes.forEach(cb => {
+                                const hhTableClass = cb.name
+                                const hhTableEls = document.getElementsByClassName(hhTableClass)
+
+                                if (!hhTableEls) return
+
+                                // Show/hide the table based on whether the checkbox is ticked
+                                Array.from(hhTableEls).forEach(el => {
+                                    el.style.display = cb.checked ? '' : 'none'
+                                })
+                            })
+                        })
+                        })
+                        const toggleCustomHH = document.getElementById('hh-toggle-data');
+                        const panelHH = document.getElementById('hh-panel-data');
+
+                        toggleCustomHH.addEventListener('click', () => {
+                            const isOpen = panelHH.hasAttribute('hidden') === false;
+
+                            if (isOpen) {
+                                panelHH.setAttribute('hidden', '');
+                                toggleCustomHH.setAttribute('aria-expanded', 'false');
+                                toggleCustomHH.textContent = 'Customise data set';
+                            } else {
+                                panelHH.removeAttribute('hidden');
+                                toggleCustomHH.setAttribute('aria-expanded', 'true');
+                                toggleCustomHH.textContent = 'Hide customisable data';
+                            }
+                        });
+                    </script>
+                </div>
+            {% endset %}
+            {% set linkedEmploymentData %}
+                <!-- LINKED EMPLOYMENTS -->
+                <div class="nhsuk-grid-column-one-half compareCol">
+                    <!-- <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="le-panel-data" id="le-toggle-data">
+                        Customise data set
+                    </button> -->
+                    <div id="le-panel-data" hidden>
+                        <form id="le-table-custom-form">
+                            <div class="nhsuk-form-group">
+                            <fieldset class="nhsuk-fieldset">
+                                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                                <h2 class="nhsuk-heading-xs">
+                                    Choose which columns to display in this data set
+                                </h1>
+                                </legend>
+            
+                                <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
+                                data-module="nhsuk-checkboxes">
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="lePre-checkbox" name="lePre" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="lePre-checkbox">
+                                        Pre-remedy employment ID
+                                    </label>
+                                </div>
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="leRem-checkbox" name="leRem" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="leRem-checkbox">
+                                        Remedy employment ID
+                                    </label>
+                                </div>
+            
+                                <div class="nhsuk-checkboxes__item">
+                                    <input class="nhsuk-checkboxes__input" id="lePost-checkbox" name="lePost" type="checkbox"
+                                    value="columns" checked>
+                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="lePost-checkbox">
+                                        Post-remedy employment ID
+                                    </label>
+                                </div>
+            
+                                </div>
+                            </fieldset>
+                            </div>
+                            <button class="nhsuk-button" type="submit">Apply</button>
+                        </form>
+                    </div>
+                    <h3 class="nhsuk-heading-s">Linked employments</h3>
+                    {{ linkedEmploymentTable | safe }}
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                        const leFormCustom = document.getElementById('le-table-custom-form')
+
+                        if (!leFormCustom) return
+
+                        leFormCustom.addEventListener('submit', function (e) {
+                            e.preventDefault() // prevent page reload
+
+                            // Get all checkbox inputs in the form
+                            const checkboxes = leFormCustom.querySelectorAll('input[value="columns"]')
+
+                            checkboxes.forEach(cb => {
+                                const leTableClass = cb.name
+                                const leTableEls = document.getElementsByClassName(leTableClass)
+
+                                if (!leTableEls) return
+
+                                // Show/hide the table based on whether the checkbox is ticked
+                                Array.from(leTableEls).forEach(el => {
+                                    el.style.display = cb.checked ? '' : 'none'
+                                })
+                            })
+                        })
+                        })
+                        const toggleCustomLE = document.getElementById('le-toggle-data');
+                        const panelLE = document.getElementById('le-panel-data');
+
+                        toggleCustomLE.addEventListener('click', () => {
+                            const isOpen = panelLE.hasAttribute('hidden') === false;
+
+                            if (isOpen) {
+                                panelLE.setAttribute('hidden', '');
+                                toggleCustomLE.setAttribute('aria-expanded', 'false');
+                                toggleCustomLE.textContent = 'Customise data set';
+                            } else {
+                                panelLE.removeAttribute('hidden');
+                                toggleCustomLE.setAttribute('aria-expanded', 'true');
+                                toggleCustomLE.textContent = 'Hide customisable data';
+                            }
+                        });
+                    </script>
+                </div>
+            {% endset %}
+
+            {% if data['serviceHistory'] | length > 0 and data['employmentHistory'] | length > 0 %}
+                {{ serviceHistoryData | safe }}
+                {{ employmentHistoryData | safe }}
+            {% elif data['serviceHistory'] | length > 0  and  data['serviceGroup'] | length > 0 %}
+                {{ serviceGroupData | safe }}
+                {{ serviceHistoryData | safe }}
+            {% elif data['serviceHistory'] | length > 0  and  data['contsTpp'] | length > 0 %}
+                {{ serviceHistoryData | safe }}
+                {{ contsTppData | safe }}
+            {% elif data['serviceHistory'] | length > 0  and  data['hoursHistory'] | length > 0 %}
+                {{ serviceHistoryData | safe }}
+                {{ hoursHistoryData | safe }}
+            {% elif data['serviceHistory'] | length > 0  and  data['linkedEmployment'] | length > 0 %}
+                {{ serviceHistoryData | safe }}
+                {{ linkedEmploymentData | safe }}
+            {% elif data['serviceGroup'] | length > 0  and data['employmentHistory'] | length > 0 %}
+                {{ serviceGroupData | safe }}
+                {{ employmentHistoryData | safe }}
+            {% elif data['serviceGroup'] | length > 0  and  data['contsTpp'] | length > 0 %}
+                {{ serviceGroupData | safe }}
+                {{ contsTppData | safe }}
+            {% elif data['serviceGroup'] | length > 0  and  data['hoursHistory'] | length > 0 %}
+                {{ serviceGroupData | safe }}
+                {{ hoursHistoryData | safe }}
+            {% elif data['serviceGroup'] | length > 0  and  data['linkedEmployment'] | length > 0 %}
+                {{ serviceGroupData | safe }}
+                {{ linkedEmploymentData | safe }}
+            {% elif data['employmentHistory'] | length > 0  and  data['contsTpp'] | length > 0 %}
+                {{ employmentHistoryData | safe }}
+                {{ contsTppData | safe }}
+            {% elif data['employmentHistory'] | length > 0  and  data['hoursHistory'] | length > 0 %}
+                {{ employmentHistoryData | safe }}
+                {{ hoursHistoryData | safe }}
+            {% elif data['employmentHistory'] | length > 0  and  data['linkedEmployment'] | length > 0 %}
+                {{ employmentHistoryData | safe }}
+                {{ linkedEmploymentData | safe }}
+            {% elif data['contsTpp'] | length > 0  and  data['hoursHistory'] | length > 0 %}
+                {{ contsTppData | safe }}
+                {{ hoursHistoryData | safe }}
+            {% elif data['contsTpp'] | length > 0  and  data['linkedEmployment'] | length > 0 %}
+                {{ contsTppData | safe }}
+                {{ linkedEmploymentData | safe }}
+            {% elif data['hoursHistory'] | length > 0  and  data['linkedEmployment'] | length > 0 %}
+                {{ hoursHistoryData | safe }}
+                {{ linkedEmploymentData | safe }}
+            {% else %}
+                <div class="nhsuk-grid-column-one-half compareCol">
+                    NO DATA SETS SELECTED
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<script>
+function toggleRows(groupClass, button) {
+    const rows = document.querySelectorAll(`.${groupClass}`);
+    let anyVisible = false;
+
+    rows.forEach(row => {
+    row.classList.toggle('hidden');
+    if (!row.classList.contains('hidden')) {
+        anyVisible = true;
+    }
+    });
+
+    button.textContent = anyVisible
+    ? 'Hide correct rows'
+    : 'Show all rows';
+}
+</script>
+{% endblock %}
