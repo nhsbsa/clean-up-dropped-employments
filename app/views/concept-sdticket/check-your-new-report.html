@@ -182,14 +182,12 @@
                 </tr>
                 </thead>
                 <tbody class="nhsuk-table__body">
-                {% if data['sets']|length > 1 and data['sets'][0] %}
                 <tr class="nhsuk-table__row">
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['sets'][0]}}</td>
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['fields'][0]}}</td>
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['amendments'][0]}}</td>
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14 nhsuk-u-text-break-word">{{ data['reason'][0]}}</td>
                 </tr>
-                {% endif %}
                 {% if data['sets']|length > 1 and data['sets'][1] %}
                 <tr class="nhsuk-table__row">
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['sets'][1]}}</td>
