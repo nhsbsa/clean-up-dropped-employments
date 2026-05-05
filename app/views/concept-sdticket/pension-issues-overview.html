@@ -2,6 +2,7 @@
 {% set pageTitle = "Issues the tool can detect in members' pension records"%}
 {% set hideBack ="true"%}
 {% set showMenu ="true"%}
+{% set sdMenuBlank ="true"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -12,7 +13,7 @@
   <div class="nhsuk-grid-column-full">
     <div class="nhsuk-u-reading-width">
 
-      <span class="nhsuk-caption-l">Validation summary</span>
+      <span class="nhsuk-caption-l">Pension issues overview</span>
       <h1 class="nhsuk-heading-l">{{pageTitle}} </h1>
       <p class="nhsuk-body">Learn which issues our pensions record tool checks for when you search by member number. </p>
       <p class="nhsuk-body">These validation checks include: </p>
@@ -120,8 +121,8 @@
               items: [
                 {
                   html: tag({
-                    text: "In progress",
-                    classes: "nhsuk-tag--orange"
+                    text: "Active",
+                    classes: "nhsuk-tag--green"
                   }),
                   visuallyHiddenText: "Release 1.2"
                 }
