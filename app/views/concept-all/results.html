@@ -164,58 +164,76 @@
       id: "compareDetails",
       summaryText: "Compare two data sets side by side"
     }) %}
+    
     <div id="compare-panel" class="details">
+      <div class="nhsuk-error-summary" data-module="nhsuk-error-summary" id="compareErrorSummary" style="display:none;">
+          <div role="alert">
+              <h2 class="nhsuk-error-summary__title">
+              There is a problem <span class="nhsuk-u-visually-hidden">with your selection</span>
+              </h2>
+              <div class="nhsuk-error-summary__body">
+                  <ul class="nhsuk-list nhsuk-error-summary__list">
+                      <li> 
+                      <a href="#checkboxError">You must select 2 data sets to compare</a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
       <form id="compare-form" action="/{{folder}}/results" method="post" >
-        <div class="nhsuk-form-group compareGroup">
+      <div class="nhsuk-form-group compareGroup">
           <fieldset class="nhsuk-fieldset">
               <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
                   <h2 class="nhsuk-fieldset__heading">
                       Choose which two data sets you would like to compare
                   </h2>
-            </legend>
-            <div id="checkboxError" class="error nhsuk-error-message" style="display:none; color:#d5281b; margin-top:10px;">
-                <span class="nhsuk-u-visually-hidden">Error:</span> You must select 2 data sets to compare 
-            </div>
-            <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter" data-module="nhsuk-checkboxes">
+          </legend>
+          <div id="checkboxError" class="error nhsuk-error-message" style="display:none; color:#d5281b; margin-top:10px;">
+              <span class="nhsuk-u-visually-hidden">Error:</span> You must select 2 data sets to compare 
+          </div>
+      
+          <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter" data-module="nhsuk-checkboxes">
+      
               <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="serviceHistory-checkbox" name="serviceHistory" type="checkbox" value="serviceHistory" >
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceHistory-checkbox">
-                  Service history
-                </label>
+                  <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="serviceHistory-checkbox" name="serviceHistory" type="checkbox" value="serviceHistory" >
+                  <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceHistory-checkbox">
+                      Service history
+                  </label>
               </div>
               <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="serviceGroup-checkbox" name="serviceGroup" type="checkbox" value="serviceGroup" >
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceGroup-checkbox">
-                  Service group
-                </label>
+                  <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="serviceGroup-checkbox" name="serviceGroup" type="checkbox" value="serviceGroup" >
+                  <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceGroup-checkbox">
+                      Service groups
+                  </label>
               </div>
               <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="employmentHistory-checkbox" name="employmentHistory" type="checkbox" value="employmentHistory" >
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="employmentHistory-checkbox">
-                  Employment History
-                </label>
+                  <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="employmentHistory-checkbox" name="employmentHistory" type="checkbox" value="employmentHistory" >
+                  <label class="nhsuk-label nhsuk-checkboxes__label" for="employmentHistory-checkbox">
+                      Employment
+                  </label>
               </div>
               <div class="nhsuk-checkboxes__item">
                   <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="contsTpp-checkbox" name="contsTpp" type="checkbox" value="contsTpp" >
                   <label class="nhsuk-label nhsuk-checkboxes__label" for="contsTpp-checkbox">
-                    Conts &amp; TPP
+                  Conts &amp; TPP
                   </label>
               </div>
               <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="hoursHistory-checkbox" name="hoursHistory" type="checkbox" value="hoursHistory" >
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="hoursHistory-checkbox">
-                  Hours history
-                </label>
+                  <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="hoursHistory-checkbox" name="hoursHistory" type="checkbox" value="hoursHistory" >
+                  <label class="nhsuk-label nhsuk-checkboxes__label" for="hoursHistory-checkbox">
+                      Hours history details
+                  </label>
               </div>
               <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="linkedEmployment-checkbox" name="linkedEmployment" type="checkbox" value="linkedEmployment" >
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="linkedEmployment-checkbox">
-                  Linked employment
-                </label>
+                  <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="linkedEmployment-checkbox" name="linkedEmployment" type="checkbox" value="linkedEmployment" >
+                  <label class="nhsuk-label nhsuk-checkboxes__label" for="linkedEmployment-checkbox">
+                      Linked employments
+                  </label>
               </div>
-            </div>
+          </div>
           </fieldset>
-        </div>
+      </div>
+      
           <button class="nhsuk-button" data-module="nhsuk-button" type="submit">Compare</button> 
       </form>
     </div>

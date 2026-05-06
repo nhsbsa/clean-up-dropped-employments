@@ -11,7 +11,7 @@ document.getElementById("compare-form").addEventListener("submit", function (e) 
         formGroup.classList.add("nhsuk-form-group--error"); // highlight form group
     } else {
         error.style.display = "none"; // hide error
-        errorSummary.style.display = "hide"; // hide error summary
+        errorSummary.style.display = "none"; // hide error summary
         formGroup.classList.remove("nhsuk-form-group--error"); // remove error highlight
     }
 });
