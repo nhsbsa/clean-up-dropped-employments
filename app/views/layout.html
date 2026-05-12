@@ -59,11 +59,22 @@
       href: "report-blank"
     }
   ]) %}
-  {% elseif supportMenu %}
+  {% endif %}
+  
+  {% if supportMenu %}
   {% set navItems = navItems.concat([
     {
       text: "Support Information",
       href: "support-information"
+    }
+  ]) %}
+  {% endif %}
+
+  {% if ticketMenu %}
+  {% set navItems = navItems.concat([
+    {
+      text: "Ticket Management",
+      href: "ticket-management-entry"
     }
   ]) %}
   {% endif %}
@@ -131,18 +142,6 @@
         </p>
     </div>
   </div>
-{% endblock %}
-
-{% block beforeContent %}
-
-{% from 'back-link/macro.njk' import backLink %}
-{% if not hideBack %}
-    {{ backLink({
-      "href": "javascript:history.go(-1)",
-      "text": "Back"
-    }) }}
-{% endif %}
-
 {% endblock %}
 
 {% set introPara %}
@@ -791,8 +790,27 @@
 {% endset %}
 
 
+<!-- {% block beforeContent %}
+
+{% from 'back-link/macro.njk' import backLink %}
+{% if not hideBack %}
+    {{ backLink({
+      "href": "javascript:history.go(-1)",
+      "text": "Back"
+    }) }}
+{% endif %}
+
+{% endblock %} -->
 
 {% block main %}
+    {% if not hideBack %}
+        <div class="nhsuk-width-container">
+        {{ backLink({
+          "href": "javascript:history.go(-1)",
+          "text": "Back"
+        }) }}
+        </div>
+    {% endif %}
     {% if wideLayout %}
       <div class="nhsuk-width-container">
         {{ backLink({

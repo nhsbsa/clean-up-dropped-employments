@@ -2,7 +2,8 @@
 {% set pageTitle = "John Smith"%}
 {% set hideBack ="true"%}
 {% set showMenu ="true"%}
-{% set supportMenu ="true"%}
+{% set sdMenu ="true"%}
+{% set ticketMenu ="true"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -1724,7 +1725,7 @@
         
         <form action="/{{folder}}/results" method="post" novalidate>
             {{ button({
-            text: "Send report",
+            text: "Send request",
             value: "createReport",
             name: "action"
             }) }}

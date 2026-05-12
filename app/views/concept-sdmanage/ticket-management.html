@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Your service desk requests"%}
+{% set showMenu ="true"%}
+{% set sdMenuBlank ="true"%}
+{% set ticketMenu ="true"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row summaryPage">
+  <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-u-reading-width">
+
+      <span class="nhsuk-caption-l">Ticket management</span>
+      <h1 class="nhsuk-heading-l">{{pageTitle}} </h1>
+      <p class="nhsuk-body">You have not submitted any service desk requests.</p>
+      <form action="/{{folder}}/ticket-management" method="post" novalidate>
+        {{ button({
+        text: "Send new request",
+        value: "createNewReport",
+        name: "action"
+        }) }}
+    </form>
+      
+
+    </div>
+  </div>
+</div>
+{% endblock %}

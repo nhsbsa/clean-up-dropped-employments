@@ -1,0 +1,191 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Ticket number: XX-12345678"%}
+{% set showMenu ="true"%}
+{% set sdMenu ="true"%}
+{% set ticketMenu="true"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row confirmReport">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <span class="nhsuk-caption-l">Your request</span>
+        <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">{{pageTitle}}</h1>
+        <p>
+            <strong class="nhsuk-tag nhsuk-tag--green">
+            Completed
+            </strong>
+        </p>
+        
+        <h3>Requester details {{ req.originalUrl }}</h3>
+
+        <dl class="nhsuk-summary-list">
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Requester name
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    Jane Doe
+                </dd>
+            </div>
+        </dl>
+
+        <h3>Incident form</h3>
+
+        <dl class="nhsuk-summary-list">
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Subject
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    Fix required for a corruption in a member record
+                </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Member number
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    1234567
+                </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Member first initial
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    J
+                </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Member surname
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    Smith
+                </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Type of record change
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    Other
+                </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Has a file been corrupted?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    Yes
+                </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Has a payment been affected?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    No
+                </dd>
+            </div>
+        </dl>
+        
+        <h3>Description</h3>
+
+        <dl class="nhsuk-summary-list">
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Corruption details
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    View details table to confirm corruptions
+                </dd>
+            </div>
+        </dl>
+
+        <details class="nhsuk-details nhsuk-expander">  
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                Corruption details
+                </span>
+            </summary>
+            <div class="nhsuk-details__text">
+                <table class="nhsuk-table" id="reportTable">
+                <caption class="nhsuk-table__caption nhsuk-u-visually-hidden">
+                    Corruption details
+                </caption>
+                <thead class="nhsuk-table__head">
+                <tr class="nhsuk-table__row">
+                    <th class="nhsuk-table__cell nhsuk-u-font-size-14 reportCell" scope="col">Sets</th>
+                    <th class="nhsuk-table__cell nhsuk-u-font-size-14 reportCell" scope="col">Fields</th>
+                    <th class="nhsuk-table__cell nhsuk-u-font-size-14" scope="col">Amendments to be made</th>
+                    <th class="nhsuk-table__cell nhsuk-u-font-size-14" scope="col">Reason</th>
+                </tr>
+                </thead>
+                <tbody class="nhsuk-table__body">
+
+                <tr class="nhsuk-table__row">
+                    <td class="nhsuk-table__cell nhsuk-u-font-size-14">Service history</td>
+                    <td class="nhsuk-table__cell nhsuk-u-font-size-14">End date</td>
+                    <td class="nhsuk-table__cell nhsuk-u-font-size-14">Employment ID 1 end date mismatch</td>
+                    <td class="nhsuk-table__cell nhsuk-u-font-size-14 nhsuk-u-text-break-word">The end date for employment ID 1 and 6 should be different</td>
+                </tr>
+                <tr class="nhsuk-table__row">
+                    <td class="nhsuk-table__cell nhsuk-u-font-size-14">Linked employments</td>
+                    <td class="nhsuk-table__cell nhsuk-u-font-size-14">Pre-remedy employment ID</td>
+                    <td class="nhsuk-table__cell nhsuk-u-font-size-14">Pre-remedy employment ID 1 linked employment mismatch</td>
+                    <td class="nhsuk-table__cell nhsuk-u-font-size-14 nhsuk-u-text-break-word">Employment ID 1 end date does not line up with the start date for employment ID 6</td>
+                </tr>
+
+                </tbody>
+                </table>
+            </div>
+        </details>
+        
+        <hr>
+        
+        <h3>Basic information</h3>
+
+        <dl class="nhsuk-summary-list">
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Urgency
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    High priority
+                </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Site
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    NHSBSA
+                </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Directorate
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    NHS Workforce Services
+                </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Ticket Description
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    I have checked this record using the Identify record issues tool and two corruptions have been highlighted these need to be fixed before the case can be closed.
+                </dd>
+            </div>
+        </dl>
+    </div>
+</div>
+
+
+{% endblock %}

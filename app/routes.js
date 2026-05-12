@@ -56,15 +56,18 @@ router.use('/concept-sortable', require('./views/concept-sortable/_routes'));
 router.use('/concept-customise', require('./views/concept-customise/_routes'));
 router.use('/concept-compare', require('./views/concept-compare/_routes'));
 router.use('/concept-sdticket', require('./views/concept-sdticket/_routes'));
+router.use('/concept-support', require('./views/concept-support/_routes'));
+router.use('/concept-sdmanage', require('./views/concept-sdmanage/_routes'));
 router.use('/concept-all', require('./views/concept-all/_routes'));
 router.use('/issue-1', require('./views/issue-1/_routes'));
-router.use('/issue-1', require('./views/issue-2/_routes'));
-router.use('/issue-1', require('./views/issue-3/_routes'));
-router.use('/issue-1', require('./views/issue-4/_routes'));
-router.use('/issue-1', require('./views/issue-5/_routes'));
-router.use('/issue-1', require('./views/issue-6/_routes'));
-router.use('/issue-1', require('./views/issue-7/_routes'));
-// router.use('/issue-1', require('./views/issue-8/_routes'));
-router.use('/issue-1', require('./views/issue-9/_routes'));
+router.use('/issue-2', require('./views/issue-2/_routes'));
+router.use('/issue-3', require('./views/issue-3/_routes'));
+router.use('/issue-4', require('./views/issue-4/_routes'));
+router.use('/issue-5', require('./views/issue-5/_routes'));
+router.use('/issue-6', require('./views/issue-6/_routes'));
+router.use('/issue-7', require('./views/issue-7/_routes'));
+router.use('/issue-8', require('./views/issue-8/_routes'));
+router.use('/issue-9', require('./views/issue-9/_routes'));
+router.use('/issue-10', require('./views/issue-10/_routes'));
 
 module.exports = router

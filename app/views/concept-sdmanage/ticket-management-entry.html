@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Your service desk requests"%}
+{% set showMenu ="true"%}
+{% set sdMenuBlank ="true"%}
+{% set ticketMenu ="true"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row summaryPage">
+  <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-u-reading-width">
+
+      <span class="nhsuk-caption-l">Ticket management</span>
+      <h1 class="nhsuk-heading-l">{{pageTitle}} </h1>
+      <p class="nhsuk-body">All service desk requests which have been previously submitted are listed below:</p>
+
+      {{ taskList({
+        idPrefix: "your-health",
+        items: [
+          {
+            title: {
+              text: "Ticket Number: XX-12345678"
+            },
+            hint: {
+              text: "Fix required for a corruption in a member record"
+            },
+            href: "ticket-xx-12345678",
+            status: {
+              text: "Completed",
+              classes: "nhsuk-task-list__status--completed"
+            }
+          },
+          {
+            title: {
+              text: "Ticket Number: XX-12345678"
+            },
+            hint: {
+              text: "Subject of the request submitted appears here"
+            },
+            href: "#",
+            status: {
+              tag: {
+                text: "In review",
+                classes: "nhsuk-tag--white"
+              }
+            }
+          },
+          {
+            title: {
+              text: "Ticket Number: XX-12345678"
+            },
+            hint: {
+              text: "Subject of the request submitted appears here"
+            },
+            href: "#",
+            status: {
+              tag: {
+                text: "Awaiting review",
+                classes: "nhsuk-tag--blue"
+              }
+            }
+              
+          }
+        ]
+      }) }}
+
+      
+
+    </div>
+  </div>
+</div>
+{% endblock %}

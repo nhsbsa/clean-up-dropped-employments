@@ -8,31 +8,10 @@ router.post('/search', function (req, res) {
 })
 
 router.post('/results', function (req, res) {
-    const action = req.body.action;
+ 
+    res.redirect('compare-wide');
 
-    if (action === 'compareData') {
-        res.redirect('compare-wide');
-    } else if (action === 'createReport') {
-        res.redirect('report');
-    } else {
-        res.redirect('results');
-    }
 })
 
-router.post('/report', function (req, res) {
-    res.redirect('check-your-report');
-})
-
-router.post('/check-your-report', function (req, res) {
-    res.redirect('report-submitted');
-})
-
-router.post('/report-blank', function (req, res) {
-    res.redirect('check-your-new-report');
-})
-
-router.post('/check-your-new-report', function (req, res) {
-    res.redirect('report-submitted');
-})
 
 module.exports = router;
