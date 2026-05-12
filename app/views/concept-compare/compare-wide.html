@@ -733,8 +733,8 @@
                 {{ serviceHistoryData | safe }}
                 {{ employmentHistoryData | safe }}
             {% elif data['serviceHistory'] | length > 0  and  data['serviceGroup'] | length > 0 %}
-                {{ serviceGroupData | safe }}
                 {{ serviceHistoryData | safe }}
+                {{ serviceGroupData | safe }}
             {% elif data['serviceHistory'] | length > 0  and  data['contsTpp'] | length > 0 %}
                 {{ serviceHistoryData | safe }}
                 {{ contsTppData | safe }}

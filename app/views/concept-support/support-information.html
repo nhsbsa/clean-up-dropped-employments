@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Do you need help with the Identify record issues tool?"%}
+{% set hideBack ="true"%}
+{% set showMenu ="true"%}
+{% set sdMenuBlank ="true"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row summaryPage">
+  <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-u-reading-width">
+
+      <span class="nhsuk-caption-l">Support information</span>
+      <h1 class="nhsuk-heading-l">{{pageTitle}} </h1>
+      <p class="nhsuk-body">Content</p>
+      
+
+    </div>
+  </div>
+</div>
+{% endblock %}

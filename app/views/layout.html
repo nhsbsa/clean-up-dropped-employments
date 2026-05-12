@@ -52,12 +52,18 @@
       href: "report"
     }
   ]) %}
-
   {% elseif sdMenuBlank %}
   {% set navItems = navItems.concat([
     {
       text: "Service Desk Request",
       href: "report-blank"
+    }
+  ]) %}
+  {% elseif supportMenu %}
+  {% set navItems = navItems.concat([
+    {
+      text: "Support Information",
+      href: "support-information"
     }
   ]) %}
   {% endif %}
