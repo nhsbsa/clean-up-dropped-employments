@@ -32,8 +32,8 @@ document.querySelectorAll(".check-btn").forEach(button => {
         details.scrollIntoView({ behavior: "smooth", block: "center" });
 
         // Optional: uncheck others first
-        document.querySelectorAll('#myDetails input[type="checkbox"]')
-        .forEach(cb => cb.checked = false);
+        document.querySelectorAll('#compareDetails input[type="checkbox"]')
+        .forEach(cb => cb.checked = false); 
 
         // Check the selected one
         checkbox.checked = true;
