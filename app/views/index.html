@@ -17,11 +17,47 @@
               <div class="nhsuk-grid-row">
                 <div class="nhsuk-grid-column-two-thirds">
                   <span class="nhsuk-details__summary-text">
+                    Iteration 1.3
+                  </span>
+                </div>
+                <div class="nhsuk-grid-column-one-third nhsuk-u-text-align-right">
+                  <strong class="nhsuk-tag nhsuk-tag--purple">DEV</strong>
+                </div>
+              </div>
+            </summary>
+            <div class="nhsuk-details__text">
+              <h3 class="nhsuk-heading-s">Design</h3>
+              <p></p>
+              <ul>
+                <li>Including the pagination on data sets feature with enhancement of rows per page toggle</li>
+                <li>Including the compare data sets enhancement - enabling the user to add to compare from within each data set</li>
+                <li>Including the customise data sets feature</li>
+                <li>New formatting for the issue messages - making them shorter and including employment id where required</li>
+                <li>Adding abbreviations/acronyms to each data set, for example; Service history [SH]</li>
+              </ul>
+              <hr>
+              {{ button({
+                "text": "View Iteration 1.3",
+                "href": "/iteration-1-3/search"
+              }) }}
+              <br/>
+              <!-- {{ actionLink({
+                "classes": "nhsuk-u-margin-bottom-3",
+                "text": "View UCD log entry",
+                "href": "https://bsa2468.atlassian.net/wiki/x/BADFeQE"
+              }) }} -->
+            </div>
+          </details>
+          <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+              <div class="nhsuk-grid-row">
+                <div class="nhsuk-grid-column-two-thirds">
+                  <span class="nhsuk-details__summary-text">
                     Iteration 1.2
                   </span>
                 </div>
                 <div class="nhsuk-grid-column-one-third nhsuk-u-text-align-right">
-                  <strong class="nhsuk-tag nhsuk-tag--green">DEV</strong>
+                  <strong class="nhsuk-tag nhsuk-tag--purple">DEV</strong>
                 </div>
               </div>
             </summary>
@@ -34,7 +70,7 @@
                 <li>Adding a back to the top link which follows the page down the left</li>
                 <li>Including the compare data sets feature</li>
                 <li>Including the filter data sets feature</li>
-                <li>Adding a new page for 'Validation summary' - This page explains what is currently included in the tool to the user, with this we have also added a top menu</li>
+                <li>Adding a new page for 'Pension issues overview' - This page explains what is currently included in the tool to the user, with this we have also added a top menu</li>
                 <li>Error message for status</li>
                 <li>Updated the issue messaging wording (in progress)</li>
               </ul>
@@ -141,12 +177,71 @@
               <div class="nhsuk-grid-row">
                 <div class="nhsuk-grid-column-two-thirds">
                   <span class="nhsuk-details__summary-text">
-                    Sandbox features - results
+                    Service desk request - PaPPs
                   </span>
                 </div>
                 <div class="nhsuk-grid-column-one-third nhsuk-u-text-align-right">
                   <strong class="nhsuk-tag nhsuk-tag--blue">DESIGN</strong>
                   <strong class="nhsuk-tag nhsuk-tag--yellow">UR</strong>
+                </div>
+              </div>
+            </summary>
+            <div class="nhsuk-details__text">
+              <h3 class="nhsuk-heading-s">Design</h3>
+              <p>This prototype has been created to explore the option of creating a service desk request through the tool, giving the user the option of creating a request from scratch using the menu link from the search page or the pension issues overview or they can create a prepopulated request form from within a members record; using the menu item or the section at the bottom of the screen below the last data set. </p>
+              <p>Users are able to edit the form as required, once the user continues after filling in the form they can check their answers before submitting to service desk.</p>
+              {{ summaryList({
+                rows: [
+                  {
+                    key: {
+                      text: "SD Request"
+                    },
+                    value: {
+                      html: "
+                      <p>An additional feature to incorporate ticket creation into the tool.</p>"
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/concept-sdticket/results",
+                          text: "View",
+                          visuallyHiddenText: "SD ticket creation"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Ticket management"
+                    },
+                    value: {
+                      html: "
+                      <p>A new page to allow users to manage tickets they have submitted to service desk, see the ticket status and full details of their submission.</p>"
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/concept-sdmanage/ticket-management-entry",
+                          text: "View",
+                          visuallyHiddenText: "SD ticket management"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }) }}
+            </div>
+          </details>
+          <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+              <div class="nhsuk-grid-row">
+                <div class="nhsuk-grid-column-two-thirds">
+                  <span class="nhsuk-details__summary-text">
+                    Sandbox features - results
+                  </span>
+                </div>
+                <div class="nhsuk-grid-column-one-third nhsuk-u-text-align-right">
+                  <strong class="nhsuk-tag nhsuk-tag--blue">DESIGN</strong>
                 </div>
               </div>
             </summary>
@@ -362,53 +457,11 @@
               <div class="nhsuk-grid-row">
                 <div class="nhsuk-grid-column-two-thirds">
                   <span class="nhsuk-details__summary-text">
-                    Service desk request form - PaPPs
-                  </span>
-                </div>
-                <div class="nhsuk-grid-column-one-third nhsuk-u-text-align-right">
-                  <strong class="nhsuk-tag nhsuk-tag--blue">DESIGN</strong>
-                  <strong class="nhsuk-tag nhsuk-tag--yellow">UR</strong>
-                </div>
-              </div>
-            </summary>
-            <div class="nhsuk-details__text">
-              <h3 class="nhsuk-heading-s">Design</h3>
-              <p>This prototype has been created to explore the option of creating a service desk request through the tool, giving the user the option of creating a request from scratch using the menu link from the search page or the pension issues overview or they can create a prepopulated request form from within a members record; using the menu item or the section at the bottom of the screen below the last data set. </p>
-              <p>Users are able to edit the form as required, once the user continues after filling in the form they can check their answers before submitting to service desk.</p>
-              {{ summaryList({
-                rows: [
-                  {
-                    key: {
-                      text: "SD Request"
-                    },
-                    value: {
-                      html: "
-                      <p>An additional feature to incorporate ticket creation into the tool.</p>"
-                    },
-                    actions: {
-                      items: [
-                        {
-                          href: "/concept-sdticket/results",
-                          text: "View",
-                          visuallyHiddenText: "SD ticket creation"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              }) }}
-            </div>
-          </details>
-          <details class="nhsuk-details nhsuk-expander">
-            <summary class="nhsuk-details__summary">
-              <div class="nhsuk-grid-row">
-                <div class="nhsuk-grid-column-two-thirds">
-                  <span class="nhsuk-details__summary-text">
                     Issue Messaging - results
                   </span>
                 </div>
                 <div class="nhsuk-grid-column-one-third nhsuk-u-text-align-right">
-                  <strong class="nhsuk-tag nhsuk-tag--yellow">UR</strong>
+                  <strong class="nhsuk-tag nhsuk-tag--purple">DEV</strong>
                 </div>
               </div>
             </summary>
@@ -860,9 +913,15 @@
             </tr>
             <tr role="row" class="nhsuk-table__row">
               <td class="nhsuk-table__cell">
-                <strong class="nhsuk-tag nhsuk-tag--green nhsuk-u-font-size-14">DEV</strong>
+                <strong class="nhsuk-tag nhsuk-tag--purple nhsuk-u-font-size-14">DEV</strong>
               </td>
               <td class="nhsuk-table__cell nhsuk-u-font-size-14">All or parts of the version are currently in development</td>
+            </tr>
+            <tr role="row" class="nhsuk-table__row">
+              <td class="nhsuk-table__cell">
+                <strong class="nhsuk-tag nhsuk-tag--green nhsuk-u-font-size-14">LIVE</strong>
+              </td>
+              <td class="nhsuk-table__cell nhsuk-u-font-size-14">Now part of the live service</td>
             </tr>
             <tr role="row" class="nhsuk-table__row">
               <td class="nhsuk-table__cell">
