@@ -124,13 +124,51 @@
                     ]
                     }) }}
                     {% set corruptedHtml %}
-                        {{ input({
+                        {{ select({
+                            label: {
+                                text: "Corruption type"
+                            },
                             id: "corruptionType",
                             name: "corruptionType",
-                            classes: "nhsuk-u-width-two-thirds",
-                            label: {
-                            text: "Corruption type"
-                            }
+                            value: "-- Corruption type --",
+                            items: [
+                                {
+                                value: "Dropped employment",
+                                text: "Dropped employment"
+                                },
+                                {
+                                value: "Duplicate employment records",
+                                text: "Duplicate employment records"
+                                },
+                                {
+                                value: "Re-employed Pensioner",
+                                text: "Re-employed Pensioner"
+                                },
+                                {
+                                value: "Erroneous Linked Employments",
+                                text: "Erroneous Linked Employments"
+                                },
+                                {
+                                value: "Mismatched service dates",
+                                text: "Mismatched service dates"
+                                },
+                                {
+                                value: "Erroneous Member Status",
+                                text: "Erroneous Member Status"
+                                },
+                                {
+                                value: "Erroneous Scheme Codes",
+                                text: "Erroneous Scheme Codes"
+                                },
+                                {
+                                value: "Qualifying Services Errors",
+                                text: "Qualifying Services Errors"
+                                },
+                                {
+                                value: "Erroneous Basic Header",
+                                text: "Erroneous Basic Header"
+                                }
+                            ]
                         }) }}
                     {% endset -%}
                     {{ radios({
