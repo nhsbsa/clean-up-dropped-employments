@@ -121,7 +121,11 @@
                     Has a file been corrupted?
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                    {{ data['corrupted']}}
+                    {% if (data['corrupted'] == "yes" ) %}
+                    Yes - Corruption type: {{ data['corruptionType']}}
+                    {% elseif (data['corrupted'] == "no" ) %}
+                    No
+                    {% endif %}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                     <a href="#">
