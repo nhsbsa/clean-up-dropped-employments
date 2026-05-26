@@ -18,26 +18,17 @@
         </div>
 
         <form action="/{{folder}}/report" method="post" id="reportForm">
-            <details class="nhsuk-details nhsuk-expander">
-                <summary class="nhsuk-details__summary">
-                <span class="nhsuk-details__summary-text">
-                    Requester details
-                </span>
-                </summary>
-                <div class="nhsuk-details__text">
-                <p>This service desk ticket is being requested by:</p>
-                {{ input({
-                    label: {
-                    text: "Requester name"
-                    },
-                    id: "requesterName",
-                    name: "requesterName",
-                    classes: "nhsuk-input--width-20",
-                    value: "Jane Doe"
-                    }) }}
-        
-                </div>
-            </details>
+            
+            <p>This service desk ticket is being requested by:</p>
+            {{ input({
+                label: {
+                text: "Requester name"
+                },
+                id: "requesterName",
+                name: "requesterName",
+                classes: "nhsuk-input--width-20",
+                value: "Jane Doe"
+            }) }}
 
             <details class="nhsuk-details nhsuk-expander" open>
                 <summary class="nhsuk-details__summary">
@@ -50,12 +41,14 @@
                         id: "subject",
                         name: "subject",
                         label: {
-                        text: "Subject"
+                        text: "Subject",
+                        size: "s"
                         }
                     }) }}
                     {{ input({
                         label: {
-                        text: "Member number"
+                        text: "Member number",
+                        size: "s"
                         },
                         id: "membershipNumber",
                         name: "membershipNumber",
@@ -64,7 +57,8 @@
                     }) }}
                     {{ input({
                         label: {
-                        text: "Member first initial"
+                        text: "Member first initial",
+                        size: "s"
                         },
                         id: "memberFirstInitial",
                         name: "memberFirstInitial",
@@ -73,98 +67,120 @@
                     }) }}
                     {{ input({
                         label: {
-                        text: "Member surname"
+                        text: "Member surname",
+                        size: "s"
                         },
                         id: "memberSurname",
                         name: "memberSurname",
                         classes: "nhsuk-input--width-20",
                         value: "Smith"
                     }) }}
-                    {{ select({
-                        label: {
-                        text: "Type of record change"
+                    {{ radios({
+                    idPrefix: "recordTypeChange",
+                    name: "recordTypeChange",
+                    fieldset: {
+                        legend: {
+                        text: "Type of record change",
+                        size: "s"
+                        }
+                    },
+                    small: true,
+                    classes: "columnRadios",
+                    items: [
+                    {
+                        value: "Cancel award",
+                        text: "Cancel award"
                         },
-                        id: "recordTypeChange",
-                        name: "recordTypeChange",
-                        value: "-- Type of record change --",
-                        items: [
-                            {
-                            value: "-- Type of record change --",
-                            text: "-- Type of record change --"
-                            },
-                            {
-                            value: "Cancel award",
-                            text: "Cancel award"
-                            },
-                            {
-                            value: "Scheme change",
-                            text: "Scheme change"
-                            },
-                            {
-                            value: "Statue change",
-                            text: "Status change"
-                            },
-                            {
-                            value: "Service group change",
-                            text: "Service group change"
-                            },
-                            {
-                            value: "Deletion of form",
-                            text: "Deletion of form"
-                            },
-                            {
-                            value: "Add conts",
-                            text: "Add conts"
-                            },
-                            {
-                            value: "Add basic",
-                            text: "Add basic"
-                            },
-                            {
-                            value: "Additional pension",
-                            text: "Additional pension"
-                            },
-                            {
-                            value: "other",
-                            text: "Other"
-                            }
-                        ]
+                        {
+                        value: "Scheme change",
+                        text: "Scheme change"
+                        },
+                        {
+                        value: "Statue change",
+                        text: "Status change"
+                        },
+                        {
+                        value: "Service group change",
+                        text: "Service group change"
+                        },
+                        {
+                        value: "Deletion of form",
+                        text: "Deletion of form"
+                        },
+                        {
+                        value: "Add conts",
+                        text: "Add conts"
+                        },
+                        {
+                        value: "Add basic",
+                        text: "Add basic"
+                        },
+                        {
+                        value: "Additional pension",
+                        text: "Additional pension"
+                        },
+                        {
+                        value: "other",
+                        text: "Other"
+                        }
+                    ]
                     }) }}
-                    {{ select({
-                        label: {
-                        text: "Has a file been corrupted?"
-                        },
-                        id: "corrupted",
+                    {% set corruptedHtml %}
+                        {{ input({
+                            id: "corruptionType",
+                            name: "corruptionType",
+                            classes: "nhsuk-u-width-two-thirds",
+                            label: {
+                            text: "Corruption type"
+                            }
+                        }) }}
+                    {% endset -%}
+                    {{ radios({
+                        idPrefix: "corrupted",
                         name: "corrupted",
-                        value: "no",
-                        items: [
-                            {
-                            value: "no",
-                            text: "No"
-                            },
-                            {
-                            value: "yes",
-                            text: "Yes"
+                        fieldset: {
+                            legend: {
+                            text: "Has a file been corrupted?",
+                            size: "s",
+                            isPageHeading: false
                             }
-                        ]
-                    }) }}
-                    {{ select({
-                        label: {
-                        text: "Has a payment been affected?"
                         },
-                        id: "payment",
-                        name: "payment",
-                        value: "no",
+                        small: true,
                         items: [
+                            {
+                            value: "yes",
+                            text: "Yes",
+                            conditional: {
+                                html: corruptedHtml
+                            }
+                            },
                             {
                             value: "no",
                             text: "No"
-                            },
-                            {
-                            value: "yes",
-                            text: "Yes"
                             }
                         ]
+                        }) }}
+                    {{ radios({
+                    idPrefix: "payment",
+                    name: "payment",
+                    fieldset: {
+                        legend: {
+                        text: "Has a payment been affected?",
+                        size: "s",
+                        isPageHeading: false
+                        }
+                    },
+                    small: true,
+                    items: [
+                        {
+                        value: "yes",
+                        text: "Yes"
+                        },
+                        {
+                        value: "no",
+                        text: "No"
+                        }
+                    ]
                     }) }}
             
                 </div>
@@ -230,13 +246,18 @@
                 </span>
                 </summary>
                 <div class="nhsuk-details__text">
-                    {{ select({
-                        label: {
-                            text: "Urgency"
-                        },
-                        id: "urgency",
+                    {{ radios({
+                        idPrefix: "urgency",
                         name: "urgency",
-                        value: "highPriotiry",
+                        fieldset: {
+                            legend: {
+                            text: "Urgency",
+                            size: "s",
+                            isPageHeading: false
+                            }
+                        },
+                        small: true,
+                        classes: "columnRadios",
                         items: [
                             {
                             value: "High Priotiry",
@@ -246,15 +267,16 @@
                             value: "Medium Priority",
                             text: "Medium Priority"
                             },
-                             {
+                            {
                             value: "Low Priority",
                             text: "Low Priority"
                             }
                         ]
-                    }) }}
+                        }) }}
                     {{ input({
                         label: {
-                        text: "Site"
+                        text: "Site",
+                        size: "s"
                         },
                         id: "siteName",
                         name: "siteName",
@@ -262,7 +284,8 @@
                     }) }}
                     {{ input({
                         label: {
-                        text: "Directorate"
+                        text: "Directorate",
+                        size: "s"
                         },
                         id: "directorate",
                         name: "directorate",
@@ -273,10 +296,11 @@
                         id: "additionalDsc",
                         rows: "3",
                         label: {
-                          text: "Ticket Description"
+                            text: "Ticket Description",
+                            size: "s"
                         },
                         hint: {
-                          text: "Add a brief overview of the ticket information"
+                            text: "Add a brief overview of the ticket information"
                         }
                     }) }}
                 </div>

@@ -18,26 +18,17 @@
         </div>
 
         <form action="/{{folder}}/report-blank" method="post" id="reportForm">
-            <details class="nhsuk-details nhsuk-expander">
-                <summary class="nhsuk-details__summary">
-                <span class="nhsuk-details__summary-text">
-                    Requester details
-                </span>
-                </summary>
-                <div class="nhsuk-details__text">
-                <p>This service desk ticket is being requested by:</p>
-                {{ input({
-                    label: {
-                    text: "Requester name"
-                    },
-                    id: "requesterName",
-                    name: "requesterName",
-                    classes: "nhsuk-input--width-20",
-                    value: "Jane Doe"
-                    }) }}
-        
-                </div>
-            </details>
+            
+            <p>This service desk ticket is being requested by:</p>
+            {{ input({
+                label: {
+                text: "Requester name"
+                },
+                id: "requesterName",
+                name: "requesterName",
+                classes: "nhsuk-input--width-20",
+                value: "Jane Doe"
+            }) }}
 
             <details class="nhsuk-details nhsuk-expander" open>
                 <summary class="nhsuk-details__summary">
