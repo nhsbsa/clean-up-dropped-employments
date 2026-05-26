@@ -343,12 +343,12 @@
 
         <hr>
         
-        <h2>Need to submit a service desk request?</h2>
-        <p>If you need help from service desk to member record {{ data['memberNumber']}} complete the report and submit your request. </p>
+        <h2>Need to submit a service desk ticket?</h2>
+        <p>If you need help from service desk to member record {{ data['memberNumber']}} complete the ticket and submit your request. </p>
         
         <form action="/{{folder}}/results" method="post" novalidate>
             {{ button({
-            text: "Send request",
+            text: "Raise a ticket",
             value: "createReport",
             name: "action"
             }) }}
