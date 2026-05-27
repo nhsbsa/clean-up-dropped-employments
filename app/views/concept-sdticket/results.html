@@ -369,24 +369,20 @@
 <script src="/assets/javascript/back-to-top.js"></script>
 
 <script>
-    function toggleRows() {
-        const rows = document.querySelectorAll('.hidden-row');
-        const button = document.getElementById('toggleButton');
-        const buttonConts = document.getElementById('toggleButtonConts');
+    function toggleRows(groupClass, button) {
+        const rows = document.querySelectorAll(`.${groupClass}`);
+        let anyVisible = false;
 
-        let anyHidden = false;
-
-        // Toggle each row and check if any are becoming visible
         rows.forEach(row => {
             row.classList.toggle('hidden');
             if (!row.classList.contains('hidden')) {
-                anyHidden = true;
+                anyVisible = true;
             }
         });
 
-        // Update button text based on visibility
-        button.textContent = anyHidden ? 'Hide correct rows' : 'Show all rows';
-        buttonConts.textContent = anyHidden ? 'Hide correct rows' : 'Show all rows';
+        button.textContent = anyVisible
+            ? 'Hide correct rows'
+            : 'Show all rows';
     }
 </script>
 {% endblock %}
