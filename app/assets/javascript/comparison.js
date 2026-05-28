@@ -10,7 +10,7 @@ document.getElementById("compare-form").addEventListener("submit", function (e) 
         errorSummary.style.display = "block"; // show error summary
         formGroup.classList.add("nhsuk-form-group--error"); // highlight form group
     } else {
-        error.style.display = "none"; // hide error
+        //error.style.display = "none"; // hide error
         errorSummary.style.display = "none"; // hide error summary
         formGroup.classList.remove("nhsuk-form-group--error"); // remove error highlight
     }
