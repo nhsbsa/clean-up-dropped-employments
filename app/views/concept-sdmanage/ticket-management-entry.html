@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "Your service desk requests"%}
+{% set pageTitle = "Service desk ticket log"%}
 {% set showMenu ="true"%}
 {% set sdMenuBlank ="true"%}
 {% set ticketMenu ="true"%}
@@ -15,7 +15,7 @@
 
       <span class="nhsuk-caption-l">Ticket management</span>
       <h1 class="nhsuk-heading-l">{{pageTitle}} </h1>
-      <p class="nhsuk-body">All service desk requests which have been previously submitted are listed below:</p>
+      <p class="nhsuk-body">Browse service desk tickets users have submitted through the identify record issues tool. You can view each ticket for up to 1 month after it has been closed.  </p>
 
       <form method="get" class="nhsuk-u-margin-bottom-4">
 
@@ -23,6 +23,9 @@
           <label class="nhsuk-label" for="search">
             Search tickets
           </label>
+          <div class="nhsuk-hint" id="example-with-hint-text-hint">
+            For example XX-12345678 or 12345678
+          </div>
       
           <input
             class="nhsuk-input nhsuk-input--width-20"
