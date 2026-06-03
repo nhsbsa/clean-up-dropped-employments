@@ -17,74 +17,157 @@
       <h1 class="nhsuk-heading-l">{{pageTitle}} </h1>
       <p class="nhsuk-body">All service desk requests which have been previously submitted are listed below:</p>
 
-      {{ taskList({
-        idPrefix: "your-health",
-        items: [
-          {
-            title: {
-              text: "MN: 1234567 / TN: XX-12345678"
-            },
-            hint: {
-              text: "Fix required for a corruption in a member record"
-            },
-            href: "ticket-xx-12345678",
-            status: {
-              text: "Completed",
-              classes: "nhsuk-task-list__status--completed"
-            }
-          },
-          {
-            title: {
-              text: "MN: 24681357 / TN: XX-24681357"
-            },
-            hint: {
-              text: "Subject of the request submitted appears here"
-            },
-            href: "#",
-            status: {
-              tag: {
-                text: "Final review",
-                classes: "nhsuk-tag--white"
-              }
-            }
-          },
-          {
-            title: {
-              text: "MN: 13579246 / TN: XX-13579246"
-            },
-            hint: {
-              text: "Subject of the request submitted appears here"
-            },
-            href: "#",
-            status: {
-              tag: {
-                text: "First review",
-                classes: "nhsuk-tag--yellow"
-              }
-            }
-          },
-          {
-            title: {
-              text: "MN: 7654321 / TN: XX-7654321"
-            },
-            hint: {
-              text: "Subject of the request submitted appears here"
-            },
-            href: "#",
-            status: {
-              tag: {
-                text: "Awaiting review",
-                classes: "nhsuk-tag--blue"
-              }
-            }
-              
-          }
-        ]
-      }) }}
+      <form method="get" class="nhsuk-u-margin-bottom-4">
+
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label" for="search">
+            Search tickets
+          </label>
+      
+          <input
+            class="nhsuk-input nhsuk-input--width-20"
+            id="search"
+            name="search"
+            type="text"
+            value="{{ search }}"
+          >
+        </div>
+      
+        <button class="nhsuk-button" type="submit">
+          Search
+        </button>
+      
+        {% if search %}
+          <p class="nhsuk-u-margin-top-2">
+            <a href="/{{folder}}/ticket-management-entry" class="nhsuk-link">
+              Clear search
+            </a>
+          </p>
+        {% endif %}
+      
+      </form>
+
+      <p class="nhsuk-body">
+        {{ totalResults }} results found
+      </p>
+
+      {% if patients.length == 0 %}
+        <p class="nhsuk-body">
+          No patients found.
+        </p>
+      {% endif %}
+
+      <table class="nhsuk-table">
+
+        <thead class="nhsuk-table__head">
+          <tr class="nhsuk-table__row">
+            <th class="nhsuk-table__header">Ticket</th>
+            <th class="nhsuk-table__header">Member Number</th>
+            <th class="nhsuk-table__header">Status</th>
+          </tr>
+        </thead>
+      
+        <tbody class="nhsuk-table__body">
+      
+          {% for ticket in tickets %}
+          <tr class="nhsuk-table__row">
+            <td class="nhsuk-table__cell">
+              {% if ticket.id == "XX-12345678" %}
+                <a href="ticket-xx-12345678">{{ ticket.id }}</a><br/>
+                {{ ticket.subject }}
+              {% else %}
+                <a href="#">{{ticket.id }}</a><br/>
+                {{ ticket.subject }}
+              {% endif %}
+
+            </td>
+            <td class="nhsuk-table__cell">{{ ticket.name }}</td>
+            <td class="nhsuk-table__cell">
+              {% if ticket.status == "New" %}
+                <strong class="nhsuk-tag nhsuk-tag--blue">
+                  New
+                </strong>
+              {% elif ticket.status == "Open" %}
+                <strong class="nhsuk-tag nhsuk-tag--yellow">
+                  Open
+                </strong>
+              {% elif ticket.status == "Updated" %}
+                <strong class="nhsuk-tag nhsuk-tag--white">
+                  Updated
+                </strong>
+              {% elif ticket.status == "Resolved" %}
+                <strong class="nhsuk-tag nhsuk-tag--green">
+                  Resolved
+                </strong>
+              {% elif ticket.status == "Closed" %}
+                <strong class="nhsuk-task-list__status--completed">
+                  Closed
+                </strong>
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+      
+        </tbody>
+      
+      </table>
+
+      {% if totalPages > 1 %}
+
+      <nav class="nhsuk-pagination nhsuk-pagination--numbered" role="navigation" aria-label="Pagination">
+
+        {% if currentPage > 1 %}
+          <a href="?page={{ currentPage - 1 }}&search={{ search }}" class="nhsuk-pagination__previous" rel="prev">
+            <svg class="nhsuk-icon nhsuk-icon--arrow-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+              <path d="M10.7 6.3c.4.4.4 1 0 1.4L7.4 11H19a1 1 0 0 1 0 2H7.4l3.3 3.3c.4.4.4 1 0 1.4a1 1 0 0 1-1.4 0l-5-5A1 1 0 0 1 4 12c0-.3.1-.5.3-.7l5-5a1 1 0 0 1 1.4 0Z" />
+            </svg>
+            <span class="nhsuk-pagination__title">
+              Previous<span class="nhsuk-u-visually-hidden"> page</span>
+            </span>
+          </a>
+        {% endif %}
+
+        <ul>
+        {% for page in range(1, totalPages + 1) %}
+
+          {% if page == currentPage %}
+            <li class="nhsuk-pagination__item nhsuk-pagination__item--current">
+              <a class="nhsuk-pagination__link" href="#" aria-label="{{page}}" aria-current="page">
+                {{page}}
+              </a>
+            </li>
+          {% else %}
+          <li class="nhsuk-pagination__item">
+            <a class="nhsuk-pagination__link" href="?page={{ page }}&search={{ search }}" aria-label="{{ page }}">
+              {{ page }}
+            </a>
+          </li>
+          {% endif %}
+
+        {% endfor %}
+        </ul>
+
+        {% if currentPage < totalPages %}
+          <a href="?page={{ currentPage + 1 }}&search={{ search }}" class="nhsuk-pagination__next" rel="next">
+            <span class="nhsuk-pagination__title">
+              Next<span class="nhsuk-u-visually-hidden"> page</span>
+            </span>
+            <svg class="nhsuk-icon nhsuk-icon--arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+              <path d="m14.7 6.3 5 5c.2.2.3.4.3.7 0 .3-.1.5-.3.7l-5 5a1 1 0 0 1-1.4-1.4l3.3-3.3H5a1 1 0 0 1 0-2h11.6l-3.3-3.3a1 1 0 1 1 1.4-1.4Z" />
+            </svg>
+          </a>
+        {% endif %}
+
+      </nav>
+
+      {% endif %}
 
       
 
     </div>
   </div>
 </div>
+
+<!-- <script src="/assets/javascript/manage-tickets.js"></script> -->
+
 {% endblock %}
