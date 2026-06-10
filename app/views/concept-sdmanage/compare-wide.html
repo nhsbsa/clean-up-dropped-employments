@@ -22,9 +22,9 @@
                 <div class="nhsuk-grid-column-one-half compareCol">
                     <button id="toggleButtonSh" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button"
                         onclick="toggleRows('rows-sh', this)">Hide correct rows</button>
-                    <!-- <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="sh-panel-data" id="sh-toggle-data">
+                    <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="sh-panel-data" id="sh-toggle-data">
                         Customise data set
-                    </button> -->
+                    </button>
                     <div id="sh-panel-data" hidden>
                         <form id="sh-table-custom-form">
                             <div class="nhsuk-form-group">
@@ -101,8 +101,8 @@
                             <button class="nhsuk-button" type="submit">Apply</button>
                         </form>
                     </div>
-                    <h3 class="nhsuk-heading-s">Service history</h3>
-                    {{ serviceHistoryTable | safe }}
+                    <h3 class="nhsuk-heading-s">Service history [SH]</h3>
+                    {{ serviceHistoryTableV2 | safe }}
                     <script>
                         document.addEventListener('DOMContentLoaded', () => {
 
@@ -152,9 +152,9 @@
             {% set serviceGroupData %}
                 <!-- SERVICE GROUP -->
                 <div class="nhsuk-grid-column-one-half compareCol">
-                    <!-- <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="sg-panel-data" id="sg-toggle-data">
+                    <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="sg-panel-data" id="sg-toggle-data">
                         Customise data set
-                    </button> -->
+                    </button>
                     <div id="sg-panel-data" hidden>
                         <form id="sg-table-custom-form">
                             <div class="nhsuk-form-group">
@@ -167,14 +167,6 @@
             
                                 <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
                                 data-module="nhsuk-checkboxes">
-            
-                                <div class="nhsuk-checkboxes__item">
-                                    <input class="nhsuk-checkboxes__input" id="sgGrpID-checkbox" name="sgGrpID" type="checkbox"
-                                    value="columns" checked>
-                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="sgGrpID-checkbox">
-                                    Group ID
-                                    </label>
-                                </div>
             
                                 <div class="nhsuk-checkboxes__item">
                                     <input class="nhsuk-checkboxes__input" id="sgScheme-checkbox" name="sgScheme" type="checkbox"
@@ -223,8 +215,8 @@
                             <button class="nhsuk-button" type="submit">Apply</button>
                         </form>
                     </div>
-                    <h3 class="nhsuk-heading-s">Service groups</h3>
-                    {{ serviceGroupTable | safe }}
+                    <h3 class="nhsuk-heading-s">Service groups [SG]</h3>
+                    {{ serviceGroupTableV2 | safe }}
                     <script>
                         document.addEventListener('DOMContentLoaded', () => {
 
@@ -274,11 +266,9 @@
             {% set employmentHistoryData %}
                 <!-- EMPLOYMENT HISTORY -->
                 <div class="nhsuk-grid-column-one-half compareCol">
-                    <button id="toggleButtonEh" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button"
-                        onclick="toggleRows('rows-eh', this)">Hide correct rows</button>
-                    <!-- <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="eh-panel-data" id="eh-toggle-data">
+                    <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="eh-panel-data" id="eh-toggle-data">
                         Customise data set
-                    </button> -->
+                    </button>
                     <div id="eh-panel-data" hidden>
                         <form id="eh-table-custom-form">
                             <div class="nhsuk-form-group">
@@ -363,8 +353,8 @@
                             <button class="nhsuk-button" type="submit">Apply</button>
                         </form>
                     </div>
-                    <h3 class="nhsuk-heading-s">Employment</h3>
-                    {{ employmentHistoryTable | safe }}
+                    <h3 class="nhsuk-heading-s">Employment [ES]</h3>
+                    {{ employmentTableV2 | safe }}
                     <script>
                         document.addEventListener('DOMContentLoaded', () => {
                         const ehFormCustom = document.getElementById('eh-table-custom-form')
@@ -412,11 +402,9 @@
             {% set contsTppData %}
                 <!-- CONTS AND TPP -->
                 <div class="nhsuk-grid-column-one-half compareCol">
-                    <button id="toggleButtonConts" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button"
-                    onclick="toggleRows('rows-conts', this)">Hide correct rows</button>
-                    <!-- <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="ct-panel-data" id="ct-toggle-data">
+                    <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="ct-panel-data" id="ct-toggle-data">
                         Customise data set
-                    </button> -->
+                    </button>
                     <div id="ct-panel-data" hidden>
                         <form id="ct-table-custom-form">
                             <div class="nhsuk-form-group">
@@ -485,8 +473,8 @@
                             <button class="nhsuk-button" type="submit">Apply</button>
                         </form>
                     </div>
-                    <h3 class="nhsuk-heading-s">Conts and TPP (Pension contributions)</h3>
-                    {{ contsTppTable | safe }}
+                    <h3 class="nhsuk-heading-s">Conts &amp; TPP [CTPP]</h3>
+                    {{ contsTppTableV2 | safe }}
                     <script>
                         document.addEventListener('DOMContentLoaded', () => {
                             const ctFormCustom = document.getElementById('ct-table-custom-form')
@@ -534,12 +522,9 @@
             {% set hoursHistoryData %}
                 <!-- HOURS HISTORY -->
                 <div class="nhsuk-grid-column-one-half compareCol">
-                    <button id="toggleButton" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" data-module="nhsuk-button"
-                    onclick="toggleRows('rows-hh', this)">Hide correct rows
-                    </button>
-                    <!-- <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="hh-panel-data" id="hh-toggle-data">
+                    <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="hh-panel-data" id="hh-toggle-data">
                         Customise data set
-                    </button> -->
+                    </button>
                     <div id="hh-panel-data" hidden>
                         <form id="hh-table-custom-form">
                             <div class="nhsuk-form-group">
@@ -583,8 +568,8 @@
                             <button class="nhsuk-button" type="submit">Apply</button>
                         </form>
                     </div>
-                    <h3 class="nhsuk-heading-s">Hours history details</h3>
-                    {{ hoursHistoryTable | safe }}
+                    <h3 class="nhsuk-heading-s">Hours history details [HH]</h3>
+                    {{ hoursHistoryTableV2 | safe }}
                     <script>
                         document.addEventListener('DOMContentLoaded', () => {
                         const hhFormCustom = document.getElementById('hh-table-custom-form')
@@ -632,9 +617,11 @@
             {% set linkedEmploymentData %}
                 <!-- LINKED EMPLOYMENTS -->
                 <div class="nhsuk-grid-column-one-half compareCol">
-                    <!-- <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="le-panel-data" id="le-toggle-data">
+                    <button id="toggleButtonLE" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small"
+                        data-module="nhsuk-button" onclick="toggleRows('rows-le', this)">Hide correct rows</button>
+                    <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="le-panel-data" id="le-toggle-data">
                         Customise data set
-                    </button> -->
+                    </button>
                     <div id="le-panel-data" hidden>
                         <form id="le-table-custom-form">
                             <div class="nhsuk-form-group">
@@ -678,8 +665,8 @@
                             <button class="nhsuk-button" type="submit">Apply</button>
                         </form>
                     </div>
-                    <h3 class="nhsuk-heading-s">Linked employments</h3>
-                    {{ linkedEmploymentTable | safe }}
+                    <h3 class="nhsuk-heading-s">Linked employments [LE]</h3>
+                    {{ linkedEmploymentTableV2 | safe }}
                     <script>
                         document.addEventListener('DOMContentLoaded', () => {
                         const leFormCustom = document.getElementById('le-table-custom-form')
@@ -729,8 +716,8 @@
                 {{ serviceHistoryData | safe }}
                 {{ employmentHistoryData | safe }}
             {% elif data['serviceHistory'] | length > 0  and  data['serviceGroup'] | length > 0 %}
-                {{ serviceGroupData | safe }}
                 {{ serviceHistoryData | safe }}
+                {{ serviceGroupData | safe }}
             {% elif data['serviceHistory'] | length > 0  and  data['contsTpp'] | length > 0 %}
                 {{ serviceHistoryData | safe }}
                 {{ contsTppData | safe }}
