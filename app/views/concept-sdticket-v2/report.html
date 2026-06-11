@@ -200,7 +200,32 @@
                     text: "No"
                     }
                 ]
+            }) }}
+            {% set paymentHtml %}
+                {{ radios({
+                    idPrefix: "paymentToday",
+                    name: "paymentToday",
+                    classes: "nhsuk-radios--inline",
+                    fieldset: {
+                        legend: {
+                        text: "Will this affect a payment today?",
+                        size: "s",
+                        isPageHeading: false
+                        }
+                    },
+                    small: true,
+                    items: [
+                        {
+                        value: "yes",
+                        text: "Yes"
+                        },
+                        {
+                        value: "no",
+                        text: "No"
+                        }
+                    ]
                 }) }}
+            {% endset %}
             {{ radios({
             idPrefix: "payment",
             name: "payment",
@@ -215,7 +240,10 @@
             items: [
                 {
                 value: "yes",
-                text: "Yes"
+                text: "Yes",
+                conditional: {
+                    html: paymentHtml
+                }
                 },
                 {
                 value: "no",

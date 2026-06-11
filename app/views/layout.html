@@ -2357,7 +2357,7 @@ rows: [
         text: "Release 1 (MVP)"
     },
     value: {
-        text: "Initial launch. Core employment, service and pensions checks."
+        text: "Initial launch. Core employment, service and pensions checks"
     },
     actions: {
         items: [
@@ -2414,7 +2414,7 @@ rows: [
         text: "Release 1.3"
     },
     value: {
-        text: "Employment status validations, end reason code validations, dropped employment validations, scheme code validations, cross-data set validation enhancements"
+        text: "New validations added: employment status; end reason code; dropped employment; scheme code; cross-data set enhancements"
     },
     actions: {
         items: [
@@ -2458,7 +2458,7 @@ rows: [
             text: "Release 1.3"
         },
         value: {
-            text: "Employment status validations, end reason code validations, dropped employment validations, scheme code validations, cross-data set validation enhancements"
+            text: "New validations added: employment status; end reason code; dropped employment; scheme code; cross-data set enhancements"
         },
         actions: {
             items: [
@@ -2503,7 +2503,7 @@ rows: [
                 text: "Release 1 (MVP)"
             },
             value: {
-                text: "Initial launch. Core employment, service and pensions checks."
+                text: "Initial launch. Core employment, service and pensions checks"
             },
             actions: {
                 items: [
@@ -3283,7 +3283,7 @@ rows: [
       </div>
     {% endif %}
 
-    <div class="{{ 'nhsuk-width-container-fluid' if wideLayout else 'nhsuk-width-container' }}">
+    <div class="{% if wideLayout %}nhsuk-width-container-fluid{% elif mediumLayout %}nhsuk-width-container-medium{% else %}nhsuk-width-container{% endif %}">
       <main class="nhsuk-main-wrapper" id="maincontent top" role="main">
           {% block content %}
           {% endblock %}
