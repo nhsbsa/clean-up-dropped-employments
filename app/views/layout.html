@@ -2288,6 +2288,7 @@
 {% from "summary-list/macro.njk" import summaryList %}
 {% from "tag/macro.njk" import tag %}
 {% from "tables/macro.njk" import table %}
+{% from "details/macro.njk" import details %}
 
 {% set overviewIntro %}
 
@@ -2337,7 +2338,7 @@
     <li class="nhsuk-grid-column-one-quarter nhsuk-card-group__item">
       {% call card({
         clickable: false,
-        heading: "4",
+        heading: "5",
         headingSize: "l",
         headingClasses: "nhsuk-u-margin-bottom-1",
         headingVisuallyHiddenText: "Messages"
@@ -2394,7 +2395,26 @@ rows: [
         text: "Release 1.2"
     },
     value: {
-        text: "False positive fixes, null handling and new corruption logic."
+        text: "False positive fixes, null handling and new corruption logic"
+    },
+    actions: {
+        items: [
+        {
+            html: tag({
+            text: "Active",
+            classes: "nhsuk-tag--green"
+            }),
+            visuallyHiddenText: "Release 1.2"
+        }
+        ]
+    }
+    },
+    {
+    key: {
+        text: "Release 1.3"
+    },
+    value: {
+        text: "Employment Status validations, End Reason Code validations, Dropped Employment validations, Scheme Code validations, Cross-data set validation enhancements"
     },
     actions: {
         items: [
@@ -2430,6 +2450,116 @@ rows: [
 ]
 }) }}
 {% endset %}
+{% set overviewSummaryNew %}
+{{ summaryList({
+    rows: [
+        {
+        key: {
+            text: "Release 1.3"
+        },
+        value: {
+            text: "Employment Status validations, End Reason Code validations, Dropped Employment validations, Scheme Code validations, Cross-data set validation enhancements"
+        },
+        actions: {
+            items: [
+            {
+                html: tag({
+                text: "Active",
+                classes: "nhsuk-tag--green"
+                }),
+                visuallyHiddenText: "Release 1.2"
+            }
+            ]
+        }
+        },
+        {
+        key: {
+            text: "Future Releases"
+        },
+        value: {
+            text: "To be decided based on emerging data patterns"
+        },
+        actions: {
+            items: [
+            {
+                html: tag({
+                text: "Pending",
+                classes: "nhsuk-tag--red"
+                }),
+                visuallyHiddenText: "Future Releases"
+            }
+            ]
+        }
+        }
+    ]
+    }) }}
+    {% call details({
+        summaryText: "View past release notes"
+    }) %}
+    {{ summaryList({
+        rows: [
+            {
+            key: {
+                text: "Release 1 (MVP)"
+            },
+            value: {
+                text: "Initial launch. Core employment, service and pensions checks."
+            },
+            actions: {
+                items: [
+                {
+                    html: tag({
+                    text: "Active",
+                    classes: "nhsuk-tag--green"
+                    }),
+                    visuallyHiddenText: "Release 1"
+                }
+                ]
+            }
+            },
+            {
+            key: {
+                text: "Release 1.1"
+            },
+            value: {
+                text: "Hours history, remedy ID's and service group validation added"
+            },
+            actions: {
+                items: [
+                {
+                    html: tag({
+                    text: "Active",
+                    classes: "nhsuk-tag--green"
+                    }),
+                    visuallyHiddenText: "Release 1.1"
+                }
+                ]
+            }
+            },
+            {
+            key: {
+                text: "Release 1.2"
+            },
+            value: {
+                text: "False positive fixes, null handling and new corruption logic"
+            },
+            actions: {
+                items: [
+                {
+                    html: tag({
+                    text: "Active",
+                    classes: "nhsuk-tag--green"
+                    }),
+                    visuallyHiddenText: "Release 1.2"
+                }
+                ]
+            }
+            }
+        ]
+        }) }}
+    {% endcall %}
+    <hr>
+{% endset %}
 {% set overviewCanDo %}
 <h2 class="nhsuk-heading-m">What the tool can do</h2>
 <p class="nhsuk-body">We've so far introduced fixes for:</p>
@@ -2448,7 +2578,7 @@ rows: [
     Service history
     </span>
     <strong class="nhsuk-tag nhsuk-tag--green">
-        6 Checks
+        7 Checks
     </strong>
 </summary>
 <div class="nhsuk-details__text">
@@ -2527,6 +2657,17 @@ rows: [
             </svg>",
             classes:"activeCorruption"
         }
+        ],
+        [
+        {
+            text: "End reason codes aligned across both service history, service groups and linked employments"
+        },
+        {
+            html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
+            <path d=\"M11.4 18.8a2 2 0 0 1-2.7.1h-.1L4 14.1a1.5 1.5 0 0 1 2.1-2L10 16l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z\" />
+            </svg>",
+            classes:"activeCorruption"
+        }
         ]
     ]
     }) }}
@@ -2539,7 +2680,7 @@ rows: [
     Service groups
     </span>
     <strong class="nhsuk-tag nhsuk-tag--green">
-        6 Checks
+        9 Checks
     </strong>
 </summary>
 <div class="nhsuk-details__text">
@@ -2610,7 +2751,40 @@ rows: [
         ],
         [
         {
-            text: "Checks employment status against defined rules (basic status + cross-dataset status alignment)"
+            text: "Checks employment status against defined rules (basic status and cross-dataset status alignment)"
+        },
+        {
+            html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
+            <path d=\"M11.4 18.8a2 2 0 0 1-2.7.1h-.1L4 14.1a1.5 1.5 0 0 1 2.1-2L10 16l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z\" />
+            </svg>",
+            classes:"activeCorruption"
+        }
+        ],
+        [
+        {
+            text: "End reason codes aligned across both service history, service groups and linked employments"
+        },
+        {
+            html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
+            <path d=\"M11.4 18.8a2 2 0 0 1-2.7.1h-.1L4 14.1a1.5 1.5 0 0 1 2.1-2L10 16l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z\" />
+            </svg>",
+            classes:"activeCorruption"
+        }
+        ],
+        [
+        {
+            text: "Employment status validated against defined rules (basic status and service group)"
+        },
+        {
+            html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
+            <path d=\"M11.4 18.8a2 2 0 0 1-2.7.1h-.1L4 14.1a1.5 1.5 0 0 1 2.1-2L10 16l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z\" />
+            </svg>",
+            classes:"activeCorruption"
+        }
+        ],
+        [
+        {
+            text: "Scheme code alignment between basic details and service groups"
         },
         {
             html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
@@ -2630,7 +2804,7 @@ rows: [
     Employment
     </span>
     <strong class="nhsuk-tag nhsuk-tag--green">
-        4 Checks
+        5 Checks
     </strong>
 </summary>
 <div class="nhsuk-details__text">
@@ -2687,6 +2861,17 @@ rows: [
             </svg>",
             classes:"activeCorruption"
         }
+        ],
+        [
+        {
+            text: "Flags if there is any dropped employment"
+        },
+        {
+            html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
+            <path d=\"M11.4 18.8a2 2 0 0 1-2.7.1h-.1L4 14.1a1.5 1.5 0 0 1 2.1-2L10 16l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z\" />
+            </svg>",
+            classes:"activeCorruption"
+        }
         ]
     ]
     }) }}
@@ -2699,7 +2884,7 @@ rows: [
     Conts &amp; TPP
     </span>
     <strong class="nhsuk-tag nhsuk-tag--green">
-        6 Checks
+        8 Checks
     </strong>
 </summary>
 <div class="nhsuk-details__text">
@@ -2778,6 +2963,28 @@ rows: [
             </svg>",
             classes:"activeCorruption"
         }
+        ],
+        [
+        {
+            text: "Flags missing rows across all financial years for each employment (WT and PT)"
+        },
+        {
+            html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
+            <path d=\"M11.4 18.8a2 2 0 0 1-2.7.1h-.1L4 14.1a1.5 1.5 0 0 1 2.1-2L10 16l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z\" />
+            </svg>",
+            classes:"activeCorruption"
+        }
+        ],
+        [
+        {
+            text: "Checks rows exist matching both the start date and end date of the employment ID"
+        },
+        {
+            html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
+            <path d=\"M11.4 18.8a2 2 0 0 1-2.7.1h-.1L4 14.1a1.5 1.5 0 0 1 2.1-2L10 16l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z\" />
+            </svg>",
+            classes:"activeCorruption"
+        }
         ]
     ]
     }) }}
@@ -2790,7 +2997,7 @@ rows: [
     Hours history details
     </span>
     <strong class="nhsuk-tag nhsuk-tag--green">
-        6 Checks
+        8 Checks
     </strong>
 </summary>
 <div class="nhsuk-details__text">
@@ -2862,6 +3069,28 @@ rows: [
         [
         {
             text: "Checks for rows that match the start date of part-time employment and the end date of the employment ID"
+        },
+        {
+            html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
+            <path d=\"M11.4 18.8a2 2 0 0 1-2.7.1h-.1L4 14.1a1.5 1.5 0 0 1 2.1-2L10 16l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z\" />
+            </svg>",
+            classes:"activeCorruption"
+        }
+        ],
+        [
+        {
+            text: "Flags missing rows across all financial years for part-time employments only"
+        },
+        {
+            html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
+            <path d=\"M11.4 18.8a2 2 0 0 1-2.7.1h-.1L4 14.1a1.5 1.5 0 0 1 2.1-2L10 16l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z\" />
+            </svg>",
+            classes:"activeCorruption"
+        }
+        ],
+        [
+        {
+            text: "Checks rows exist matching both the start date of part-time employment and the end date of the employment ID"
         },
         {
             html: " <svg class=\"nhsuk-icon nhsuk-icon--tick\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" focusable=\"false\" aria-hidden=\"true\">
