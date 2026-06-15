@@ -80,6 +80,11 @@ document.addEventListener('DOMContentLoaded', function () {
         let errors = [];
         let firstErrorField = null;
 
+
+        // =========================
+        // DESCRIPTION VALIDATION
+        // =========================
+
         const rows = table.querySelectorAll("tbody tr");
 
         rows.forEach((row, rowIndex) => {
@@ -107,38 +112,160 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
 
+        // =========================
+        // REASON TEXTAREA VALIDATION
+        // =========================
+
+        const reasonGroup = document.getElementById("issueReason");
+        const reasonTextarea = document.getElementById("issue-reason");
+
+        if (!reasonTextarea.value.trim()) {
+
+            const message =
+                '<span class="nhsuk-u-visually-hidden">Error:</span>Enter the reason why you require an update for this record';
+
+            // add NHS error styling
+            reasonGroup.classList.add("nhsuk-form-group--error");
+            reasonTextarea.classList.add("nhsuk-textarea--error");
+
+            // create error message if it doesn't exist
+            let error = document.getElementById("issue-reason-error");
+
+            if (!error) {
+                error = document.createElement("span");
+                error.id = "issue-reason-error";
+                error.className = "nhsuk-error-message";
+                error.innerHTML = message;
+
+                reasonTextarea.parentNode.insertBefore(error, reasonTextarea);
+            }
+
+            // ensure correct message text
+            error.innerHTML = message;
+
+            // accessibility
+            reasonTextarea.setAttribute(
+                "aria-describedby",
+                "issue-reason-error"
+            );
+
+            // add to summary
+            errors.push(
+                `<li><a href="#issue-reason">Enter the reason why you require an update for this record</a></li>`
+            );
+
+            // focus first invalid field
+            if (!firstErrorField) {
+                firstErrorField = reasonTextarea;
+            }
+        }
+
+        const memberError = validateRequiredField({
+            inputId: "membershipNumber",
+            groupId: "membershipNumberGroup",
+            errorId: "membershipNumber-error",
+            message: "Enter the member number",
+            errors
+        });
+
+        if (!firstErrorField && memberError) {
+            firstErrorField = memberError;
+        }
+
+        const initialError = validateRequiredField({
+            inputId: "memberFirstInitial",
+            groupId: "memberFirstInitialGroup",
+            errorId: "memberFirstInitial-error",
+            message: "Enter the members first initial",
+            errors
+        });
+
+        if (!firstErrorField && initialError) {
+            firstErrorField = initialError;
+        }
+
+        const surnameError = validateRequiredField({
+            inputId: "memberSurname",
+            groupId: "memberSurnameGroup",
+            errorId: "memberSurname-error",
+            message: "Enter the members surname",
+            errors
+        });
+
+        if (!firstErrorField && surnameError) {
+            firstErrorField = surnameError;
+        }
+
+        const recordTypeChangeError = validateRadioGroup({
+            name: "recordTypeChange",
+            groupId: "recordTypeChangeGroup",
+            errorId: "recordTypeChange-error",
+            message: "Select a type of change",
+            errors
+        });
+        
+        if (!firstErrorField && recordTypeChangeError) {
+            firstErrorField = recordTypeChangeError;
+        }
+
+        const corruptedError = validateRadioGroup({
+            name: "corrupted",
+            groupId: "corruptedGroup",
+            errorId: "corrupted-error",
+            message: "Select yes if your file has been corrupted",
+            errors
+        });
+        
+        if (!firstErrorField && corruptedError) {
+            firstErrorField = corruptedError;
+        }
+
+        const paymentError = validateRadioGroup({
+            name: "payment",
+            groupId: "paymentGroup",
+            errorId: "payment-error",
+            message: "Select yes if payment will be affected",
+            errors
+        });
+        
+        if (!firstErrorField && paymentError) {
+            firstErrorField = paymentError;
+        }
+
+        const siteError = validateRequiredField({
+            inputId: "siteName",
+            groupId: "siteNameGroup",
+            errorId: "siteName-error",
+            message: "Enter the site you are based at",
+            errors
+        });
+
+        if (!firstErrorField && siteError) {
+            firstErrorField = siteError;
+        }
+        
+        const directorateError = validateRequiredField({
+            inputId: "directorate",
+            groupId: "directorateGroup",
+            errorId: "directorate-error",
+            message: "Enter your directorate",
+            errors
+        });
+
+        if (!firstErrorField && directorateError) {
+            firstErrorField = directorateError;
+        }
+
         if (errors.length > 0) {
             errorList.innerHTML = errors.join("");
             errorSummary.style.display = "block";
 
             errorSummary.scrollIntoView({ behavior: "smooth" });
 
-            if (firstErrorField) {
-                setTimeout(() => {
-                    firstErrorField.focus();
-                    firstErrorField.scrollIntoView({ behavior: "smooth", block: "center" });
-                }, 200);
-            }
-
             return;
         }
 
         form.submit();
-    });
-
-    // =========================
-    // LIVE VALIDATION (on input)
-    // =========================
-    table.addEventListener("input", function (e) {
-        const input = e.target;
-
-        if (!input.matches("input")) return;
-
-        const cell = input.closest("td");
-
-        if (input.value.trim()) {
-            removeError(input, cell);
-        }
     });
 
     // =========================
@@ -188,15 +315,135 @@ document.addEventListener('DOMContentLoaded', function () {
         return errorId;
     }
 
+    // Helper for the text field validation
+    function validateRequiredField({
+        inputId,
+        groupId,
+        errorId,
+        message,
+        errors
+    }) {
+    
+        const input = document.getElementById(inputId);
+        const group = document.getElementById(groupId);
+    
+        if (!input.value.trim()) {
+    
+            const errorMessage =
+                `<span class="nhsuk-u-visually-hidden">Error:</span> ${message}`;
+    
+            group.classList.add("nhsuk-form-group--error");
+            input.classList.add("nhsuk-input--error");
+    
+            let error = document.getElementById(errorId);
+    
+            if (!error) {
+                error = document.createElement("span");
+                error.id = errorId;
+                error.className = "nhsuk-error-message";
+    
+                input.parentNode.insertBefore(error, input);
+            }
+    
+            error.innerHTML = errorMessage;
+    
+            input.setAttribute("aria-describedby", errorId);
+    
+            errors.push(
+                `<li><a href="#${inputId}">${message}</a></li>`
+            );
+    
+            return input;
+        }
+    }
+
+    // Helper for the radio button validation
+    function validateRadioGroup({
+        name,
+        groupId,
+        errorId,
+        message,
+        errors
+    }) {
+    
+        const radios = document.querySelectorAll(
+            `input[name="${name}"]`
+        );
+    
+        const group = document.getElementById(groupId);
+    
+        const checked = [...radios].some(radio => radio.checked);
+    
+        if (!checked) {
+    
+            const errorMessage =
+                `<span class="nhsuk-u-visually-hidden">Error:</span> ${message}`;
+    
+            group.classList.add("nhsuk-form-group--error");
+    
+            let error = document.getElementById(errorId);
+    
+            if (!error) {
+    
+                error = document.createElement("span");
+    
+                error.id = errorId;
+                error.className = "nhsuk-error-message";
+                error.innerHTML = errorMessage;
+
+                const fieldset = group.querySelector(".nhsuk-fieldset");
+                const radios = fieldset.querySelector(".nhsuk-radios");
+            
+                fieldset.insertBefore(error, radios);
+            }
+    
+            errors.push(
+                `<li><a href="#${radios[0].id}">${message}</a></li>`
+            );
+    
+            radios[0].setAttribute(
+                "aria-describedby",
+                errorId
+            );
+    
+            return radios[0];
+        }
+    
+        return null;
+    }
+
     function clearErrors() {
         errorList.innerHTML = "";
         errorSummary.style.display = "none";
 
-        document.querySelectorAll(".nhsuk-form-group--error")
-            .forEach(el => el.classList.remove("nhsuk-form-group--error"));
+        document.querySelectorAll(".nhsuk-form-group--error, .nhsuk-textarea--error, .nhsuk-input--error")
+            .forEach(el => el.classList.remove("nhsuk-form-group--error", "nhsuk-textarea--error", "nhsuk-input--error"));
 
-        document.querySelectorAll(".nhsuk-error-message")
+        // remove table-generated errors only
+        document.querySelectorAll("td .nhsuk-error-message")
             .forEach(el => el.remove());
+
+        [
+            "membershipNumber-error",
+            "memberFirstInitial-error",
+            "memberSurname-error",
+            "recordTypeChange-error",
+            "siteName-error",
+            "directorate-error"
+        ].forEach(id => {
+            const el = document.getElementById(id);
+        
+            if (el) {
+                el.remove();
+            }
+        });
+
+        // remove textarea error message text
+        const reasonError = document.getElementById("issue-reason-error");
+
+        if (reasonError) {
+        reasonError.innerHTML = "";
+        }
     }
 
 });

@@ -77,7 +77,7 @@
                     {% if (data['memberFirstInitial']) %}
                     {{ data['memberFirstInitial']}}
                     {% else %}
-                    Initial not entered
+                    Initial not entered 
                     {% endif %}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
@@ -146,6 +146,21 @@
                     </a>
                 </dd>
             </div>
+            {% if (data['payment'] == "yes" ) %}
+                <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                        Will this affect a payment today?
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                        {{ data['paymentToday']}}
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                        <a href="#">
+                            Change<span class="nhsuk-u-visually-hidden"> name</span>
+                        </a>
+                    </dd>
+                </div>
+            {% endif %}
         </dl>
         
         <h3>Description</h3>
@@ -182,7 +197,6 @@
                     <th class="nhsuk-table__cell nhsuk-u-font-size-14 reportCell" scope="col">Sets</th>
                     <th class="nhsuk-table__cell nhsuk-u-font-size-14 reportCell" scope="col">Fields</th>
                     <th class="nhsuk-table__cell nhsuk-u-font-size-14" scope="col">Amendments to be made</th>
-                    <th class="nhsuk-table__cell nhsuk-u-font-size-14" scope="col">Reason</th>
                 </tr>
                 </thead>
                 <tbody class="nhsuk-table__body">
@@ -190,14 +204,12 @@
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['sets'][0]}}</td>
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['fields'][0]}}</td>
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['amendments'][0]}}</td>
-                    <td class="nhsuk-table__cell nhsuk-u-font-size-14 nhsuk-u-text-break-word">{{ data['reason'][0]}}</td>
                 </tr>
                 {% if data['sets']|length > 1 and data['sets'][1] %}
                 <tr class="nhsuk-table__row">
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['sets'][1]}}</td>
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['fields'][1]}}</td>
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['amendments'][1]}}</td>
-                    <td class="nhsuk-table__cell nhsuk-u-font-size-14 nhsuk-u-text-break-word">{{ data['reason'][1]}}</td>
                 </tr>
                 {% endif %}
                 {% if data['sets']|length > 1 and data['sets'][2] %}
@@ -205,7 +217,6 @@
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['sets'][2]}}</td>
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['fields'][2]}}</td>
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['amendments'][2]}}</td>
-                    <td class="nhsuk-table__cell nhsuk-u-font-size-14 nhsuk-u-text-break-word">{{ data['reason'][2]}}</td>
                 </tr>
                 {% endif %}
                 {% if data['sets']|length > 1 and data['sets'][3] %}
@@ -213,7 +224,6 @@
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['sets'][3]}}</td>
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['fields'][3]}}</td>
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['amendments'][3]}}</td>
-                    <td class="nhsuk-table__cell nhsuk-u-font-size-14 nhsuk-u-text-break-word">{{ data['reason'][3]}}</td>
                 </tr>
                 {% endif %}
 
@@ -227,19 +237,6 @@
         <h3>Basic information</h3>
 
         <dl class="nhsuk-summary-list">
-            <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                    Urgency
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                    {{ data['urgency']}}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                    <a href="#">
-                        Change<span class="nhsuk-u-visually-hidden"> urgency</span>
-                    </a>
-                </dd>
-            </div>
             <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
                     Site
