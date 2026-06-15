@@ -188,18 +188,6 @@ document.addEventListener('DOMContentLoaded', function () {
         return errorId;
     }
 
-    function removeError(input, cell) {
-        if (!cell) return;
-
-        const error = cell.querySelector(".nhsuk-error-message");
-
-        if (error) error.remove();
-
-        cell.classList.remove("nhsuk-form-group--error");
-
-        input.removeAttribute("aria-describedby");
-    }
-
     function clearErrors() {
         errorList.innerHTML = "";
         errorSummary.style.display = "none";
