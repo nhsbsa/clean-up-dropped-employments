@@ -32,6 +32,25 @@
 
             <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
             <h2 class="nhsuk-heading-m">Incident form</h2>
+
+            {{ errorSummary({
+                titleText: "There is a problem",
+                errorList: [
+                    {
+                    html: "
+                    Select the subject of your ticket<br/>
+                    Enter your member number<br/>
+                    Enter your first initial<br/>
+                    Enter your surname<br/>
+                    Select the type of record change<br/>
+                    Select if the file has been corrupted<br/>
+                    Select if payment has been affected<br/>
+                    ",
+                    href: "#issueReason"
+                    }
+                ]
+            }) }}
+            
             {{ input({
                 id: "subject",
                 name: "subject",
@@ -302,22 +321,38 @@
 
             <button type="button" id="addRowButton" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small">Add another row</button>
             
-            <div class="nhsuk-form-group">
-                <h3 class="nhsuk-label-wrapper">
-                    <label class="nhsuk-label nhsuk-label--s" for="issue-reason">
+            <div class="nhsuk-form-group nhsuk-form-group--error" id="issueReason">
+                <label class="nhsuk-label nhsuk-label--s" for="issue-reason">
                     Reason
-                    </label>
-                </h3>
-                <div class="nhsuk-hint" id="issue-reason-hint">
-                    Must include details of what needs to be updated on the members record and why
+                </label>
+                <div class="nhsuk-hint" id="example-right-size-hint">
+                    Must include details of what needs to be updated on the members record, why you think it is corrupt and why you cannot fix this record
                 </div>
-                <textarea class="nhsuk-textarea nhsuk-u-font-size-14" id="issue-reason" name="issue-reason" rows="5" aria-describedby="issue-reason-hint"></textarea>
+                <span class="nhsuk-error-message" id="issue-reason-error">
+                    <span class="nhsuk-u-visually-hidden">Error:</span> Enter the reason why you require an update for this record
+                </span>
+                <textarea class="nhsuk-textarea nhsuk-textarea--error" id="issue-reason" name="issue-reason" rows="3" aria-describedby="issue-reason-error"></textarea>
             </div>
 
 
             <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
 
             <h2 class="nhsuk-heading-m">Basic information</h2>
+
+            {{ errorSummary({
+                titleText: "There is a problem",
+                errorList: [
+                    {
+                    html: "
+                    Enter the site you are based at<br/>
+                    Enter your directorate<br/>
+                    ",
+                    href: "#issueReason"
+                    }
+                ]
+            }) }}
+            
+            
             {{ input({
                 label: {
                 text: "Site",
