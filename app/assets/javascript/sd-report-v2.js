@@ -43,10 +43,9 @@ document.addEventListener('DOMContentLoaded', function () {
         </td>
     
         <td class="nhsuk-table__cell">
-            <input class="nhsuk-input nhsuk-u-font-size-14"
+            <textarea rows="1" class="nhsuk-textarea nhsuk-u-font-size-14"
                     id="amendments-${rowCount}"
-                    name="amendments[]"
-                    type="text">
+                    name="amendments[]"></textarea>
         </td>
     
         <td class="nhsuk-table__cell  nhsuk-u-font-size-14">
@@ -276,7 +275,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return [
             row.querySelector('input[name="sets[]"]'),
             row.querySelector('input[name="fields[]"]'),
-            row.querySelector('input[name="amendments[]"]'),
+            row.querySelector('textarea[name="amendments[]"]'),
         ];
     }
 
