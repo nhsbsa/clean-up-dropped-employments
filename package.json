@@ -10,6 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "@nhsbsa/cookie-consent-component": "^0.0.6",
+    "accessible-autocomplete": "^3.0.1",
     "nhsuk-frontend": "^10.5.1",
     "nhsuk-prototype-kit": "^8.3.0"
   },

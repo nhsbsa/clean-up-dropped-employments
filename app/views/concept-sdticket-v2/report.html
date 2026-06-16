@@ -337,29 +337,49 @@
             <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
             <div class="nhsuk-u-reading-width">
                 <h2 class="nhsuk-heading-m">Basic information</h2>
-                
-                <div class="nhsuk-form-group" id="siteNameGroup">
-                    {{ input({
-                        label: {
-                        text: "Site",
-                        size: "s"
-                        },
-                        id: "siteName",
-                        name: "siteName",
-                        classes: "nhsuk-input--width-20"
-                    }) }}
+
+                <div class="nhsuk-form-group" id="siteAutoGroup">
+                    <label class="nhsuk-label  nhsuk-label--s" for="siteAuto">
+                        Site
+                    </label>
+                    
+                    <select class="nhsuk-select js-autocomplete nhsuk-input--width-20" id="siteAuto" name="siteAuto">
+                        <option value="" selected></option>
+                        <option>Bickersatffe house- Blackpool</option>
+                        <option>Bridgehouse - Newcastle</option>
+                        <option>Cody Park (Data Centre)</option>
+                        <option>Contractor Site</option>
+                        <option>Eastbourne</option>
+                        <option>External</option>
+                        <option>Greenfinch way - Newcastle</option>
+                        <option>NHS BSA</option>
+                        <option>Parklands - Middlebrooke</option>
+                        <option>Spring Park (Data Centre)</option>
+                        <option>Stella house - Newcastle</option>
+                        <option>Wakefield house - Wakefield</option>
+                        <option>Working from home</option>
+                    </select>
                 </div>
                 <div class="nhsuk-form-group" id="directorateGroup">
-                {{ input({
-                    label: {
-                    text: "Directorate",
-                    size: "s"
-                    },
-                    id: "directorate",
-                    name: "directorate",
-                    classes: "nhsuk-input--width-20"
-                }) }}
+                    <label class="nhsuk-label  nhsuk-label--s" for="directorate">
+                        Directorate
+                    </label>
+                    
+                    <select class="nhsuk-select js-autocomplete nhsuk-input--width-20" id="directorate" name="directorate">
+                        <option value="" selected></option>
+                        <option>Citizen Services</option>
+                        <option>Chief Executives Office</option>
+                        <option>Data Digital and Technology</option>
+                        <option>Finance Commercial and Estates</option>
+                        <option>Leadership Team</option>
+                        <option>NHS Workforce Services</option>
+                        <option>People and Corporate Services</option>
+                        <option>Primary Care Services</option>
+                        <option>Portfolio Management</option>
+                        <option>Strategy Performance Business Develop and Growth</option>
+                    </select>
                 </div>
+
                 {{ textarea({
                     name: "additionalDsc",
                     id: "additionalDsc",
@@ -383,5 +403,6 @@
 </div>
 
 <script src="/assets/javascript/sd-report-v2.js"></script>
+<script src="/assets/javascript/autocomplete.js"></script>
 
 {% endblock %}

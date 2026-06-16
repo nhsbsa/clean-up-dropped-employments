@@ -159,6 +159,10 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
+        // =========================
+        // STANDARD FORM FIELDS VALIDATION
+        // =========================
+
         const memberError = validateRequiredField({
             inputId: "membershipNumber",
             groupId: "membershipNumberGroup",
@@ -231,13 +235,17 @@ document.addEventListener('DOMContentLoaded', function () {
             firstErrorField = paymentError;
         }
 
-        const siteError = validateRequiredField({
-            inputId: "siteName",
-            groupId: "siteNameGroup",
-            errorId: "siteName-error",
+        const siteAutoError = validateRequiredField({
+            inputId: "siteAuto",
+            groupId: "siteAutoGroup",
+            errorId: "siteAuto-error",
             message: "Enter the site you are based at",
             errors
         });
+
+        if (!firstErrorField && siteAutoError) {
+            firstErrorField = siteAutoError;
+        }
 
         if (!firstErrorField && siteError) {
             firstErrorField = siteError;
@@ -335,13 +343,16 @@ document.addEventListener('DOMContentLoaded', function () {
             input.classList.add("nhsuk-input--error");
     
             let error = document.getElementById(errorId);
-    
+
+            const formGroup = input.closest('.nhsuk-form-group');
+            const label = formGroup?.querySelector('.nhsuk-label');
+
             if (!error) {
                 error = document.createElement("span");
                 error.id = errorId;
                 error.className = "nhsuk-error-message";
-    
-                input.parentNode.insertBefore(error, input);
+
+                label.insertAdjacentElement('afterend', error);
             }
     
             error.innerHTML = errorMessage;
