@@ -246,10 +246,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!firstErrorField && siteAutoError) {
             firstErrorField = siteAutoError;
         }
-
-        if (!firstErrorField && siteError) {
-            firstErrorField = siteError;
-        }
         
         const directorateError = validateRequiredField({
             inputId: "directorate",

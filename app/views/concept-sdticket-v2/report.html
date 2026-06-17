@@ -31,28 +31,29 @@
                 </div>
             </div>   
             <p>This service desk ticket is being requested by:</p>
-            {{ input({
-                label: {
-                text: "Requester name"
-                },
-                id: "requesterName",
-                name: "requesterName",
-                classes: "nhsuk-input--width-20",
-                value: "Jane Doe"
+            {{ summaryList({
+                rows: [
+                    {
+                    key: {
+                        text: "Requester name"
+                    },
+                    value: {
+                        text: "Jane Doe"
+                    }
+                    },
+                    {
+                    key: {
+                        text: "Subject"
+                    },
+                    value: {
+                        text: "Record change request"
+                    }
+                    }
+                ]
             }) }}
 
-            <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
             <h2 class="nhsuk-heading-m">Incident form</h2>
             
-            {{ input({
-                id: "subject",
-                name: "subject",
-                label: {
-                text: "Subject",
-                size: "s"
-                },
-                classes: "nhsuk-input--width-20"
-            }) }}
             <div class="nhsuk-form-group" id="membershipNumberGroup">
             {{ input({
                 label: {
@@ -99,13 +100,12 @@
                     size: "s"
                     }
                 },
+                hint: {
+                    text: "Select the type of record change for your ticket, if your ticket is for a cancel award use HALO"
+                },
                 small: true,
                 classes: "columnRadios",
                 items: [
-                {
-                    value: "Cancel award",
-                    text: "Cancel award"
-                    },
                     {
                     value: "Scheme change",
                     text: "Scheme change"
@@ -203,7 +203,7 @@
                     name: "corrupted",
                     fieldset: {
                         legend: {
-                        text: "Has a file been corrupted?",
+                        text: "Has a record been corrupted?",
                         size: "s",
                         isPageHeading: false
                         }
