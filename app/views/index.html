@@ -179,7 +179,7 @@
               <div class="nhsuk-grid-row">
                 <div class="nhsuk-grid-column-two-thirds">
                   <span class="nhsuk-details__summary-text">
-                    Service desk request - PaPPs
+                    HaloITSM request - PaPPs
                   </span>
                 </div>
                 <div class="nhsuk-grid-column-one-third nhsuk-u-text-align-right">
@@ -190,12 +190,12 @@
             </summary>
             <div class="nhsuk-details__text">
               <h3 class="nhsuk-heading-s">Design</h3>
-              <p>This prototype has been created to explore the option of creating a service desk request through the tool, giving the user the option of creating a request from scratch using the menu link from the search page or the pension issues overview or they can create a prepopulated request form from within a members record; using the menu item or the section at the bottom of the screen below the last data set. </p>
+              <p>This prototype has been created to explore the option of creating a HaloITSM ticket through the tool, giving the user the option of creating a request from scratch using the menu link from the search page or the pension issues overview or they can create a prepopulated request form from within a members record; using the menu item or the section at the bottom of the screen below the last data set. </p>
               <p>Users are able to edit the form as required, once the user continues after filling in the form they can check their answers before submitting to service desk.</p>
               <hr>
               <h4>UCD Logs</h4>
               <ul>
-                <li><a href="https://bsa2468.atlassian.net/wiki/x/aoCXgAE" target="_blank">Service desk request (opens in new tab)</a></li>
+                <li><a href="https://bsa2468.atlassian.net/wiki/x/aoCXgAE" target="_blank">HaloITSM ticket (opens in new tab)</a></li>
                 <li><a href="https://bsa2468.atlassian.net/wiki/x/dQCigAE" target="_blank">Ticket management (opens in new tab)</a></li>
               </ul>
               <hr>
@@ -203,7 +203,7 @@
                 rows: [
                   {
                     key: {
-                      text: "SD Request"
+                      text: "HaloITSM ticket"
                     },
                     value: {
                       html: "
@@ -213,9 +213,28 @@
                     actions: {
                       items: [
                         {
-                          href: "/concept-sdticket/results",
+                          href: "/concept-haloticket/results",
                           text: "View",
-                          visuallyHiddenText: "SD ticket creation"
+                          visuallyHiddenText: "HaloITSM ticket creation"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    key: {
+                      text: "HaloITSM ticket V2"
+                    },
+                    value: {
+                      html: "
+                      <p>Enhanced ticket creation following PaPPs research.</p>
+                      "
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/concept-haloticket-v2/results",
+                          text: "View",
+                          visuallyHiddenText: "HaloITSM ticket creation version 2"
                         }
                       ]
                     }
@@ -226,13 +245,13 @@
                     },
                     value: {
                       html: "
-                      <p>A new page to allow users to manage tickets they have submitted to service desk, see the ticket status and full details of their submission.</p>
+                      <p>A new page to allow users to manage tickets they have submitted to HaloITSM, see the ticket status and full details of their submission.</p>
                       "
                     },
                     actions: {
                       items: [
                         {
-                          href: "/concept-sdmanage/ticket-management-entry",
+                          href: "/concept-ticketmanage/ticket-management-entry",
                           text: "View",
                           visuallyHiddenText: "SD ticket management"
                         }

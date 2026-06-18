@@ -56,10 +56,10 @@ router.use('/concept-pagination', require('./views/concept-pagination/_routes'))
 router.use('/concept-sortable', require('./views/concept-sortable/_routes'));
 router.use('/concept-customise', require('./views/concept-customise/_routes'));
 router.use('/concept-compare', require('./views/concept-compare/_routes'));
-router.use('/concept-sdticket', require('./views/concept-sdticket/_routes'));
-router.use('/concept-sdticket-v2', require('./views/concept-sdticket-v2/_routes'));
+router.use('/concept-haloticket', require('./views/concept-haloticket/_routes'));
+router.use('/concept-haloticket-v2', require('./views/concept-haloticket-v2/_routes'));
 router.use('/concept-support', require('./views/concept-support/_routes'));
-router.use('/concept-sdmanage', require('./views/concept-sdmanage/_routes'));
+router.use('/concept-ticketmanage', require('./views/concept-ticketmanage/_routes'));
 router.use('/concept-all', require('./views/concept-all/_routes'));
 router.use('/issue-1', require('./views/issue-1/_routes'));
 router.use('/issue-2', require('./views/issue-2/_routes'));
