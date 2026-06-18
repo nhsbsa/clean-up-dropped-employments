@@ -12,7 +12,7 @@
 <div class="nhsuk-grid-row confirmReport">
     <div class="nhsuk-grid-column-two-thirds">
 
-        <span class="nhsuk-caption-l">Raise a service desk ticket</span>
+        <span class="nhsuk-caption-l">Raise a HaloITSM ticket</span>
         <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">{{pageTitle}}</h1>
         
         <h3>Requester details {{ req.originalUrl }}</h3>
@@ -25,10 +25,13 @@
                 <dd class="nhsuk-summary-list__value">
                     Jane Doe
                 </dd>
-                <dd class="nhsuk-summary-list__actions">
-                    <a href="#">
-                        Change<span class="nhsuk-u-visually-hidden"> which service you are contacting us about</span>
-                    </a>
+            </div>
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Subject
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    Record change request
                 </dd>
             </div>
         </dl>
@@ -36,23 +39,6 @@
         <h3>Incident form</h3>
 
         <dl class="nhsuk-summary-list">
-            <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                    Subject
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                    {% if (data['subject']) %}
-                    {{ data['subject']}}
-                    {% else %}
-                    Subject not entered
-                    {% endif %}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                    <a href="#">
-                        Change<span class="nhsuk-u-visually-hidden"> name</span>
-                    </a>
-                </dd>
-            </div>
             <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
                     Member number
@@ -111,10 +97,14 @@
             </div>
             <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                    Has a file been corrupted?
+                    Has a record been corrupted?
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                    {{ data['corrupted']}}
+                    {% if (data['corrupted'] == "yes" ) %}
+                    Yes, corruption type: {{ data['corruptionType']}}
+                    {% elseif (data['corrupted'] == "no" ) %}
+                    No
+                    {% endif %}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                     <a href="#">
@@ -135,6 +125,21 @@
                     </a>
                 </dd>
             </div>
+            {% if (data['payment'] == "yes" ) %}
+                <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                        Will this affect a payment today?
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                        {{ data['paymentToday']}}
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                        <a href="#">
+                            Change<span class="nhsuk-u-visually-hidden"> name</span>
+                        </a>
+                    </dd>
+                </div>
+            {% endif %}
         </dl>
         
         <h3>Description</h3>
@@ -158,7 +163,7 @@
         <details class="nhsuk-details nhsuk-expander">  
             <summary class="nhsuk-details__summary">
                 <span class="nhsuk-details__summary-text">
-                    Issue details
+                Issue details
                 </span>
             </summary>
             <div class="nhsuk-details__text">
@@ -171,7 +176,6 @@
                     <th class="nhsuk-table__cell nhsuk-u-font-size-14 reportCell" scope="col">Sets</th>
                     <th class="nhsuk-table__cell nhsuk-u-font-size-14 reportCell" scope="col">Fields</th>
                     <th class="nhsuk-table__cell nhsuk-u-font-size-14" scope="col">Amendments to be made</th>
-                    <th class="nhsuk-table__cell nhsuk-u-font-size-14" scope="col">Reason</th>
                 </tr>
                 </thead>
                 <tbody class="nhsuk-table__body">
@@ -180,20 +184,17 @@
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['sets'][0]}}</td>
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['fields'][0]}}</td>
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['amendments'][0]}}</td>
-                    <td class="nhsuk-table__cell nhsuk-u-font-size-14 nhsuk-u-text-break-word">{{ data['reason'][0]}}</td>
                 </tr>
                 <tr class="nhsuk-table__row">
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['sets'][1]}}</td>
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['fields'][1]}}</td>
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['amendments'][1]}}</td>
-                    <td class="nhsuk-table__cell nhsuk-u-font-size-14 nhsuk-u-text-break-word">{{ data['reason'][1]}}</td>
                 </tr>
                 {% if data['sets']|length > 1 and data['sets'][2] %}
                 <tr class="nhsuk-table__row">
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['sets'][2]}}</td>
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['fields'][2]}}</td>
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['amendments'][2]}}</td>
-                    <td class="nhsuk-table__cell nhsuk-u-font-size-14 nhsuk-u-text-break-word">{{ data['reason'][2]}}</td>
                 </tr>
                 {% endif %}
                 {% if data['sets']|length > 1 and data['sets'][3] %}
@@ -201,7 +202,6 @@
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['sets'][3]}}</td>
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['fields'][3]}}</td>
                     <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['amendments'][3]}}</td>
-                    <td class="nhsuk-table__cell nhsuk-u-font-size-14 nhsuk-u-text-break-word">{{ data['reason'][3]}}</td>
                 </tr>
                 {% endif %}
 
@@ -209,32 +209,32 @@
                 </table>
             </div>
         </details>
-        
-        <hr>
+        <dl class="nhsuk-summary-list">
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Reason
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['issue-reason']}}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="#">
+                        Change<span class="nhsuk-u-visually-hidden"> reason</span>
+                    </a>
+                </dd>
+            </div>
+        </dl>
         
         <h3>Basic information</h3>
 
         <dl class="nhsuk-summary-list">
             <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                    Urgency
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                    {{ data['urgency']}}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                    <a href="#">
-                        Change<span class="nhsuk-u-visually-hidden"> urgency</span>
-                    </a>
-                </dd>
-            </div>
-            <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
                     Site
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                    {% if (data['siteName']) %}
-                    {{ data['siteName']}}
+                    {% if (data['siteAuto']) %}
+                    {{ data['siteAuto']}}
                     {% else %}
                     Site not entered
                     {% endif %}

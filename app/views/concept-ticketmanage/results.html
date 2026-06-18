@@ -104,8 +104,10 @@
                 <a href="" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small">Update data sets</a>
             </div>
         </div>
-        <div class="nhsuk-hint" id="example-with-hint-text-hint">
-            {{ introPara | safe }}
+        <div class="nhsuk-u-reading-width">
+            <div class="nhsuk-hint">
+                {{ introPara | safe }}
+            </div>
         </div>
 
         <button type="button" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="filters-panel" id="filters-toggle">
@@ -342,17 +344,18 @@
         </details>
 
         <hr>
-        
-        <h2>Need to submit a service desk ticket?</h2>
-        <p>If you need help from service desk to member record {{ data['memberNumber']}} complete the ticket and submit your request. </p>
-        
-        <form action="/{{folder}}/results" method="post" novalidate>
-            {{ button({
-            text: "Raise a ticket",
-            value: "createReport",
-            name: "action"
-            }) }}
-        </form>
+        <div class="nhsuk-u-reading-width">
+            <h2>Need to submit a HaloITSM ticket?</h2>
+            <p>If you need help to fix member record {{ data['memberNumber']}} complete the ticket and submit your request. </p>
+            
+            <form action="/{{folder}}/results" method="post" novalidate>
+                {{ button({
+                text: "Raise a ticket",
+                value: "createReport",
+                name: "action"
+                }) }}
+            </form>
+        </div>
 
         <div class="app-back-to-top" data-module="app-back-to-top" data-app-back-to-top-init="">
             <a class="nhsuk-link nhsuk-link--no-visited-state app-back-to-top__link" href="#top">
@@ -370,24 +373,20 @@
 <script src="/assets/javascript/back-to-top.js"></script>
 
 <script>
-    function toggleRows() {
-        const rows = document.querySelectorAll('.hidden-row');
-        const button = document.getElementById('toggleButton');
-        const buttonConts = document.getElementById('toggleButtonConts');
+    function toggleRows(groupClass, button) {
+        const rows = document.querySelectorAll(`.${groupClass}`);
+        let anyVisible = false;
 
-        let anyHidden = false;
-
-        // Toggle each row and check if any are becoming visible
         rows.forEach(row => {
             row.classList.toggle('hidden');
             if (!row.classList.contains('hidden')) {
-                anyHidden = true;
+                anyVisible = true;
             }
         });
 
-        // Update button text based on visibility
-        button.textContent = anyHidden ? 'Hide correct rows' : 'Show all rows';
-        buttonConts.textContent = anyHidden ? 'Hide correct rows' : 'Show all rows';
+        button.textContent = anyVisible
+            ? 'Hide correct rows'
+            : 'Show all rows';
     }
 </script>
 {% endblock %}

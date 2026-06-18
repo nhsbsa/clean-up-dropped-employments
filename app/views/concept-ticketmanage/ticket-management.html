@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "Your service desk requests"%}
+{% set pageTitle = "Your HaloITSM tickets"%}
 {% set showMenu ="true"%}
 {% set sdMenuBlank ="true"%}
 {% set ticketMenu ="true"%}
@@ -15,7 +15,7 @@
 
       <span class="nhsuk-caption-l">Ticket management</span>
       <h1 class="nhsuk-heading-l">{{pageTitle}} </h1>
-      <p class="nhsuk-body">You have not submitted any service desk requests.</p>
+      <p class="nhsuk-body">You have not submitted any tickets.</p>
       <form action="/{{folder}}/ticket-management" method="post" novalidate>
         {{ button({
         text: "Send new request",

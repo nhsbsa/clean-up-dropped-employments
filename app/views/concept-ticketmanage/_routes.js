@@ -83,7 +83,7 @@ router.get('/ticket-management-entry', function (req, res) {
 
     const totalPages = Math.ceil(filteredTickets.length / pageSize)
 
-    res.render('app/views/concept-sdmanage/ticket-management-entry', {
+    res.render('app/views/concept-ticketmanage/ticket-management-entry', {
         tickets: paginatedTickets,
         search,
         currentPage,

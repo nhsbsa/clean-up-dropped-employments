@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "Service desk report for John Smith"%}
+{% set pageTitle = "HaloITSM ticket"%}
 {% set showMenu ="true"%}
 {% set sdMenuBlank ="true"%}
 {% set ticketMenu ="true"%}
@@ -12,205 +12,224 @@
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-full">
 
-        <span class="nhsuk-caption-l">Raise a service desk ticket</span>
-        <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">{{pageTitle}}</h1>
-        <div class="nhsuk-hint">
-            This report is being generated to send to service desk, you need to enter all of the correct details in each section of the form.
+        <div class="nhsuk-u-reading-width">
+            <span class="nhsuk-caption-l">Raise a HaloITSM ticket</span>
+            <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">{{pageTitle}}</h1>
+            <div class="nhsuk-hint">
+                This ticket is being generated to send to HaloITSM, you need to enter all of the correct details in each section of the form.
+            </div>
         </div>
 
         <form action="/{{folder}}/report-blank" method="post" id="reportForm">
-            
-            <p>This service desk ticket is being requested by:</p>
-            {{ input({
-                label: {
-                text: "Requester name"
-                },
-                id: "requesterName",
-                name: "requesterName",
-                classes: "nhsuk-input--width-20",
-                value: "Jane Doe"
+
+            <div class="nhsuk-u-reading-width">
+                <!-- Error summary (hidden by default) -->
+                <div id="errorSummary" class="nhsuk-error-summary" role="alert" style="display:none;">
+                    <h2 class="nhsuk-error-summary__title">There is a problem</h2>
+                    <div class="nhsuk-error-summary__body">
+                        <ul class="nhsuk-list nhsuk-error-summary__list" id="errorList"></ul>
+                    </div>
+                </div>
+            </div>   
+            <p>This ticket is being requested by:</p>
+            {{ summaryList({
+                rows: [
+                    {
+                    key: {
+                        text: "Requester name"
+                    },
+                    value: {
+                        text: "Jane Doe"
+                    }
+                    },
+                    {
+                    key: {
+                        text: "Subject"
+                    },
+                    value: {
+                        text: "Record change request"
+                    }
+                    }
+                ]
             }) }}
 
+            <h2 class="nhsuk-heading-m">Incident form</h2>
             
-            <details class="nhsuk-details nhsuk-expander" open>
-                <summary class="nhsuk-details__summary">
-                <span class="nhsuk-details__summary-text">
-                    Incident form
-                </span>
-                </summary>
-                <div class="nhsuk-details__text">
-                    {{ input({
-                        id: "subject",
-                        name: "subject",
-                        label: {
-                        text: "Subject",
-                        size: "s"
+            <div class="nhsuk-form-group" id="membershipNumberGroup">
+            {{ input({
+                label: {
+                text: "Member number",
+                size: "s"
+                },
+                id: "membershipNumber",
+                name: "membershipNumber",
+                classes: "nhsuk-input--width-10"
+            }) }}
+            </div>
+            <div class="nhsuk-form-group" id="memberFirstInitialGroup">
+                {{ input({
+                    label: {
+                    text: "Member first initial",
+                    size: "s"
+                    },
+                    id: "memberFirstInitial",
+                    name: "memberFirstInitial",
+                    classes: "nhsuk-input--width-2"
+                }) }}
+            </div>
+            <div class="nhsuk-form-group" id="memberSurnameGroup">
+                {{ input({
+                    label: {
+                    text: "Member surname",
+                    size: "s"
+                    },
+                    id: "memberSurname",
+                    name: "memberSurname",
+                    classes: "nhsuk-input--width-20"
+                }) }}
+            </div>
+            <div class="nhsuk-form-group" id="recordTypeChangeGroup">
+                {{ radios({
+                idPrefix: "recordTypeChange",
+                name: "recordTypeChange",
+                fieldset: {
+                    legend: {
+                    text: "Type of record change",
+                    size: "s"
+                    }
+                },
+                hint: {
+                    text: "Select the type of record change for your ticket, if your ticket is for a cancel award use HALO"
+                },
+                small: true,
+                classes: "columnRadios",
+                items: [
+                    {
+                    value: "Scheme change",
+                    text: "Scheme change"
+                    },
+                    {
+                    value: "Statue change",
+                    text: "Status change"
+                    },
+                    {
+                    value: "Service group change",
+                    text: "Service group change"
+                    },
+                    {
+                    value: "Deletion of form",
+                    text: "Deletion of form"
+                    },
+                    {
+                    value: "Add conts",
+                    text: "Add conts"
+                    },
+                    {
+                    value: "Add basic",
+                    text: "Add basic"
+                    },
+                    {
+                    value: "Additional pension",
+                    text: "Additional pension"
+                    },
+                    {
+                    value: "other",
+                    text: "Other"
+                    }
+                ]
+                }) }}
+            </div>
+            {% set corruptedHtml %}
+                {{ select({
+                    label: {
+                        text: "Corruption type"
+                    },
+                    id: "corruptionType",
+                    name: "corruptionType",
+                    value: "Corruption type",
+                    items: [
+                        {
+                        value: " ",
+                        text: " "
+                        },
+                        {
+                        value: "Dropped employment",
+                        text: "Dropped employment"
+                        },
+                        {
+                        value: "Duplicate employment records",
+                        text: "Duplicate employment records"
+                        },
+                        {
+                        value: "Re-employed pensioner",
+                        text: "Re-employed pensioner"
+                        },
+                        {
+                        value: "Erroneous linked employments",
+                        text: "Erroneous linked employments"
+                        },
+                        {
+                        value: "Mismatched service dates",
+                        text: "Mismatched service dates"
+                        },
+                        {
+                        value: "Erroneous member status",
+                        text: "Erroneous member status"
+                        },
+                        {
+                        value: "Erroneous scheme codes",
+                        text: "Erroneous scheme codes"
+                        },
+                        {
+                        value: "Qualifying services errors",
+                        text: "Qualifying services errors"
+                        },
+                        {
+                        value: "Erroneous basic header",
+                        text: "Erroneous basic header"
+                        },
+                        {
+                        value: "Unsure",
+                        text: "Unsure"
                         }
-                    }) }}
-                    {{ input({
-                        label: {
-                        text: "Member number",
-                        size: "s"
-                        },
-                        id: "membershipNumber",
-                        name: "membershipNumber",
-                        classes: "nhsuk-input--width-10"
-                    }) }}
-                    {{ input({
-                        label: {
-                        text: "Member first initial",
-                        size: "s"
-                        },
-                        id: "memberFirstInitial",
-                        name: "memberFirstInitial",
-                        classes: "nhsuk-input--width-2"
-                    }) }}
-                    {{ input({
-                        label: {
-                        text: "Member surname",
-                        size: "s"
-                        },
-                        id: "memberSurname",
-                        name: "memberSurname",
-                        classes: "nhsuk-input--width-20"
-                    }) }}
-                    {{ radios({
-                    idPrefix: "recordTypeChange",
-                    name: "recordTypeChange",
+                    ]
+                }) }}
+            {% endset -%}
+            <div class="nhsuk-form-group" id="corruptedGroup">
+                {{ radios({
+                    idPrefix: "corrupted",
+                    name: "corrupted",
                     fieldset: {
                         legend: {
-                        text: "Type of record change",
-                        size: "s"
+                        text: "Has a record been corrupted?",
+                        size: "s",
+                        isPageHeading: false
                         }
                     },
                     small: true,
-                    classes: "columnRadios",
                     items: [
-                    {
-                        value: "Cancel award",
-                        text: "Cancel award"
+                        {
+                        value: "yes",
+                        text: "Yes",
+                        conditional: {
+                            html: corruptedHtml
+                        }
                         },
                         {
-                        value: "Scheme change",
-                        text: "Scheme change"
-                        },
-                        {
-                        value: "Statue change",
-                        text: "Status change"
-                        },
-                        {
-                        value: "Service group change",
-                        text: "Service group change"
-                        },
-                        {
-                        value: "Deletion of form",
-                        text: "Deletion of form"
-                        },
-                        {
-                        value: "Add conts",
-                        text: "Add conts"
-                        },
-                        {
-                        value: "Add basic",
-                        text: "Add basic"
-                        },
-                        {
-                        value: "Additional pension",
-                        text: "Additional pension"
-                        },
-                        {
-                        value: "other",
-                        text: "Other"
+                        value: "no",
+                        text: "No"
                         }
                     ]
-                    }) }}
-                    {% set corruptedHtml %}
-                        {{ select({
-                            label: {
-                                text: "Corruption type"
-                            },
-                            id: "corruptionType",
-                            name: "corruptionType",
-                            value: "-- Corruption type --",
-                            items: [
-                                {
-                                value: " ",
-                                text: " "
-                                },
-                                {
-                                value: "Dropped employment",
-                                text: "Dropped employment"
-                                },
-                                {
-                                value: "Duplicate employment records",
-                                text: "Duplicate employment records"
-                                },
-                                {
-                                value: "Re-employed pensioner",
-                                text: "Re-employed pensioner"
-                                },
-                                {
-                                value: "Erroneous linked employments",
-                                text: "Erroneous linked employments"
-                                },
-                                {
-                                value: "Mismatched service dates",
-                                text: "Mismatched service dates"
-                                },
-                                {
-                                value: "Erroneous member status",
-                                text: "Erroneous member status"
-                                },
-                                {
-                                value: "Erroneous scheme codes",
-                                text: "Erroneous scheme codes"
-                                },
-                                {
-                                value: "Qualifying services errors",
-                                text: "Qualifying services errors"
-                                },
-                                {
-                                value: "Erroneous basic header",
-                                text: "Erroneous basic header"
-                                },
-                                {
-                                value: "Unsure",
-                                text: "Unsure"
-                                }
-                            ]
-                        }) }}
-                    {% endset -%}
-                    {{ radios({
-                        idPrefix: "corrupted",
-                        name: "corrupted",
-                        fieldset: {
-                            legend: {
-                            text: "Has a file been corrupted?",
-                            size: "s",
-                            isPageHeading: false
-                            }
-                        },
-                        small: true,
-                        items: [
-                            {
-                            value: "yes",
-                            text: "Yes",
-                            conditional: {
-                                html: corruptedHtml
-                            }
-                            },
-                            {
-                            value: "no",
-                            text: "No"
-                            }
-                        ]
-                        }) }}
-                    {{ radios({
-                    idPrefix: "payment",
-                    name: "payment",
+                }) }}
+            </div>
+            {% set paymentHtml %}
+                {{ radios({
+                    idPrefix: "paymentToday",
+                    name: "paymentToday",
+                    classes: "nhsuk-radios--inline",
                     fieldset: {
                         legend: {
-                        text: "Has a payment been affected?",
+                        text: "Will this affect a payment today?",
                         size: "s",
                         isPageHeading: false
                         }
@@ -226,26 +245,45 @@
                         text: "No"
                         }
                     ]
-                    }) }}
-            
+                }) }}
+            {% endset %}
+            <div class="nhsuk-form-group" id="paymentGroup">
+                {{ radios({
+                idPrefix: "payment",
+                name: "payment",
+                fieldset: {
+                    legend: {
+                    text: "Has a payment been affected?",
+                    size: "s",
+                    isPageHeading: false
+                    }
+                },
+                small: true,
+                items: [
+                    {
+                    value: "yes",
+                    text: "Yes",
+                    conditional: {
+                        html: paymentHtml
+                    }
+                    },
+                    {
+                    value: "no",
+                    text: "No"
+                    }
+                ]
+                }) }}
+            </div>
+
+            <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+            <div class="nhsuk-u-reading-width">
+                <h3>Description</h3>
+                <div class="nhsuk-hint">
+                    Issues can be added below which are required in your HaloITSM ticket
                 </div>
-            </details>
-
-            <hr>
-
-            <h3>Description</h3>
-            <div class="nhsuk-hint">
-                Issues can be added below which are required in your service desk request.
+            
             </div>
-
-            <!-- Error summary (hidden by default) -->
-            <div id="errorSummary" class="nhsuk-error-summary" role="alert" style="display:none;">
-            <h2 class="nhsuk-error-summary__title">There is a problem</h2>
-            <div class="nhsuk-error-summary__body">
-                <ul class="nhsuk-list nhsuk-error-summary__list" id="errorList"></ul>
-            </div>
-            </div>
-
             <div class="nhsuk-scrollable-pane greyBg" aria-label="Issue details" tabindex="0">
                 <table class="nhsuk-table" id="reportTable">
                     <caption class="nhsuk-table__caption">
@@ -256,7 +294,6 @@
                         <th class="nhsuk-table__cell nhsuk-u-font-size-14 reportCell" scope="col">Sets</th>
                         <th class="nhsuk-table__cell nhsuk-u-font-size-14 reportCell" scope="col">Fields</th>
                         <th class="nhsuk-table__cell nhsuk-u-font-size-14" scope="col">Amendments to be made</th>
-                        <th class="nhsuk-table__cell nhsuk-u-font-size-14" scope="col">Reason</th>
                         <th class="nhsuk-table__cell nhsuk-u-font-size-14" scope="col">Remove</th>
                     </tr>
                     </thead>
@@ -265,94 +302,108 @@
                     <tr class="nhsuk-table__row">
                         <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="sets[]" id="setOne" value="" aria-label="Sets: Service history issue 1"></td>
                         <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="fields[]" id="fieldOne" value="" aria-label="Fields: end date"></td>
-                        <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-u-font-size-14" type="text" name="amendments[]" id="amendmentsOne" value="" aria-label="Amendments: Employment ID 1 end date mismatch"></td>
-                        <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-u-font-size-14" type="text" name="reason[]" id="reasonOne" value="" aria-label="Reason:"></td>
+                        <!-- <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-u-font-size-14" type="text" name="amendments[]" id="amendmentsOne" value="" aria-label="Amendments: Employment ID 1 end date mismatch"></td> -->
+                        <td class="nhsuk-table__cell"><textarea rows="1" class="nhsuk-textarea nhsuk-u-font-size-14" name="amendments[]" id="amendmentsOne" aria-label="Amendments: "></textarea></td>
                         <td class="nhsuk-table__cell nhsuk-u-font-size-14"><a href="#" class="remove-row nhsuk-link">Remove</a></td>
                     </tr>
 
                     </tbody>
                 </table>
             </div>
-
+            <div class="nhsuk-inset-text undoRemovalContainer" hidden>
+                <span class="nhsuk-u-visually-hidden">Information: </span>
+                <p>Removed: <strong id="removedAmendmentText"></strong></p>
+                <span class="buttonUndo">
+                    {{ button({
+                        type: "button",
+                        id: "undoRemovalButton",
+                        text: "Undo removal",
+                        classes: "nhsuk-button--secondary nhsuk-button--small"
+                    }) }}
+                </span> 
+            </div>
             <button type="button" id="addRowButton" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small">Add another row</button>
             
-            <hr>
-            <details class="nhsuk-details nhsuk-expander" open>
-                <summary class="nhsuk-details__summary">
-                <span class="nhsuk-details__summary-text">
-                    Basic information
-                </span>
-                </summary>
-                <div class="nhsuk-details__text">
-                    {{ radios({
-                        idPrefix: "urgency",
-                        name: "urgency",
-                        fieldset: {
-                            legend: {
-                            text: "Urgency",
-                            size: "s",
-                            isPageHeading: false
-                            }
-                        },
-                        small: true,
-                        classes: "columnRadios",
-                        items: [
-                            {
-                            value: "High Priotiry",
-                            text: "High Priority"
-                            },
-                            {
-                            value: "Medium Priority",
-                            text: "Medium Priority"
-                            },
-                            {
-                            value: "Low Priority",
-                            text: "Low Priority"
-                            }
-                        ]
-                        }) }}
-                    {{ input({
-                        label: {
-                        text: "Site",
-                        size: "s"
-                        },
-                        id: "siteName",
-                        name: "siteName",
-                        classes: "nhsuk-input--width-20"
-                    }) }}
-                    {{ input({
-                        label: {
-                        text: "Directorate",
-                        size: "s"
-                        },
-                        id: "directorate",
-                        name: "directorate",
-                        classes: "nhsuk-input--width-20"
-                    }) }}
-                    {{ textarea({
-                        name: "additionalDsc",
-                        id: "additionalDsc",
-                        rows: "3",
-                        label: {
-                            text: "Ticket Description",
-                            size: "s"
-                        },
-                        hint: {
-                            text: "Add a brief overview of the ticket information"
-                        }
-                    }) }}
+            <div class="nhsuk-u-reading-width">
+                <div class="nhsuk-form-group" id="issueReason">
+                    <label class="nhsuk-label nhsuk-label--s" for="issue-reason">
+                        Reason
+                    </label>
+                    <div class="nhsuk-hint" id="example-right-size-hint">
+                        Must include details of what needs to be updated on the members record, why you think it is corrupt and why you cannot fix this record
+                    </div>
+                    <textarea class="nhsuk-textarea" id="issue-reason" name="issue-reason" rows="3" aria-describedby="issue-reason-error"></textarea>
                 </div>
-            </details>
+            </div>
+            <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+            <div class="nhsuk-u-reading-width">
+                <h2 class="nhsuk-heading-m">Basic information</h2>
 
+                <div class="nhsuk-form-group" id="siteAutoGroup">
+                    <label class="nhsuk-label  nhsuk-label--s" for="siteAuto">
+                        Site
+                    </label>
+                    
+                    <select class="nhsuk-select js-autocomplete nhsuk-input--width-20" id="siteAuto" name="siteAuto">
+                        <option value="" selected></option>
+                        <option>Bickersatffe house- Blackpool</option>
+                        <option>Bridgehouse - Newcastle</option>
+                        <option>Cody Park (Data Centre)</option>
+                        <option>Contractor Site</option>
+                        <option>Eastbourne</option>
+                        <option>External</option>
+                        <option>Greenfinch way - Newcastle</option>
+                        <option>NHS BSA</option>
+                        <option>Parklands - Middlebrooke</option>
+                        <option>Spring Park (Data Centre)</option>
+                        <option>Stella house - Newcastle</option>
+                        <option>Wakefield house - Wakefield</option>
+                        <option>Working from home</option>
+                    </select>
+                </div>
+                <div class="nhsuk-form-group" id="directorateGroup">
+                    <label class="nhsuk-label  nhsuk-label--s" for="directorate">
+                        Directorate
+                    </label>
+                    
+                    <select class="nhsuk-select js-autocomplete nhsuk-input--width-20" id="directorate" name="directorate">
+                        <option value="" selected></option>
+                        <option>Citizen Services</option>
+                        <option>Chief Executives Office</option>
+                        <option>Data Digital and Technology</option>
+                        <option>Finance Commercial and Estates</option>
+                        <option>Leadership Team</option>
+                        <option>NHS Workforce Services</option>
+                        <option>People and Corporate Services</option>
+                        <option>Primary Care Services</option>
+                        <option>Portfolio Management</option>
+                        <option>Strategy Performance Business Develop and Growth</option>
+                    </select>
+                </div>
+
+                {{ textarea({
+                    name: "additionalDsc",
+                    id: "additionalDsc",
+                    rows: "3",
+                    label: {
+                        text: "Additional information",
+                        size: "s"
+                    },
+                    hint: {
+                        text: "Include any additional information for complex cases and if you have discussed this case with your SME"
+                    }
+                }) }}
+
+            </div>
             <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
 
             <button type="submit" class="nhsuk-button">Continue</button>
-
         </form>
 
     </div>
 </div>
 
-<script src="/assets/javascript/sd-report.js"></script>
+<script src="/assets/javascript/sd-report-v2.js"></script>
+<script src="/assets/javascript/autocomplete.js"></script>
 
 {% endblock %}

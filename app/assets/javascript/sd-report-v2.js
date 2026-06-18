@@ -477,7 +477,7 @@ document.addEventListener('DOMContentLoaded', function () {
             "memberFirstInitial-error",
             "memberSurname-error",
             "recordTypeChange-error",
-            "siteName-error",
+            "siteAuto-error",
             "directorate-error"
         ].forEach(id => {
             const el = document.getElementById(id);
