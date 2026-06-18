@@ -2,6 +2,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const tableBody = document.querySelector('#reportTable tbody');
     const addButton = document.getElementById('addRowButton');
+    const undoContainer = document.querySelector('.undoRemovalContainer');
+    const undoButton = document.getElementById('undoRemovalButton');
+
+    let lastRemovedRow = null;
+    let lastRemovedIndex = null;
 
     // Remove row
     function bindRemoveLinks() {
@@ -13,9 +18,47 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function removeHandler(e) {
         e.preventDefault();
+    
         const row = e.target.closest('tr');
+    
+        // Get amendment text before removing row
+        const amendmentField = row.querySelector('textarea[name="amendments[]"]');
+        const amendmentText = amendmentField ? amendmentField.value : '';
+    
+        // Store row and its original position
+        lastRemovedRow = row;
+        lastRemovedIndex = Array.from(tableBody.children).indexOf(row);
+    
         row.remove();
+    
+        removedAmendmentText.textContent = amendmentText;
+        undoContainer.hidden = false;
+        undoContainer.classList.add("undoContainerVisible");
     }
+
+    undoButton.addEventListener('click', function () {
+
+        if (!lastRemovedRow) {
+            return;
+        }
+    
+        const rows = tableBody.children;
+    
+        // Put row back in its original position
+        if (lastRemovedIndex >= rows.length) {
+            tableBody.appendChild(lastRemovedRow);
+        } else {
+            tableBody.insertBefore(lastRemovedRow, rows[lastRemovedIndex]);
+        }
+    
+        lastRemovedRow = null;
+        lastRemovedIndex = null;
+    
+        undoContainer.hidden = true;
+        undoContainer.classList.remove("undoContainerVisible");
+    
+        bindRemoveLinks();
+    });
 
     bindRemoveLinks();
 

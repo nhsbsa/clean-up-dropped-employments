@@ -1,4 +1,5 @@
 #reportTable {
+    margin-bottom: 30px;
 
     .nhsuk-table__cell:first-of-type {
         padding-left: 0;
@@ -8,13 +9,33 @@
         width: 150px;
     }
 
-    .nhsuk-form-group {
+    .nhsuk-form-group,
+    .nhsuk-textarea {
         margin-bottom: 0;
     }
 
     .nhsuk-form-group--error{
         input{
             border-color: $nhsuk-error-colour;
+        }
+    }
+}
+
+.undoContainerVisible{
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
+    justify-content: space-between;
+    margin-top: 18px;
+    p{
+        margin-bottom: 0;
+    }
+    .buttonUndo{
+        margin-left: 20px;
+        min-width: 200px;
+        text-align: right;
+        .nhsuk-button--small{
+            margin-bottom: 0;
         }
     }
 }

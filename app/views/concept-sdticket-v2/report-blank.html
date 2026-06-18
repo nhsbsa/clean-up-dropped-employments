@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "Service desk ticket"%}
+{% set pageTitle = "HaloITSM ticket"%}
 {% set showMenu ="true"%}
 {% set sdMenuBlank ="true"%}
 
@@ -12,10 +12,10 @@
     <div class="nhsuk-grid-column-full">
 
         <div class="nhsuk-u-reading-width">
-            <span class="nhsuk-caption-l">Raise a service desk ticket</span>
+            <span class="nhsuk-caption-l">Raise a HaloITSM ticket</span>
             <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">{{pageTitle}}</h1>
             <div class="nhsuk-hint">
-                This ticket is being generated to send to service desk, you need to enter all of the correct details in each section of the form.
+                This ticket is being generated to send to HaloITSM, you need to enter all of the correct details in each section of the form.
             </div>
         </div>
 
@@ -30,7 +30,7 @@
                     </div>
                 </div>
             </div>   
-            <p>This service desk ticket is being requested by:</p>
+            <p>This ticket is being requested by:</p>
             {{ summaryList({
                 rows: [
                     {
@@ -279,7 +279,7 @@
             <div class="nhsuk-u-reading-width">
                 <h3>Description</h3>
                 <div class="nhsuk-hint">
-                    Issues can be added below which are required in your service desk ticket
+                    Issues can be added below which are required in your HaloITSM ticket
                 </div>
             
             </div>
@@ -309,7 +309,18 @@
                     </tbody>
                 </table>
             </div>
-
+            <div class="nhsuk-inset-text undoRemovalContainer" hidden>
+                <span class="nhsuk-u-visually-hidden">Information: </span>
+                <p>Removed: <strong id="removedAmendmentText"></strong></p>
+                <span class="buttonUndo">
+                    {{ button({
+                        type: "button",
+                        id: "undoRemovalButton",
+                        text: "Undo removal",
+                        classes: "nhsuk-button--secondary nhsuk-button--small"
+                    }) }}
+                </span> 
+            </div>
             <button type="button" id="addRowButton" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small">Add another row</button>
             
             <div class="nhsuk-u-reading-width">

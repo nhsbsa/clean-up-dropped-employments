@@ -103,8 +103,10 @@
                 <a href="" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small">Update data sets</a>
             </div>
         </div>
-        <div class="nhsuk-hint" id="example-with-hint-text-hint">
-            {{ introPara | safe }}
+        <div class="nhsuk-u-reading-width">
+            <div class="nhsuk-hint">
+                {{ introPara | safe }}
+            </div>
         </div>
 
         <button type="button" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="filters-panel" id="filters-toggle">
@@ -341,17 +343,18 @@
         </details>
 
         <hr>
-        
-        <h2>Need to submit a service desk ticket?</h2>
-        <p>If you need help from service desk to member record {{ data['memberNumber']}} complete the ticket and submit your request. </p>
-        
-        <form action="/{{folder}}/results" method="post" novalidate>
-            {{ button({
-            text: "Raise a ticket",
-            value: "createReport",
-            name: "action"
-            }) }}
-        </form>
+        <div class="nhsuk-u-reading-width">
+            <h2>Need to submit a HaloITSM ticket?</h2>
+            <p>If you need help to fix member record {{ data['memberNumber']}} complete the ticket and submit your request. </p>
+            
+            <form action="/{{folder}}/results" method="post" novalidate>
+                {{ button({
+                text: "Raise a ticket",
+                value: "createReport",
+                name: "action"
+                }) }}
+            </form>
+        </div>
 
         <div class="app-back-to-top" data-module="app-back-to-top" data-app-back-to-top-init="">
             <a class="nhsuk-link nhsuk-link--no-visited-state app-back-to-top__link" href="#top">
