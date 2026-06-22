@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "How to videos"%}
+{% set showMenu ="true"%}
+{% set supportMenu ="true"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row summaryPage">
+  <div class="nhsuk-grid-column-full">
+      <div class="nhsuk-u-reading-width">
+        <h1 class="nhsuk-heading-l">{{pageTitle}} </h1>
+        <p class="nhsuk-body">Introduction</p>
+      </div>
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-one-quarter">
+          <video width="320" height="240" controls>
+            <source src="/assets/videos/test.mp4" type="video/mp4">
+            <!-- <source src="movie.ogg" type="video/ogg"> -->
+            Your browser does not support the video tag.
+          </video>
+          <p>nhsuk-grid-column-one-quarter</p>
+        </div>
+        <div class="nhsuk-grid-column-one-quarter">
+          <p>nhsuk-grid-column-one-quarter</p>
+        </div>
+        <div class="nhsuk-grid-column-one-quarter">
+          <p>nhsuk-grid-column-one-quarter</p>
+        </div>
+        <div class="nhsuk-grid-column-one-quarter">
+          <p>nhsuk-grid-column-one-quarter</p>
+        </div>
+      </div>
+  </div>
+</div>
+{% endblock %}
