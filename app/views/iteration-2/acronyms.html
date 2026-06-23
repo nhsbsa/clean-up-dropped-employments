@@ -1,0 +1,607 @@
+{% extends 'layout.html' %}
+{% set mediumLayout = "true" %}
+{% set pageTitle = "Acronyms"%}
+{% set showMenu ="true"%}
+{% set supportMenu ="true"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row summaryPage">
+  <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-u-reading-width">
+
+      <h1 class="nhsuk-heading-l">{{pageTitle}} </h1>
+      <p class="nhsuk-body">Here is a helpful list of acronyms used within NHS pensions</p>
+      
+      <nav class="nhsuk-u-margin-bottom-4 nhsuk-u-margin-top-4" id="nhsuk-nav-a-z" role="navigation" aria-label="A to Z Navigation">
+        <ol class="nhsuk-list nhsuk-u-clear nhsuk-u-margin-0" role="list">
+          <li class="nhsuk-u-margin-bottom-0 nhsuk-u-float-left nhsuk-u-margin-right-1 nhsuk-a-to-z-min-width">
+            <a class="nhsuk-u-font-size-22 nhsuk-u-padding-2 nhsuk-u-display-block" href="#a">A</a>
+          </li>
+          <li class="nhsuk-u-margin-bottom-0 nhsuk-u-float-left nhsuk-u-margin-right-1 nhsuk-a-to-z-min-width">
+            <a class="nhsuk-u-font-size-22 nhsuk-u-padding-2 nhsuk-u-display-block" href="#b">B</a>
+          </li>
+          <li class="nhsuk-u-margin-bottom-0 nhsuk-u-float-left nhsuk-u-margin-right-1 nhsuk-a-to-z-min-width">
+            <a class="nhsuk-u-font-size-22 nhsuk-u-padding-2 nhsuk-u-display-block" href="#c">C</a>
+          </li>
+          <li class="nhsuk-u-margin-bottom-0 nhsuk-u-float-left nhsuk-u-margin-right-1 nhsuk-a-to-z-min-width">
+            <a class="nhsuk-u-font-size-22 nhsuk-u-padding-2 nhsuk-u-display-block" href="#d">D</a>
+          </li>
+          <li class="nhsuk-u-margin-bottom-0 nhsuk-u-float-left nhsuk-u-margin-right-1 nhsuk-a-to-z-min-width">
+            <a class="nhsuk-u-font-size-22 nhsuk-u-padding-2 nhsuk-u-display-block" href="#e">E</a>
+          </li>
+          <li class="nhsuk-u-margin-bottom-0 nhsuk-u-float-left nhsuk-u-margin-right-1 nhsuk-a-to-z-min-width">
+            <a class="nhsuk-u-font-size-22 nhsuk-u-padding-2 nhsuk-u-display-block" href="#f">F</a>
+          </li>
+          <li class="nhsuk-u-margin-bottom-0 nhsuk-u-float-left nhsuk-u-margin-right-1 nhsuk-a-to-z-min-width">
+            <a class="nhsuk-u-font-size-22 nhsuk-u-padding-2 nhsuk-u-display-block" href="#g">G</a>
+          </li>
+          <li class="nhsuk-u-margin-bottom-0 nhsuk-u-float-left nhsuk-u-margin-right-1 nhsuk-a-to-z-min-width">
+            <a class="nhsuk-u-font-size-22 nhsuk-u-padding-2 nhsuk-u-display-block" href="#h">H</a>
+          </li>
+          <li class="nhsuk-u-margin-bottom-0 nhsuk-u-float-left nhsuk-u-margin-right-1 nhsuk-a-to-z-min-width">
+            <a class="nhsuk-u-font-size-22 nhsuk-u-padding-2 nhsuk-u-display-block" href="#i">I</a>
+          </li>
+          <li class="nhsuk-u-margin-bottom-0 nhsuk-u-float-left nhsuk-u-margin-right-1 nhsuk-a-to-z-min-width">
+            <span class="nhsuk-u-font-size-22 nhsuk-u-padding-2 nhsuk-u-display-block nhsuk-u-secondary-text-colour">J</span>
+          </li>
+          <li class="nhsuk-u-margin-bottom-0 nhsuk-u-float-left nhsuk-u-margin-right-1 nhsuk-a-to-z-min-width">
+            <a class="nhsuk-u-font-size-22 nhsuk-u-padding-2 nhsuk-u-display-block" href="#k">K</a>
+          </li>
+          <li class="nhsuk-u-margin-bottom-0 nhsuk-u-float-left nhsuk-u-margin-right-1 nhsuk-a-to-z-min-width">
+            <a class="nhsuk-u-font-size-22 nhsuk-u-padding-2 nhsuk-u-display-block" href="#l">L</a>
+          </li>
+          <li class="nhsuk-u-margin-bottom-0 nhsuk-u-float-left nhsuk-u-margin-right-1 nhsuk-a-to-z-min-width">
+            <a class="nhsuk-u-font-size-22 nhsuk-u-padding-2 nhsuk-u-display-block" href="#m">M</a>
+          </li>
+          <li class="nhsuk-u-margin-bottom-0 nhsuk-u-float-left nhsuk-u-margin-right-1 nhsuk-a-to-z-min-width">
+            <a class="nhsuk-u-font-size-22 nhsuk-u-padding-2 nhsuk-u-display-block" href="#n">N</a>
+          </li>
+          <li class="nhsuk-u-margin-bottom-0 nhsuk-u-float-left nhsuk-u-margin-right-1 nhsuk-a-to-z-min-width">
+            <a class="nhsuk-u-font-size-22 nhsuk-u-padding-2 nhsuk-u-display-block" href="#o">O</a>
+          </li>
+          <li class="nhsuk-u-margin-bottom-0 nhsuk-u-float-left nhsuk-u-margin-right-1 nhsuk-a-to-z-min-width">
+            <a class="nhsuk-u-font-size-22 nhsuk-u-padding-2 nhsuk-u-display-block" href="#p">P</a>
+          </li>
+          <li class="nhsuk-u-margin-bottom-0 nhsuk-u-float-left nhsuk-u-margin-right-1 nhsuk-a-to-z-min-width">
+            <a class="nhsuk-u-font-size-22 nhsuk-u-padding-2 nhsuk-u-display-block" href="#q">Q</a>
+          </li>
+          <li class="nhsuk-u-margin-bottom-0 nhsuk-u-float-left nhsuk-u-margin-right-1 nhsuk-a-to-z-min-width">
+            <a class="nhsuk-u-font-size-22 nhsuk-u-padding-2 nhsuk-u-display-block" href="#r">R</a>
+          </li>
+          <li class="nhsuk-u-margin-bottom-0 nhsuk-u-float-left nhsuk-u-margin-right-1 nhsuk-a-to-z-min-width">
+            <a class="nhsuk-u-font-size-22 nhsuk-u-padding-2 nhsuk-u-display-block" href="#s">S</a>
+          </li>
+          <li class="nhsuk-u-margin-bottom-0 nhsuk-u-float-left nhsuk-u-margin-right-1 nhsuk-a-to-z-min-width">
+            <a class="nhsuk-u-font-size-22 nhsuk-u-padding-2 nhsuk-u-display-block" href="#t">T</a>
+          </li>
+          <li class="nhsuk-u-margin-bottom-0 nhsuk-u-float-left nhsuk-u-margin-right-1 nhsuk-a-to-z-min-width">
+            <span class="nhsuk-u-font-size-22 nhsuk-u-padding-2 nhsuk-u-display-block nhsuk-u-secondary-text-colour">U</span>
+          </li>
+          <li class="nhsuk-u-margin-bottom-0 nhsuk-u-float-left nhsuk-u-margin-right-1 nhsuk-a-to-z-min-width">
+            <span class="nhsuk-u-font-size-22 nhsuk-u-padding-2 nhsuk-u-display-block nhsuk-u-secondary-text-colour">V</span>
+          </li>
+          <li class="nhsuk-u-margin-bottom-0 nhsuk-u-float-left nhsuk-u-margin-right-1 nhsuk-a-to-z-min-width">
+            <a class="nhsuk-u-font-size-22 nhsuk-u-padding-2 nhsuk-u-display-block" href="#w">W</a>
+          </li>
+          <li class="nhsuk-u-margin-bottom-0 nhsuk-u-float-left nhsuk-u-margin-right-1 nhsuk-a-to-z-min-width">
+            <span class="nhsuk-u-font-size-22 nhsuk-u-padding-2 nhsuk-u-display-block nhsuk-u-secondary-text-colour">Y</span>
+          </li>
+          <li class="nhsuk-u-margin-bottom-0 nhsuk-u-float-left nhsuk-u-margin-right-1 nhsuk-a-to-z-min-width">
+            <span class="nhsuk-u-font-size-22 nhsuk-u-padding-2 nhsuk-u-display-block nhsuk-u-secondary-text-colour">X</span>
+          </li>
+          <li class="nhsuk-u-margin-bottom-0 nhsuk-u-float-left nhsuk-u-margin-right-1 nhsuk-a-to-z-min-width">
+            <span class="nhsuk-u-font-size-22 nhsuk-u-padding-2 nhsuk-u-display-block nhsuk-u-secondary-text-colour">Z</span>
+          </li>
+        </ol>
+      </nav>
+
+      <div id="nhsuk-nav-a-z">
+        {% set cardADescriptionHtml %}
+        <ul class="nhsuk-list nhsuk-list--border">
+          <li>AA - Annual Allowance</li>
+          <li>ABS - Annual Benefit Statement</li>
+          <li>ACW - After Call Work</li>
+          <li>AHT - Average Handling Time</li>
+          <li>AOP - Advice of Payment</li>
+          <li>AP - Additional Pension</li>
+          <li>ARC - Audit &amp; Risk Committee</li>
+          <li>ARER - Actuarily Reduced Early Retirement</li>
+          <li>ARM - Attendance Review Meeting</li>
+          <li>AVC - Additional Voluntary Contribution</li>
+        </ul>
+        {% endset %}
+
+        {{ card({
+          feature: true,
+          heading: "A",
+          headingId: "a",
+          descriptionHtml: cardADescriptionHtml
+        }) }}
+
+        <div class="nhsuk-back-to-top">
+          <a class="nhsuk-back-to-top__link" href="#nhsuk-nav-a-z">
+            Back to top
+          </a>
+        </div>
+
+        {% set cardBDescriptionHtml %}
+        <ul class="nhsuk-list nhsuk-list--border">
+          <li>BAU - Business As Usual</li>
+          <li>BB - Business Briefing</li>
+          <li>BMA - British Medical Association</li>
+        </ul>
+        {% endset %}
+
+        {{ card({
+          feature: true,
+          heading: "B",
+          headingId: "b",
+          descriptionHtml: cardBDescriptionHtml
+        }) }}
+
+        <div class="nhsuk-back-to-top">
+          <a class="nhsuk-back-to-top__link" href="#nhsuk-nav-a-z">
+            Back to top
+          </a>
+        </div>
+
+        {% set cardCDescriptionHtml %}
+          <ul class="nhsuk-list nhsuk-list--border">
+            <li>CARE - Career Average Reward Earnings</li>
+            <li>CAT - Customer Available Time</li>
+            <li>CDT - Complaints &amp; Disputes Team</li>
+            <li>CETV - Cash Equivalent Transfer Value</li>
+            <li>CFIT - Customer Feedback &amp; Implement Team</li>
+            <li>CPI - Consumer Price Index</li>
+            <li>CSS - Customer Support Services</li>
+            <li>CSAT - Customer Satisfaction</li>
+            <li>CSTF - Core Skills Training Framework</li>
+            <li>CTPP - Conts &amp; TPP</li>
+            <li>CV - Customer Verification</li>
+          </ul>
+        {% endset %}
+
+        {{ card({
+          feature: true,
+          heading: "C",
+          headingId: "c",
+          descriptionHtml: cardCDescriptionHtml
+        }) }}
+
+        <div class="nhsuk-back-to-top">
+          <a class="nhsuk-back-to-top__link" href="#nhsuk-nav-a-z">
+            Back to top
+          </a>
+        </div>
+
+        {% set cardDDescriptionHtml %}
+        <ul class="nhsuk-list nhsuk-list--border">
+          <li>D&amp;I - Distress &amp; Inconvenience</li>
+          <li>DCU - Deferred Choice Underpin</li>
+          <li>DECS - Dental Exemption Checking Service</li>
+          <li>DHSC - Department of Health &amp; Social Care</li>
+          <li>DOB - Date Of Birth</li>
+          <li>DPIA - Data Protection Impact Assessment</li>
+          <li>DPO - Data Protection Officer</li>
+          <li>DTS - Document Transfer Service</li>
+          <li>DSE - Display Screen Equipment</li>
+        </ul>
+        {% endset %}
+
+        {{ card({
+          feature: true,
+          heading: "D",
+          headingId: "d",
+          descriptionHtml: cardDDescriptionHtml
+        }) }}
+
+        <div class="nhsuk-back-to-top">
+          <a class="nhsuk-back-to-top__link" href="#nhsuk-nav-a-z">
+            Back to top
+          </a>
+        </div>
+
+        {% set cardEDescriptionHtml %}
+        <ul class="nhsuk-list nhsuk-list--border">
+          <li>EA - Employing Authority</li>
+          <li>EAP - Employee Assistance Program</li>
+          <li>EDM - Electronic Document Management</li>
+          <li>EIBSS - England Infected Blood Support Scheme</li>
+          <li>EPS - Electronic Prescription Service</li>
+          <li>EMS - Email Management System</li>
+          <li>ERD - Electronic Repeat Dispensing Service</li>
+          <li>ERRBO - Early Retirement Reduction Buy Out</li>
+          <li>ES - Employment Set</li>
+          <li>ESR - Electronic Staff Record</li>
+        </ul>
+        {% endset %}
+
+        {{ card({
+          feature: true,
+          heading: "E",
+          headingId: "e",
+          descriptionHtml: cardEDescriptionHtml
+        }) }}
+
+        <div class="nhsuk-back-to-top">
+          <a class="nhsuk-back-to-top__link" href="#nhsuk-nav-a-z">
+            Back to top
+          </a>
+        </div>
+
+        {% set cardFDescriptionHtml %}
+          <ul class="nhsuk-list nhsuk-list--border">
+            <li>FCR - First Contact Resolution</li> 
+            <li>FOI - Freedom Of Information</li> 
+            <li>FSM - Fire Safety Manager</li> 
+            <li>FWA - Flexible Working Arrangement</li>
+          </ul>
+        {% endset %}
+
+        {{ card({
+          feature: true,
+          heading: "F",
+          headingId: "f",
+          descriptionHtml: cardFDescriptionHtml
+        }) }}
+
+        <div class="nhsuk-back-to-top">
+          <a class="nhsuk-back-to-top__link" href="#nhsuk-nav-a-z">
+            Back to top
+          </a>
+        </div>
+
+        {% set cardGDescriptionHtml %}
+          <ul class="nhsuk-list nhsuk-list--border">
+            <li>GAD - Government Actuary Department</li>
+            <li>GAVC - Group Additional Voluntary Contribution</li>
+            <li>GDPR - General Data Protection Regulation</li>
+          </ul>
+        {% endset %}
+
+        {{ card({
+          feature: true,
+          heading: "G",
+          headingId: "g",
+          descriptionHtml: cardGDescriptionHtml
+        }) }}
+
+        <div class="nhsuk-back-to-top">
+          <a class="nhsuk-back-to-top__link" href="#nhsuk-nav-a-z">
+            Back to top
+          </a>
+        </div>
+
+        {% set cardHDescriptionHtml %}
+          <ul class="nhsuk-list nhsuk-list--border">
+            <li>HH - Hours History Details</li>
+            <li>HLC - High Level Correspondence</li>
+            <li>HMRC - His Majesty's Revenue &amp; Customs</li>
+            <li>HSCN - Health &amp; Social Care Network</li>
+          </ul>
+        {% endset %}
+
+        {{ card({
+          feature: true,
+          heading: "H",
+          headingId: "h",
+          descriptionHtml: cardHDescriptionHtml
+        }) }}
+
+        <div class="nhsuk-back-to-top">
+          <a class="nhsuk-back-to-top__link" href="#nhsuk-nav-a-z">
+            Back to top
+          </a>
+        </div>
+
+        {% set cardIDescriptionHtml %}
+          <ul class="nhsuk-list nhsuk-list--border">
+            <li>ICO - Information Commissioner's Office</li>
+            <li>IFA - Independent Financial Advisor</li>
+            <li>IDR - Internal Dispute Resolution</li>
+            <li>IG - Information Governance</li>
+            <li>HIS - Immigration Health Surcharge</li>
+            <li>IPSPC - Independent Public Service Pensions Commission</li>
+            <li>ISP - Initial Survivors Pension</li>
+          </ul>
+        {% endset %}
+
+        {{ card({
+          feature: true,
+          heading: "I",
+          headingId: "i",
+          descriptionHtml: cardIDescriptionHtml
+        }) }}
+
+        <div class="nhsuk-back-to-top">
+          <a class="nhsuk-back-to-top__link" href="#nhsuk-nav-a-z">
+            Back to top
+          </a>
+        </div>
+
+        {% set cardKDescriptionHtml %}
+          <ul class="nhsuk-list nhsuk-list--border">
+            <li>KST - Knowledge Support Team</li>
+          </ul>
+        {% endset %}
+
+        {{ card({
+          feature: true,
+          heading: "K",
+          headingId: "k",
+          descriptionHtml: cardKDescriptionHtml
+        }) }}
+
+        <div class="nhsuk-back-to-top">
+          <a class="nhsuk-back-to-top__link" href="#nhsuk-nav-a-z">
+            Back to top
+          </a>
+        </div>
+
+        {% set cardLDescriptionHtml %}
+          <ul class="nhsuk-list nhsuk-list--border">
+            <li>LE - Linked Employments</li>
+            <li>LEL - Lower Earnings Limit</li>
+            <li>LFP - Loss &amp; Fraud Prevention</li>
+            <li>LOA - Letter of Authority</li>
+            <li>LPR - Legal Personal Representative</li>
+            <li>LTA - Lifetime Allowance</li>
+          </ul>
+        {% endset %}
+
+        {{ card({
+          feature: true,
+          heading: "L",
+          headingId: "l",
+          descriptionHtml: cardLDescriptionHtml
+        }) }}
+
+        <div class="nhsuk-back-to-top">
+          <a class="nhsuk-back-to-top__link" href="#nhsuk-nav-a-z">
+            Back to top
+          </a>
+        </div>
+
+        {% set cardMDescriptionHtml %}
+          <ul class="nhsuk-list nhsuk-list--border">
+            <li>MAAL - Manager Authorised Annual Leave</li>
+            <li>MATEX - Maternity Exemption</li>
+            <li>MEDEX - Medical Exemption</li>
+            <li>MI - Metric Indicators</li>
+            <li>MNP - My NHS Pensions</li>
+            <li>MPAVC - Money Purchase Additional Voluntary Contribution</li>
+            <li>MSP - Making Safeguarding Personal</li>
+            <li>MWP - Managing Work Performance</li>
+          </ul>
+        {% endset %}
+
+        {{ card({
+          feature: true,
+          heading: "M",
+          headingId: "m",
+          descriptionHtml: cardMDescriptionHtml
+        }) }}
+
+        <div class="nhsuk-back-to-top">
+          <a class="nhsuk-back-to-top__link" href="#nhsuk-nav-a-z">
+            Back to top
+          </a>
+        </div>
+
+        {% set cardNDescriptionHtml %}
+          <ul class="nhsuk-list nhsuk-list--border">
+            <li>NCSC - National Cyber Security Centre</li>
+            <li>NDG - National Data Guardian</li>
+            <li>NFI - National Fraud Initiative</li>
+            <li>NHS - National Health Service</li>
+            <li>NHSBSA - NHS Business Service Authority</li>
+            <li>NHSE&amp;I - NHS England &amp; NHS Improvement</li>
+            <li>NINO - National Insurance Number</li>
+            <li>NOD - Notification Of Death</li>
+            <li>NOK - Next Of Kin</li>
+            <li>NPA - Normal Pension Age</li>
+            <li>NWT - Notional Whole Time</li>
+          </ul>
+        {% endset %}
+
+        {{ card({
+          feature: true,
+          heading: "N",
+          headingId: "n",
+          descriptionHtml: cardNDescriptionHtml
+        }) }}
+
+        <div class="nhsuk-back-to-top">
+          <a class="nhsuk-back-to-top__link" href="#nhsuk-nav-a-z">
+            Back to top
+          </a>
+        </div>
+
+        {% set cardODescriptionHtml %}
+          <ul class="nhsuk-list nhsuk-list--border">
+            <li>ODS - Organisation Data Service</li>
+            <li>ONS - Office for National Statistics</li>
+            <li>OV - Opening Value</li>
+          </ul>
+        {% endset %}
+
+        {{ card({
+          feature: true,
+          heading: "O",
+          headingId: "o",
+          descriptionHtml: cardODescriptionHtml
+        }) }}
+
+        <div class="nhsuk-back-to-top">
+          <a class="nhsuk-back-to-top__link" href="#nhsuk-nav-a-z">
+            Back to top
+          </a>
+        </div>
+
+        {% set cardPDescriptionHtml %}
+          <ul class="nhsuk-list nhsuk-list--border">
+            <li>PCC - Pensions Contact Centre</li>
+            <li>PCN - Penalty Charge Notice</li>
+            <li>PCSE - Primary Care Support England</li>
+            <li>PECS - Prescription Exemption Checking Service</li>
+            <li>PDU - Policy Development Unit</li>
+            <li>PIA - Pension Input Amount</li>
+            <li>PIP - Pension Input Period</li>
+            <li>PMI - Pensions Management Institute</li>
+            <li>POA - Power of Attorney</li>
+            <li>POD - Pension On Divorce</li>
+            <li>POL - Pensions Online</li>
+            <li>PPC - Prescription Prepayment Certificate</li>
+          </ul>
+        {% endset %}
+
+        {{ card({
+          feature: true,
+          heading: "P",
+          headingId: "p",
+          descriptionHtml: cardPDescriptionHtml
+        }) }}
+
+        <div class="nhsuk-back-to-top">
+          <a class="nhsuk-back-to-top__link" href="#nhsuk-nav-a-z">
+            Back to top
+          </a>
+        </div>
+
+        {% set cardQDescriptionHtml %}
+          <ul class="nhsuk-list nhsuk-list--border">
+            <li>Q&amp;K - Quality &amp; Knowledge</li>
+            <li>QROPS - Qualifying Recognised Overseas Pension Scheme</li>
+          </ul>
+        {% endset %}
+
+        {{ card({
+          feature: true,
+          heading: "Q",
+          headingId: "q",
+          descriptionHtml: cardQDescriptionHtml
+        }) }}
+
+        <div class="nhsuk-back-to-top">
+          <a class="nhsuk-back-to-top__link" href="#nhsuk-nav-a-z">
+            Back to top
+          </a>
+        </div>
+
+        {% set cardRDescriptionHtml %}
+          <ul class="nhsuk-list nhsuk-list--border">
+            <li>RA - Registration Authority</li>
+            <li>RCN - Royal College of Nurses</li>
+            <li>RPC - Retirement Provisions Certificate</li>
+            <li>RSS - Remedial Service Statement</li>
+            <li>RTA - Real Time Analyst</li>
+            <li>RTW - Return To Work</li>
+            <li>RY - Reference Years</li>
+          </ul>
+        {% endset %}
+
+        {{ card({
+          feature: true,
+          heading: "R",
+          headingId: "r",
+          descriptionHtml: cardRDescriptionHtml
+        }) }}
+
+        <div class="nhsuk-back-to-top">
+          <a class="nhsuk-back-to-top__link" href="#nhsuk-nav-a-z">
+            Back to top
+          </a>
+        </div>
+
+        {% set cardSDescriptionHtml %}
+          <ul class="nhsuk-list nhsuk-list--border">
+            <li>SAB - Stakeholder Advisor Board</li>
+            <li>SAR - Subject Access Request</li>
+            <li>SCU - Scheme Compliance Unit</li>
+            <li>SCR - Summary Care Record</li>
+            <li>SD - Superannuation Division</li>
+            <li>SDM - Service Delivery Manager</li>
+            <li>SFI's - Standing Financial Instructions</li>
+            <li>SG - Service Group</li>
+            <li>SH - Service History</li>
+            <li>SHE - Safety, Health &amp; Environment</li>
+            <li>SI - System Issues</li>
+            <li>SLA - Service Level Agreement</li>
+            <li>SME - Subject Matter Expert</li>
+            <li>SMT - Senior Management Team</li>
+            <li>SRA - Stress Risk Assessment</li>
+            <li>SSDM - Senior Service Delivery Manager</li>
+            <li>STA - Single Tender Action</li>
+          </ul>
+        {% endset %}
+
+        {{ card({
+          feature: true,
+          heading: "S",
+          headingId: "s",
+          descriptionHtml: cardSDescriptionHtml
+        }) }}
+
+        <div class="nhsuk-back-to-top">
+          <a class="nhsuk-back-to-top__link" href="#nhsuk-nav-a-z">
+            Back to top
+          </a>
+        </div>
+
+        {% set cardTDescriptionHtml %}
+          <ul class="nhsuk-list nhsuk-list--border">
+            <li>T&amp;P - Technical &amp; Procedural</li>
+            <li>TCT - Technical Consultancy Team</li>
+            <li>TM - Team Manager</li>
+            <li>TMS - Time Management System</li>
+            <li>TPO - The Pensions Ombudsman</li>
+            <li>TPP - Total Pensionable Pay</li>
+            <li>TPR - The Pensions Regulator</li>
+            <li>TRS - Total Reward Statement</li>
+            <li>TVIN - Transfer Value In</li>
+          </ul>
+        {% endset %}
+
+        {{ card({
+          feature: true,
+          heading: "T",
+          headingId: "t",
+          descriptionHtml: cardTDescriptionHtml
+        }) }}
+
+        <div class="nhsuk-back-to-top">
+          <a class="nhsuk-back-to-top__link" href="#nhsuk-nav-a-z">
+            Back to top
+          </a>
+        </div>
+
+        {% set cardWDescriptionHtml %}
+          <ul class="nhsuk-list nhsuk-list--border">
+            <li>WAP - Workplace Adjustment Passport</li>
+            <li>WFM - Workflow Manager</li>
+            <li>WPP - Workplace Passport</li>
+          </ul>
+        {% endset %}
+
+        {{ card({
+          feature: true,
+          heading: "W",
+          headingId: "w",
+          descriptionHtml: cardWDescriptionHtml
+        }) }}
+
+        <div class="nhsuk-back-to-top">
+          <a class="nhsuk-back-to-top__link" href="#nhsuk-nav-a-z">
+            Back to top
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

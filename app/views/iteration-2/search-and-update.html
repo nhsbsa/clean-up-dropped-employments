@@ -1,0 +1,130 @@
+{% extends 'layout.html' %}
+{% set mediumLayout = "true" %}
+{% set pageTitle = "How does Identify record issues work?"%}
+{% set showMenu ="true"%}
+{% set supportMenu ="true"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row summaryPage">
+  <div class="nhsuk-grid-column-full">
+      <div class="nhsuk-u-reading-width">
+    
+          <span class="nhsuk-caption-l">How to videos</span>
+          <h1 class="nhsuk-heading-l">{{pageTitle}} </h1>
+
+          {{ contentsList({
+            items: [
+              {
+                href: "how-to-videos",
+                text: "How does Identify record issues work?"
+              },
+              {
+                href: "filter-datasets",
+                text: "Filtering data sets"
+              },
+              {
+                href: "compare-datasets",
+                text: "Compare data sets"
+              },
+              {
+                href: "customise-datasets",
+                text: "Customise data sets"
+              },
+              {
+                href: "pagination",
+                text: "Pagination"
+              },
+              {
+                href: "useful-buttons",
+                text: "Useful buttons",
+                current: true
+              },
+              {
+                href: "understanding-issue-messages",
+                text: "Understanding issue messages"
+              }
+            ]
+          }) }}
+
+          <h2 class="nhsuk-heading-m">Useful buttons</h2>
+          <p class="nhsuk-hint">Including search new member, update datasets and hide correct rows</p>
+          
+          <h3 class="nhsuk-heading-s">Search new member</h3>
+          <p class="nhsuk-hint">Navigate from one member to another</p>
+          <video class="videoHow" width="640" height="380" controls>
+            <source src="/assets/videos/feature-video-search.mp4" type="video/mp4">
+            <source src="/assets/videos/feature-video-search.ogg" type="video/ogg">
+            Your browser does not support the video tag.
+          </video>
+
+          {% call details({
+            summaryText: "View the video transcript"
+          }) %}
+            <p><span class="transcriptTimes">[00:01]</span><br>
+              From the results screen of the Identify record issues tool, you will see the search new
+              member button in the top right. You can click this at any point to go back to the search screen
+              and search for a new member.
+            </p>
+          {% endcall %}
+
+          <hr>
+
+          <h3 class="nhsuk-heading-s">Update data sets</h3>
+          <p class="nhsuk-hint">Update data being pulled from Compendia</p>
+          <video class="videoHow" width="640" height="380" controls>
+            <source src="/assets/videos/feature-video-update.mp4" type="video/mp4">
+            <source src="/assets/videos/feature-video-update.ogg" type="video/ogg">
+            Your browser does not support the video tag.
+          </video>
+
+          {% call details({
+            summaryText: "View the video transcript"
+          }) %}
+            <p><span class="transcriptTimes">[00:01]</span><br>
+              From the results screen of the Identify record issues tool, you can scroll down and you will see
+              update data sets button. You may have made some changes and want to re-check on the tool so you
+              can just click update datasets and this will refresh your screen and the data will be re pulled
+              from Compendia so you know it is the latest data being shown.
+            </p>
+          {% endcall %}
+
+          <hr>
+
+          <h3 class="nhsuk-heading-s">Hide correct rows</h3>
+          <p class="nhsuk-hint">Hide correct rows appears on every data set which contains an issue</p>
+          <video class="videoHow" width="640" height="380" controls>
+            <source src="/assets/videos/feature-video-hide.mp4" type="video/mp4">
+            <source src="/assets/videos/feature-video-hide.ogg" type="video/ogg">
+            Your browser does not support the video tag.
+          </video>
+
+          {% call details({
+            summaryText: "View the video transcript"
+          }) %}
+            <p><span class="transcriptTimes">[00:01]</span><br>
+              From the results screen of the Identify record issues tool. When looking at a data set which
+              contains an issue, you can use the Hide Correct Rows button to hide all rows apart from those
+              with issues. You can click it again and the rows will reappear.
+            </p>
+          {% endcall %}
+          
+          <hr>
+    
+          {{ pagination({
+            previous: {
+              labelText: "Pagination",
+              href: "pagination"
+            },
+            next: {
+              labelText: "Understanding issue messages",
+              href: "understanding-issue-messages"
+            }
+          }) }}
+    
+  </div>
+</div>
+{% endblock %}

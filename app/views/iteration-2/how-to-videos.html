@@ -1,0 +1,127 @@
+{% extends 'layout.html' %}
+{% set mediumLayout = "true" %}
+{% set pageTitle = "How does Identify record issues work?"%}
+{% set showMenu ="true"%}
+{% set supportMenu ="true"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row summaryPage">
+  <div class="nhsuk-grid-column-full">
+      <div class="nhsuk-u-reading-width">
+    
+          <span class="nhsuk-caption-l">How to videos</span>
+          <h1 class="nhsuk-heading-l">{{pageTitle}} </h1>
+
+          {{ contentsList({
+            items: [
+              {
+                href: "#",
+                text: "How does Identify record issues work?",
+                current: true
+              },
+              {
+                href: "filter-datasets",
+                text: "Filtering data sets"
+              },
+              {
+                href: "compare-datasets",
+                text: "Compare data sets"
+              },
+              {
+                href: "customise-datasets",
+                text: "Customise data sets"
+              },
+              {
+                href: "pagination-and-hide",
+                text: "Pagination and hide correct rows"
+              },
+              {
+                href: "search-and-update",
+                text: "Search members and update data sets"
+              },
+              {
+                href: "understanding-issue-messages",
+                text: "Understanding issue messages"
+              }
+            ]
+          }) }}
+
+          <p class="nhsuk-body">Use these videos to get a quick introduction to the Identify record issues tool and learn how to use each of its features. Start with the overview video to understand what the tool does and when to use it, then explore the shorter guides that show you how to complete specific tasks step by step. </p>
+    
+          <h2 class="nhsuk-heading-m">Overview</h2>
+
+          <video class="videoHow" width="640" height="380" controls>
+            <source src="/assets/videos/complete-overview.mp4" type="video/mp4">
+            <source src="/assets/videos/complete-overview.ogg" type="video/ogg">
+            Your browser does not support the video tag.
+          </video>
+
+          {% call details({
+            summaryText: "View the video transcript"
+          }) %}
+            <p><span class="transcriptTimes">[00:01]</span><br>
+              Welcome to the Identify record issues tool. This is the homepage that you will see on logging
+              into the tool you can go to the Pensions issues overview which will give you an up to date view
+              of what the tool can and can't detect. Here we can see there are 34 live checks, four fixes
+              planned, six data sets included and five releases have been completed. A brief summary of
+              what has been included in each release and things still to be decided for future releases.
+              Scrolling down we've got the six data sets which are currently included in the tool and you can
+              see which checks are live on the tool at the moment.
+            </p>
+            <p><span class="transcriptTimes">[00:46]</span><br>
+              Towards the bottom we can see what the tool cannot do yet and what we are working on for
+              future releases. If we go back up to the top, back to the home page we can search for a new
+              member and here we'll see the basic information including member number, national insurance
+              number, scheme, date of birth status and email address. Here we've also got the Search New
+              Member button so you can search for a new member at any point. Scrolling down we can see
+              that two validation issues have been found for this member. Go down a bit further we've got the
+              introduction to the core member data sets.
+            </p>
+            <p><span class="transcriptTimes">[01:32]</span><br>
+              We've got the update data sets button which will refresh your browser and pull the data direct
+              from Compendia as soon as it's refreshed. So you can do this at any time. Further down we have
+              show filters where you can turn data sets on and off. Compare two data sets side by side where
+              you can choose any two data sets. Press compare and it will open a new screen where you can
+              see each data set side by side.
+            </p>
+            <p><span class="transcriptTimes">[02:17]</span><br>
+              Then we've got the data sets. So the six currently included in the every data set when you open it
+              has the customise data set button which allows the user to turn columns on and off, making the
+              view easier to read, especially in large data sets. You've also got the compare data set button
+              which automatically selects within the compare feature and you can just select the one you
+              would like to compare it with. As this data set has an issue, we've got the issue summary at the
+              top including the Issue message which links down to the correct row in the table which is also
+              highlighted. If you have a lot of data in the table, you might want to click the hide correct rows
+              button and this will just show the affected rows.
+            </p>
+            <p><span class="transcriptTimes">[03:03]</span><br>
+              All data sets are presented the same, however in longer data sets such as Conts and TTP or Hours
+              history, you will have pagination just to make it easier to read. So you've got 10 rows by default
+              and you can just scroll through. However, this can also be changed here to five rows. If you want
+              a shorter view, or if you'd rather just view all rows at once, you can just click all rows and it will
+              turn the pagination off. You will see the back to the top button has also been activated as I've
+              scrolled down the screen, so you can click that to go back to the top at any time.
+            </p>
+            <p><span class="transcriptTimes">[03:48]</span><br>
+              We do have additional videos in the sports section which go into further detail on each of the
+              features that can be found in the tool to give you more information on how these can be used.
+              Thank you.
+            </p>
+          {% endcall %}
+          
+          <hr>
+
+          {{ pagination({
+            next: {
+              labelText: "Filtering data sets",
+              href: "#"
+            }
+          }) }}
+    
+  </div>
+</div>
+{% endblock %}

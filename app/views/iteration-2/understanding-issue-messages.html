@@ -1,0 +1,112 @@
+{% extends 'layout.html' %}
+{% set mediumLayout = "true" %}
+{% set pageTitle = "Understanding issue messages"%}
+{% set showMenu ="true"%}
+{% set supportMenu ="true"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row summaryPage">
+  <div class="nhsuk-grid-column-full">
+      <div class="nhsuk-u-reading-width">
+    
+          <span class="nhsuk-caption-l">How to videos</span>
+          <h1 class="nhsuk-heading-l">{{pageTitle}} </h1>
+
+          {{ contentsList({
+            items: [
+              {
+                href: "how-to-videos",
+                text: "How does Identify record issues work?"
+              },
+              {
+                href: "#",
+                text: "Filtering data sets"
+              },
+              {
+                href: "compare-datasets",
+                text: "Compare data sets"
+              },
+              {
+                href: "customise-datasets",
+                text: "Customise data sets"
+              },
+              {
+                href: "pagination",
+                text: "Pagination"
+              },
+              {
+                href: "useful-buttons",
+                text: "Useful buttons"
+              },
+              {
+                href: "understanding-issue-messages",
+                text: "Understanding issue messages",
+                current: true
+              }
+            ]
+          }) }}
+
+          <h2 class="nhsuk-heading-m">{{pageTitle}}</h2>
+          <p class="nhsuk-hint">Learn how issue messages in the Identify record issues tool are structured</p>
+
+          <video class="videoHow" width="640" height="380" controls>
+            <source src="/assets/videos/feature-video-issues.mp4" type="video/mp4">
+            <source src="/assets/videos/feature-video-issues.ogg" type="video/ogg">
+            Your browser does not support the video tag.
+          </video>
+
+          {% call details({
+            summaryText: "View the video transcript"
+          }) %}
+            <p><span class="transcriptTimes">[00:01]</span><br>
+              When you first start using the Identify record issues tool, one of the hardest things to
+              understand is the issue messages. You might be able to see that something is wrong, but not
+              immediately understand what it means or what to do next. This video will help you break that
+              down. By the end, you'll know how read a message, understand what it's telling you and know
+              where to start your investigation. Every issue message is designed to give you three things.
+            </p>
+            <p><span class="transcriptTimes">[00:26]</span><br>
+              What is wrong, which data sets are involved and where to look. Think of it as a signpost. It
+              doesn't give you the answer, but it points you in the right direction. Most issue messages follow
+              a simple structure. Type object and check data sets.
+            </p>
+            <p><span class="transcriptTimes">[00:43]</span><br>
+              This helps you quickly understand the kind of issue, what data is affected and where to
+              investigate. If we scroll down on this results page, we will see the service history contains one
+              issue. Let's break it down. The employment id. This tells you which row of data has been
+              affected.
+            </p>
+            <p><span class="transcriptTimes">[01:07]</span><br>
+              The end date mismatch. This tells you the type of issue. Something doesn't align. Check CTPP
+              and SH. This tells you where to look.
+            </p>
+            <p><span class="transcriptTimes">[01:17]</span><br>
+              Conts and TTP and service history. The message doesn't tell you which is wrong, but this where
+              your judgment comes in. Most messages follow this structure, but not all of them will look
+              exactly the same. That's because pension data can be complex and in some issues they don't fit
+              a simple pattern. If a message looks different, focus on the same principles.
+            </p>
+            <p><span class="transcriptTimes">[01:44]</span><br>
+              What is wrong, what data is involved and where you need to look. Issue messages are not
+              answers. They are starting points. They help you focus your investigation, narrow down where to
+              look and understand the kind of issue you're dealing with. The more you use them, the more
+              intuitive they become.
+            </p>
+          {% endcall %}
+          
+          <hr>
+    
+          {{ pagination({
+            previous: {
+              labelText: "Search members and update data sets",
+              href: "search-and-update"
+            }
+          }) }}
+    
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends 'layout.html' %}
+{% set mediumLayout = "true" %}
+{% set pageTitle = "How does Identify record issues work?"%}
+{% set showMenu ="true"%}
+{% set supportMenu ="true"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row summaryPage">
+  <div class="nhsuk-grid-column-full">
+      <div class="nhsuk-u-reading-width">
+    
+          <span class="nhsuk-caption-l">How to videos</span>
+          <h1 class="nhsuk-heading-l">{{pageTitle}} </h1>
+
+          {{ contentsList({
+            items: [
+              {
+                href: "how-to-videos",
+                text: "How does Identify record issues work?"
+              },
+              {
+                href: "#",
+                text: "Filtering data sets",
+                current: true
+              },
+              {
+                href: "compare-datasets",
+                text: "Compare data sets"
+              },
+              {
+                href: "customise-datasets",
+                text: "Customise data sets"
+              },
+              {
+                href: "pagination",
+                text: "Pagination"
+              },
+              {
+                href: "useful-buttons",
+                text: "Useful buttons"
+              },
+              {
+                href: "understanding-issue-messages",
+                text: "Understanding issue messages"
+              }
+            ]
+          }) }}
+
+          <h2 class="nhsuk-heading-m">Filter data sets</h2>
+          <p class="nhsuk-hint">Learn how you can filter data sets using the Identify record issues tool</p>
+
+          <video class="videoHow" width="640" height="380" controls>
+            <source src="/assets/videos/feature-video-filters.mp4" type="video/mp4">
+            <source src="/assets/videos/feature-video-filters.ogg" type="video/ogg">
+            Your browser does not support the video tag.
+          </video>
+
+          {% call details({
+            summaryText: "View the video transcript"
+          }) %}
+            <p><span class="transcriptTimes">[00:01]</span><br>
+              On the results screen of the Identify Record Issues tool you will see a show filters button. This
+              lists all the data sets that are currently included in the tool. You will see two of them are greyed
+              out here. This is because these contain issues. Any data set containing an issue cannot be
+              hidden using the filter.
+            </p>
+            <p><span class="transcriptTimes">[00:24]</span><br>
+              The others can be. So to hide a data set you would just click the ones you wanted to hide. So if
+              you wanted to hide all of them apart from those with issues, just uncheck them, apply filters and
+              then you would see there's only the two data sets with issues found which are left, equally, to
+              turn them back on, you just reselect them and click apply filters and all data sets would
+              reappear. You can turn on and off as many as you want at one time.
+            </p>
+          {% endcall %}
+          
+          <hr>
+    
+          {{ pagination({
+            previous: {
+              labelText: "How does Identify record issues work?",
+              href: "how-to-videos"
+            },
+            next: {
+              labelText: "Compare data sets",
+              href: "compare-datasets"
+            }
+          }) }}
+    
+  </div>
+</div>
+{% endblock %}

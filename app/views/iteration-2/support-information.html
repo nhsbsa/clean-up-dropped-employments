@@ -1,0 +1,67 @@
+{% extends 'layout.html' %}
+{% set mediumLayout = "true" %}
+{% set pageTitle = "Do you need help with the Identify record issues tool?"%}
+{% set showMenu ="true"%}
+{% set supportMenu ="true"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row summaryPage">
+  <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-u-reading-width">
+
+      <span class="nhsuk-caption-l">Support information</span>
+      <h1 class="nhsuk-heading-l">{{pageTitle}} </h1>
+      <p class="nhsuk-body">Find support information to help you use the Identify record issues tool effectively. This section explains common acronyms you may see, provides step-by-step videos for key features and offers downloadable training guides to support you in completing tasks with confidence.</p>
+
+
+      <ul class="nhsuk-grid-row nhsuk-card-group">
+        <li class="nhsuk-grid-column-one-half nhsuk-card-group__item">
+          {{ card({
+            href: "acronyms",
+            primary: "true",
+            clickable: "true",
+            heading: "Acronyms",
+            headingSize: "m",
+            description: "Access a quick guide to NHS Pensions acronyms and understand the terms you may see when using our services"
+          }) }}
+        </li>
+        <li class="nhsuk-grid-column-one-half nhsuk-card-group__item">
+          {{ card({
+            href: "how-to-videos",
+            primary: "true",
+            clickable: "true",
+            heading: "How to videos",
+            headingSize: "m",
+            description: "Access a quick introduction to the Identify record issues tool and learn how to use each of its features"
+          }) }}
+        </li>
+        <li class="nhsuk-grid-column-one-half nhsuk-card-group__item">
+          {{ card({
+            href: "#",
+            primary: "true",
+            clickable: "true",
+            heading: "Training guides",
+            headingSize: "m",
+            description: "Access downloadable training guides for the Identify record issues tool and corruptions in pension records"
+          }) }}
+        </li>
+        <li class="nhsuk-grid-column-one-half nhsuk-card-group__item">
+          {{ card({
+            href: "#",
+            primary: "true",
+            clickable: "true",
+            heading: "Contact",
+            headingSize: "m",
+            description: "Content"
+          }) }}
+        </li>
+      </ul>
+      
+    </div>
+  </div>
+</div>
+{% endblock %}

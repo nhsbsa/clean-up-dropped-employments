@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+{% set mediumLayout = "true" %}
+{% set pageTitle = "Issues the tool can detect in members' pension records"%}
+{% set showMenu ="true"%}
+{% set supportMenu ="true"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row summaryPage">
+  <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-u-reading-width">
+
+      {{ overviewIntro | safe }}
+      {{ overviewSummaryIteration2 | safe }}
+      {{ overviewCanDoIteration2 | safe }}
+      {{ overviewCannotDo | safe }}
+
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,100 @@
+{% extends 'layout.html' %}
+{% set mediumLayout = "true" %}
+{% set pageTitle = "How does Identify record issues work?"%}
+{% set showMenu ="true"%}
+{% set supportMenu ="true"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row summaryPage">
+  <div class="nhsuk-grid-column-full">
+      <div class="nhsuk-u-reading-width">
+    
+          <span class="nhsuk-caption-l">How to videos</span>
+          <h1 class="nhsuk-heading-l">{{pageTitle}} </h1>
+
+          {{ contentsList({
+            items: [
+              {
+                href: "how-to-videos",
+                text: "How does Identify record issues work?"
+              },
+              {
+                href: "#",
+                text: "Filtering data sets"
+              },
+              {
+                href: "compare-datasets",
+                text: "Compare data sets",
+                current: true
+              },
+              {
+                href: "customise-datasets",
+                text: "Customise data sets"
+              },
+              {
+                href: "pagination",
+                text: "Pagination"
+              },
+              {
+                href: "useful-buttons",
+                text: "Useful buttons"
+              },
+              {
+                href: "understanding-issue-messages",
+                text: "Understanding issue messages"
+              }
+            ]
+          }) }}
+
+          <h2 class="nhsuk-heading-m">Compare data sets</h2>
+          <p class="nhsuk-hint">Learn how you can compare two data sets side by side using the Identify record issues tool</p>
+
+          <video class="videoHow" width="640" height="380" controls>
+            <source src="/assets/videos/feature-video-compare.mp4" type="video/mp4">
+            <source src="/assets/videos/feature-video-compare.ogg" type="video/ogg">
+            Your browser does not support the video tag.
+          </video>
+
+          {% call details({
+            summaryText: "View the video transcript"
+          }) %}
+            <p><span class="transcriptTimes">[00:01]</span><br>
+              From the results screen of the Identify record issues tool if you scroll down, you can see the
+              compare data sets side by side. You can compare any two data sets you like. You just select the
+              ones you'd like to compare. Click compare and then you see the new screen with the view of the
+              table side by side.
+            </p>
+            <p><span class="transcriptTimes">[00:22]</span><br>
+              You can scroll left and right on larger data sets. However, if you only want to see certain columns
+              to compare them, you can just remove the columns you don't want to see. Click apply and your
+              table will be adjusted accordingly. You can do this with both sides. And this just makes it easier
+              to read if you're looking for specific data and then you can click back to go back to the main view.
+            </p>
+            <p><span class="transcriptTimes">[00:57]</span><br>
+              Another way of selecting datasets to compare, if you're looking at a data set and you think you
+              would like to compare it, you can just click compare dataset here and it will automatically select
+              it and then you can choose which one you would like to compare it with. Click compare and it
+              will open the new view.
+            </p>
+          {% endcall %}
+          
+          <hr>
+    
+          {{ pagination({
+            previous: {
+              labelText: "Filter data sets",
+              href: "filter-datasets"
+            },
+            next: {
+              labelText: "Customise data sets",
+              href: "customise-datasets"
+            }
+          }) }}
+    
+  </div>
+</div>
+{% endblock %}

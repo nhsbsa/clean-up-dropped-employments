@@ -1,0 +1,94 @@
+{% extends 'layout.html' %}
+{% set mediumLayout = "true" %}
+{% set pageTitle = "How does Identify record issues work?"%}
+{% set showMenu ="true"%}
+{% set supportMenu ="true"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row summaryPage">
+  <div class="nhsuk-grid-column-full">
+      <div class="nhsuk-u-reading-width">
+    
+          <span class="nhsuk-caption-l">How to videos</span>
+          <h1 class="nhsuk-heading-l">{{pageTitle}} </h1>
+
+          {{ contentsList({
+            items: [
+              {
+                href: "how-to-videos",
+                text: "How does Identify record issues work?"
+              },
+              {
+                href: "filter-datasets",
+                text: "Filtering data sets"
+              },
+              {
+                href: "compare-datasets",
+                text: "Compare data sets"
+              },
+              {
+                href: "customise-datasets",
+                text: "Customise data sets",
+                current: true
+              },
+              {
+                href: "pagination",
+                text: "Pagination"
+              },
+              {
+                href: "useful-buttons",
+                text: "Useful buttons"
+              },
+              {
+                href: "understanding-issue-messages",
+                text: "Understanding issue messages"
+              }
+            ]
+          }) }}
+
+          <h2 class="nhsuk-heading-m">Customise data sets</h2>
+          <p class="nhsuk-hint">Learn how you can customise data sets using the Identify record issues tool</p>
+
+          <video class="videoHow" width="640" height="380" controls>
+            <source src="/assets/videos/feature-video-customise.mp4" type="video/mp4">
+            <source src="/assets/videos/feature-video-customise.ogg" type="video/ogg">
+            Your browser does not support the video tag.
+          </video>
+
+          {% call details({
+            summaryText: "View the video transcript"
+          }) %}
+            <p><span class="transcriptTimes">[00:01]</span><br>
+              From the results screen of the Identify records issues tool, you can scroll down and within each
+              dataset you will see there is a customise dataset button. From here you can click this and select
+              any columns that you would like to remove just to make your view easier to read. If you are only
+              looking at the end date and the start date and the employee code, you could unselect the rest of
+              the columns, click apply and your table would become much clearer and easier to read. If you
+              want to reinstate the data, you can just reselect.
+            </p>
+            <p><span class="transcriptTimes">[00:42]</span><br>
+              Click apply and your table will go back to how it was originally. This is visible within every dataset
+              shown on the tool.
+            </p>
+          {% endcall %}
+          
+          <hr>
+    
+          {{ pagination({
+            previous: {
+              labelText: "Compare data sets",
+              href: "compare-datasets"
+            },
+            next: {
+              labelText: "Pagination",
+              href: "pagination"
+            }
+          }) }}
+    
+  </div>
+</div>
+{% endblock %}
