@@ -1,0 +1,69 @@
+{% extends 'layout.html' %}
+{% set mediumLayout = "true" %}
+{% set pageTitle = "Contact Identify record issues"%}
+{% set showMenu ="true"%}
+{% set supportMenu ="true"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row summaryPage">
+  <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-u-reading-width">
+
+      <span class="nhsuk-caption-l">Support information</span>
+      <h1 class="nhsuk-heading-l">{{pageTitle}} </h1>
+      
+      <h2 class="nhsuk-heading-m">Get help or give feedback</h2>
+      <p class="nhsuk-body">If you need help using the Identify record issues tool or want to share feedback, use the options below.</p>
+      <p class="nhsuk-body">We aim to make this service easy to use and your feedback helps us improve it.</p>
+      <hr>    
+      <h2 class="nhsuk-heading-m">Give feedback about this service</h2>
+      <p class="nhsuk-body">If you want to tell us what you think about the Identify Record Issues tool, you can use our feedback form.</p>
+      <p class="nhsuk-body">Use this for:</p>
+      <ul>
+        <li>comments about your experience</li>
+        <li>suggestions for improvements</li>
+      </ul>
+      <p class="body"><a href="https://research.nhsbsa.nhs.uk/s/identify-record-issues-feedback" target="_blank">Give feedback (opens in a new tab)</a></p>
+      <hr>
+      <h2 class="nhsuk-heading-m">Report a problem or request access</h2>
+      <p class="nhsuk-body">If you are having an issue with the tool or need access, you must raise a service request using HaloITSM.</p>
+      <p class="nhsuk-body">Use HaloITSM for:</p>
+      <ul>
+        <li>add or remove access</li>
+        <li>access requests</li>
+        <li>technical problems using the tool</li>
+        <li>data or functionality issues</li>
+        <li>general support queries</li>
+      </ul>
+      <p class="body"><a href="https://nhsbsa.haloitsm.com/portal/" target="_blank">Submit a service request via HaloITSM (opens in a new tab)</a>
+      <p class="nhsuk-body">When submitting your request, include:</p>
+      <ul>
+        <li>your name and organisation</li>
+        <li>a description of the issue or request</li>
+        <li>screenshots or error messages (if available)</li>
+        <li>the date and time the issue occurred</li>
+      </ul>
+      <p class="nhsuk-body">This will help us resolve your request more quickly.</p>
+      <hr>
+      <h2 class="nhsuk-heading-m">Before you contact us</h2>
+      <p class="nhsuk-body">You may find the answer you need in the support section.</p>
+      <ul>
+        <li>check the <a href="how-to-videos">to videos</a> </li>
+        <li>check the <a href="training-guides">training guides</a> </li>
+      </ul>
+
+      <hr>
+      <h2 class="nhsuk-heading-m">What happens next</h2>
+      <ul>
+        <li>feedback submissions are reviewed regularly to improve the service</li>
+        <li>HaloITSM requests are handled by the support team based on priority</li>
+        <li>You will receive updates through HaloITSM for any service requests you raise</li>
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}
