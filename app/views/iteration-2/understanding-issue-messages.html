@@ -1,5 +1,6 @@
 {% extends 'layout.html' %}
 {% set mediumLayout = "true" %}
+{% set hideBack ="true"%}
 {% set pageTitle = "Understanding issue messages"%}
 {% set showMenu ="true"%}
 {% set supportMenu ="true"%}
@@ -20,7 +21,7 @@
             items: [
               {
                 href: "how-to-videos",
-                text: "How does Identify record issues work?"
+                text: "Overview of the Identify record issues tool"
               },
               {
                 href: "#",
@@ -36,15 +37,15 @@
               },
               {
                 href: "pagination",
-                text: "Pagination"
+                text: "Use pagination"
               },
               {
                 href: "useful-buttons",
-                text: "Useful buttons"
+                text: "Explore useful buttons"
               },
               {
                 href: "understanding-issue-messages",
-                text: "Understanding issue messages",
+                text: "Understand issue messages",
                 current: true
               }
             ]
@@ -102,7 +103,7 @@
     
           {{ pagination({
             previous: {
-              labelText: "Useful buttons",
+              labelText: "Explore useful buttons",
               href: "useful-buttons"
             }
           }) }}

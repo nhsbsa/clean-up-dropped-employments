@@ -1,4 +1,5 @@
 {% extends 'layout.html' %}
+{% set hideBack ="true"%}
 {% set mediumLayout = "true" %}
 {% set pageTitle = "How does Identify record issues work?"%}
 {% set showMenu ="true"%}
@@ -20,7 +21,7 @@
             items: [
               {
                 href: "how-to-videos",
-                text: "How does Identify record issues work?"
+                text: "Overview of the Identify record issues tool"
               },
               {
                 href: "filter-datasets",
@@ -36,16 +37,16 @@
               },
               {
                 href: "pagination",
-                text: "Pagination"
+                text: "Use pagination"
               },
               {
                 href: "useful-buttons",
-                text: "Useful buttons",
+                text: "Explore useful buttons",
                 current: true
               },
               {
                 href: "understanding-issue-messages",
-                text: "Understanding issue messages"
+                text: "Understand issue messages"
               }
             ]
           }) }}
@@ -116,11 +117,11 @@
     
           {{ pagination({
             previous: {
-              labelText: "Pagination",
+              labelText: "Use pagination",
               href: "pagination"
             },
             next: {
-              labelText: "Understanding issue messages",
+              labelText: "Understand issue messages",
               href: "understanding-issue-messages"
             }
           }) }}
