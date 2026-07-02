@@ -478,6 +478,7 @@ document.addEventListener('DOMContentLoaded', function () {
             "memberSurname-error",
             "recordTypeChange-error",
             "siteAuto-error",
+            "payment-error",
             "directorate-error"
         ].forEach(id => {
             const el = document.getElementById(id);
