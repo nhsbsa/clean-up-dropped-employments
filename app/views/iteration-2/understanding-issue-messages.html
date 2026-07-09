@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 {% set mediumLayout = "true" %}
 {% set hideBack ="true"%}
-{% set pageTitle = "Understanding issue messages"%}
+{% set pageTitle = "How to videos - Understanding issue messages"%}
 {% set showMenu ="true"%}
 {% set supportMenu ="true"%}
 
@@ -14,8 +14,15 @@
   <div class="nhsuk-grid-column-full">
       <div class="nhsuk-u-reading-width">
     
-          <span class="nhsuk-caption-l">How to videos</span>
-          <h1 class="nhsuk-heading-l">{{pageTitle}} </h1>
+          <h1 class="nhsuk-heading-l">How to videos
+            <span class="nhsuk-caption-xl nhsuk-caption--bottom">
+                <span class="nhsuk-u-visually-hidden">
+                  -
+                </span>
+                Understanding issue messages
+              </span>
+            </span>
+          </h1>
 
           {{ contentsList({
             items: [
@@ -24,7 +31,7 @@
                 text: "Overview of the Identify record issues tool"
               },
               {
-                href: "#",
+                href: "filter-datasets",
                 text: "Filtering data sets"
               },
               {
@@ -51,7 +58,7 @@
             ]
           }) }}
 
-          <h2 class="nhsuk-heading-m">{{pageTitle}}</h2>
+          <h2 class="nhsuk-heading-m">Issue messages</h2>
           <p class="nhsuk-hint">Learn how issue messages in the Identify record issues tool are structured</p>
 
           <video class="videoHow" width="640" height="380" controls>

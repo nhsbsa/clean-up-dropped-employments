@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 {% set hideBack ="true"%}
 {% set mediumLayout = "true" %}
-{% set pageTitle = "How does Identify record issues work?"%}
+{% set pageTitle = "How to videos - How to compare data sets"%}
 {% set showMenu ="true"%}
 {% set supportMenu ="true"%}
 
@@ -14,8 +14,15 @@
   <div class="nhsuk-grid-column-full">
       <div class="nhsuk-u-reading-width">
     
-          <span class="nhsuk-caption-l">How to videos</span>
-          <h1 class="nhsuk-heading-l">{{pageTitle}} </h1>
+          <h1 class="nhsuk-heading-l">How to videos
+            <span class="nhsuk-caption-xl nhsuk-caption--bottom">
+                <span class="nhsuk-u-visually-hidden">
+                  -
+                </span>
+                How to compare data sets
+              </span>
+            </span>
+          </h1>
 
           {{ contentsList({
             items: [
@@ -24,7 +31,7 @@
                 text: "Overview of the Identify record issues tool"
               },
               {
-                href: "#",
+                href: "filter-datasets",
                 text: "Filtering data sets"
               },
               {
