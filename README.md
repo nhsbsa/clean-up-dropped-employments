@@ -20,7 +20,7 @@ This is a live project and currently being worked on iteratively and may contain
 The data held within the data sets is static and does not update on browser refresh, this functionality will only be visible in the live version. The search within the prototype is for design purposes any number can be entered into here to reach the results screen.
 
 # Installation instructions
-
+- <a href="https://nhsbsa.github.io/nhsbsa-digital-playbook/security/tech-node-dependency-chain-abuse/">Protecting against NPM dependency chain abuse</a>
 - <a href="https://prototype-kit.service-manual.nhs.uk/install/simple">Install guide (non technical)</a>
 - <a href="https://prototype-kit.service-manual.nhs.uk/install/advanced">Developer friendly install guide (technical)</a>
 
