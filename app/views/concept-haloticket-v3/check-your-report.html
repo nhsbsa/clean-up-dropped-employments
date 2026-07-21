@@ -1,0 +1,311 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Check your ticket"%}
+{% set showMenu ="true"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row confirmReport">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <span class="nhsuk-caption-l">Raise a Halo ticket</span>
+        <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">{{pageTitle}}</h1>
+        
+        <h3>Requester details {{ req.originalUrl }}</h3>
+
+        <dl class="nhsuk-summary-list">
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Requester name
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    Jane Doe
+                </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Subject
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    Record change request
+                </dd>
+            </div>
+        </dl>
+
+        <h3>Incident form</h3>
+
+        <dl class="nhsuk-summary-list">
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Member number
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {% if (data['memberNumber']) %}
+                    {{ data['memberNumber']}}
+                    {% else %}
+                    1234567
+                    {% endif %}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="#">
+                        Change<span class="nhsuk-u-visually-hidden"> name</span>
+                    </a>
+                </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Member first initial
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    J
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="#">
+                        Change<span class="nhsuk-u-visually-hidden"> name</span>
+                    </a>
+                </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Member surname
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    Smith
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="#">
+                        Change<span class="nhsuk-u-visually-hidden"> name</span>
+                    </a>
+                </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Type of record change
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['recordTypeChange']}}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="#">
+                        Change<span class="nhsuk-u-visually-hidden"> name</span>
+                    </a>
+                </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Has a record been corrupted?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {% if (data['corrupted'] == "yes" ) %}
+                    Yes, corruption type: {{ data['corruptionType']}}
+                    {% elseif (data['corrupted'] == "no" ) %}
+                    No
+                    {% endif %}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="#">
+                        Change<span class="nhsuk-u-visually-hidden"> name</span>
+                    </a>
+                </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Has a payment been affected?
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['payment']}}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="#">
+                        Change<span class="nhsuk-u-visually-hidden"> name</span>
+                    </a>
+                </dd>
+            </div>
+            {% if (data['payment'] == "yes" ) %}
+                <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                        Will this affect a payment today?
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                        {{ data['paymentToday']}}
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                        <a href="#">
+                            Change<span class="nhsuk-u-visually-hidden"> name</span>
+                        </a>
+                    </dd>
+                </div>
+            {% endif %}
+        </dl>
+        
+        <h3>Description</h3>
+
+        <dl class="nhsuk-summary-list">
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Issue details
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    View details table to confirm issues
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="#">
+                        Change<span class="nhsuk-u-visually-hidden"> issue details</span>
+                    </a>
+                </dd>
+            </div>
+        </dl>
+
+        <details class="nhsuk-details nhsuk-expander">  
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                Issue details
+                </span>
+            </summary>
+            <div class="nhsuk-details__text">
+                <table class="nhsuk-table" id="reportTable">
+                <caption class="nhsuk-table__caption nhsuk-u-visually-hidden">
+                    Issue details
+                </caption>
+                <thead class="nhsuk-table__head">
+                <tr class="nhsuk-table__row">
+                    <th class="nhsuk-table__cell nhsuk-u-font-size-14 reportCell" scope="col">Sets</th>
+                    <th class="nhsuk-table__cell nhsuk-u-font-size-14 reportCell" scope="col">Fields</th>
+                    <th class="nhsuk-table__cell nhsuk-u-font-size-14" scope="col">Amendments to be made</th>
+                </tr>
+                </thead>
+                <tbody class="nhsuk-table__body">
+
+                <tr class="nhsuk-table__row">
+                    <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['sets'][0]}}</td>
+                    <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['fields'][0]}}</td>
+                    <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['amendments'][0]}}</td>
+                </tr>
+                <tr class="nhsuk-table__row">
+                    <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['sets'][1]}}</td>
+                    <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['fields'][1]}}</td>
+                    <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['amendments'][1]}}</td>
+                </tr>
+                {% if data['sets']|length > 1 and data['sets'][2] %}
+                <tr class="nhsuk-table__row">
+                    <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['sets'][2]}}</td>
+                    <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['fields'][2]}}</td>
+                    <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['amendments'][2]}}</td>
+                </tr>
+                {% endif %}
+                {% if data['sets']|length > 1 and data['sets'][3] %}
+                <tr class="nhsuk-table__row">
+                    <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['sets'][3]}}</td>
+                    <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['fields'][3]}}</td>
+                    <td class="nhsuk-table__cell nhsuk-u-font-size-14">{{ data['amendments'][3]}}</td>
+                </tr>
+                {% endif %}
+
+                </tbody>
+                </table>
+            </div>
+        </details>
+        <dl class="nhsuk-summary-list">
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Reason
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['issue-reason']}}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="#">
+                        Change<span class="nhsuk-u-visually-hidden"> reason</span>
+                    </a>
+                </dd>
+            </div>
+        </dl>
+        
+        <h3>Basic information</h3>
+
+        <dl class="nhsuk-summary-list">
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Site
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {% if (data['siteAuto']) %}
+                    {{ data['siteAuto']}}
+                    {% else %}
+                    Site not entered
+                    {% endif %}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="#">
+                        Change<span class="nhsuk-u-visually-hidden"> urgency</span>
+                    </a>
+                </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Directorate
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {% if (data['directorate']) %}
+                    {{ data['directorate']}}
+                    {% else %}
+                    Directorate not entered
+                    {% endif %}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="#">
+                        Change<span class="nhsuk-u-visually-hidden"> urgency</span>
+                    </a>
+                </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Ticket Description
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {% if (data['additionalDsc']) %}
+                    {{ data['additionalDsc']}}
+                    {% else %}
+                    Additional description not entered
+                    {% endif %}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="#">
+                        Change<span class="nhsuk-u-visually-hidden"> urgency</span>
+                    </a>
+                </dd>
+            </div>
+        </dl>
+        
+        <h3>Uploaded file</h3>
+
+        <dl class="nhsuk-summary-list">
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    File name
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    fake-upload-1.jpg (JPG, 123KB)<br>
+                    fake-form-2.jpg (JPG, 123KB)
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="#">
+                        Change<span class="nhsuk-u-visually-hidden"> uploaded file</span>
+                    </a>
+                </dd>
+            </div>
+        </dl>
+
+        <form action="/{{folder}}/check-your-report" method="post" novalidate>
+            {{ button({
+            "text": "Confirm and send",
+            "classes": "nhsuk-u-margin-top-3"
+            }) }}
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

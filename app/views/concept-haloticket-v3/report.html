@@ -1,0 +1,424 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Halo ticket for John Smith"%}
+{% set showMenu ="true"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+        <div class="nhsuk-u-reading-width">
+            <span class="nhsuk-caption-l">Raise a Halo ticket</span>
+            <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">{{pageTitle}}</h1>
+            <div class="nhsuk-hint">
+                This ticket is being generated to send to Halo, you need to enter all of the correct details in each section of the form.
+            </div>
+        </div>
+
+        <form action="/{{folder}}/report" method="post" id="reportForm">
+
+            <div class="nhsuk-u-reading-width">
+                <!-- Error summary (hidden by default) -->
+                <div id="errorSummary" class="nhsuk-error-summary" role="alert" style="display:none;">
+                    <h2 class="nhsuk-error-summary__title">There is a problem</h2>
+                    <div class="nhsuk-error-summary__body">
+                        <ul class="nhsuk-list nhsuk-error-summary__list" id="errorList"></ul>
+                    </div>
+                </div>
+            </div>   
+            <p>This ticket is being requested by:</p>
+            {{ summaryList({
+                rows: [
+                    {
+                    key: {
+                        text: "Requester name"
+                    },
+                    value: {
+                        text: "Jane Doe"
+                    }
+                    },
+                    {
+                    key: {
+                        text: "Subject"
+                    },
+                    value: {
+                        text: "Record change request"
+                    }
+                    }
+                ]
+            }) }}
+
+            <h2 class="nhsuk-heading-m">Incident form</h2>
+            
+            <div class="nhsuk-form-group" id="membershipNumberGroup">
+            {{ input({
+                label: {
+                text: "Member number",
+                size: "s"
+                },
+                id: "membershipNumber",
+                name: "membershipNumber",
+                classes: "nhsuk-input--width-10",
+                value: "24103624"
+            }) }}
+            </div>
+            <div class="nhsuk-form-group" id="memberFirstInitialGroup">
+                {{ input({
+                    label: {
+                    text: "Member first initial",
+                    size: "s"
+                    },
+                    id: "memberFirstInitial",
+                    name: "memberFirstInitial",
+                    classes: "nhsuk-input--width-2",
+                    value: "J"
+                }) }}
+            </div>
+            <div class="nhsuk-form-group" id="memberSurnameGroup">
+                {{ input({
+                    label: {
+                    text: "Member surname",
+                    size: "s"
+                    },
+                    id: "memberSurname",
+                    name: "memberSurname",
+                    classes: "nhsuk-input--width-20",
+                    value: "Smith"
+                }) }}
+            </div>
+            <div class="nhsuk-form-group" id="recordTypeChangeGroup">
+                {{ radios({
+                idPrefix: "recordTypeChange",
+                name: "recordTypeChange",
+                fieldset: {
+                    legend: {
+                    text: "Type of record change",
+                    size: "s"
+                    }
+                },
+                hint: {
+                    text: "Select the type of record change for your ticket, if your ticket is for a cancel award use Halo"
+                },
+                small: true,
+                classes: "columnRadios",
+                items: [
+                    {
+                    value: "Scheme change",
+                    text: "Scheme change"
+                    },
+                    {
+                    value: "Statue change",
+                    text: "Status change"
+                    },
+                    {
+                    value: "Service group change",
+                    text: "Service group change"
+                    },
+                    {
+                    value: "Deletion of form",
+                    text: "Deletion of form"
+                    },
+                    {
+                    value: "Employment / ServHst / ContTpps / HrsHist  Amendments",
+                    text: "Employment / ServHst / ContTpps / HrsHist  Amendments"
+                    },
+                    {
+                    value: "Add basic",
+                    text: "Add basic"
+                    },
+                    {
+                    value: "Additional pension",
+                    text: "Additional pension"
+                    },
+                    {
+                    value: "other",
+                    text: "Other"
+                    }
+                ]
+                }) }}
+            </div>
+            {% set corruptedHtml %}
+                {{ select({
+                    label: {
+                        text: "Corruption type"
+                    },
+                    id: "corruptionType",
+                    name: "corruptionType",
+                    value: "Corruption type",
+                    items: [
+                        {
+                        value: " ",
+                        text: " "
+                        },
+                        {
+                        value: "Dropped employment",
+                        text: "Dropped employment"
+                        },
+                        {
+                        value: "Duplicate employment records",
+                        text: "Duplicate employment records"
+                        },
+                        {
+                        value: "Re-employed pensioner",
+                        text: "Re-employed pensioner"
+                        },
+                        {
+                        value: "Erroneous linked employments",
+                        text: "Erroneous linked employments"
+                        },
+                        {
+                        value: "Mismatched service dates",
+                        text: "Mismatched service dates"
+                        },
+                        {
+                        value: "Erroneous member status",
+                        text: "Erroneous member status"
+                        },
+                        {
+                        value: "Erroneous scheme codes",
+                        text: "Erroneous scheme codes"
+                        },
+                        {
+                        value: "Qualifying services errors",
+                        text: "Qualifying services errors"
+                        },
+                        {
+                        value: "Erroneous basic header",
+                        text: "Erroneous basic header"
+                        },
+                        {
+                        value: "Unsure",
+                        text: "Unsure"
+                        }
+                    ]
+                }) }}
+            {% endset -%}
+            <div class="nhsuk-form-group" id="corruptedGroup">
+                {{ radios({
+                    idPrefix: "corrupted",
+                    name: "corrupted",
+                    fieldset: {
+                        legend: {
+                        text: "Has a record been corrupted?",
+                        size: "s",
+                        isPageHeading: false
+                        }
+                    },
+                    small: true,
+                    items: [
+                        {
+                        value: "yes",
+                        text: "Yes",
+                        conditional: {
+                            html: corruptedHtml
+                        }
+                        },
+                        {
+                        value: "no",
+                        text: "No"
+                        }
+                    ]
+                }) }}
+            </div>
+            {% set paymentHtml %}
+                {{ radios({
+                    idPrefix: "paymentToday",
+                    name: "paymentToday",
+                    classes: "nhsuk-radios--inline",
+                    fieldset: {
+                        legend: {
+                        text: "Will this affect a payment today?",
+                        size: "s",
+                        isPageHeading: false
+                        }
+                    },
+                    small: true,
+                    items: [
+                        {
+                        value: "yes",
+                        text: "Yes"
+                        },
+                        {
+                        value: "no",
+                        text: "No"
+                        }
+                    ]
+                }) }}
+            {% endset %}
+            <div class="nhsuk-form-group" id="paymentGroup">
+                {{ radios({
+                idPrefix: "payment",
+                name: "payment",
+                fieldset: {
+                    legend: {
+                    text: "Has a payment been affected?",
+                    size: "s",
+                    isPageHeading: false
+                    }
+                },
+                small: true,
+                items: [
+                    {
+                    value: "yes",
+                    text: "Yes",
+                    conditional: {
+                        html: paymentHtml
+                    }
+                    },
+                    {
+                    value: "no",
+                    text: "No"
+                    }
+                ]
+                }) }}
+            </div>
+
+            <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+            <div class="nhsuk-u-reading-width">
+                <h3>Description</h3>
+                <div class="nhsuk-hint">
+                    Issues have been added from the Identify record issues tool, you can remove any that aren't
+                    required in your Halo ticket or add any additional information they may need
+                </div>
+            
+            </div>
+            <div class="nhsuk-scrollable-pane greyBg" aria-label="Issue details" tabindex="0">
+                <table class="nhsuk-table" id="reportTable">
+                    <caption class="nhsuk-table__caption">
+                        Issue details
+                    </caption>
+                    <thead class="nhsuk-table__head">
+                    <tr class="nhsuk-table__row">
+                        <th class="nhsuk-table__cell nhsuk-u-font-size-14 reportCell" scope="col">Sets</th>
+                        <th class="nhsuk-table__cell nhsuk-u-font-size-14 reportCell" scope="col">Fields</th>
+                        <th class="nhsuk-table__cell nhsuk-u-font-size-14" scope="col">Amendments to be made</th>
+                        <th class="nhsuk-table__cell nhsuk-u-font-size-14" scope="col">Remove</th>
+                    </tr>
+                    </thead>
+                    <tbody class="nhsuk-table__body">
+    
+                    <!-- 2 pre-populated rows -->
+                    <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="sets[]" id="setOne" value="Service history" aria-label="Sets: Service history issue 1"></td>
+                        <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="fields[]" id="fieldOne" value="End date" aria-label="Fields: end date"></td>
+                        <td class="nhsuk-table__cell"><textarea rows="2" class="nhsuk-textarea nhsuk-u-font-size-14" name="amendments[]" id="amendmentsOne" aria-label="Amendments: Employment ID 1 end date mismatch. Check [CTPP &amp; SH]">Employment ID 1 end date mismatch. Check [CTPP &amp; SH]</textarea></td>
+                        <td class="nhsuk-table__cell nhsuk-u-font-size-14"><a href="#" class="remove-row nhsuk-link">Remove <span class="nhsuk-u-visually-hidden">Employment ID 1 end date mismatch. Check [CTPP &amp; SH]</span></a></td>
+                    </tr>
+                    <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="sets[]" id="setTwo" value="Linked employments" aria-label="Sets: Linked employments issue 1"></td>
+                        <td class="nhsuk-table__cell"><input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text" name="fields[]" id="fieldTwo" value="Pre-remedy employment ID" aria-label="Fields: Pre-remedy employment ID"></td>
+                        <td class="nhsuk-table__cell"><textarea rows="2" class="nhsuk-textarea nhsuk-u-font-size-14" name="amendments[]" id="amendmentsTwo" aria-label="Amendments: Pre-remedy employment ID 1 linked employment mismatch. Check [SH &amp; LE]">Pre-remedy employment ID 1 linked employment mismatch. Check [SH &amp; LE]</textarea></td>
+                        <td class="nhsuk-table__cell nhsuk-u-font-size-14"><a href="#" class="remove-row nhsuk-link">Remove <span class="nhsuk-u-visually-hidden">Pre-remedy employment ID 1 linked employment mismatch. Check [SH &amp; LE]</span></a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="nhsuk-inset-text undoRemovalContainer" hidden>
+                <span class="nhsuk-u-visually-hidden">Information: </span>
+                <p>Removed: <strong id="removedAmendmentText"></strong></p>
+                <span class="buttonUndo">
+                    {{ button({
+                        type: "button",
+                        id: "undoRemovalButton",
+                        text: "Undo removal",
+                        classes: "nhsuk-button--secondary nhsuk-button--small"
+                    }) }}
+                </span> 
+            </div>
+            <button type="button" id="addRowButton" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small">Add another row</button>
+            
+            <div class="nhsuk-u-reading-width">
+                <div class="nhsuk-form-group" id="issueReason">
+                    <label class="nhsuk-label nhsuk-label--s" for="issue-reason">
+                        Reason
+                    </label>
+                    <div class="nhsuk-hint" id="example-right-size-hint">
+                        Must include details of what needs to be updated on the members record, why you think it is corrupt and why you cannot fix this record
+                    </div>
+                    <textarea class="nhsuk-textarea" id="issue-reason" name="issue-reason" rows="3" aria-describedby="issue-reason-error"></textarea>
+                </div>
+            </div>
+            <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+            <div class="nhsuk-u-reading-width">
+                <h2 class="nhsuk-heading-m">Basic information</h2>
+
+                <div class="nhsuk-form-group" id="siteAutoGroup">
+                    <label class="nhsuk-label  nhsuk-label--s" for="siteAuto">
+                        Site
+                    </label>
+                    
+                    <select class="nhsuk-select js-autocomplete nhsuk-input--width-20" id="siteAuto" name="siteAuto">
+                        <option value="" selected></option>
+                        <option>Bickersatffe house- Blackpool</option>
+                        <option>Bridgehouse - Newcastle</option>
+                        <option>Cody Park (Data Centre)</option>
+                        <option>Contractor Site</option>
+                        <option>Eastbourne</option>
+                        <option>External</option>
+                        <option>Greenfinch way - Newcastle</option>
+                        <option>NHS BSA</option>
+                        <option>Parklands - Middlebrooke</option>
+                        <option>Spring Park (Data Centre)</option>
+                        <option>Stella house - Newcastle</option>
+                        <option>Wakefield house - Wakefield</option>
+                        <option>Working from home</option>
+                    </select>
+                </div>
+                <div class="nhsuk-form-group" id="directorateGroup">
+                    <label class="nhsuk-label  nhsuk-label--s" for="directorate">
+                        Directorate
+                    </label>
+                    
+                    <select class="nhsuk-select js-autocomplete nhsuk-input--width-20" id="directorate" name="directorate">
+                        <option value="" selected></option>
+                        <option>Citizen Services</option>
+                        <option>Chief Executives Office</option>
+                        <option>Data Digital and Technology</option>
+                        <option>Finance Commercial and Estates</option>
+                        <option>Leadership Team</option>
+                        <option>NHS Workforce Services</option>
+                        <option>People and Corporate Services</option>
+                        <option>Primary Care Services</option>
+                        <option>Portfolio Management</option>
+                        <option>Strategy Performance Business Develop and Growth</option>
+                    </select>
+                </div>
+
+                {{ textarea({
+                    name: "additionalDsc",
+                    id: "additionalDsc",
+                    rows: "3",
+                    label: {
+                        text: "Additional information",
+                        size: "s"
+                    },
+                    hint: {
+                        text: "Include any additional information for complex cases and if you have discussed this case with your SME"
+                    }
+                }) }}
+
+            </div>
+            <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+            {{ fileUpload({
+                label: {
+                    text: "Upload a file",
+                    size: "m",
+                    isPageHeading: true
+                },
+                name: "file-hint"
+            }) }}
+            <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+            <button type="submit" class="nhsuk-button">Continue</button>
+        </form>
+
+    </div>
+</div>
+
+<script src="/assets/javascript/sd-report-v2.js"></script>
+<script src="/assets/javascript/autocomplete.js"></script>
+
+{% endblock %}
