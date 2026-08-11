@@ -1,0 +1,26 @@
+#documents-dropzone {
+    display: flex;
+    padding: nhsuk-spacing(9) nhsuk-spacing(3);
+    transition:
+        outline-offset 0.1s ease-in-out,
+        background-color 0.1s linear;
+    outline: 3px dashed nhsuk-colour("black");
+    text-align: center;
+
+    label {
+        display: inline-block;
+        width: auto;
+        margin-bottom: 0;
+    }
+
+    p {
+        margin-right: 10px;
+        margin-bottom: 0;
+        padding-top: 7px;
+    }
+
+}
+#documents-dropzone [type="file"] {
+    position: absolute;
+    left: -9999em;
+}

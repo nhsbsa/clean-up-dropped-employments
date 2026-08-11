@@ -287,8 +287,13 @@
                     File name
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                    fake-upload-1.jpg (JPG, 123KB)<br>
-                    fake-form-2.jpg (JPG, 123KB)
+                    {% if data['uploadedFiles'] and data['uploadedFiles'].length %}
+                    {% for fileName in data['uploadedFiles'] %}
+                    {{ fileName }}{% if not loop.last %}<br>{% endif %}
+                    {% endfor %}
+                    {% else %}
+                    No files uploaded
+                    {% endif %}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                     <a href="#">

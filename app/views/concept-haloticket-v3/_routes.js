@@ -20,6 +20,18 @@ router.post('/results', function (req, res) {
 })
 
 router.post('/report', function (req, res) {
+    let uploadedFiles = [];
+
+    try {
+        const parsed = JSON.parse(req.body.uploadedFileNames || '[]');
+        if (Array.isArray(parsed)) {
+            uploadedFiles = parsed.filter((name) => typeof name === 'string' && name.trim() !== '');
+        }
+    } catch (error) {
+        uploadedFiles = [];
+    }
+
+    req.session.data.uploadedFiles = uploadedFiles;
     res.redirect('check-your-report');
 })
 
