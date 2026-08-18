@@ -62,9 +62,9 @@
 }
 
 
-@include mq($from: desktop) {
-  .nhsuk-cookie-banner li {
-    display: inline;
-    margin-right: 20px;
-  }
-}
+// @include mq($from: desktop) {
+//   .nhsuk-cookie-banner li {
+//     display: inline;
+//     margin-right: 20px;
+//   }
+// }
