@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <select class="nhsuk-select nhsuk-u-font-size-14"
                     id="sets-${rowCount}"
                     name="sets[]">
-                <option value="">Select a set</option>
+                <option value="">Select a data set</option>
                 <option value="Service history">Service history</option>
                 <option value="Employment">Employment</option>
                 <option value="Service groups">Service groups</option>

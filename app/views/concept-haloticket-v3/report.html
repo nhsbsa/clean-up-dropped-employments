@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "Halo ticket for John Smith"%}
+{% set pageTitle = "HaloITSM ticket for John Smith"%}
 {% set showMenu ="true"%}
 
 {% block pageTitle %}
@@ -11,10 +11,10 @@
     <div class="nhsuk-grid-column-full">
 
         <div class="nhsuk-u-reading-width">
-            <span class="nhsuk-caption-l">Raise a Halo ticket</span>
+            <span class="nhsuk-caption-l">Raise a HaloITSM ticket</span>
             <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">{{pageTitle}}</h1>
             <div class="nhsuk-hint">
-                This ticket is being generated to send to Halo, you need to enter all of the correct details in each
+                This ticket is being generated to send to HaloITSM, you need to enter all of the correct details in each
                 section of the form.
             </div>
         </div>
@@ -101,7 +101,7 @@
                 }
                 },
                 hint: {
-                text: "Select the type of record change for your ticket, if your ticket is for a cancel award use Halo"
+                text: "Select the type of record change for your ticket, if your ticket is for a cancel award use HaloITSM"
                 },
                 small: true,
                 classes: "columnRadios",
@@ -283,7 +283,7 @@
                 <h3>Description</h3>
                 <div class="nhsuk-hint">
                     Issues have been added from the Identify record issues tool, you can remove any that aren't
-                    required in your Halo ticket or add any additional information they may need
+                    required in your HaloITSM ticket or add any additional information they may need
                 </div>
 
             </div>
@@ -294,7 +294,7 @@
                     </caption>
                     <thead class="nhsuk-table__head">
                         <tr class="nhsuk-table__row">
-                            <th class="nhsuk-table__cell nhsuk-u-font-size-14 reportCell" scope="col">Sets</th>
+                            <th class="nhsuk-table__cell nhsuk-u-font-size-14 reportCell" scope="col">Data set</th>
                             <th class="nhsuk-table__cell nhsuk-u-font-size-14 reportCell" scope="col">Fields</th>
                             <th class="nhsuk-table__cell nhsuk-u-font-size-14" scope="col">Amendments to be made</th>
                             <th class="nhsuk-table__cell nhsuk-u-font-size-14" scope="col">Remove</th>
@@ -307,7 +307,7 @@
                             <td class="nhsuk-table__cell">
                                 <select class="nhsuk-select nhsuk-u-font-size-14" name="sets[]" id="setOne"
                                     aria-label="Sets: Service history issue 1">
-                                    <option value="">Select a set</option>
+                                    <option value="">Select a data set</option>
                                     <option value="Service history" selected>Service history</option>
                                     <option value="Employment">Employment</option>
                                     <option value="Service groups">Service groups</option>
@@ -333,7 +333,7 @@
                             <td class="nhsuk-table__cell">
                                 <select class="nhsuk-select nhsuk-u-font-size-14" name="sets[]" id="setTwo"
                                     aria-label="Sets: Linked employment issue 1">
-                                    <option value="">Select a set</option>
+                                    <option value="">Select a data set</option>
                                     <option value="Service history">Service history</option>
                                     <option value="Employment">Employment</option>
                                     <option value="Service groups">Service groups</option>
