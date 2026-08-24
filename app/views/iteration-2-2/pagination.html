@@ -1,0 +1,99 @@
+{% extends 'layout.html' %}
+{% set hideBack ="true"%}
+{% set mediumLayout = "true" %}
+{% set pageTitle = "How to videos - How to use pagination"%}
+{% set showMenu ="true"%}
+{% set supportMenu ="true"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row summaryPage">
+  <div class="nhsuk-grid-column-full">
+      <div class="nhsuk-u-reading-width">
+    
+          <h1 class="nhsuk-heading-l">How to videos
+            <span class="nhsuk-caption-xl nhsuk-caption--bottom">
+                <span class="nhsuk-u-visually-hidden">
+                  -
+                </span>
+                How to use pagination
+              </span>
+            </span>
+          </h1>
+
+          {{ contentsList({
+            items: [
+              {
+                href: "how-to-videos",
+                text: "Overview of the Identify record issues tool"
+              },
+              {
+                href: "filter-datasets",
+                text: "Filtering data sets"
+              },
+              {
+                href: "compare-datasets",
+                text: "Compare data sets"
+              },
+              {
+                href: "customise-datasets",
+                text: "Customise data sets"
+              },
+              {
+                href: "pagination",
+                text: "Use pagination",
+                current: true
+              },
+              {
+                href: "useful-buttons",
+                text: "Explore useful buttons"
+              },
+              {
+                href: "understanding-issue-messages",
+                text: "Understand issue messages"
+              }
+            ]
+          }) }}
+
+          <h2 class="nhsuk-heading-m">Pagination</h3>
+          <p class="nhsuk-hint">Pagination is used for larger datasets to make them easier to read and reduce scrolling, the video shows you how it works and how it can be adjusted to suit you</p>
+          <video class="videoHow" width="640" height="380" controls>
+            <source src="/assets/videos/feature-video-pagination.mp4" type="video/mp4">
+            <source src="/assets/videos/feature-video-pagination.ogg" type="video/ogg">
+            Your browser does not support the video tag.
+          </video>
+
+          {% call details({
+            summaryText: "View the video transcript"
+          }) %}
+            <p><span class="transcriptTimes">[00:01]</span><br>
+              From the results screen of the Identify record issues tool, if you're looking at a larger data set,
+              you will see pagination is used by default. This shows 10 rows per page. You can flick through
+              the pages using the controls at the bottom. If you like, you can change the rows per page to five,
+              which is a shorter view and it means you can see without any scrolling.
+            </p>
+            <p><span class="transcriptTimes">[00:31]</span><br>
+              But you do have more pages. If you prefer not to have no pages at all and just have all rows in view,
+              you can just change the rows per page to all and the pagination will be removed.
+            </p>
+          {% endcall %}
+          
+          <hr>
+    
+          {{ pagination({
+            previous: {
+              labelText: "Customise data sets",
+              href: "customise-datasets"
+            },
+            next: {
+              labelText: "Explore useful buttons",
+              href: "useful-buttons"
+            }
+          }) }}
+    
+  </div>
+</div>
+{% endblock %}

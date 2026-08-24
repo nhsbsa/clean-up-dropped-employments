@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+{% set mediumLayout = "true" %}
+{% set pageTitle = "Report submitted successfully"%}
+{% set hideBack ="true"%}
+{% set showMenu ="true"%}
+{% set supportMenu ="true"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row confirmReport">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ panel({
+            titleText: "Your ticket has been submitted",
+            text: "Ticket number: XXXX1234"
+        }) }}
+
+        <h2 class="nhsuk-heading-m">What happens next</h2>
+
+        <p>
+            You'll get a response to your HaloITSM ticket within XXX
+        </p>
+
+        <h2 class="nhsuk-heading-m">Give feedback</h2>
+
+        <p><a href="https://research.nhsbsa.nhs.uk/identify-record-issues-feedback" target="_blank">What did you think of this service?<span class="nhsuk-u-visually-hidden"> (opens in a new window)</span></a></p>
+
+        <hr>
+
+        <form action="/{{folder}}/report-submitted" method="post" novalidate>
+            {{ button({
+            text: "Search new member",
+            value: "searchNew",
+            name: "action"
+            }) }}
+        </form>
+
+    </div>
+</div>
+
+
+{% endblock %}

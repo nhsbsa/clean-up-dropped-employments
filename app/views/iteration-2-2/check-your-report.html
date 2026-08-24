@@ -1,6 +1,8 @@
 {% extends 'layout.html' %}
+{% set mediumLayout = "true" %}
 {% set pageTitle = "Check your ticket"%}
 {% set showMenu ="true"%}
+{% set supportMenu ="true"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -241,7 +243,7 @@
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                     <a href="#">
-                        Change<span class="nhsuk-u-visually-hidden"> urgency</span>
+                        Change<span class="nhsuk-u-visually-hidden"> site</span>
                     </a>
                 </dd>
             </div>
@@ -258,7 +260,7 @@
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                     <a href="#">
-                        Change<span class="nhsuk-u-visually-hidden"> urgency</span>
+                        Change<span class="nhsuk-u-visually-hidden"> directorate</span>
                     </a>
                 </dd>
             </div>
