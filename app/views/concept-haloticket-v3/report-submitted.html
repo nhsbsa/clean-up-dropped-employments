@@ -25,7 +25,16 @@
         <h2 class="nhsuk-heading-m">Give feedback</h2>
 
         <p><a href="#">What did you think of this service?<span class="nhsuk-u-visually-hidden"> (opens in a new
-                    window)</span></a> (takes 30 seconds).</p>
+                    window)</span></a></p>
+        <hr>
+
+        <form action="/{{folder}}/report-submitted" method="post" novalidate>
+            {{ button({
+            text: "Search new member",
+            value: "searchNew",
+            name: "action"
+            }) }}
+        </form>
 
     </div>
 </div>

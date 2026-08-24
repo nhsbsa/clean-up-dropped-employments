@@ -39,4 +39,8 @@ router.post('/check-your-report', function (req, res) {
     res.redirect('report-submitted');
 })
 
+router.post('/report-submitted', function (req, res) {
+    res.redirect('search');
+})
+
 module.exports = router;
