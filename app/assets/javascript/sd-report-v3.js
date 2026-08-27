@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
         row.remove();
     
-        removedAmendmentText.textContent = amendmentText;
+        removedAmendmentText.textContent = amendmentText.trim() || 'Blank row';
         undoContainer.hidden = false;
         undoContainer.classList.add("undoContainerVisible");
     }

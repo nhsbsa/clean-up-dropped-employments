@@ -9,6 +9,365 @@
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
 
+    <details class="nhsuk-details nhsuk-expander" id="employmentHistory">
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                    Employment [ES]
+                </span>
+            </summary>
+            <div class="nhsuk-details__text">
+                <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn" data-target="employmentHistory-checkbox">
+                    Compare data set</button>
+                <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="eh-panel-data" id="eh-toggle-data">
+                    Customise data set
+                </button>
+                <div id="eh-panel-data" hidden>
+                    <form id="eh-table-custom-form">
+                        <div class="nhsuk-form-group">
+                        <fieldset class="nhsuk-fieldset">
+                            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                            <h2 class="nhsuk-heading-xs">
+                                Choose which columns to display in this data set
+                            </h1>
+                            </legend>
+        
+                            <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
+                            data-module="nhsuk-checkboxes">
+        
+                            <div class="nhsuk-checkboxes__item">
+                                <input class="nhsuk-checkboxes__input" id="ehEmpCode-checkbox" name="ehEmpCode" type="checkbox"
+                                value="columns" checked>
+                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehEmpCode-checkbox">
+                                Employer code
+                                </label>
+                            </div>
+        
+                            <div class="nhsuk-checkboxes__item">
+                                <input class="nhsuk-checkboxes__input" id="ehStart-checkbox" name="ehStart" type="checkbox"
+                                value="columns" checked>
+                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehStart-checkbox">
+                                Start date
+                                </label>
+                            </div>
+        
+                            <div class="nhsuk-checkboxes__item">
+                                <input class="nhsuk-checkboxes__input" id="ehEnd-checkbox" name="ehEnd" type="checkbox"
+                                value="columns" checked>
+                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehEnd-checkbox">
+                                End date
+                                </label>
+                            </div>
+        
+                            <div class="nhsuk-checkboxes__item">
+                                <input class="nhsuk-checkboxes__input" id="ehTime-checkbox" name="ehTime" type="checkbox"
+                                value="columns" checked>
+                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehTime-checkbox">
+                                    Whole/part time
+                                </label>
+                            </div>
+        
+                            <div class="nhsuk-checkboxes__item">
+                                <input class="nhsuk-checkboxes__input" id="ehCapCode-checkbox" name="ehCapCode" type="checkbox"
+                                value="columns" checked>
+                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehCapCode-checkbox">
+                                Capacity Code
+                                </label>
+                            </div>
+        
+                            <div class="nhsuk-checkboxes__item">
+                                <input class="nhsuk-checkboxes__input" id="ehEmpType-checkbox" name="ehEmpType" type="checkbox"
+                                value="columns" checked>
+                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehEmpType-checkbox">
+                                Employment type
+                                </label>
+                            </div>
+        
+                            <div class="nhsuk-checkboxes__item">
+                                <input class="nhsuk-checkboxes__input" id="ehActHrs-checkbox" name="ehActHrs" type="checkbox"
+                                value="columns" checked>
+                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehActHrs-checkbox">
+                                Actual hours
+                                </label>
+                            </div>
+        
+                            <div class="nhsuk-checkboxes__item">
+                                <input class="nhsuk-checkboxes__input" id="ehStdHrs-checkbox" name="ehStdHrs" type="checkbox"
+                                value="columns" checked>
+                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehStdHrs-checkbox">
+                                Standard hours
+                                </label>
+                            </div>
+        
+                            <div class="nhsuk-checkboxes__item">
+                                <input class="nhsuk-checkboxes__input" id="ehActSess-checkbox" name="ehActSess" type="checkbox"
+                                value="columns" checked>
+                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehActSess-checkbox">
+                                Actual sessions
+                                </label>
+                            </div>
+        
+                            <div class="nhsuk-checkboxes__item">
+                                <input class="nhsuk-checkboxes__input" id="ehStdSess-checkbox" name="ehStdSess" type="checkbox"
+                                value="columns" checked>
+                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehStdSess-checkbox">
+                                Standard sessions
+                                </label>
+                            </div>
+        
+                            </div>
+                        </fieldset>
+                        </div>
+        
+                        <button class="nhsuk-button" type="submit">Apply</button>
+                    </form>
+                </div>
+                <style>
+                  #tableScrollEs{
+                    overflow-x: auto;
+                    white-space: nowrap;
+                  }
+                  .nhsuk-scroll {
+                    margin-top: 0;
+                  }
+                  .nhsuk-scroll .nhsuk-pagination__link{
+                    font-size: inherit;
+                  }
+                </style>
+                <div id="tableScrollEs" aria-label="Employment" tabindex="0">
+                  <table class="nhsuk-table employment-table" data-button-id="toggleRowsBtn_3"
+                      id="table-employment-history" data-desc="true" data-orderbycolumnno="0,2">
+                      <caption class="nhsuk-u-visually-hidden">Employment records for the selected member</caption>
+                      <thead class="nhsuk-table__head">
+                          <tr>
+                              <th scope="col" class="ehEmpID nhsuk-table__header nhsuk-u-font-size-14">Employment ID</th>
+                              <th scope="col" class="ehEmpCode nhsuk-table__header nhsuk-u-font-size-14">Employer code</th>
+                              <th scope="col" class="ehStart nhsuk-table__header nhsuk-u-font-size-14">Start date</th>
+                              <th scope="col" class="ehEnd nhsuk-table__header nhsuk-u-font-size-14"> End date</th>
+                              <th scope="col" class="ehTime nhsuk-table__header nhsuk-u-font-size-14">Whole/part time</th>
+                              <th scope="col" class="ehCapCode nhsuk-table__header nhsuk-u-font-size-14">Capacity code</th>
+                              <th scope="col" class="ehEmpType nhsuk-table__header nhsuk-u-font-size-14">Employment type</th>
+                              <th scope="col" class="ehActHrs nhsuk-table__header nhsuk-u-font-size-14">Actual hours</th>
+                              <th scope="col" class="ehStdHrs nhsuk-table__header nhsuk-u-font-size-14">Standard hours</th>
+                              <th scope="col" class="ehActSess nhsuk-table__header nhsuk-u-font-size-14">Actual sessions</th>
+                              <th scope="col" class="ehStdSess nhsuk-table__header nhsuk-u-font-size-14">Standard sessions</th>
+                          </tr>
+                      </thead>
+                      <tbody class="nhsuk-table__body">
+                          <tr id="employment-history-row-6" class="nhsuk-table__row">
+                              <td class="ehEmpID nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="6">
+                                  6
+                              </td>
+                              <td class="ehEmpCode nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="5654">
+                                  5654
+                              </td>
+                              <td class="ehStart nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2015-04-01">
+                                  01/04/2015
+                              </td>
+                              <td class="ehEnd nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2022-03-31">
+                                  31/03/2022
+                              </td>
+                              <td class="ehTime nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2">
+                                  2
+                              </td>
+                              <td class="ehCapCode nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="04">
+                                  04
+                              </td>
+                              <td class="ehEmpType nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1">
+                                  1
+                              </td>
+                              <td class="ehActHrs nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="25.00">
+                                  25.00
+                              </td>
+                              <td class="ehStdHrs nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="37.50">
+                                  37.50
+                              </td>
+                              <td class="ehActSess nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="25.00">
+                                  -
+                              </td>
+                              <td class="ehStdSess nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="37.50">
+                                  -
+                              </td>
+                          </tr>
+                          <tr id="employment-history-row-5" class="nhsuk-table__row">
+                              <td class="ehEmpID nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="5">
+                                  5
+                              </td>
+                              <td class="ehEmpCode nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="5654">
+                                  5654
+                              </td>
+                              <td class="ehStart nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2022-04-01">
+                                  01/04/2022
+                              </td>
+                              <td class="ehEnd nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2024-05-29">
+                                  29/05/2024
+                              </td>
+                              <td class="ehTime nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2">
+                                  2
+                              </td>
+                              <td class="ehCapCode nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="04">
+                                  04
+                              </td>
+                              <td class="ehEmpType nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1">
+                                  1
+                              </td>
+                              <td class="ehActHrs nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="7.50">
+                                  7.50
+                              </td>
+                              <td class="ehStdHrs nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="37.50">
+                                  37.50
+                              </td>
+                              <td class="ehActSess nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="25.00">
+                                0.00
+                              </td>
+                              <td class="ehStdSess nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="37.50">
+                                  -
+                              </td>
+                          </tr>
+                          <tr id="employment-history-row-3" class="nhsuk-table__row">
+                              <td class="ehEmpID nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="3">
+                                  3
+                              </td>
+                              <td class="ehEmpCode nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="5654">
+                                  5654
+                              </td>
+                              <td class="ehStart nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2018-04-02">
+                                  02/04/2018
+                              </td>
+                              <td class="ehEnd nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2022-03-31">
+                                  31/03/2022
+                              </td>
+                              <td class="ehTime nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2">
+                                  2
+                              </td>
+                              <td class="ehCapCode nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="04">
+                                  04
+                              </td>
+                              <td class="ehEmpType nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1">
+                                  1
+                              </td>
+                              <td class="ehActHrs nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="7.50">
+                                  7.50
+                              </td>
+                              <td class="ehStdHrs nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="37.50">
+                                  37.50
+                              </td>
+                              <td class="ehActSess nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="25.00">
+                                0.00
+                              </td>
+                              <td class="ehStdSess nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="37.50">
+                                  -
+                              </td>
+                          </tr>
+                          <tr id="employment-history-row-2" class="nhsuk-table__row">
+                              <td class="ehEmpID nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2">
+                                  2
+                              </td>
+                              <td class="ehEmpCode nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="5654">
+                                  5654
+                              </td>
+                              <td class="ehStart nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2022-04-01">
+                                  01/04/2022
+                              </td>
+                              <td class="ehEnd nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="">
+                                  <span id="employment-history-error-msg-ENDDTE-2" class="nhsuk-u-visually-hidden">No
+                                      data</span>
+                                  -
+                              </td>
+                              <td class="ehTime nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2">
+                                  2
+                              </td>
+                              <td class="ehCapCode nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="04">
+                                  04
+                              </td>
+                              <td class="ehEmpType nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1">
+                                  1
+                              </td>
+                              <td class="ehActHrs nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="25.00">
+                                  25.00
+                              </td>
+                              <td class="ehStdHrs nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="37.50">
+                                  37.50
+                              </td>
+                              <td class="ehActSess nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="25.00">
+                                  -
+                              </td>
+                              <td class="ehStdSess nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="37.50">
+                                  -
+                              </td>
+                          </tr>
+                          <tr id="employment-history-row-1" class="nhsuk-table__row">
+                              <td class="ehEmpID nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1">
+                                  1
+                              </td>
+                              <td class="ehEmpCode nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="5654">
+                                  5654
+                              </td>
+                              <td class="ehStart nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2009-12-21">
+                                  21/12/2009
+                              </td>
+                              <td class="ehEnd nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2022-03-31">
+                                  31/03/2022
+                              </td>
+                              <td class="ehTime nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="2">
+                                  2
+                              </td>
+                              <td class="ehCapCode nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="04">
+                                  04
+                              </td>
+                              <td class="ehEmpType nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="1">
+                                  1
+                              </td>
+                              <td class="ehActHrs nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="25.00">
+                                  25.00
+                              </td>
+                              <td class="ehStdHrs nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="37.50">
+                                  37.50
+                              </td>
+                              <td class="ehActSess nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="25.00">
+                                  0.00
+                              </td>
+                              <td class="ehStdSess nhsuk-table__cell nhsuk-u-font-size-14" data-sort-value="37.50">
+                                  -
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+                </div>
+                <nav class="nhsuk-pagination nhsuk-scroll" role="navigation" aria-label="Scroll table left and right">
+                  <ul class="nhsuk-list nhsuk-pagination__list">
+                    <li class="nhsuk-pagination-item--previous">
+                      <a onclick="scrollTable(-200)" class="nhsuk-pagination__link nhsuk-pagination__link--prev">
+                        <svg class="nhsuk-icon nhsuk-icon--arrow-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+                          <path d="M10.7 6.3c.4.4.4 1 0 1.4L7.4 11H19a1 1 0 0 1 0 2H7.4l3.3 3.3c.4.4.4 1 0 1.4a1 1 0 0 1-1.4 0l-5-5A1 1 0 0 1 4 12c0-.3.1-.5.3-.7l5-5a1 1 0 0 1 1.4 0Z" />
+                        </svg>
+                        <span class="nhsuk-pagination__title">
+                          <span class="nhsuk-u-visually-hidden">Scroll</span> Left
+                        </span>
+                      </a>
+                    </li>
+                    <li class="nhsuk-pagination-item--next">
+                      <a onclick="scrollTable(200)" class="nhsuk-pagination__link nhsuk-pagination__link--next">
+                        <span class="nhsuk-pagination__title">
+                          <span class="nhsuk-u-visually-hidden">Scroll</span> Right
+                        </span>
+                        <svg class="nhsuk-icon nhsuk-icon--arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+                          <path d="m14.7 6.3 5 5c.2.2.3.4.3.7 0 .3-.1.5-.3.7l-5 5a1 1 0 0 1-1.4-1.4l3.3-3.3H5a1 1 0 0 1 0-2h11.6l-3.3-3.3a1 1 0 1 1 1.4-1.4Z" />
+                        </svg>
+                      </a>
+                    </li>
+                  </ul>
+                
+                </nav>
+                
+                <script>
+                function scrollTable(amount) {
+                  const container = document.getElementById('tableScrollEs');
+                  container.scrollBy({ left: amount, behavior: 'smooth' });
+                }
+                </script>
+            </div>
+        </details>
+
     <hr /> <!-- FILTER TABLE -->
 
     <button class="nhsuk-button nhsuk-button--secondary" aria-expanded="false" aria-controls="filters-panel" id="filters-toggle">
