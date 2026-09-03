@@ -399,7 +399,28 @@
               </ul>
               <hr>
               {{ summaryList({
+                
                 rows: [
+                  {
+                    key: {
+                      html: "
+                      <strong>Data set arrows</strong>
+                      "
+                    },
+                    value: {
+                      html: "
+                      <p>Data set arrows allow users to navigate large data set tables efficiently, the arrows scroll the table right and left when the table is larger than its container.</p>"
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "/sandbox/dataset-arrows",
+                          text: "View",
+                          visuallyHiddenText: "Dataset arrows"
+                        }
+                      ]
+                    }
+                  },
                   {
                     key: {
                       html: "
