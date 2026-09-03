@@ -163,54 +163,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         // =========================
-        // REASON TEXTAREA VALIDATION
-        // =========================
-
-        const reasonGroup = document.getElementById("issueReason");
-        const reasonTextarea = document.getElementById("issue-reason");
-
-        if (!reasonTextarea.value.trim()) {
-
-            const message =
-                '<span class="nhsuk-u-visually-hidden">Error:</span>Enter the reason why you require an update for this record';
-
-            // add NHS error styling
-            reasonGroup.classList.add("nhsuk-form-group--error");
-            reasonTextarea.classList.add("nhsuk-textarea--error");
-
-            // create error message if it doesn't exist
-            let error = document.getElementById("issue-reason-error");
-
-            if (!error) {
-                error = document.createElement("span");
-                error.id = "issue-reason-error";
-                error.className = "nhsuk-error-message";
-                error.innerHTML = message;
-
-                reasonTextarea.parentNode.insertBefore(error, reasonTextarea);
-            }
-
-            // ensure correct message text
-            error.innerHTML = message;
-
-            // accessibility
-            reasonTextarea.setAttribute(
-                "aria-describedby",
-                "issue-reason-error"
-            );
-
-            // add to summary
-            errors.push(
-                `<li><a href="#issue-reason">Enter the reason why you require an update for this record</a></li>`
-            );
-
-            // focus first invalid field
-            if (!firstErrorField) {
-                firstErrorField = reasonTextarea;
-            }
-        }
-
-        // =========================
         // STANDARD FORM FIELDS VALIDATION
         // =========================
 
@@ -285,6 +237,58 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!firstErrorField && paymentError) {
             firstErrorField = paymentError;
         }
+
+        // =========================
+        // REASON TEXTAREA VALIDATION
+        // =========================
+
+        const reasonGroup = document.getElementById("issueReason");
+        const reasonTextarea = document.getElementById("issue-reason");
+
+        if (!reasonTextarea.value.trim()) {
+
+            const message =
+                '<span class="nhsuk-u-visually-hidden">Error:</span>Enter the reason why you require an update for this record';
+
+            // add NHS error styling
+            reasonGroup.classList.add("nhsuk-form-group--error");
+            reasonTextarea.classList.add("nhsuk-textarea--error");
+
+            // create error message if it doesn't exist
+            let error = document.getElementById("issue-reason-error");
+
+            if (!error) {
+                error = document.createElement("span");
+                error.id = "issue-reason-error";
+                error.className = "nhsuk-error-message";
+                error.innerHTML = message;
+
+                reasonTextarea.parentNode.insertBefore(error, reasonTextarea);
+            }
+
+            // ensure correct message text
+            error.innerHTML = message;
+
+            // accessibility
+            reasonTextarea.setAttribute(
+                "aria-describedby",
+                "issue-reason-error"
+            );
+
+            // add to summary
+            errors.push(
+                `<li><a href="#issueReason">Enter the reason why you require an update for this record</a></li>`
+            );
+
+            // focus first invalid field
+            if (!firstErrorField) {
+                firstErrorField = reasonTextarea;
+            }
+        }
+        
+        // =========================
+        // END REASON TEXTAREA VALIDATION
+        // =========================
 
         const siteAutoError = validateRequiredField({
             inputId: "siteAuto",
@@ -419,7 +423,7 @@ document.addEventListener('DOMContentLoaded', function () {
             input.setAttribute("aria-describedby", errorId);
     
             errors.push(
-                `<li><a href="#${inputId}">${message}</a></li>`
+                `<li><a href="#${groupId}">${message}</a></li>`
             );
     
             return input;

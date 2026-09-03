@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+{% set mediumLayout = "true" %}
+{% set pageTitle = "Connection failed"%}
+{% set hideBack = "true" %}
+{% set showMenu ="true"%}
+{% set supportMenu ="true"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+
+  <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-u-reading-width">
+
+      <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-5">{{pageTitle}}</h1>
+
+      <p>
+        We could not connect to the Halo API. This issue will be resolved as soon as possible.
+      </p>
+
+      <p>If you need help, contact your user support group via teams or email.</p>
+      
+    </div>
+
+  </div>
+
+</div>
+{% endblock %}
