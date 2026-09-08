@@ -341,16 +341,9 @@
                                             <option value="Linked employment">Linked employment</option>
                                             <option value="Basic member details">Basic member details</option>
                                         </select>
-                                        <a onclick="openDialog('dialog1', this)" class="nhsuk-u-font-size-14">View data set</a>
-                                        <div id="dialog_layer" class="dialogs">
-                                            <div role="dialog" id="dialog1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">
-                                                <div class="dialog-content">
-                                                <h2 id="dialog1_label">Service history data set</h2>
-                                                {{ serviceHistoryTableV2 | safe }}
-                                                <button type="button" onclick="closeDialog(this)" class="nhsuk-button">Close</button>
-                                                </div>
-                                            </div>
-                                        </div>  
+                                        <div class="view-data-set" hidden>
+                                            <a href="#" class="nhsuk-link nhsuk-u-font-size-14 view-data-set-button">View data set</a>
+                                        </div> 
                                     </td>
                                     <td class="nhsuk-table__cell"><input
                                             class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text"
@@ -377,6 +370,9 @@
                                             <option value="Linked employment" selected>Linked employment</option>
                                             <option value="Basic member details">Basic member details</option>
                                         </select>
+                                        <div class="view-data-set" hidden>
+                                            <a href="#" class="nhsuk-link nhsuk-u-font-size-14 view-data-set-button">View data set</a>
+                                        </div>
                                     </td>
                                     <td class="nhsuk-table__cell"><input
                                             class="nhsuk-input nhsuk-input--width-10 nhsuk-u-font-size-14" type="text"
@@ -533,8 +529,87 @@
     </div>
 </div>
 
+<div id="dialog_layer" class="dialogs">
+    <div role="dialog" id="service-history-dialog" aria-labelledby="service-history-dialog-label" aria-modal="true" class="hidden">
+        <div class="dialog-content">
+            <h2 id="service-history-dialog-label" tabindex="-1">Service history data set</h2>
+            {{ serviceHistoryTableV2 | safe }}
+            <button type="button" onclick="closeDialog(this)" class="nhsuk-button">Close</button>
+        </div>
+    </div>
+    <div role="dialog" id="employment-dialog" aria-labelledby="employment-dialog-label" aria-modal="true" class="hidden">
+        <div class="dialog-content">
+            <h2 id="employment-dialog-label" tabindex="-1">Employment data set</h2>
+            {{ employmentTableV2 | safe }}
+            <button type="button" onclick="closeDialog(this)" class="nhsuk-button">Close</button>
+        </div>
+    </div>
+    <div role="dialog" id="service-groups-dialog" aria-labelledby="service-groups-dialog-label" aria-modal="true" class="hidden">
+        <div class="dialog-content">
+            <h2 id="service-groups-dialog-label" tabindex="-1">Service groups data set</h2>
+            {{ serviceGroupTableV2 | safe }}
+            <button type="button" onclick="closeDialog(this)" class="nhsuk-button">Close</button>
+        </div>
+    </div>
+    <div role="dialog" id="conts-tpp-dialog" aria-labelledby="conts-tpp-dialog-label" aria-modal="true" class="hidden">
+        <div class="dialog-content">
+            <h2 id="conts-tpp-dialog-label" tabindex="-1">Conts &amp; TPP data set</h2>
+            {{ contsTppTableV2 | safe }}
+            <button type="button" onclick="closeDialog(this)" class="nhsuk-button">Close</button>
+        </div>
+    </div>
+    <div role="dialog" id="hours-history-dialog" aria-labelledby="hours-history-dialog-label" aria-modal="true" class="hidden">
+        <div class="dialog-content">
+            <h2 id="hours-history-dialog-label" tabindex="-1">Hours history details data set</h2>
+            {{ hoursHistoryTableV2 | safe }}
+            <button type="button" onclick="closeDialog(this)" class="nhsuk-button">Close</button>
+        </div>
+    </div>
+    <div role="dialog" id="linked-employment-dialog" aria-labelledby="linked-employment-dialog-label" aria-modal="true" class="hidden">
+        <div class="dialog-content">
+            <h2 id="linked-employment-dialog-label" tabindex="-1">Linked employment data set</h2>
+            {{ linkedEmploymentTableV2 | safe }}
+            <button type="button" onclick="closeDialog(this)" class="nhsuk-button">Close</button>
+        </div>
+    </div>
+    <div role="dialog" id="basic-member-details-dialog" aria-labelledby="basic-member-details-dialog-label" aria-modal="true" class="hidden">
+        <div class="dialog-content">
+            <h2 id="basic-member-details-dialog-label" tabindex="-1">Basic member details data set</h2>
+            {{ summaryList({
+            rows: [
+            {
+            key: {
+            text: "Member number"
+            },
+            value: {
+            text: "24103624"
+            }
+            },
+            {
+            key: {
+            text: "Member first initial"
+            },
+            value: {
+            text: "J"
+            }
+            },
+            {
+            key: {
+            text: "Member surname"
+            },
+            value: {
+            text: "Smith"
+            }
+            }
+            ]
+            }) }}
+            <button type="button" onclick="closeDialog(this)" class="nhsuk-button">Close</button>
+        </div>
+    </div>
+</div> 
+
+<script src="/assets/javascript/modal.js"></script>
 <script src="/assets/javascript/sd-report-v3.js"></script>
 <script src="/assets/javascript/file-upload.js"></script>
-<script src="/assets/javascript/modal.js"></script>
 
 {% endblock %}

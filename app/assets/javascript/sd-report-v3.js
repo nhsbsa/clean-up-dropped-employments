@@ -1,5 +1,35 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+    const dataSetDialogs = {
+        'Service history': 'service-history-dialog',
+        'Employment': 'employment-dialog',
+        'Service groups': 'service-groups-dialog',
+        'Conts & TPP': 'conts-tpp-dialog',
+        'Hours history details': 'hours-history-dialog',
+        'Linked employment': 'linked-employment-dialog',
+        'Basic member details': 'basic-member-details-dialog'
+    };
+
+    function updateDataSetViewForRow(row) {
+        const setSelect = row.querySelector('select[name="sets[]"]');
+        const dataSetView = row.querySelector('.view-data-set');
+        const dataSetButton = row.querySelector('.view-data-set-button');
+
+        if (!setSelect || !dataSetView || !dataSetButton) {
+            return;
+        }
+
+        const dialogId = dataSetDialogs[setSelect.value];
+
+        dataSetView.hidden = !dialogId;
+        dataSetButton.dataset.dialogId = dialogId || '';
+        dataSetButton.setAttribute('aria-label', `View ${setSelect.value} data set`);
+    }
+
+    function updateAllDataSetViews() {
+        tableBody.querySelectorAll('tr').forEach(updateDataSetViewForRow);
+    }
+
     const tableBody = document.querySelector('#reportTable tbody');
     const addButton = document.getElementById('addRowButton');
     const undoContainer = document.querySelector('.undoRemovalContainer');
@@ -15,6 +45,29 @@ document.addEventListener('DOMContentLoaded', function () {
             link.addEventListener('click', removeHandler);
         });
     }
+
+    tableBody.addEventListener('change', function (e) {
+        if (e.target.matches('select[name="sets[]"]')) {
+            updateDataSetViewForRow(e.target.closest('tr'));
+        }
+    });
+
+    tableBody.addEventListener('click', function (e) {
+        const dataSetButton = e.target.closest('.view-data-set-button');
+
+        if (!dataSetButton || !tableBody.contains(dataSetButton)) {
+            return;
+        }
+
+        e.preventDefault();
+        openDialog(
+            dataSetButton.dataset.dialogId,
+            dataSetButton,
+            `${dataSetButton.dataset.dialogId}-label`
+        );
+    });
+
+    updateAllDataSetViews();
 
     function removeHandler(e) {
         e.preventDefault();
@@ -84,6 +137,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 <option value="Linked employment">Linked employment</option>
                 <option value="Basic member details">Basic member details</option>
             </select>
+            <div class="view-data-set" hidden>
+                <a href="#" class="nhsuk-link nhsuk-u-font-size-14 view-data-set-button">View data set</a>
+            </div>
         </td>
     
         <td class="nhsuk-table__cell">
@@ -108,6 +164,7 @@ document.addEventListener('DOMContentLoaded', function () {
     `;
 
         tableBody.appendChild(newRow);
+        updateDataSetViewForRow(newRow);
         bindRemoveLinks();
     });
 
