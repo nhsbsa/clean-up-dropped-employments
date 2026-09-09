@@ -59,6 +59,7 @@ router.use('/concept-compare', require('./views/concept-compare/_routes'));
 router.use('/concept-haloticket', require('./views/concept-haloticket/_routes'));
 router.use('/concept-haloticket-v2', require('./views/concept-haloticket-v2/_routes'));
 router.use('/concept-haloticket-v3', require('./views/concept-haloticket-v3/_routes'));
+router.use('/concept-haloticket-testing', require('./views/concept-haloticket-testing/_routes'));
 router.use('/iteration-2', require('./views/iteration-2/_routes'));
 router.use('/iteration-3', require('./views/iteration-3/_routes'));
 router.use('/concept-ticketmanage', require('./views/concept-ticketmanage/_routes'));

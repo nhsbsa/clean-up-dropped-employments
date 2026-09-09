@@ -30,31 +30,38 @@
                     </div>
                 </div>
             </div>
-            <p>This ticket is being requested by:</p>
             {{ summaryList({
-            rows: [
-            {
-            key: {
-            text: "Requester name"
-            },
-            value: {
-            text: "Jane Doe"
-            }
-            },
-            {
-            key: {
-            text: "Subject"
-            },
-            value: {
-            text: "Record change request"
-            }
-            }
-            ]
+                lastRowBorder: false,
+                card: {
+                    heading: {
+                    text: "Requester details",
+                    size: "m"
+                    }
+                },
+                rows: [
+                    {
+                    key: {
+                        text: "Name"
+                    },
+                    value: {
+                        text: "Jane Doe"
+                    }
+                    },
+                    {
+                    key: {
+                        text: "Subject"
+                    },
+                    value: {
+                        text: "Record change request"
+                    }
+                    }
+                ]
             }) }}
+            
 
             <div class="nhsuk-tabs" data-module="nhsuk-tabs">
-                <h2 class="nhsuk-tabs__heading">
-                    Contents
+                <h2 class="nhsuk-tabs__heading nhsuk-heading-m">
+                    Ticket details
                 </h2>
                 <ul class="nhsuk-tabs__list">
                     <li class="nhsuk-tabs__list-item nhsuk-tabs__list-item--selected">
@@ -554,15 +561,61 @@
     <div role="dialog" id="conts-tpp-dialog" aria-labelledby="conts-tpp-dialog-label" aria-modal="true" class="hidden">
         <div class="dialog-content">
             <h2 id="conts-tpp-dialog-label" tabindex="-1">Conts &amp; TPP data set</h2>
-            {{ contsTppTableV2 | safe }}
-            <button type="button" onclick="closeDialog(this)" class="nhsuk-button">Close</button>
+            <div class="paginated-table">
+                {{ contsTppTableV2 | safe }}
+                <nav id="tablePaginationCt" class="nhsuk-pagination nhsuk-pagination--numbered" role="navigation" aria-label="Pagination">
+                    <a href="#" id="prevPage" class="nhsuk-pagination__previous" rel="prev">
+                        <svg class="nhsuk-icon nhsuk-icon--arrow-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+                            <path d="M10.7 6.3c.4.4.4 1 0 1.4L7.4 11H19a1 1 0 0 1 0 2H7.4l3.3 3.3c.4.4.4 1 0 1.4a1 1 0 0 1-1.4 0l-5-5A1 1 0 0 1 4 12c0-.3.1-.5.3-.7l5-5a1 1 0 0 1 1.4 0Z" />
+                        </svg>                          
+                        <span class="nhsuk-pagination__title">
+                        Previous<span class="nhsuk-u-visually-hidden"> page</span>
+                        </span>
+                    </a>
+                    
+                    <ul class="nhsuk-pagination__list" id="paginationList"></ul>
+                    
+                    <a href="#" id="nextPage" class="nhsuk-pagination__next" rel="next">
+                        <span class="nhsuk-pagination__title">
+                        Next<span class="nhsuk-u-visually-hidden"> page</span>
+                        </span>
+                        <svg class="nhsuk-icon nhsuk-icon--arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+                        <path d="m14.7 6.3 5 5c.2.2.3.4.3.7 0 .3-.1.5-.3.7l-5 5a1 1 0 0 1-1.4-1.4l3.3-3.3H5a1 1 0 0 1 0-2h11.6l-3.3-3.3a1 1 0 1 1 1.4-1.4Z" />
+                        </svg>
+                    </a>                    
+                </nav>
+            </div>
+            <button type="button" onclick="closeDialog(this)" class="nhsuk-button nhsuk-u-margin-top-5">Close</button>
         </div>
     </div>
     <div role="dialog" id="hours-history-dialog" aria-labelledby="hours-history-dialog-label" aria-modal="true" class="hidden">
         <div class="dialog-content">
             <h2 id="hours-history-dialog-label" tabindex="-1">Hours history details data set</h2>
-            {{ hoursHistoryTableV2 | safe }}
-            <button type="button" onclick="closeDialog(this)" class="nhsuk-button">Close</button>
+            <div class="paginated-table">
+                {{ hoursHistoryTableV2 | safe }}
+                <nav id="tablePagination" class="nhsuk-pagination nhsuk-pagination--numbered" role="navigation" aria-label="Pagination">
+                    <a href="#" id="prevPage" class="nhsuk-pagination__previous" rel="prev">
+                        <svg class="nhsuk-icon nhsuk-icon--arrow-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+                            <path d="M10.7 6.3c.4.4.4 1 0 1.4L7.4 11H19a1 1 0 0 1 0 2H7.4l3.3 3.3c.4.4.4 1 0 1.4a1 1 0 0 1-1.4 0l-5-5A1 1 0 0 1 4 12c0-.3.1-.5.3-.7l5-5a1 1 0 0 1 1.4 0Z" />
+                        </svg>                          
+                        <span class="nhsuk-pagination__title">
+                        Previous<span class="nhsuk-u-visually-hidden"> page</span>
+                        </span>
+                    </a>
+                    
+                    <ul class="nhsuk-pagination__list" id="paginationList"></ul>
+                    
+                    <a href="#" id="nextPage" class="nhsuk-pagination__next" rel="next">
+                        <span class="nhsuk-pagination__title">
+                        Next<span class="nhsuk-u-visually-hidden"> page</span>
+                        </span>
+                        <svg class="nhsuk-icon nhsuk-icon--arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+                        <path d="m14.7 6.3 5 5c.2.2.3.4.3.7 0 .3-.1.5-.3.7l-5 5a1 1 0 0 1-1.4-1.4l3.3-3.3H5a1 1 0 0 1 0-2h11.6l-3.3-3.3a1 1 0 1 1 1.4-1.4Z" />
+                        </svg>
+                    </a>                    
+                </nav>
+            </div>
+            <button type="button" onclick="closeDialog(this)" class="nhsuk-button nhsuk-u-margin-top-5">Close</button>
         </div>
     </div>
     <div role="dialog" id="linked-employment-dialog" aria-labelledby="linked-employment-dialog-label" aria-modal="true" class="hidden">
@@ -610,6 +663,7 @@
 
 <script src="/assets/javascript/modal.js"></script>
 <script src="/assets/javascript/sd-report-v3.js"></script>
+<script src="/assets/javascript/toggle-pagination.js"></script>
 <script src="/assets/javascript/file-upload.js"></script>
 
 {% endblock %}
