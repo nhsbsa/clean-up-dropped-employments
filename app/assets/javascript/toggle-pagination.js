@@ -8,10 +8,10 @@ document.querySelectorAll(".paginated-table").forEach(container => {
     const allRows = Array.from(container.querySelectorAll(".rows-hh, .hrsError, .rows-conts, .contsError"))
     const rowsSelect = container.querySelector(".rows-per-page")
 
-    const prevBtn = container.querySelector(".nhsuk-pagination__previous")
-    const nextBtn = container.querySelector(".nhsuk-pagination__next")
-    const paginationList = container.querySelector(".nhsuk-pagination__list")
-    const pagination = container.querySelector(".nhsuk-pagination")
+    const pagination = container.querySelector("#tablePaginationCt, #tablePagination")
+    const prevBtn = pagination.querySelector(".nhsuk-pagination__previous")
+    const nextBtn = pagination.querySelector(".nhsuk-pagination__next")
+    const paginationList = pagination.querySelector(".nhsuk-pagination__list")
 
     if (rowsSelect) {
         rowsSelect.addEventListener("change", () => {

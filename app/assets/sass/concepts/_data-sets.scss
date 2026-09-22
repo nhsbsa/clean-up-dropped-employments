@@ -3,9 +3,14 @@
         float: right;
     }
 }
+
 .errorHighlight {
-    border-left: 4px solid $nhsuk-error-colour;
     font-weight: bold;
+    border-left: 0;
+
+    > td:first-child {
+        box-shadow: inset 4px 0 0 $nhsuk-error-colour;
+    }
 
     .errorTxt {
         color: $nhsuk-error-colour;
@@ -29,19 +34,19 @@
         padding-left: 16px;
     }
 
-    tr.selected{
+    tr.selected {
         background-color: $nhsuk-focus-colour;
     }
 }
-
 .nhsuk-scrollable-pane {
     background: linear-gradient(90deg, #fff, #fff, #fff0 1.5em), radial-gradient(farthest-side at 0 50%, #0003, #fff0), linear-gradient(270deg, #fff, #fff, #fff0 1.5em), radial-gradient(farthest-side at 100% 50%, #0003, #fff0) 100%;
     background-attachment: local, scroll, local, scroll;
     background-color: #fff;
     background-repeat: no-repeat;
     background-size: 100% 100%, .75em 100%, 100% 100%, .75em 100%;
-    overflow-x: scroll;
-    &.greyBg{
+    overflow-x: auto;
+
+    &.greyBg {
         background: linear-gradient(90deg, #f0f4f5, #f0f4f5, #fff0 1.5em), radial-gradient(farthest-side at 0 50%, #0003, #fff0), linear-gradient(270deg, #f0f4f5, #f0f4f5, #fff0 1.5em), radial-gradient(farthest-side at 100% 50%, #0003, #fff0) 100%;
         background-attachment: local, scroll, local, scroll;
         background-color: #f0f4f5;
@@ -49,6 +54,35 @@
         background-size: 100% 100%, .75em 100%, 100% 100%, .75em 100%;
     }
 }
+.nhsuk-scrollable-pane > .nhsuk-table {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#tableScrollEs {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.nhsuk-scroll {
+    margin-top: 0;
+    margin-bottom:0;
+    .nhsuk-pagination__link {
+    font-size: inherit;
+}
+}   
+.nhsuk-pagination-item--next{
+    cursor: pointer;
+    .nhsuk-icon{
+        right:0;
+    }
+}  
+.nhsuk-pagination-item--previous{
+    cursor: pointer;
+    .nhsuk-icon{
+        left:0;
+    }
+}   
 
 .nhsuk-details__text {
     .nhsuk-hint {

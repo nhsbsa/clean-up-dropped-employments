@@ -1,0 +1,106 @@
+{% extends 'layout.html' %}
+{% set mediumLayout = "true" %}
+{% set pageTitle = "Issues the tool can detect in members' pension records"%}
+{% set showMenu ="true"%}
+{% set hideBack ="true"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row summaryPage">
+  <div class="nhsuk-grid-column-full">
+
+      <ul class="nhsuk-grid-row nhsuk-card-group">
+        <li class="nhsuk-grid-column-one-quarter nhsuk-card-group__item">
+          {% call card({
+            heading: {
+              text: "91",
+              visuallyHiddenText: "Cases opened",
+              classes: "nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1"
+            },
+            clickable: false
+          }) %}
+            Cases opened
+          {% endcall %}
+        </li>
+        <li class="nhsuk-grid-column-one-quarter nhsuk-card-group__item">
+          {% call card({
+            heading: {
+              text: "56",
+              visuallyHiddenText: "Tickets submitted",
+              classes: "nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1"
+            },
+            clickable: false
+          }) %}
+            Tickets submitted
+          {% endcall %}
+        </li>
+        <li class="nhsuk-grid-column-one-quarter nhsuk-card-group__item">
+          {% call card({
+            heading: {
+              text: "6",
+              visuallyHiddenText: "Data sets active",
+              classes: "nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1"
+            },
+            clickable: false
+          }) %}
+            Data sets active
+          {% endcall %}
+        </li>
+        <li class="nhsuk-grid-column-one-quarter nhsuk-card-group__item">
+          {% call card({
+            heading: {
+              text: "28",
+              visuallyHiddenText: "Data sets inactive",
+              classes: "nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1"
+            },
+            clickable: false
+          }) %}
+            Data sets inactive
+          {% endcall %}
+        </li>
+      </ul>
+
+      <ul class="nhsuk-grid-row nhsuk-card-group">
+        <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+          {{ card({
+            heading: {
+              text: "Data sets",
+              size: "m"
+            },
+            description: "Select your core data sets and additional required data sets",
+            href: "dashboard-datasets",
+            clickable: true,
+            variant: "primary"
+          }) }}
+        </li><li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+          {{ card({
+            heading: {
+              text: "HaloITSM tickets",
+              size: "m"
+            },
+            description: "Pre-populate HaloITSM tickets with relevant data",
+            href: "dashboard-tickets",
+            clickable: true,
+            variant: "primary"
+          }) }}
+        </li>
+        <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+          {{ card({
+            heading: {
+              text: "Account settings",
+              size: "m"
+            },
+            description: "Manage your account settings, including personal information and preferences",
+            href: "dashboard-account",
+            clickable: true,
+            variant: "primary"
+          }) }}
+        </li>
+      </ul>
+
+  </div>
+</div>
+{% endblock %}

@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="nhsuk-grid-row"> 
+<div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-full nhsuk-grid-column-full--long">
 
         <div class="nhsuk-grid-row memberHeader">
@@ -117,147 +117,167 @@
             </div>
         </div>
 
-        <button type="button" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="filters-panel" id="filters-toggle">
+        <button type="button" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false"
+            aria-controls="filters-panel" id="filters-toggle">
             Show filters
         </button>
-    
+
         <div id="filters-panel" hidden>
             <form id="table-selector-form">
                 <div class="nhsuk-form-group">
-                <fieldset class="nhsuk-fieldset" aria-describedby="filter-hint">
-                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
-                        <h2 class="nhsuk-fieldset__heading">
-                            Choose which data sets to display
-                        </h2>
-                    </legend>
-                    <div id="filter-hint" class="nhsuk-hint">
-                        Any data sets which contain issues cannot be hidden using the filter
-                    </div>
-                    <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter" data-module="nhsuk-checkboxes">
-                    
-                        <div class="nhsuk-checkboxes__item">
-                            <input class="nhsuk-checkboxes__input" id="serviceHistory-flt-checkbox" name="tables" type="checkbox" value="serviceHistory" checked disabled>
-                            <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceHistory-flt-checkbox">
-                            Service history [SH]
-                            </label>
+                    <fieldset class="nhsuk-fieldset" aria-describedby="filter-hint">
+                        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                            <h2 class="nhsuk-fieldset__heading">
+                                Choose which data sets to display
+                            </h2>
+                        </legend>
+                        <div id="filter-hint" class="nhsuk-hint">
+                            Any data sets which contain issues cannot be hidden using the filter
                         </div>
-                        <div class="nhsuk-checkboxes__item">
-                            <input class="nhsuk-checkboxes__input" id="serviceGroup-flt-checkbox" name="tables" type="checkbox" value="serviceGroup" checked>
-                            <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceGroup-flt-checkbox">
-                            Service group [SG]
-                            </label>
+                        <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
+                            data-module="nhsuk-checkboxes">
+
+                            <div class="nhsuk-checkboxes__item">
+                                <input class="nhsuk-checkboxes__input" id="serviceHistory-flt-checkbox" name="tables"
+                                    type="checkbox" value="serviceHistory" checked disabled>
+                                <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceHistory-flt-checkbox">
+                                    Service history [SH]
+                                </label>
+                            </div>
+                            <div class="nhsuk-checkboxes__item">
+                                <input class="nhsuk-checkboxes__input" id="serviceGroup-flt-checkbox" name="tables"
+                                    type="checkbox" value="serviceGroup" checked>
+                                <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceGroup-flt-checkbox">
+                                    Service group [SG]
+                                </label>
+                            </div>
+                            <div class="nhsuk-checkboxes__item">
+                                <input class="nhsuk-checkboxes__input" id="employmentHistory-flt-checkbox" name="tables"
+                                    type="checkbox" value="employmentHistory" checked>
+                                <label class="nhsuk-label nhsuk-checkboxes__label" for="employmentHistory-flt-checkbox">
+                                    Employment [ES]
+                                </label>
+                            </div>
+                            <div class="nhsuk-checkboxes__item">
+                                <input class="nhsuk-checkboxes__input" id="contsTpp-flt-checkbox" name="tables"
+                                    type="checkbox" value="contsTpp" checked>
+                                <label class="nhsuk-label nhsuk-checkboxes__label" for="contsTpp-flt-checkbox">
+                                    Conts &amp; TPP [CTPP]
+                                </label>
+                            </div>
+
+                            <div class="nhsuk-checkboxes__item">
+                                <input class="nhsuk-checkboxes__input" id="hoursHistory-flt-checkbox" name="tables"
+                                    type="checkbox" value="hoursHistory" checked>
+                                <label class="nhsuk-label nhsuk-checkboxes__label" for="hoursHistory-flt-checkbox">
+                                    Hours history details [HH]
+                                </label>
+                            </div>
+
+                            <div class="nhsuk-checkboxes__item">
+                                <input class="nhsuk-checkboxes__input" id="linkedEmployment-flt-checkbox" name="tables"
+                                    type="checkbox" value="linkedEmployment" checked disabled>
+                                <label class="nhsuk-label nhsuk-checkboxes__label" for="linkedEmployment-flt-checkbox">
+                                    Linked employments [LE]
+                                </label>
+                            </div>
                         </div>
-                        <div class="nhsuk-checkboxes__item">
-                            <input class="nhsuk-checkboxes__input" id="employmentHistory-flt-checkbox" name="tables" type="checkbox" value="employmentHistory" checked>
-                            <label class="nhsuk-label nhsuk-checkboxes__label" for="employmentHistory-flt-checkbox">
-                            Employment [ES]
-                            </label>
-                        </div>
-                        <div class="nhsuk-checkboxes__item">
-                            <input class="nhsuk-checkboxes__input" id="contsTpp-flt-checkbox" name="tables" type="checkbox" value="contsTpp" checked>
-                            <label class="nhsuk-label nhsuk-checkboxes__label" for="contsTpp-flt-checkbox">
-                                Conts &amp; TPP [CTPP]
-                            </label>
-                        </div>
-            
-                        <div class="nhsuk-checkboxes__item">
-                            <input class="nhsuk-checkboxes__input" id="hoursHistory-flt-checkbox" name="tables" type="checkbox" value="hoursHistory" checked>
-                            <label class="nhsuk-label nhsuk-checkboxes__label" for="hoursHistory-flt-checkbox">
-                            Hours history details [HH]
-                            </label>
-                        </div>
-                
-                        <div class="nhsuk-checkboxes__item">
-                            <input class="nhsuk-checkboxes__input" id="linkedEmployment-flt-checkbox" name="tables" type="checkbox" value="linkedEmployment" checked disabled>
-                            <label class="nhsuk-label nhsuk-checkboxes__label" for="linkedEmployment-flt-checkbox">
-                            Linked employments [LE]
-                            </label>
-                        </div>
-                    </div>
-                </fieldset>
+                    </fieldset>
                 </div>
-            
+
                 <button class="nhsuk-button" type="submit">Apply filters</button>
-                <br/>
+                <br />
                 <a href="">Reset filters</a>
             </form>
         </div>
-    
+
         {% call details({
-            id: "compareDetails",
-            summaryText: "Compare two data sets side by side"
+        id: "compareDetails",
+        summaryText: "Compare two data sets side by side"
         }) %}
         <div id="compare-panel" class="details">
-          <div class="nhsuk-error-summary" data-module="nhsuk-error-summary" id="compareErrorSummary" style="display:none;">
-              <div role="alert">
-                  <h2 class="nhsuk-error-summary__title">
-                  There is a problem <span class="nhsuk-u-visually-hidden">with your selection</span>
-                  </h2>
-                  <div class="nhsuk-error-summary__body">
-                      <ul class="nhsuk-list nhsuk-error-summary__list">
-                          <li> 
-                          <a href="#checkboxError">You must select 2 data sets to compare</a>
-                          </li>
-                      </ul>
-                  </div>
-              </div>
-          </div>
-          <form id="compare-form" action="/{{folder}}/results" method="post" >
-          <div class="nhsuk-form-group compareGroup">
-              <fieldset class="nhsuk-fieldset">
-                  <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
-                      <h2 class="nhsuk-fieldset__heading">
-                          Choose which two data sets you would like to compare
-                      </h2>
-              </legend>
-              <div class="error nhsuk-error-message" style="display:none; color:#d5281b; margin-top:10px;">
-                  <span class="nhsuk-u-visually-hidden">Error:</span> You must select 2 data sets to compare 
-              </div>
-          
-              <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter" data-module="nhsuk-checkboxes">
-          
-                  <div class="nhsuk-checkboxes__item">
-                      <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="serviceHistory-checkbox" name="serviceHistory" type="checkbox" value="serviceHistory" >
-                      <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceHistory-checkbox" id="checkboxError">
-                          Service history [SH]
-                      </label>
-                  </div>
-                  <div class="nhsuk-checkboxes__item">
-                      <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="serviceGroup-checkbox" name="serviceGroup" type="checkbox" value="serviceGroup" >
-                      <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceGroup-checkbox">
-                          Service groups [SG]
-                      </label>
-                  </div>
-                  <div class="nhsuk-checkboxes__item">
-                      <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="employmentHistory-checkbox" name="employmentHistory" type="checkbox" value="employmentHistory" >
-                      <label class="nhsuk-label nhsuk-checkboxes__label" for="employmentHistory-checkbox">
-                          Employment [ES]
-                      </label>
-                  </div>
-                  <div class="nhsuk-checkboxes__item">
-                      <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="contsTpp-checkbox" name="contsTpp" type="checkbox" value="contsTpp" >
-                      <label class="nhsuk-label nhsuk-checkboxes__label" for="contsTpp-checkbox">
-                      Conts &amp; TPP [CTPP]
-                      </label>
-                  </div>
-                  <div class="nhsuk-checkboxes__item">
-                      <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="hoursHistory-checkbox" name="hoursHistory" type="checkbox" value="hoursHistory" >
-                      <label class="nhsuk-label nhsuk-checkboxes__label" for="hoursHistory-checkbox">
-                          Hours history details [HH]
-                      </label>
-                  </div>
-                  <div class="nhsuk-checkboxes__item">
-                      <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="linkedEmployment-checkbox" name="linkedEmployment" type="checkbox" value="linkedEmployment" >
-                      <label class="nhsuk-label nhsuk-checkboxes__label" for="linkedEmployment-checkbox">
-                          Linked employments [LE]
-                      </label>
-                  </div>
-              </div>
-              </fieldset>
-          </div>
-          
-              <button class="nhsuk-button" data-module="nhsuk-button" type="submit">Compare</button> 
-          </form>
+            <div class="nhsuk-error-summary" data-module="nhsuk-error-summary" id="compareErrorSummary"
+                style="display:none;">
+                <div role="alert">
+                    <h2 class="nhsuk-error-summary__title">
+                        There is a problem <span class="nhsuk-u-visually-hidden">with your selection</span>
+                    </h2>
+                    <div class="nhsuk-error-summary__body">
+                        <ul class="nhsuk-list nhsuk-error-summary__list">
+                            <li>
+                                <a href="#checkboxError">You must select 2 data sets to compare</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <form id="compare-form" action="/{{folder}}/results" method="post">
+                <div class="nhsuk-form-group compareGroup">
+                    <fieldset class="nhsuk-fieldset">
+                        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                            <h2 class="nhsuk-fieldset__heading">
+                                Choose which two data sets you would like to compare
+                            </h2>
+                        </legend>
+                        <div class="error nhsuk-error-message" style="display:none; color:#d5281b; margin-top:10px;">
+                            <span class="nhsuk-u-visually-hidden">Error:</span> You must select 2 data sets to compare
+                        </div>
+
+                        <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
+                            data-module="nhsuk-checkboxes">
+
+                            <div class="nhsuk-checkboxes__item">
+                                <input class="nhsuk-checkboxes__input compare-checkboxes__input"
+                                    id="serviceHistory-checkbox" name="serviceHistory" type="checkbox"
+                                    value="serviceHistory">
+                                <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceHistory-checkbox"
+                                    id="checkboxError">
+                                    Service history [SH]
+                                </label>
+                            </div>
+                            <div class="nhsuk-checkboxes__item">
+                                <input class="nhsuk-checkboxes__input compare-checkboxes__input"
+                                    id="serviceGroup-checkbox" name="serviceGroup" type="checkbox" value="serviceGroup">
+                                <label class="nhsuk-label nhsuk-checkboxes__label" for="serviceGroup-checkbox">
+                                    Service groups [SG]
+                                </label>
+                            </div>
+                            <div class="nhsuk-checkboxes__item">
+                                <input class="nhsuk-checkboxes__input compare-checkboxes__input"
+                                    id="employmentHistory-checkbox" name="employmentHistory" type="checkbox"
+                                    value="employmentHistory">
+                                <label class="nhsuk-label nhsuk-checkboxes__label" for="employmentHistory-checkbox">
+                                    Employment [ES]
+                                </label>
+                            </div>
+                            <div class="nhsuk-checkboxes__item">
+                                <input class="nhsuk-checkboxes__input compare-checkboxes__input" id="contsTpp-checkbox"
+                                    name="contsTpp" type="checkbox" value="contsTpp">
+                                <label class="nhsuk-label nhsuk-checkboxes__label" for="contsTpp-checkbox">
+                                    Conts &amp; TPP [CTPP]
+                                </label>
+                            </div>
+                            <div class="nhsuk-checkboxes__item">
+                                <input class="nhsuk-checkboxes__input compare-checkboxes__input"
+                                    id="hoursHistory-checkbox" name="hoursHistory" type="checkbox" value="hoursHistory">
+                                <label class="nhsuk-label nhsuk-checkboxes__label" for="hoursHistory-checkbox">
+                                    Hours history details [HH]
+                                </label>
+                            </div>
+                            <div class="nhsuk-checkboxes__item">
+                                <input class="nhsuk-checkboxes__input compare-checkboxes__input"
+                                    id="linkedEmployment-checkbox" name="linkedEmployment" type="checkbox"
+                                    value="linkedEmployment">
+                                <label class="nhsuk-label nhsuk-checkboxes__label" for="linkedEmployment-checkbox">
+                                    Linked employments [LE]
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <button class="nhsuk-button" data-module="nhsuk-button" type="submit">Compare</button>
+            </form>
         </div>
         {% endcall %}
 
@@ -278,96 +298,131 @@
                 {{ serviceHistoryErrorsShort | safe }}
                 <button id="toggleButtonSh" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small"
                     data-module="nhsuk-button" onclick="toggleRows('rows-sh', this)">Hide correct rows</button>
-                <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn" data-target="serviceHistory-checkbox">
+                <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn"
+                    data-target="serviceHistory-checkbox">
                     Compare data set</button>
-                <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="sh-panel-data" id="sh-toggle-data">
+                <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false"
+                    aria-controls="sh-panel-data" id="sh-toggle-data">
                     Customise data set
                 </button>
                 <div id="sh-panel-data" hidden>
                     <form id="sh-table-custom-form">
                         <div class="nhsuk-form-group">
-                        <fieldset class="nhsuk-fieldset">
-                            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
-                            <h2 class="nhsuk-heading-xs">
-                                Choose which columns to display in this data set
-                            </h1>
-                            </legend>
-    
-                            <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
-                            data-module="nhsuk-checkboxes">
-    
-                            <div class="nhsuk-checkboxes__item">
-                                <input class="nhsuk-checkboxes__input" id="shScheme-checkbox" name="shScheme" type="checkbox"
-                                value="columns" checked>
-                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="shScheme-checkbox">
-                                Scheme
-                                </label>
-                            </div>
-    
-                            <div class="nhsuk-checkboxes__item">
-                                <input class="nhsuk-checkboxes__input" id="shRef-checkbox" name="shRef" type="checkbox"
-                                value="columns" checked>
-                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="shRef-checkbox">
-                                Personnel reference
-                                </label>
-                            </div>
-    
-                            <div class="nhsuk-checkboxes__item">
-                                <input class="nhsuk-checkboxes__input" id="shStart-checkbox" name="shStart" type="checkbox"
-                                value="columns" checked>
-                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="shStart-checkbox">
-                                Start date
-                                </label>
-                            </div>
-    
-                            <div class="nhsuk-checkboxes__item">
-                                <input class="nhsuk-checkboxes__input" id="shEnd-checkbox" name="shEnd" type="checkbox"
-                                value="columns" checked>
-                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="shEnd-checkbox">
-                                End date
-                                </label>
-                            </div>
-    
-                            <div class="nhsuk-checkboxes__item">
-                                <input class="nhsuk-checkboxes__input" id="shUp-checkbox" name="shUp" type="checkbox"
-                                value="columns" checked>
-                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="shUp-checkbox">
-                                Updated
-                                </label>
-                            </div>
-    
-                            <div class="nhsuk-checkboxes__item">
-                                <input class="nhsuk-checkboxes__input" id="shMem-checkbox" name="shMem" type="checkbox"
-                                value="columns" checked>
-                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="shMem-checkbox">
-                                Member status
-                                </label>
-                            </div>
-    
-                            <div class="nhsuk-checkboxes__item">
-                                <input class="nhsuk-checkboxes__input" id="shErc-checkbox" name="shErc" type="checkbox"
-                                value="columns" checked>
-                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="shErc-checkbox">
-                                End reason code
-                                </label>
-                            </div>
-    
-                            <div class="nhsuk-checkboxes__item">
-                                <input class="nhsuk-checkboxes__input" id="shG-checkbox" name="shG" type="checkbox"
-                                value="columns" checked>
-                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="shG-checkbox">
-                                Group
-                                </label>
-                            </div>
-    
-                            </div>
-                        </fieldset>
+                            <fieldset class="nhsuk-fieldset">
+                                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                                    <h2 class="nhsuk-heading-xs">
+                                        Choose which columns to display in this data set
+                                        </h1>
+                                </legend>
+
+                                <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
+                                    data-module="nhsuk-checkboxes">
+
+                                    <div class="nhsuk-checkboxes__item">
+                                        <input class="nhsuk-checkboxes__input" id="shScheme-checkbox" name="shScheme"
+                                            type="checkbox" value="columns" checked>
+                                        <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14"
+                                            for="shScheme-checkbox">
+                                            Scheme
+                                        </label>
+                                    </div>
+
+                                    <div class="nhsuk-checkboxes__item">
+                                        <input class="nhsuk-checkboxes__input" id="shRef-checkbox" name="shRef"
+                                            type="checkbox" value="columns" checked>
+                                        <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14"
+                                            for="shRef-checkbox">
+                                            Personnel reference
+                                        </label>
+                                    </div>
+
+                                    <div class="nhsuk-checkboxes__item">
+                                        <input class="nhsuk-checkboxes__input" id="shStart-checkbox" name="shStart"
+                                            type="checkbox" value="columns" checked>
+                                        <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14"
+                                            for="shStart-checkbox">
+                                            Start date
+                                        </label>
+                                    </div>
+
+                                    <div class="nhsuk-checkboxes__item">
+                                        <input class="nhsuk-checkboxes__input" id="shEnd-checkbox" name="shEnd"
+                                            type="checkbox" value="columns" checked>
+                                        <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14"
+                                            for="shEnd-checkbox">
+                                            End date
+                                        </label>
+                                    </div>
+
+                                    <div class="nhsuk-checkboxes__item">
+                                        <input class="nhsuk-checkboxes__input" id="shUp-checkbox" name="shUp"
+                                            type="checkbox" value="columns" checked>
+                                        <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14"
+                                            for="shUp-checkbox">
+                                            Updated
+                                        </label>
+                                    </div>
+
+                                    <div class="nhsuk-checkboxes__item">
+                                        <input class="nhsuk-checkboxes__input" id="shMem-checkbox" name="shMem"
+                                            type="checkbox" value="columns" checked>
+                                        <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14"
+                                            for="shMem-checkbox">
+                                            Member status
+                                        </label>
+                                    </div>
+
+                                    <div class="nhsuk-checkboxes__item">
+                                        <input class="nhsuk-checkboxes__input" id="shErc-checkbox" name="shErc"
+                                            type="checkbox" value="columns" checked>
+                                        <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14"
+                                            for="shErc-checkbox">
+                                            End reason code
+                                        </label>
+                                    </div>
+
+                                    <div class="nhsuk-checkboxes__item">
+                                        <input class="nhsuk-checkboxes__input" id="shG-checkbox" name="shG"
+                                            type="checkbox" value="columns" checked>
+                                        <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14"
+                                            for="shG-checkbox">
+                                            Group
+                                        </label>
+                                    </div>
+
+                                </div>
+                            </fieldset>
                         </div>
-    
+
                         <button class="nhsuk-button" type="submit">Apply</button>
                     </form>
                 </div>
                 {{ serviceHistoryTableV2 | safe }}
+                <nav class="nhsuk-pagination nhsuk-scroll" id="service-history-table-scroll-controls" role="navigation"
+                    aria-label="Scroll table left and right">
+                    <ul class="nhsuk-list nhsuk-pagination__list">
+                        <li class="nhsuk-pagination-item--previous" id="service-history-table-scroll-left">
+                            <a class="nhsuk-pagination__link nhsuk-pagination__link--prev">
+                                <svg class="nhsuk-icon nhsuk-icon--arrow-left" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+                                    <path
+                                        d="M10.7 6.3c.4.4.4 1 0 1.4L7.4 11H19a1 1 0 0 1 0 2H7.4l3.3 3.3c.4.4.4 1 0 1.4a1 1 0 0 1-1.4 0l-5-5A1 1 0 0 1 4 12c0-.3.1-.5.3-.7l5-5a1 1 0 0 1 1.4 0Z" />
+                                </svg>
+                                <span class="nhsuk-pagination__title">Scroll Left</span>
+                            </a>
+                        </li>
+                        <li class="nhsuk-pagination-item--next" id="service-history-table-scroll-right">
+                            <a class="nhsuk-pagination__link nhsuk-pagination__link--next">
+                                <span class="nhsuk-pagination__title">Scroll Right</span>
+                                <svg class="nhsuk-icon nhsuk-icon--arrow-right" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+                                    <path
+                                        d="m14.7 6.3 5 5c.2.2.3.4.3.7 0 .3-.1.5-.3.7l-5 5a1 1 0 0 1-1.4-1.4l3.3-3.3H5a1 1 0 0 1 0-2h11.6l-3.3-3.3a1 1 0 1 1 1.4-1.4Z" />
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </details>
 
@@ -382,72 +437,104 @@
                 </span>
             </summary>
             <div class="nhsuk-details__text">
-                <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn" data-target="serviceGroup-checkbox">
-                Compare data set</button>
-                <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="sg-panel-data" id="sg-toggle-data">
+                <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn"
+                    data-target="serviceGroup-checkbox">
+                    Compare data set</button>
+                <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false"
+                    aria-controls="sg-panel-data" id="sg-toggle-data">
                     Customise data set
                 </button>
                 <div id="sg-panel-data" hidden>
                     <form id="sg-table-custom-form">
                         <div class="nhsuk-form-group">
-                        <fieldset class="nhsuk-fieldset">
-                            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
-                            <h2 class="nhsuk-heading-xs">
-                                Choose which columns to display in this data set
-                            </h1>
-                            </legend>
-    
-                            <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
-                            data-module="nhsuk-checkboxes">
-    
-                            <div class="nhsuk-checkboxes__item">
-                                <input class="nhsuk-checkboxes__input" id="sgScheme-checkbox" name="sgScheme" type="checkbox"
-                                value="columns" checked>
-                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="sgScheme-checkbox">
-                                Scheme code
-                                </label>
-                            </div>
-    
-                            <div class="nhsuk-checkboxes__item">
-                                <input class="nhsuk-checkboxes__input" id="sgStart-checkbox" name="sgStart" type="checkbox"
-                                value="columns" checked>
-                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="sgStart-checkbox">
-                                Start date
-                                </label>
-                            </div>
-    
-                            <div class="nhsuk-checkboxes__item">
-                                <input class="nhsuk-checkboxes__input" id="sgEnd-checkbox" name="sgEnd" type="checkbox"
-                                value="columns" checked>
-                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="sgEnd-checkbox">
-                                End date
-                                </label>
-                            </div>
-    
-                            <div class="nhsuk-checkboxes__item">
-                                <input class="nhsuk-checkboxes__input" id="sgStatus-checkbox" name="sgStatus" type="checkbox"
-                                value="columns" checked>
-                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="sgStatus-checkbox">
-                                Status
-                                </label>
-                            </div>
-    
-                            <div class="nhsuk-checkboxes__item">
-                                <input class="nhsuk-checkboxes__input" id="sgErc-checkbox" name="sgErc" type="checkbox"
-                                value="columns" checked>
-                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="sgErc-checkbox">
-                                End reason code
-                                </label>
-                            </div>
-    
-                            </div>
-                        </fieldset>
+                            <fieldset class="nhsuk-fieldset">
+                                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                                    <h2 class="nhsuk-heading-xs">
+                                        Choose which columns to display in this data set
+                                        </h1>
+                                </legend>
+
+                                <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
+                                    data-module="nhsuk-checkboxes">
+
+                                    <div class="nhsuk-checkboxes__item">
+                                        <input class="nhsuk-checkboxes__input" id="sgScheme-checkbox" name="sgScheme"
+                                            type="checkbox" value="columns" checked>
+                                        <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14"
+                                            for="sgScheme-checkbox">
+                                            Scheme code
+                                        </label>
+                                    </div>
+
+                                    <div class="nhsuk-checkboxes__item">
+                                        <input class="nhsuk-checkboxes__input" id="sgStart-checkbox" name="sgStart"
+                                            type="checkbox" value="columns" checked>
+                                        <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14"
+                                            for="sgStart-checkbox">
+                                            Start date
+                                        </label>
+                                    </div>
+
+                                    <div class="nhsuk-checkboxes__item">
+                                        <input class="nhsuk-checkboxes__input" id="sgEnd-checkbox" name="sgEnd"
+                                            type="checkbox" value="columns" checked>
+                                        <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14"
+                                            for="sgEnd-checkbox">
+                                            End date
+                                        </label>
+                                    </div>
+
+                                    <div class="nhsuk-checkboxes__item">
+                                        <input class="nhsuk-checkboxes__input" id="sgStatus-checkbox" name="sgStatus"
+                                            type="checkbox" value="columns" checked>
+                                        <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14"
+                                            for="sgStatus-checkbox">
+                                            Status
+                                        </label>
+                                    </div>
+
+                                    <div class="nhsuk-checkboxes__item">
+                                        <input class="nhsuk-checkboxes__input" id="sgErc-checkbox" name="sgErc"
+                                            type="checkbox" value="columns" checked>
+                                        <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14"
+                                            for="sgErc-checkbox">
+                                            End reason code
+                                        </label>
+                                    </div>
+
+                                </div>
+                            </fieldset>
                         </div>
-    
+
                         <button class="nhsuk-button" type="submit">Apply</button>
                     </form>
                 </div>
                 {{ serviceGroupTableV2 | safe }}
+                <nav class="nhsuk-pagination nhsuk-scroll" id="service-group-table-scroll-controls" role="navigation"
+                    aria-label="Scroll table left and right">
+                    <ul class="nhsuk-list nhsuk-pagination__list">
+                        <li class="nhsuk-pagination-item--previous" id="service-group-table-scroll-left">
+                            <a class="nhsuk-pagination__link nhsuk-pagination__link--prev">
+                                <svg class="nhsuk-icon nhsuk-icon--arrow-left" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+                                    <path
+                                        d="M10.7 6.3c.4.4.4 1 0 1.4L7.4 11H19a1 1 0 0 1 0 2H7.4l3.3 3.3c.4.4.4 1 0 1.4a1 1 0 0 1-1.4 0l-5-5A1 1 0 0 1 4 12c0-.3.1-.5.3-.7l5-5a1 1 0 0 1 1.4 0Z" />
+                                </svg>
+                                <span class="nhsuk-pagination__title">Scroll Left</span>
+                            </a>
+                        </li>
+                        <li class="nhsuk-pagination-item--next" id="service-group-table-scroll-right">
+                            <a class="nhsuk-pagination__link nhsuk-pagination__link--next">
+                                <span class="nhsuk-pagination__title">Scroll Right</span>
+                                <svg class="nhsuk-icon nhsuk-icon--arrow-right" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+                                    <path
+                                        d="m14.7 6.3 5 5c.2.2.3.4.3.7 0 .3-.1.5-.3.7l-5 5a1 1 0 0 1-1.4-1.4l3.3-3.3H5a1 1 0 0 1 0-2h11.6l-3.3-3.3a1 1 0 1 1 1.4-1.4Z" />
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </details>
 
@@ -462,112 +549,153 @@
                 </span>
             </summary>
             <div class="nhsuk-details__text">
-                <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn" data-target="employmentHistory-checkbox">
+                <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn"
+                    data-target="employmentHistory-checkbox">
                     Compare data set</button>
-                <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="eh-panel-data" id="eh-toggle-data">
+                <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false"
+                    aria-controls="eh-panel-data" id="eh-toggle-data">
                     Customise data set
                 </button>
                 <div id="eh-panel-data" hidden>
                     <form id="eh-table-custom-form">
                         <div class="nhsuk-form-group">
-                        <fieldset class="nhsuk-fieldset">
-                            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
-                            <h2 class="nhsuk-heading-xs">
-                                Choose which columns to display in this data set
-                            </h1>
-                            </legend>
-        
-                            <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
-                            data-module="nhsuk-checkboxes">
-        
-                            <div class="nhsuk-checkboxes__item">
-                                <input class="nhsuk-checkboxes__input" id="ehEmpCode-checkbox" name="ehEmpCode" type="checkbox"
-                                value="columns" checked>
-                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehEmpCode-checkbox">
-                                Employer code
-                                </label>
-                            </div>
-        
-                            <div class="nhsuk-checkboxes__item">
-                                <input class="nhsuk-checkboxes__input" id="ehStart-checkbox" name="ehStart" type="checkbox"
-                                value="columns" checked>
-                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehStart-checkbox">
-                                Start date
-                                </label>
-                            </div>
-        
-                            <div class="nhsuk-checkboxes__item">
-                                <input class="nhsuk-checkboxes__input" id="ehEnd-checkbox" name="ehEnd" type="checkbox"
-                                value="columns" checked>
-                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehEnd-checkbox">
-                                End date
-                                </label>
-                            </div>
-        
-                            <div class="nhsuk-checkboxes__item">
-                                <input class="nhsuk-checkboxes__input" id="ehTime-checkbox" name="ehTime" type="checkbox"
-                                value="columns" checked>
-                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehTime-checkbox">
-                                    Whole/part time
-                                </label>
-                            </div>
-        
-                            <div class="nhsuk-checkboxes__item">
-                                <input class="nhsuk-checkboxes__input" id="ehCapCode-checkbox" name="ehCapCode" type="checkbox"
-                                value="columns" checked>
-                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehCapCode-checkbox">
-                                Capacity Code
-                                </label>
-                            </div>
-        
-                            <div class="nhsuk-checkboxes__item">
-                                <input class="nhsuk-checkboxes__input" id="ehEmpType-checkbox" name="ehEmpType" type="checkbox"
-                                value="columns" checked>
-                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehEmpType-checkbox">
-                                Employment type
-                                </label>
-                            </div>
-        
-                            <div class="nhsuk-checkboxes__item">
-                                <input class="nhsuk-checkboxes__input" id="ehActHrs-checkbox" name="ehActHrs" type="checkbox"
-                                value="columns" checked>
-                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehActHrs-checkbox">
-                                Actual hours
-                                </label>
-                            </div>
-        
-                            <div class="nhsuk-checkboxes__item">
-                                <input class="nhsuk-checkboxes__input" id="ehStdHrs-checkbox" name="ehStdHrs" type="checkbox"
-                                value="columns" checked>
-                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehStdHrs-checkbox">
-                                Standard hours
-                                </label>
-                            </div>
-        
-                            <div class="nhsuk-checkboxes__item">
-                                <input class="nhsuk-checkboxes__input" id="ehActSess-checkbox" name="ehActSess" type="checkbox"
-                                value="columns" checked>
-                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehActSess-checkbox">
-                                Actual sessions
-                                </label>
-                            </div>
-        
-                            <div class="nhsuk-checkboxes__item">
-                                <input class="nhsuk-checkboxes__input" id="ehStdSess-checkbox" name="ehStdSess" type="checkbox"
-                                value="columns" checked>
-                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ehStdSess-checkbox">
-                                Standard sessions
-                                </label>
-                            </div>
-        
-                            </div>
-                        </fieldset>
+                            <fieldset class="nhsuk-fieldset">
+                                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                                    <h2 class="nhsuk-heading-xs">
+                                        Choose which columns to display in this data set
+                                        </h1>
+                                </legend>
+
+                                <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
+                                    data-module="nhsuk-checkboxes">
+
+                                    <div class="nhsuk-checkboxes__item">
+                                        <input class="nhsuk-checkboxes__input" id="ehEmpCode-checkbox" name="ehEmpCode"
+                                            type="checkbox" value="columns" checked>
+                                        <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14"
+                                            for="ehEmpCode-checkbox">
+                                            Employer code
+                                        </label>
+                                    </div>
+
+                                    <div class="nhsuk-checkboxes__item">
+                                        <input class="nhsuk-checkboxes__input" id="ehStart-checkbox" name="ehStart"
+                                            type="checkbox" value="columns" checked>
+                                        <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14"
+                                            for="ehStart-checkbox">
+                                            Start date
+                                        </label>
+                                    </div>
+
+                                    <div class="nhsuk-checkboxes__item">
+                                        <input class="nhsuk-checkboxes__input" id="ehEnd-checkbox" name="ehEnd"
+                                            type="checkbox" value="columns" checked>
+                                        <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14"
+                                            for="ehEnd-checkbox">
+                                            End date
+                                        </label>
+                                    </div>
+
+                                    <div class="nhsuk-checkboxes__item">
+                                        <input class="nhsuk-checkboxes__input" id="ehTime-checkbox" name="ehTime"
+                                            type="checkbox" value="columns" checked>
+                                        <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14"
+                                            for="ehTime-checkbox">
+                                            Whole/part time
+                                        </label>
+                                    </div>
+
+                                    <div class="nhsuk-checkboxes__item">
+                                        <input class="nhsuk-checkboxes__input" id="ehCapCode-checkbox" name="ehCapCode"
+                                            type="checkbox" value="columns" checked>
+                                        <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14"
+                                            for="ehCapCode-checkbox">
+                                            Capacity Code
+                                        </label>
+                                    </div>
+
+                                    <div class="nhsuk-checkboxes__item">
+                                        <input class="nhsuk-checkboxes__input" id="ehEmpType-checkbox" name="ehEmpType"
+                                            type="checkbox" value="columns" checked>
+                                        <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14"
+                                            for="ehEmpType-checkbox">
+                                            Employment type
+                                        </label>
+                                    </div>
+
+                                    <div class="nhsuk-checkboxes__item">
+                                        <input class="nhsuk-checkboxes__input" id="ehActHrs-checkbox" name="ehActHrs"
+                                            type="checkbox" value="columns" checked>
+                                        <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14"
+                                            for="ehActHrs-checkbox">
+                                            Actual hours
+                                        </label>
+                                    </div>
+
+                                    <div class="nhsuk-checkboxes__item">
+                                        <input class="nhsuk-checkboxes__input" id="ehStdHrs-checkbox" name="ehStdHrs"
+                                            type="checkbox" value="columns" checked>
+                                        <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14"
+                                            for="ehStdHrs-checkbox">
+                                            Standard hours
+                                        </label>
+                                    </div>
+
+                                    <div class="nhsuk-checkboxes__item">
+                                        <input class="nhsuk-checkboxes__input" id="ehActSess-checkbox" name="ehActSess"
+                                            type="checkbox" value="columns" checked>
+                                        <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14"
+                                            for="ehActSess-checkbox">
+                                            Actual sessions
+                                        </label>
+                                    </div>
+
+                                    <div class="nhsuk-checkboxes__item">
+                                        <input class="nhsuk-checkboxes__input" id="ehStdSess-checkbox" name="ehStdSess"
+                                            type="checkbox" value="columns" checked>
+                                        <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14"
+                                            for="ehStdSess-checkbox">
+                                            Standard sessions
+                                        </label>
+                                    </div>
+
+                                </div>
+                            </fieldset>
                         </div>
-        
+
                         <button class="nhsuk-button" type="submit">Apply</button>
                     </form>
                 </div>
                 {{ employmentTableV2 | safe }}
+                <nav class="nhsuk-pagination nhsuk-scroll" id="employment-table-scroll-controls" role="navigation"
+                    aria-label="Scroll table left and right">
+                    <ul class="nhsuk-list nhsuk-pagination__list">
+                        <li class="nhsuk-pagination-item--previous" id="employment-table-scroll-left">
+                            <a class="nhsuk-pagination__link nhsuk-pagination__link--prev">
+                                <svg class="nhsuk-icon nhsuk-icon--arrow-left" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+                                    <path
+                                        d="M10.7 6.3c.4.4.4 1 0 1.4L7.4 11H19a1 1 0 0 1 0 2H7.4l3.3 3.3c.4.4.4 1 0 1.4a1 1 0 0 1-1.4 0l-5-5A1 1 0 0 1 4 12c0-.3.1-.5.3-.7l5-5a1 1 0 0 1 1.4 0Z" />
+                                </svg>
+                                <span class="nhsuk-pagination__title">
+                                    Scroll Left
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nhsuk-pagination-item--next" id="employment-table-scroll-right">
+                            <a class="nhsuk-pagination__link nhsuk-pagination__link--next">
+                                <span class="nhsuk-pagination__title">
+                                    Scroll Right
+                                </span>
+                                <svg class="nhsuk-icon nhsuk-icon--arrow-right" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+                                    <path
+                                        d="m14.7 6.3 5 5c.2.2.3.4.3.7 0 .3-.1.5-.3.7l-5 5a1 1 0 0 1-1.4-1.4l3.3-3.3H5a1 1 0 0 1 0-2h11.6l-3.3-3.3a1 1 0 1 1 1.4-1.4Z" />
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </details>
 
@@ -586,15 +714,19 @@
                 <div class="paginated-table">
                     <div class="nhsuk-grid-row">
                         <div class="nhsuk-grid-column-two-thirds">
-                            <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn" data-target="contsTpp-checkbox">Compare data set</button>
-                            <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="ct-panel-data" id="ct-toggle-data">
+                            <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn"
+                                data-target="contsTpp-checkbox">Compare data set</button>
+                            <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small"
+                                aria-expanded="false" aria-controls="ct-panel-data" id="ct-toggle-data">
                                 Customise data set
                             </button>
                         </div>
                         <div class="nhsuk-grid-column-one-third rowPages">
                             <div class="nhsuk-form-group">
-                                <label class="nhsuk-label nhsuk-u-font-size-16" for="rowsPerPageCt">Rows per page:</label>
-                                <select class="nhsuk-select rows-per-page nhsuk-u-font-size-16" id="rowsPerPageCt" name="rowsPerPageToggle">
+                                <label class="nhsuk-label nhsuk-u-font-size-16" for="rowsPerPageCt">Rows per
+                                    page:</label>
+                                <select class="nhsuk-select rows-per-page nhsuk-u-font-size-16" id="rowsPerPageCt"
+                                    name="rowsPerPageToggle">
                                     <option value="5">5</option>
                                     <option value="10" selected>10</option>
                                     <option value="all">All</option>
@@ -605,100 +737,137 @@
                     <div id="ct-panel-data" hidden>
                         <form id="ct-table-custom-form">
                             <div class="nhsuk-form-group">
-                            <fieldset class="nhsuk-fieldset">
-                                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
-                                <h2 class="nhsuk-heading-xs">
-                                    Choose which columns to display in this data set
-                                </h1>
-                                </legend>
-        
-                                <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
-                                data-module="nhsuk-checkboxes">
-        
-                                <div class="nhsuk-checkboxes__item">
-                                    <input class="nhsuk-checkboxes__input" id="ctStart-checkbox" name="ctStart" type="checkbox"
-                                    value="columns" checked>
-                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ctStart-checkbox">
-                                    Period start
-                                    </label>
-                                </div>
-        
-                                <div class="nhsuk-checkboxes__item">
-                                    <input class="nhsuk-checkboxes__input" id="ctEnd-checkbox" name="ctEnd" type="checkbox"
-                                    value="columns" checked>
-                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ctEnd-checkbox">
-                                    Period end
-                                    </label>
-                                </div>
-        
-                                <div class="nhsuk-checkboxes__item">
-                                    <input class="nhsuk-checkboxes__input" id="ctEmpConts-checkbox" name="ctEmpConts" type="checkbox"
-                                    value="columns" checked>
-                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ctEmpConts-checkbox">
-                                    Employee conts
-                                    </label>
-                                </div>
-        
-                                <div class="nhsuk-checkboxes__item">
-                                    <input class="nhsuk-checkboxes__input" id="ctTpp-checkbox" name="ctTpp" type="checkbox"
-                                    value="columns" checked>
-                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ctTpp-checkbox">
-                                    TPP
-                                    </label>
-                                </div>
-        
-                                <div class="nhsuk-checkboxes__item">
-                                    <input class="nhsuk-checkboxes__input" id="ctEmployerConts-checkbox" name="ctEmployerConts" type="checkbox"
-                                    value="columns" checked>
-                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ctEmployerConts-checkbox">
-                                    Employer conts
-                                    </label>
-                                </div>
-        
-                                <div class="nhsuk-checkboxes__item">
-                                    <input class="nhsuk-checkboxes__input" id="ctEmpPay-checkbox" name="ctEmpPay" type="checkbox"
-                                    value="columns" checked>
-                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ctEmpPay-checkbox">
-                                    Employer pay
-                                    </label>
-                                </div>
-        
-                                <div class="nhsuk-checkboxes__item">
-                                    <input class="nhsuk-checkboxes__input" id="ctGross-checkbox" name="ctGross" type="checkbox"
-                                    value="columns" checked>
-                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="ctGross-checkbox">
-                                    Gross pay
-                                    </label>
-                                </div>
-        
-                                </div>
-                            </fieldset>
+                                <fieldset class="nhsuk-fieldset">
+                                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                                        <h2 class="nhsuk-heading-xs">
+                                            Choose which columns to display in this data set
+                                            </h1>
+                                    </legend>
+
+                                    <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
+                                        data-module="nhsuk-checkboxes">
+
+                                        <div class="nhsuk-checkboxes__item">
+                                            <input class="nhsuk-checkboxes__input" id="ctStart-checkbox" name="ctStart"
+                                                type="checkbox" value="columns" checked>
+                                            <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14"
+                                                for="ctStart-checkbox">
+                                                Period start
+                                            </label>
+                                        </div>
+
+                                        <div class="nhsuk-checkboxes__item">
+                                            <input class="nhsuk-checkboxes__input" id="ctEnd-checkbox" name="ctEnd"
+                                                type="checkbox" value="columns" checked>
+                                            <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14"
+                                                for="ctEnd-checkbox">
+                                                Period end
+                                            </label>
+                                        </div>
+
+                                        <div class="nhsuk-checkboxes__item">
+                                            <input class="nhsuk-checkboxes__input" id="ctEmpConts-checkbox"
+                                                name="ctEmpConts" type="checkbox" value="columns" checked>
+                                            <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14"
+                                                for="ctEmpConts-checkbox">
+                                                Employee conts
+                                            </label>
+                                        </div>
+
+                                        <div class="nhsuk-checkboxes__item">
+                                            <input class="nhsuk-checkboxes__input" id="ctTpp-checkbox" name="ctTpp"
+                                                type="checkbox" value="columns" checked>
+                                            <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14"
+                                                for="ctTpp-checkbox">
+                                                TPP
+                                            </label>
+                                        </div>
+
+                                        <div class="nhsuk-checkboxes__item">
+                                            <input class="nhsuk-checkboxes__input" id="ctEmployerConts-checkbox"
+                                                name="ctEmployerConts" type="checkbox" value="columns" checked>
+                                            <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14"
+                                                for="ctEmployerConts-checkbox">
+                                                Employer conts
+                                            </label>
+                                        </div>
+
+                                        <div class="nhsuk-checkboxes__item">
+                                            <input class="nhsuk-checkboxes__input" id="ctEmpPay-checkbox"
+                                                name="ctEmpPay" type="checkbox" value="columns" checked>
+                                            <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14"
+                                                for="ctEmpPay-checkbox">
+                                                Employer pay
+                                            </label>
+                                        </div>
+
+                                        <div class="nhsuk-checkboxes__item">
+                                            <input class="nhsuk-checkboxes__input" id="ctGross-checkbox" name="ctGross"
+                                                type="checkbox" value="columns" checked>
+                                            <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14"
+                                                for="ctGross-checkbox">
+                                                Gross pay
+                                            </label>
+                                        </div>
+
+                                    </div>
+                                </fieldset>
                             </div>
-        
+
                             <button class="nhsuk-button" type="submit">Apply</button>
                         </form>
                     </div>
                     {{ contsTppTableV2 | safe }}
-                    <nav id="tablePaginationCt" class="nhsuk-pagination nhsuk-pagination--numbered" role="navigation" aria-label="Pagination">
+                    <nav class="nhsuk-pagination nhsuk-scroll" id="conts-tpp-table-scroll-controls" role="navigation"
+                        aria-label="Scroll table left and right">
+                        <ul class="nhsuk-list nhsuk-pagination__list">
+                            <li class="nhsuk-pagination-item--previous" id="conts-tpp-table-scroll-left">
+                                <a class="nhsuk-pagination__link nhsuk-pagination__link--prev">
+                                    <svg class="nhsuk-icon nhsuk-icon--arrow-left" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+                                        <path
+                                            d="M10.7 6.3c.4.4.4 1 0 1.4L7.4 11H19a1 1 0 0 1 0 2H7.4l3.3 3.3c.4.4.4 1 0 1.4a1 1 0 0 1-1.4 0l-5-5A1 1 0 0 1 4 12c0-.3.1-.5.3-.7l5-5a1 1 0 0 1 1.4 0Z" />
+                                    </svg>
+                                    <span class="nhsuk-pagination__title">Scroll Left</span>
+                                </a>
+                            </li>
+                            <li class="nhsuk-pagination-item--next" id="conts-tpp-table-scroll-right">
+                                <a class="nhsuk-pagination__link nhsuk-pagination__link--next">
+                                    <span class="nhsuk-pagination__title">Scroll Right</span>
+                                    <svg class="nhsuk-icon nhsuk-icon--arrow-right" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+                                        <path
+                                            d="m14.7 6.3 5 5c.2.2.3.4.3.7 0 .3-.1.5-.3.7l-5 5a1 1 0 0 1-1.4-1.4l3.3-3.3H5a1 1 0 0 1 0-2h11.6l-3.3-3.3a1 1 0 1 1 1.4-1.4Z" />
+                                    </svg>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <nav id="tablePaginationCt" class="nhsuk-pagination nhsuk-pagination--numbered" role="navigation"
+                        aria-label="Pagination">
                         <a href="#" id="prevPage" class="nhsuk-pagination__previous" rel="prev">
-                            <svg class="nhsuk-icon nhsuk-icon--arrow-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
-                                <path d="M10.7 6.3c.4.4.4 1 0 1.4L7.4 11H19a1 1 0 0 1 0 2H7.4l3.3 3.3c.4.4.4 1 0 1.4a1 1 0 0 1-1.4 0l-5-5A1 1 0 0 1 4 12c0-.3.1-.5.3-.7l5-5a1 1 0 0 1 1.4 0Z" />
-                            </svg>                          
+                            <svg class="nhsuk-icon nhsuk-icon--arrow-left" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+                                <path
+                                    d="M10.7 6.3c.4.4.4 1 0 1.4L7.4 11H19a1 1 0 0 1 0 2H7.4l3.3 3.3c.4.4.4 1 0 1.4a1 1 0 0 1-1.4 0l-5-5A1 1 0 0 1 4 12c0-.3.1-.5.3-.7l5-5a1 1 0 0 1 1.4 0Z" />
+                            </svg>
                             <span class="nhsuk-pagination__title">
-                            Previous<span class="nhsuk-u-visually-hidden"> page</span>
+                                Previous<span class="nhsuk-u-visually-hidden"> page</span>
                             </span>
                         </a>
-                        
+
                         <ul class="nhsuk-pagination__list" id="paginationList"></ul>
-                        
+
                         <a href="#" id="nextPage" class="nhsuk-pagination__next" rel="next">
                             <span class="nhsuk-pagination__title">
-                            Next<span class="nhsuk-u-visually-hidden"> page</span>
+                                Next<span class="nhsuk-u-visually-hidden"> page</span>
                             </span>
-                            <svg class="nhsuk-icon nhsuk-icon--arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
-                            <path d="m14.7 6.3 5 5c.2.2.3.4.3.7 0 .3-.1.5-.3.7l-5 5a1 1 0 0 1-1.4-1.4l3.3-3.3H5a1 1 0 0 1 0-2h11.6l-3.3-3.3a1 1 0 1 1 1.4-1.4Z" />
+                            <svg class="nhsuk-icon nhsuk-icon--arrow-right" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+                                <path
+                                    d="m14.7 6.3 5 5c.2.2.3.4.3.7 0 .3-.1.5-.3.7l-5 5a1 1 0 0 1-1.4-1.4l3.3-3.3H5a1 1 0 0 1 0-2h11.6l-3.3-3.3a1 1 0 1 1 1.4-1.4Z" />
                             </svg>
-                        </a>                    
+                        </a>
                     </nav>
                 </div>
             </div>
@@ -718,15 +887,18 @@
                 <div class="paginated-table">
                     <div class="nhsuk-grid-row">
                         <div class="nhsuk-grid-column-two-thirds">
-                            <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn" data-target="hoursHistory-checkbox">Compare data set</button>
-                            <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="hh-panel-data" id="hh-toggle-data">
+                            <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn"
+                                data-target="hoursHistory-checkbox">Compare data set</button>
+                            <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small"
+                                aria-expanded="false" aria-controls="hh-panel-data" id="hh-toggle-data">
                                 Customise data set
                             </button>
                         </div>
                         <div class="nhsuk-grid-column-one-third rowPages">
                             <div class="nhsuk-form-group">
                                 <label class="nhsuk-label nhsuk-u-font-size-16" for="rowsPerPage">Rows per page:</label>
-                                <select class="nhsuk-select rows-per-page nhsuk-u-font-size-16" id="rowsPerPage" name="rowsPerPageToggle">
+                                <select class="nhsuk-select rows-per-page nhsuk-u-font-size-16" id="rowsPerPage"
+                                    name="rowsPerPageToggle">
                                     <option value="5">5</option>
                                     <option value="10" selected>10</option>
                                     <option value="all">All</option>
@@ -737,67 +909,100 @@
                     <div id="hh-panel-data" hidden>
                         <form id="hh-table-custom-form">
                             <div class="nhsuk-form-group">
-                            <fieldset class="nhsuk-fieldset">
-                                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
-                                <h2 class="nhsuk-heading-xs">
-                                    Choose which columns to display in this data set
-                                </h1>
-                                </legend>
-            
-                                <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
-                                data-module="nhsuk-checkboxes">
-            
-                                <div class="nhsuk-checkboxes__item">
-                                    <input class="nhsuk-checkboxes__input" id="hhStart-checkbox" name="hhStart" type="checkbox"
-                                    value="columns" checked>
-                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="hhStart-checkbox">
-                                        Start date
-                                    </label>
-                                </div>
-            
-                                <div class="nhsuk-checkboxes__item">
-                                    <input class="nhsuk-checkboxes__input" id="hhEnd-checkbox" name="hhEnd" type="checkbox"
-                                    value="columns" checked>
-                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="hhEnd-checkbox">
-                                        End date
-                                    </label>
-                                </div>
-            
-                                <div class="nhsuk-checkboxes__item">
-                                    <input class="nhsuk-checkboxes__input" id="hhPtHrs-checkbox" name="hhPtHrs" type="checkbox"
-                                    value="columns" checked>
-                                    <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="hhPtHrs-checkbox">
-                                        Part time hours
-                                    </label>
-                                </div>
-            
-                                </div>
-                            </fieldset>
+                                <fieldset class="nhsuk-fieldset">
+                                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                                        <h2 class="nhsuk-heading-xs">
+                                            Choose which columns to display in this data set
+                                            </h1>
+                                    </legend>
+
+                                    <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
+                                        data-module="nhsuk-checkboxes">
+
+                                        <div class="nhsuk-checkboxes__item">
+                                            <input class="nhsuk-checkboxes__input" id="hhStart-checkbox" name="hhStart"
+                                                type="checkbox" value="columns" checked>
+                                            <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14"
+                                                for="hhStart-checkbox">
+                                                Start date
+                                            </label>
+                                        </div>
+
+                                        <div class="nhsuk-checkboxes__item">
+                                            <input class="nhsuk-checkboxes__input" id="hhEnd-checkbox" name="hhEnd"
+                                                type="checkbox" value="columns" checked>
+                                            <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14"
+                                                for="hhEnd-checkbox">
+                                                End date
+                                            </label>
+                                        </div>
+
+                                        <div class="nhsuk-checkboxes__item">
+                                            <input class="nhsuk-checkboxes__input" id="hhPtHrs-checkbox" name="hhPtHrs"
+                                                type="checkbox" value="columns" checked>
+                                            <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14"
+                                                for="hhPtHrs-checkbox">
+                                                Part time hours
+                                            </label>
+                                        </div>
+
+                                    </div>
+                                </fieldset>
                             </div>
                             <button class="nhsuk-button" type="submit">Apply</button>
                         </form>
                     </div>
                     {{ hoursHistoryTableV2 | safe }}
-                    <nav id="tablePagination" class="nhsuk-pagination nhsuk-pagination--numbered" role="navigation" aria-label="Pagination">
+                    <nav class="nhsuk-pagination nhsuk-scroll" id="hours-history-table-scroll-controls" role="navigation"
+                        aria-label="Scroll table left and right">
+                        <ul class="nhsuk-list nhsuk-pagination__list">
+                            <li class="nhsuk-pagination-item--previous" id="hours-history-table-scroll-left">
+                                <a class="nhsuk-pagination__link nhsuk-pagination__link--prev">
+                                    <svg class="nhsuk-icon nhsuk-icon--arrow-left" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+                                        <path
+                                            d="M10.7 6.3c.4.4.4 1 0 1.4L7.4 11H19a1 1 0 0 1 0 2H7.4l3.3 3.3c.4.4.4 1 0 1.4a1 1 0 0 1-1.4 0l-5-5A1 1 0 0 1 4 12c0-.3.1-.5.3-.7l5-5a1 1 0 0 1 1.4 0Z" />
+                                    </svg>
+                                    <span class="nhsuk-pagination__title">Scroll Left</span>
+                                </a>
+                            </li>
+                            <li class="nhsuk-pagination-item--next" id="hours-history-table-scroll-right">
+                                <a class="nhsuk-pagination__link nhsuk-pagination__link--next">
+                                    <span class="nhsuk-pagination__title">Scroll Right</span>
+                                    <svg class="nhsuk-icon nhsuk-icon--arrow-right" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+                                        <path
+                                            d="m14.7 6.3 5 5c.2.2.3.4.3.7 0 .3-.1.5-.3.7l-5 5a1 1 0 0 1-1.4-1.4l3.3-3.3H5a1 1 0 0 1 0-2h11.6l-3.3-3.3a1 1 0 1 1 1.4-1.4Z" />
+                                    </svg>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <nav id="tablePagination" class="nhsuk-pagination nhsuk-pagination--numbered" role="navigation"
+                        aria-label="Pagination">
                         <a href="#" id="prevPage" class="nhsuk-pagination__previous" rel="prev">
-                            <svg class="nhsuk-icon nhsuk-icon--arrow-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
-                                <path d="M10.7 6.3c.4.4.4 1 0 1.4L7.4 11H19a1 1 0 0 1 0 2H7.4l3.3 3.3c.4.4.4 1 0 1.4a1 1 0 0 1-1.4 0l-5-5A1 1 0 0 1 4 12c0-.3.1-.5.3-.7l5-5a1 1 0 0 1 1.4 0Z" />
-                            </svg>                          
+                            <svg class="nhsuk-icon nhsuk-icon--arrow-left" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+                                <path
+                                    d="M10.7 6.3c.4.4.4 1 0 1.4L7.4 11H19a1 1 0 0 1 0 2H7.4l3.3 3.3c.4.4.4 1 0 1.4a1 1 0 0 1-1.4 0l-5-5A1 1 0 0 1 4 12c0-.3.1-.5.3-.7l5-5a1 1 0 0 1 1.4 0Z" />
+                            </svg>
                             <span class="nhsuk-pagination__title">
-                            Previous<span class="nhsuk-u-visually-hidden"> page</span>
+                                Previous<span class="nhsuk-u-visually-hidden"> page</span>
                             </span>
                         </a>
-                        
+
                         <ul class="nhsuk-pagination__list" id="paginationList"></ul>
-                        
+
                         <a href="#" id="nextPage" class="nhsuk-pagination__next" rel="next">
                             <span class="nhsuk-pagination__title">
-                            Next<span class="nhsuk-u-visually-hidden"> page</span>
+                                Next<span class="nhsuk-u-visually-hidden"> page</span>
                             </span>
-                            <svg class="nhsuk-icon nhsuk-icon--arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
-                            <path d="m14.7 6.3 5 5c.2.2.3.4.3.7 0 .3-.1.5-.3.7l-5 5a1 1 0 0 1-1.4-1.4l3.3-3.3H5a1 1 0 0 1 0-2h11.6l-3.3-3.3a1 1 0 1 1 1.4-1.4Z" />
+                            <svg class="nhsuk-icon nhsuk-icon--arrow-right" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+                                <path
+                                    d="m14.7 6.3 5 5c.2.2.3.4.3.7 0 .3-.1.5-.3.7l-5 5a1 1 0 0 1-1.4-1.4l3.3-3.3H5a1 1 0 0 1 0-2h11.6l-3.3-3.3a1 1 0 1 1 1.4-1.4Z" />
                             </svg>
-                        </a>                    
+                        </a>
                     </nav>
                 </div>
             </div>
@@ -820,62 +1025,93 @@
                 {{ linkedEmploymentErrorsShort | safe }}
                 <button id="toggleButtonLE" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small"
                     data-module="nhsuk-button" onclick="toggleRows('rows-le', this)">Hide correct rows</button>
-                <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn" data-target="linkedEmployment-checkbox">Compare data set</button>
-                <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false" aria-controls="le-panel-data" id="le-toggle-data">
+                <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn"
+                    data-target="linkedEmployment-checkbox">Compare data set</button>
+                <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false"
+                    aria-controls="le-panel-data" id="le-toggle-data">
                     Customise data set
                 </button>
                 <div id="le-panel-data" hidden>
                     <form id="le-table-custom-form">
                         <div class="nhsuk-form-group">
-                        <fieldset class="nhsuk-fieldset">
-                            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
-                            <h2 class="nhsuk-heading-xs">
-                                Choose which columns to display in this data set
-                            </h1>
-                            </legend>
-        
-                            <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
-                            data-module="nhsuk-checkboxes">
-        
-                            <div class="nhsuk-checkboxes__item">
-                                <input class="nhsuk-checkboxes__input" id="lePre-checkbox" name="lePre" type="checkbox"
-                                value="columns" checked>
-                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="lePre-checkbox">
-                                    Pre-remedy employment ID
-                                </label>
-                            </div>
-        
-                            <div class="nhsuk-checkboxes__item">
-                                <input class="nhsuk-checkboxes__input" id="leRem-checkbox" name="leRem" type="checkbox"
-                                value="columns" checked>
-                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="leRem-checkbox">
-                                    Remedy employment ID
-                                </label>
-                            </div>
-        
-                            <div class="nhsuk-checkboxes__item">
-                                <input class="nhsuk-checkboxes__input" id="lePost-checkbox" name="lePost" type="checkbox"
-                                value="columns" checked>
-                                <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14" for="lePost-checkbox">
-                                    Post-remedy employment ID
-                                </label>
-                            </div>
-        
-                            </div>
-                        </fieldset>
+                            <fieldset class="nhsuk-fieldset">
+                                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                                    <h2 class="nhsuk-heading-xs">
+                                        Choose which columns to display in this data set
+                                        </h1>
+                                </legend>
+
+                                <div class="nhsuk-checkboxes nhsuk-checkboxes--small nhsuk-checkboxes-filter"
+                                    data-module="nhsuk-checkboxes">
+
+                                    <div class="nhsuk-checkboxes__item">
+                                        <input class="nhsuk-checkboxes__input" id="lePre-checkbox" name="lePre"
+                                            type="checkbox" value="columns" checked>
+                                        <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14"
+                                            for="lePre-checkbox">
+                                            Pre-remedy employment ID
+                                        </label>
+                                    </div>
+
+                                    <div class="nhsuk-checkboxes__item">
+                                        <input class="nhsuk-checkboxes__input" id="leRem-checkbox" name="leRem"
+                                            type="checkbox" value="columns" checked>
+                                        <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14"
+                                            for="leRem-checkbox">
+                                            Remedy employment ID
+                                        </label>
+                                    </div>
+
+                                    <div class="nhsuk-checkboxes__item">
+                                        <input class="nhsuk-checkboxes__input" id="lePost-checkbox" name="lePost"
+                                            type="checkbox" value="columns" checked>
+                                        <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-u-font-size-14"
+                                            for="lePost-checkbox">
+                                            Post-remedy employment ID
+                                        </label>
+                                    </div>
+
+                                </div>
+                            </fieldset>
                         </div>
                         <button class="nhsuk-button" type="submit">Apply</button>
                     </form>
                 </div>
                 {{ linkedEmploymentTableV2 | safe }}
+                <nav class="nhsuk-pagination nhsuk-scroll" id="linked-employment-table-scroll-controls" role="navigation"
+                    aria-label="Scroll table left and right">
+                    <ul class="nhsuk-list nhsuk-pagination__list">
+                        <li class="nhsuk-pagination-item--previous" id="linked-employment-table-scroll-left">
+                            <a class="nhsuk-pagination__link nhsuk-pagination__link--prev">
+                                <svg class="nhsuk-icon nhsuk-icon--arrow-left" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+                                    <path
+                                        d="M10.7 6.3c.4.4.4 1 0 1.4L7.4 11H19a1 1 0 0 1 0 2H7.4l3.3 3.3c.4.4.4 1 0 1.4a1 1 0 0 1-1.4 0l-5-5A1 1 0 0 1 4 12c0-.3.1-.5.3-.7l5-5a1 1 0 0 1 1.4 0Z" />
+                                </svg>
+                                <span class="nhsuk-pagination__title">Scroll Left</span>
+                            </a>
+                        </li>
+                        <li class="nhsuk-pagination-item--next" id="linked-employment-table-scroll-right">
+                            <a class="nhsuk-pagination__link nhsuk-pagination__link--next">
+                                <span class="nhsuk-pagination__title">Scroll Right</span>
+                                <svg class="nhsuk-icon nhsuk-icon--arrow-right" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+                                    <path
+                                        d="m14.7 6.3 5 5c.2.2.3.4.3.7 0 .3-.1.5-.3.7l-5 5a1 1 0 0 1-1.4-1.4l3.3-3.3H5a1 1 0 0 1 0-2h11.6l-3.3-3.3a1 1 0 1 1 1.4-1.4Z" />
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </details>
 
         <hr>
         <div class="nhsuk-u-reading-width">
             <h2>Need to submit a HaloITSM ticket?</h2>
-            <p>If you need help to fix member record {{ data['memberNumber']}} complete the ticket and submit your request. </p>
-            
+            <p>If you need help to fix member record {{ data['memberNumber']}} complete the ticket and submit your
+                request. </p>
+
             <form action="/{{folder}}/results" method="post" novalidate>
                 {{ button({
                 text: "Raise a ticket",
@@ -892,7 +1128,7 @@
                     <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>
                 </svg>Back to top
             </a>
-        </div> 
+        </div>
 
     </div>
 </div>
@@ -902,6 +1138,7 @@
 <script src="/assets/javascript/customise.js"></script>
 <script src="/assets/javascript/toggle-pagination.js"></script>
 <script src="/assets/javascript/comparison.js"></script>
+<script src="/assets/javascript/data-scroll.js"></script>
 <script src="/assets/javascript/back-to-top.js"></script>
 
 <script>

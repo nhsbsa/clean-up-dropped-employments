@@ -175,7 +175,7 @@
 *********************************************** -->
 
 {% set introPara %} <!-- Used in all prototypes -->
-<p>These data sets show core member details from Compendia. They are live and update each time you refresh the page.</p>
+<p>These data sets show core member details from Touch Admin. They are live and update each time you refresh the page.</p>
 <p>You can cross-reference them in one view.</p>
 <p>Any issues are highlighted and must be fixed before the case can be processed.</p>
 {% endset %}
@@ -753,7 +753,7 @@
 
 {% set serviceHistoryTableV2 %} <!-- Used in iteration 1.3 onwards, halo ticket and ticket management prototypes -->
 <div class="nhsuk-hint">You can scroll left and right to see all columns if the table does not fit on your screen</div>
-<div class="nhsuk-scrollable-pane" aria-label="Service History" tabindex="0">
+<div class="nhsuk-scrollable-pane" id="tableScrollSh" aria-label="Service History" tabindex="0">
   <table class="nhsuk-table employment-table" data-button-id="toggleRowsBtn_1"
       id="table-service-history" data-desc="true" data-orderbycolumnno="0,2">
       <caption class="nhsuk-u-visually-hidden">Service History records for the selected member
@@ -765,7 +765,7 @@
               <th scope="col" class="shScheme nhsuk-table__header nhsuk-u-font-size-14">Scheme code</th>
               <th scope="col" class="shStart nhsuk-table__header nhsuk-u-font-size-14">Start date</th>
               <th scope="col" class="shEnd nhsuk-table__header nhsuk-u-font-size-14">End date</th>
-              <th scope="col" class="shUp nhsuk-table__header nhsuk-u-font-size-14">Updated</th>
+              <th scope="col" class="shUp nhsuk-table__header nhsuk-u-font-size-14">Last updated</th>
               <th scope="col" class="shMem nhsuk-table__header nhsuk-u-font-size-14">Member status</th>
               <th scope="col" class="shErc nhsuk-table__header nhsuk-u-font-size-14">End reason code</th>
               <th scope="col" class="shG nhsuk-table__header nhsuk-u-font-size-14">Group</th>
@@ -936,7 +936,7 @@
 {% endset %}
 {% set serviceGroupTableV2 %} <!-- Used in iteration 1.3 onwards, halo ticket and ticket management prototypes -->
 <div class="nhsuk-hint">You can scroll left and right to see all columns if the table does not fit on your screen</div>
-<div class="nhsuk-scrollable-pane" aria-label="Service Groups" tabindex="0">
+<div class="nhsuk-scrollable-pane" id="tableScrollSg" aria-label="Service Groups" tabindex="0">
   <table class="nhsuk-table employment-table" data-button-id="toggleRowsBtn_2"
       id="table-service-group" data-desc="false" data-orderbycolumnno="0,0">
       <caption class="nhsuk-u-visually-hidden">Service Groups records for the selected member
@@ -1004,7 +1004,7 @@
 {% endset %}
 {% set employmentTableV2 %} <!-- Used in iteration 1.3 onwards, halo ticket and ticket management prototypes -->
 <div class="nhsuk-hint">You can scroll left and right to see all columns if the table does not fit on your screen</div>
-<div class="nhsuk-scrollable-pane" aria-label="Employment" tabindex="0">
+<div class="nhsuk-scrollable-pane" id="tableScrollEs" aria-label="Employment" tabindex="0">
   <table class="nhsuk-table employment-table" data-button-id="toggleRowsBtn_3"
       id="table-employment-history" data-desc="true" data-orderbycolumnno="0,2">
       <caption class="nhsuk-u-visually-hidden">Employment records for the selected member</caption>
@@ -1207,7 +1207,7 @@
 {% endset %}
 {% set contsTppTableV2 %} <!-- Used in iteration 1.3 onwards, halo ticket and ticket management prototypes -->
 <div class="nhsuk-hint">You can scroll left and right to see all columns if the table does not fit on your screen</div>
-<div class="nhsuk-scrollable-pane" aria-label="Conts &amp; TPP" tabindex="0">
+<div class="nhsuk-scrollable-pane" id="tableScrollCt" aria-label="Conts &amp; TPP" tabindex="0">
   <table class="nhsuk-table" role="table">
       <caption class="nhsuk-u-visually-hidden">Conts &amp; TPP records for the selected member
       </caption>
@@ -1828,7 +1828,7 @@
 {% endset %}
 {% set hoursHistoryTableV2 %} <!-- Used in iteration 1.3 onwards, halo ticket and ticket management prototypes -->
 <div class="nhsuk-hint">You can scroll left and right to see all columns if the table does not fit on your screen</div>
-<div class="nhsuk-scrollable-pane" aria-label="Hours History Details" tabindex="0">
+<div class="nhsuk-scrollable-pane" id="tableScrollHh" aria-label="Hours History Details" tabindex="0">
   <table class="nhsuk-table" role="table">
       <caption class="nhsuk-u-visually-hidden">Hours History Details records for the selected member
       </caption>
@@ -2169,7 +2169,7 @@
 {% endset %}
 {% set linkedEmploymentTableV2 %} <!-- Used in iteration 1.3 onwards, halo ticket and ticket management prototypes -->
 <div class="nhsuk-hint">You can scroll left and right to see all columns if the table does not fit on your screen</div>
-<div class="nhsuk-scrollable-pane" aria-label="Linked Employments" tabindex="0">
+<div class="nhsuk-scrollable-pane" id="tableScrollLe" aria-label="Linked Employments" tabindex="0">
     <table class="nhsuk-table" role="table">
       <caption class="nhsuk-u-visually-hidden">Linked Employments records for the selected member
       </caption>

@@ -5,6 +5,19 @@
     margin-top: 0;
 }
 
+#tablePaginationCt {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+}
+
+#tablePaginationCt .nhsuk-pagination__list {
+    min-width: 0;
+    max-width: 100%;
+    flex-wrap: wrap;
+}
+
 .paginated-table{
     .nhsuk-select {
         min-width: 7ex;
@@ -12,7 +25,7 @@
     .rowPages{
         text-align: right;
     }
-    .nhsuk-button--secondary{
-        margin-top: 30px;
-    }
+    // .nhsuk-button--secondary{
+    //     margin-top: 30px;
+    // }
 }
