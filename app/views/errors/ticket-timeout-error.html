@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+{% set mediumLayout = "true" %}
+{% set pageTitle = "Sorry, there is a problem with the service"%}
+{% set hideBack = "true" %}
+{% set showMenu ="true"%}
+{% set supportMenu ="true"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+
+  <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-u-reading-width">
+
+      <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-5">{{pageTitle}}</h1>
+
+      <p>Try again later. </p>
+      <p>Your ticket may not have been created. </p>
+      <p><a href="#" target="_blank">Check your ticket's status at the Halo (opens in new tab).</a> </p>
+      <p>If the ticket is not there you will need to start again. </p>
+      <p>Contact your user support group via email or Microsoft Teams if you need help. </p>
+
+    </div>
+
+  </div>
+
+</div>
+{% endblock %}
