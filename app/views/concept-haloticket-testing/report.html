@@ -96,7 +96,8 @@
                         id: "membershipNumber",
                         name: "membershipNumber",
                         classes: "nhsuk-input--width-10",
-                        value: "24103624"
+                        value: "24103624",
+                        disabled: true
                         }) }}
                     </div>
                     <div class="nhsuk-form-group" id="memberFirstInitialGroup">
@@ -108,7 +109,8 @@
                         id: "memberFirstInitial",
                         name: "memberFirstInitial",
                         classes: "nhsuk-input--width-2",
-                        value: "J"
+                        value: "J",
+                        disabled: true
                         }) }}
                     </div>
                     <div class="nhsuk-form-group" id="memberSurnameGroup">
@@ -120,7 +122,8 @@
                         id: "memberSurname",
                         name: "memberSurname",
                         classes: "nhsuk-input--width-20",
-                        value: "Smith"
+                        value: "Smith",
+                        disabled: true
                         }) }}
                     </div>
                     <div class="nhsuk-form-group" id="recordTypeChangeGroup">
@@ -628,34 +631,68 @@
     <div role="dialog" id="basic-member-details-dialog" aria-labelledby="basic-member-details-dialog-label" aria-modal="true" class="hidden">
         <div class="dialog-content">
             <h2 id="basic-member-details-dialog-label" tabindex="-1">Basic member details data set</h2>
-            {{ summaryList({
-            rows: [
-            {
-            key: {
-            text: "Member number"
-            },
-            value: {
-            text: "24103624"
-            }
-            },
-            {
-            key: {
-            text: "Member first initial"
-            },
-            value: {
-            text: "J"
-            }
-            },
-            {
-            key: {
-            text: "Member surname"
-            },
-            value: {
-            text: "Smith"
-            }
-            }
-            ]
-            }) }}
+            <div class="nhsuk-grid-row">
+                <div class="nhsuk-grid-column-one-half">
+                    {{ summaryList({
+                    rows: [
+                    {
+                    key: {
+                    text: "Member number"
+                    },
+                    value: {
+                    text: "24103624"
+                    }
+                    },
+                    {
+                    key: {
+                    text: "NI number"
+                    },
+                    value: {
+                    text: "QQ 12 34 45 D"
+                    }
+                    },
+                    {
+                    key: {
+                    text: "Scheme"
+                    },
+                    value: {
+                    html: "2015 Scheme"
+                    }
+                    }
+                    ]
+                    }) }}
+                </div>
+                <div class="nhsuk-grid-column-one-half">
+                    {{ summaryList({
+                    rows: [
+                    {
+                    key: {
+                    text: "Date of birth (Age)"
+                    },
+                    value: {
+                    text: "18 September 1959 (66 years 02 months)"
+                    }
+                    },
+                    {
+                    key: {
+                    text: "Status"
+                    },
+                    value: {
+                    html: "Active"
+                    }
+                    },
+                    {
+                    key: {
+                    text: "Email"
+                    },
+                    value: {
+                    html: 'john.smith@email.com'
+                    }
+                    }
+                    ]
+                    }) }}
+                </div>
+            </div>
             <button type="button" onclick="closeDialog(this)" class="nhsuk-button">Close</button>
         </div>
     </div>
