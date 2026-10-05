@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 {% set mediumLayout = "true" %}
-{% set pageTitle = "Account settings"%}
+{% set pageTitle = "Account information"%}
 {% set showMenu ="true"%}
 {% set hideBack ="true"%}
 
@@ -9,10 +9,74 @@
 {% endblock %}
 
 {% block content %}
-<div class="nhsuk-grid-row summaryPage">
-  <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-one-third">
+        <nav>
+          <h2 class="nhsuk-heading-s nhsuk-u-margin-bottom-0">Dashboard</h2>
+          <hr class="nhsuk-section-break nhsuk-section-break--visible">
+          <h3 class="nhsuk-heading-xs nhsuk-u-margin-top-5">Data sets</h3>
+          <ul class="nhsuk-list">
+            <li><a href="#">Core data sets</a></li>
+            <li><a href="#">Additional data sets</a></li>
+          </ul>
+          <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
+          <h3 class="nhsuk-heading-xs">HaloITSM tickets</h3>
+          <ul class="nhsuk-list">
+            <li><a href="#">Site</a></li>
+            <li><a href="#">Directorate</a></li>
+            <li><a href="#">Contact number</a></li>
+          </ul>
+          <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
+          <h3 class="nhsuk-heading-xs">Account settings</h3>
+          <ul class="nhsuk-list">
+            <li><a href="#">Account information</a></li>
+            <li><a href="#">Password and security</a></li>
+            <li><a href="#">Pensions team</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="nhsuk-grid-column-two-thirds">
+        <span class="nhsuk-caption-l">Account settings</span>
+        <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">{{pageTitle}}</h1>
 
+        {{ summaryList({
+          rows: [
+            {
+              key: {
+                text: "Name"
+              },
+              value: {
+                text: "Jane Doe"
+              }
+            },
+            {
+              key: {
+                text: "Email"
+              },
+              value: {
+                text: "jane.doe@nhssa.nhs.uk"
+              }
+            },
+            {
+              key: {
+                text: "Team"
+              },
+              value: {
+                html: "Sub-Awards"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "#",
+                    text: "Change",
+                    visuallyHiddenText: "pensions team"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+      </div>
+    </div>
 
-  </div>
-</div>
 {% endblock %}

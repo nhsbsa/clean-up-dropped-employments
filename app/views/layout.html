@@ -103,6 +103,29 @@
       items: navItems
     }
   }) }}
+  {% elseif wideLayout and not hideLogin and showMenu %}
+  {{ header({
+    containerClasses: 'nhsuk-width-container-fluid',
+    service: {
+      text: "Identify record issues",
+      href: "/"
+    },
+    account: {
+      items: [
+        {
+          text: "Jane Doe",
+          icon: true
+        },
+        {
+          text: "Log out",
+          href: "#"
+        }
+      ]
+    },
+    navigation: {
+      items: navItems
+    }
+  }) }}
   {% elseif not hideLogin and showMenu %}
   {{ header({
     service: {
@@ -154,7 +177,7 @@
   {% endif %}
 
   <div class="beta-banner">
-    <div class="{% if mediumLayout %}nhsuk-width-container nhsuk-width-container-medium{% else %}nhsuk-width-container{% endif %}">
+    <div class="{% if mediumLayout %}nhsuk-width-container nhsuk-width-container-medium{% elseif wideLayout %}nhsuk-width-container nhsuk-width-container-fluid{% else %}nhsuk-width-container{% endif %}">
         <p class="nhsuk-phase-banner__content">
             <strong class="nhsuk-tag nhsuk-phase-banner__content__tag">
                 Beta
@@ -3855,7 +3878,7 @@ rows: [
         </div>
     {% endif %}
     {% if wideLayout %}
-      <div class="nhsuk-width-container nhsuk-width-container-medium">
+      <div class="nhsuk-width-container nhsuk-width-container-fluid">
         {{ backLink({
           "href": "javascript:history.go(-1)",
           "text": "Back"
@@ -3874,67 +3897,54 @@ rows: [
 <!-- Edit the footer -->
 <!-- Footer code examples can be found at https://service-manual.nhs.uk/design-system/components/footer -->
 {% block footer %}
+{% set footerContent %}
+    <div class="nhsuk-footer__meta">
+        <h2 class="nhsuk-u-visually-hidden">Support links</h2>
+        <p class="nhsuk-body-s">The following links open in a new tab, except cookies:</p>
+        <ul class="nhsuk-footer__list">
+            <li class="nhsuk-footer__list-item">
+            <a class="nhsuk-footer__list-item-link" href="#" target="_blank" rel="noopener noreferrer">Accessibility statement</a>
+            </li>
+            <li class="nhsuk-footer__list-item">
+            <a class="nhsuk-footer__list-item-link" href="/cookie-information">Cookies</a>
+            </li>
+            <li class="nhsuk-footer__list-item">
+            <a class="nhsuk-footer__list-item-link" href="https://www.nhsbsa.nhs.uk/our-policies/privacy" target="_blank" rel="noopener noreferrer">Privacy policy</a>
+            </li>
+            <li class="nhsuk-footer__list-item">
+            <a class="nhsuk-footer__list-item-link" href="https://www.nhsbsa.nhs.uk/our-policies/terms-and-conditions" target="_blank" rel="noopener noreferrer">Terms and conditions</a>
+            </li>
+        </ul>
+        © Crown copyright
+    </div>
+{% endset %}
+
 {% if mediumLayout %}
-  {{ footer({
-    containerClasses: 'nhsuk-width-container-medium',
-    meta: {
-      items: [
-        {
-          href: "https://www.nhsbsa.nhs.uk/our-policies/privacy",
-          text: "Privacy policy"
-        },
-        {
-          href: "/cookie-information",
-          text: "Cookies"
-        },
-        {
-          href: "https://www.nhsbsa.nhs.uk/our-policies/terms-and-conditions",
-          text: "Terms and conditions"
-        },
-        {
-          href: "#",
-          text: "Accessibility statement"
-        }
-      ]
-    },
-    copyright:{
-      html: "&copy; Crown copyright"
-    }
-  }) }}
+    <footer class="nhsuk-footer" role="contentinfo">
+        <div class="nhsuk-width-container nhsuk-width-container-medium">
+            {{ footerContent | safe }}
+        </div>
+    </footer>
+{% elseif wideLayout %}
+    <footer class="nhsuk-footer" role="contentinfo">
+        <div class="nhsuk-width-container-fluid">
+            {{ footerContent | safe }}
+        </div>
+    </footer>
 {% else %}
-  {{ footer({
-    meta: {
-      items: [
-        {
-          href: "https://www.nhsbsa.nhs.uk/our-policies/privacy",
-          text: "Privacy policy"
-        },
-        {
-          href: "/cookie-information",
-          text: "Cookies"
-        },
-        {
-          href: "https://www.nhsbsa.nhs.uk/our-policies/terms-and-conditions",
-          text: "Terms and conditions"
-        },
-        {
-          href: "#",
-          text: "Accessibility statement"
-        }
-      ]
-    },
-    copyright:{
-      html: "&copy; Crown copyright"
-    }
-  }) }}
+    <footer class="nhsuk-footer" role="contentinfo">
+        <div class="nhsuk-width-container">
+            {{ footerContent | safe }}
+        </div>
+    </footer>
 {% endif %}
 {% endblock %}
 
 {% block bodyEnd %}
-  {{ super() }}
-  <script type="module" src="/assets/javascript/main.js"></script>
+{{ super() }}
+    <script type="module" src="/assets/javascript/main.js"></script>
 
-  <script src="/cookie-banner.js" defer></script>
+    <script src="/cookie-banner.js" defer></script>
 
-  {% block pageScripts %}{% endblock %}
+{% block pageScripts %}{% endblock %}
 {% endblock %}

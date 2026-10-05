@@ -19,7 +19,7 @@
                 <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">{{pageTitle}}</h1>
             </div>
             <div class="nhsuk-grid-column-one-half" id="memberNew">
-                <a href="/{{folder}}/search" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small">Search new
+                <a href="/{{folder}}/search" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small nhsuk-u-margin-right-4">Search new
                     member</a>
             </div>
         </div>
@@ -108,7 +108,7 @@
                 <h2>Core member data sets</h2>
             </div>
             <div class="nhsuk-grid-column-one-third alignRight">
-                <a href="" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small">Update data sets</a>
+                <a href="" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small nhsuk-u-margin-right-4">Update data sets</a>
             </div>
         </div>
         <div class="nhsuk-u-reading-width">
@@ -117,7 +117,7 @@
             </div>
         </div>
 
-        <button type="button" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false"
+        <button type="button" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small nhsuk-u-margin-right-4" aria-expanded="false"
             aria-controls="filters-panel" id="filters-toggle">
             Show filters
         </button>
@@ -276,7 +276,7 @@
                     </fieldset>
                 </div>
 
-                <button class="nhsuk-button" data-module="nhsuk-button" type="submit">Compare</button>
+                <button class="nhsuk-button" data-module="nhsuk-button" type="submit" value="compareData" name="action">Compare</button>
             </form>
         </div>
         {% endcall %}
@@ -296,12 +296,12 @@
             </summary>
             <div class="nhsuk-details__text">
                 {{ serviceHistoryErrorsShort | safe }}
-                <button id="toggleButtonSh" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small"
+                <button id="toggleButtonSh" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small nhsuk-u-margin-right-4"
                     data-module="nhsuk-button" onclick="toggleRows('rows-sh', this)">Hide correct rows</button>
-                <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn"
+                <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn nhsuk-u-margin-right-4"
                     data-target="serviceHistory-checkbox">
                     Compare data set</button>
-                <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false"
+                <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small nhsuk-u-margin-right-4" aria-expanded="false"
                     aria-controls="sh-panel-data" id="sh-toggle-data">
                     Customise data set
                 </button>
@@ -437,10 +437,10 @@
                 </span>
             </summary>
             <div class="nhsuk-details__text">
-                <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn"
+                <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn nhsuk-u-margin-right-4"
                     data-target="serviceGroup-checkbox">
                     Compare data set</button>
-                <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false"
+                <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small nhsuk-u-margin-right-4" aria-expanded="false"
                     aria-controls="sg-panel-data" id="sg-toggle-data">
                     Customise data set
                 </button>
@@ -549,10 +549,10 @@
                 </span>
             </summary>
             <div class="nhsuk-details__text">
-                <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn"
+                <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn nhsuk-u-margin-right-4"
                     data-target="employmentHistory-checkbox">
                     Compare data set</button>
-                <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false"
+                <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small nhsuk-u-margin-right-4" aria-expanded="false"
                     aria-controls="eh-panel-data" id="eh-toggle-data">
                     Customise data set
                 </button>
@@ -714,9 +714,9 @@
                 <div class="paginated-table">
                     <div class="nhsuk-grid-row">
                         <div class="nhsuk-grid-column-two-thirds">
-                            <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn"
+                            <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn nhsuk-u-margin-right-4"
                                 data-target="contsTpp-checkbox">Compare data set</button>
-                            <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small"
+                            <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small nhsuk-u-margin-right-4"
                                 aria-expanded="false" aria-controls="ct-panel-data" id="ct-toggle-data">
                                 Customise data set
                             </button>
@@ -887,9 +887,9 @@
                 <div class="paginated-table">
                     <div class="nhsuk-grid-row">
                         <div class="nhsuk-grid-column-two-thirds">
-                            <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn"
+                            <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn nhsuk-u-margin-right-4"
                                 data-target="hoursHistory-checkbox">Compare data set</button>
-                            <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small"
+                            <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small nhsuk-u-margin-right-4"
                                 aria-expanded="false" aria-controls="hh-panel-data" id="hh-toggle-data">
                                 Customise data set
                             </button>
@@ -1023,11 +1023,11 @@
             </summary>
             <div class="nhsuk-details__text">
                 {{ linkedEmploymentErrorsShort | safe }}
-                <button id="toggleButtonLE" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small"
+                <button id="toggleButtonLE" class="nhsuk-button nhsuk-button--secondary nhsuk-button--small nhsuk-u-margin-right-4"
                     data-module="nhsuk-button" onclick="toggleRows('rows-le', this)">Hide correct rows</button>
-                <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn"
+                <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small check-btn nhsuk-u-margin-right-4"
                     data-target="linkedEmployment-checkbox">Compare data set</button>
-                <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small" aria-expanded="false"
+                <button class="nhsuk-button nhsuk-button--secondary nhsuk-button--small nhsuk-u-margin-right-4" aria-expanded="false"
                     aria-controls="le-panel-data" id="le-toggle-data">
                     Customise data set
                 </button>

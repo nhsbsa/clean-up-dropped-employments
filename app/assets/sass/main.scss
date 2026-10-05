@@ -36,6 +36,10 @@
     float: left !important;
 }
 
+.nhsuk-footer__meta :last-child{
+    margin-bottom:revert;
+}
+
 .nhsuk-error-message{
     a{
         color:$nhsuk-error-colour ;
