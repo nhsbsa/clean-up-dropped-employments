@@ -56,42 +56,35 @@
 
             <h2 class="nhsuk-heading-m">Incident form</h2>
 
-            <div class="nhsuk-form-group" id="membershipNumberGroup">
-                {{ input({
-                label: {
-                text: "Member number",
-                size: "s"
-                },
-                id: "membershipNumber",
-                name: "membershipNumber",
-                classes: "nhsuk-input--width-10",
-                value: "24103624"
-                }) }}
-            </div>
-            <div class="nhsuk-form-group" id="memberFirstInitialGroup">
-                {{ input({
-                label: {
-                text: "Member first initial",
-                size: "s"
-                },
-                id: "memberFirstInitial",
-                name: "memberFirstInitial",
-                classes: "nhsuk-input--width-2",
-                value: "J"
-                }) }}
-            </div>
-            <div class="nhsuk-form-group" id="memberSurnameGroup">
-                {{ input({
-                label: {
-                text: "Member surname",
-                size: "s"
-                },
-                id: "memberSurname",
-                name: "memberSurname",
-                classes: "nhsuk-input--width-20",
-                value: "Smith"
-                }) }}
-            </div>
+            {{ summaryList({
+            rows: [
+            {
+            key: {
+            text: "Member number"
+            },
+            value: {
+            text: "24103624"
+            }
+            },
+            {
+            key: {
+            text: "Member first initial"
+            },
+            value: {
+            text: "J"
+            }
+            },
+            {
+            key: {
+            text: "Member surname"
+            },
+            value: {
+            text: "Smith"
+            }
+            }
+            ]
+            }) }}
+            
             <div class="nhsuk-form-group" id="recordTypeChangeGroup">
                 {{ radios({
                 idPrefix: "recordTypeChange",

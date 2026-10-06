@@ -211,7 +211,7 @@
 
 {% set serviceHistoryTable %}<!-- Used in iteration 1/1.2 and all concept feature prototypes -->
 <div class="nhsuk-hint">You can scroll left and right to see all columns if the table does not fit on your screen</div>
-<div class="nhsuk-scrollable-pane" aria-label="Service history" tabindex="0">
+<div class="nhsuk-scrollable-pane" id="tableScrollSh" aria-label="Service history" tabindex="0">
   <table class="nhsuk-table" role="table">
     <caption class="nhsuk-u-visually-hidden">Service history table</caption>
     <thead class="nhsuk-table__head" role="rowgroup">
@@ -227,7 +227,7 @@
           </tr>
     </thead>
     <tbody class="nhsuk-table__body">
-        <tr class="nhsuk-table__row errorHighlight" role="row">
+        <tr class="nhsuk-table__row errorHighlight" id="shErrorId5" role="row">
         <td class="shEmpID nhsuk-table__cell nhsuk-u-font-size-14" role="cell">5</td>
         <td class="shScheme nhsuk-table__cell nhsuk-u-font-size-14" role="cell">2015</td>
         <td class="shStart nhsuk-table__cell nhsuk-u-font-size-14" role="cell"><span class="nhsuk-u-visually-hidden">Error: Employment ID 5 start date incorrect</span><span class="errorTxt">01/04/2015</span></td>
@@ -273,7 +273,7 @@
 {% endset %}
 {% set serviceGroupTable %}<!-- Used in iteration 1/1.2 and all concept feature prototypes -->
 <div class="nhsuk-hint">You can scroll left and right to see all columns if the table does not fit on your screen</div>
-<div class="nhsuk-scrollable-pane" aria-label="Service group" tabindex="0">
+<div class="nhsuk-scrollable-pane" id="tableScrollSg" aria-label="Service group" tabindex="0">
   <table class="nhsuk-table" role="table">
     <caption class="nhsuk-u-visually-hidden">Service group table</caption>
     <thead class="nhsuk-table__head" role="rowgroup">
@@ -309,7 +309,7 @@
 {% endset %}
 {% set employmentHistoryTable %}<!-- Used in iteration 1/1.2 and all concept feature prototypes -->
 <div class="nhsuk-hint">You can scroll left and right to see all columns if the table does not fit on your screen</div>
-<div class="nhsuk-scrollable-pane" aria-label="Employment history" tabindex="0">
+<div class="nhsuk-scrollable-pane" id="tableScrollEs" aria-label="Employment history" tabindex="0">
   <table class="nhsuk-table" role="table">
     <caption class="nhsuk-u-visually-hidden">Employment history table</caption>
     <thead class="nhsuk-table__head" role="rowgroup">
@@ -387,7 +387,7 @@
 {% endset %}
 {% set contsTppTable %}<!-- Used in iteration 1/1.2 and all concept feature prototypes -->
 <div class="nhsuk-hint">You can scroll left and right to see all columns if the table does not fit on your screen</div>
-<div class="nhsuk-scrollable-pane" aria-label="Conts and TPP" tabindex="0">
+<div class="nhsuk-scrollable-pane" id="tableScrollCt" aria-label="Conts and TPP" tabindex="0">
   <table class="nhsuk-table" role="table">
     <caption class="nhsuk-u-visually-hidden">Conts and TPP (pensions contributions) table</caption>
     <thead class="nhsuk-table__head" role="rowgroup">
@@ -595,7 +595,7 @@
 {% endset %}
 {% set hoursHistoryTable %}<!-- Used in iteration 1/1.2 and all concept feature prototypes -->
 <div class="nhsuk-hint">You can scroll left and right to see all columns if the table does not fit on your screen</div>
-<div class="nhsuk-scrollable-pane" aria-label="Hours history" tabindex="0">
+<div class="nhsuk-scrollable-pane" id="tableScrollHh" aria-label="Hours history" tabindex="0">
   <table class="nhsuk-table" role="table">
     <caption class="nhsuk-u-visually-hidden">Hours history table</caption>
     <thead class="nhsuk-table__head">
@@ -742,7 +742,7 @@
 {% endset %}
 {% set linkedEmploymentTable %}<!-- Used in iteration 1/1.2 and all concept feature prototypes -->
 <div class="nhsuk-hint">You can scroll left and right to see all columns if the table does not fit on your screen</div>
-<div class="nhsuk-scrollable-pane" aria-label="Linked employments" tabindex="0">
+<div class="nhsuk-scrollable-pane" id="tableScrollLe" aria-label="Linked employments" tabindex="0">
   <table class="nhsuk-table" role="table">
     <caption class="nhsuk-u-visually-hidden">Linked employment table</caption>
     <thead class="nhsuk-table__head" role="rowgroup">

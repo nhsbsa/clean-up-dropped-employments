@@ -87,45 +87,34 @@
                 </ul>
                 <div class="nhsuk-tabs__panel" id="incident-form">
                     <h2 class="nhsuk-heading-m">Incident form</h2>
-                    <div class="nhsuk-form-group" id="membershipNumberGroup">
-                        {{ input({
-                        label: {
-                        text: "Member number",
-                        size: "s"
+                    {{ summaryList({
+                        rows: [
+                        {
+                        key: {
+                        text: "Member number"
                         },
-                        id: "membershipNumber",
-                        name: "membershipNumber",
-                        classes: "nhsuk-input--width-10",
-                        value: "24103624",
-                        disabled: true
-                        }) }}
-                    </div>
-                    <div class="nhsuk-form-group" id="memberFirstInitialGroup">
-                        {{ input({
-                        label: {
-                        text: "Member first initial",
-                        size: "s"
+                        value: {
+                        text: "24103624"
+                        }
                         },
-                        id: "memberFirstInitial",
-                        name: "memberFirstInitial",
-                        classes: "nhsuk-input--width-2",
-                        value: "J",
-                        disabled: true
-                        }) }}
-                    </div>
-                    <div class="nhsuk-form-group" id="memberSurnameGroup">
-                        {{ input({
-                        label: {
-                        text: "Member surname",
-                        size: "s"
+                        {
+                        key: {
+                        text: "Member first initial"
                         },
-                        id: "memberSurname",
-                        name: "memberSurname",
-                        classes: "nhsuk-input--width-20",
-                        value: "Smith",
-                        disabled: true
-                        }) }}
-                    </div>
+                        value: {
+                        text: "J"
+                        }
+                        },
+                        {
+                        key: {
+                        text: "Member surname"
+                        },
+                        value: {
+                        text: "Smith"
+                        }
+                        }
+                        ]
+                    }) }}
                     <div class="nhsuk-form-group" id="recordTypeChangeGroup">
                         {{ radios({
                         idPrefix: "recordTypeChange",

@@ -116,6 +116,50 @@
 }
 
 
+////////////////////////
+// Sandbox Issues 
+///////////////////////
+
+.nhsuk-issues-list{
+    border:4px solid $nhsuk-error-colour;
+    margin-bottom:56px;
+    padding: 24px;
+
+    .nhsuk-issue-link{
+        color: $nhsuk-error-colour;
+        font-weight: bold;
+    }
+    span:target{
+        animation: highlight-row 3s ease-out;
+        scroll-margin-top: 80px;
+    }
+}
+.nhsuk-issue-link__cell{
+    a{
+        text-decoration: none;
+        color: $nhsuk-error-colour;
+        &:hover {
+            text-decoration: underline;
+            color: $nhsuk-error-colour;
+        }
+    }
+}
+tr:target{
+    animation: highlight-row 3s ease-out;
+    scroll-margin-top: 80px;
+}
+@keyframes highlight-row {
+    0% {
+        // outline: 4px solid transparent;
+        background-color: #ffeb3b;
+        box-shadow: 0 -2px #ffeb3b, 0 4px #212b32;
+        color:$nhsuk-text-colour ;
+    }
+
+    100% {
+        background-color: transparent;
+    }
+}
 
 ////////////////////////
 // Test version CSS
