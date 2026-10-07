@@ -36,6 +36,16 @@
     float: left !important;
 }
 
+.nhsuk-skip-link {
+    position: static;
+    width: 100%;
+    display: block;
+    text-align: center;
+    &:focus{
+        border-bottom: black 4px solid;
+    }
+}
+
 .nhsuk-footer__meta :last-child{
     margin-bottom:revert;
 }
