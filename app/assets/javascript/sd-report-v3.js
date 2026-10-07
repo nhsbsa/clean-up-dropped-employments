@@ -77,6 +77,15 @@ document.addEventListener('DOMContentLoaded', function () {
         // Get amendment text before removing row
         const amendmentField = row.querySelector('textarea[name="amendments[]"]');
         const amendmentText = amendmentField ? amendmentField.value : '';
+
+        const hasContent = Array.from(row.querySelectorAll('input, select, textarea'))
+            .some(field => field.value.trim() !== '');
+
+        // Blank rows are deleted without offering undo
+        if (!hasContent) {
+            row.remove();
+            return;
+        }
     
         // Store row and its original position
         lastRemovedRow = row;
