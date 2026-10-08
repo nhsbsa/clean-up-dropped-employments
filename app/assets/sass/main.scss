@@ -154,7 +154,8 @@
         }
     }
 }
-tr:target{
+tr:target,
+.errorSummaryList:target{
     animation: highlight-row 3s ease-out;
     scroll-margin-top: 80px;
 }
