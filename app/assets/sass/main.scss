@@ -6,7 +6,6 @@
 // Add your custom CSS/Sass styles below.
 
 @import "autocomplete";
-
 @import "concepts/_beta-banner";
 @import "concepts/_member-header";
 @import "concepts/_sortable";
@@ -20,6 +19,8 @@
 @import "concepts/_support";
 @import "concepts/file-upload";
 @import "concepts/_modal";
+
+@import "concepts/_darkmode";
 
 .nhsuk-width-container-medium{
     max-width:1100px;
