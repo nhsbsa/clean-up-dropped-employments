@@ -380,18 +380,6 @@ document.addEventListener('DOMContentLoaded', function () {
             firstErrorField = directorateError;
         }
 
-        const contactNumberError = validateRequiredField({
-            inputId: "contactNumber",
-            groupId: "contactNumberGroup",
-            errorId: "contactNumber-error",
-            message: "Enter your contact number",
-            errors
-        });
-
-        if (!firstErrorField && contactNumberError) {
-            firstErrorField = contactNumberError;
-        }
-
         if (errors.length > 0) {
             errorList.innerHTML = errors.join("");
             errorSummary.style.display = "block";
@@ -569,7 +557,6 @@ document.addEventListener('DOMContentLoaded', function () {
             "recordTypeChange-error",
             "siteAuto-error",
             "payment-error",
-            "contactNumber-error",
             "directorate-error"
         ].forEach(id => {
             const el = document.getElementById(id);
