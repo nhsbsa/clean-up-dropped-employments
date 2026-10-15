@@ -232,42 +232,6 @@ document.addEventListener('DOMContentLoaded', function () {
         // STANDARD FORM FIELDS VALIDATION
         // =========================
 
-        const memberError = validateRequiredField({
-            inputId: "membershipNumber",
-            groupId: "membershipNumberGroup",
-            errorId: "membershipNumber-error",
-            message: "Enter the member number",
-            errors
-        });
-
-        if (!firstErrorField && memberError) {
-            firstErrorField = memberError;
-        }
-
-        const initialError = validateRequiredField({
-            inputId: "memberFirstInitial",
-            groupId: "memberFirstInitialGroup",
-            errorId: "memberFirstInitial-error",
-            message: "Enter the members first initial",
-            errors
-        });
-
-        if (!firstErrorField && initialError) {
-            firstErrorField = initialError;
-        }
-
-        const surnameError = validateRequiredField({
-            inputId: "memberSurname",
-            groupId: "memberSurnameGroup",
-            errorId: "memberSurname-error",
-            message: "Enter the members surname",
-            errors
-        });
-
-        if (!firstErrorField && surnameError) {
-            firstErrorField = surnameError;
-        }
-
         const recordTypeChangeError = validateRadioGroup({
             name: "recordTypeChange",
             groupId: "recordTypeChangeGroup",
@@ -551,9 +515,6 @@ document.addEventListener('DOMContentLoaded', function () {
             .forEach(el => el.remove());
 
         [
-            "membershipNumber-error",
-            "memberFirstInitial-error",
-            "memberSurname-error",
             "recordTypeChange-error",
             "siteAuto-error",
             "payment-error",
