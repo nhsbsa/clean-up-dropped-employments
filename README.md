@@ -12,7 +12,22 @@ Node.js, NHS.UK Frontend, NHS.UK Prototype Kit, Nunjucks, HTML, CSS, JavaScript
 
 Identify record issues uses a lot of js to ensure all of the features work inline with each other, there are js files for each of the features so they can be turned on and off depending on the prototype version being worked on.
 
-The layout.html file holds a lot of content/code which is used frequently throughout multiple prototypes. This includes data tables and content for the pensions issue overview. All content is held within sets which are then pulled into the relevant places within the html files.
+The layout.html file holds a lot of content/code which is used frequently throughout multiple prototypes. This includes:
+- header including the different versions of the menu navigation (with/without the login / width of the main container)
+- Beta banner
+- data tables v1 and v2
+- error/issue messages v1 and v2
+- content for the pensions issue overview
+- the intro for the results page which sits below 'Core data sets'
+- sortable arrows which are used in concept-sortable and concept-all
+- footer links (including different widths)
+
+All os this content is held within sets which are then pulled into the relevant places within the html files.
+
+Within each prototype file at the very top is where certain things are switched on and off - such as the width of the main container which is controlled using the following
+
+- {% set wideLayout = "true" %} - this sets the width to use the fluid container for the header, footer and main container - all set using if statements within layout.html
+- {% set mediumLayout = "true" %} - this sets the width of the container for iteration 2 onwards as we updated the width to make it wider to accommodated wider data sets - also set using if statements within layout.html
 
 # Prototype disclaimer
 This is a live project and currently being worked on iteratively and may contain incomplete functionality.
