@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', function () {
             name: "recordTypeChange",
             groupId: "recordTypeChangeGroup",
             errorId: "recordTypeChange-error",
-            message: "Select a type of change",
+            message: "Select a type of record change",
             errors
         });
         
@@ -248,7 +248,7 @@ document.addEventListener('DOMContentLoaded', function () {
             name: "corrupted",
             groupId: "corruptedGroup",
             errorId: "corrupted-error",
-            message: "Select yes if your file has been corrupted",
+            message: "Select yes if your record has been corrupted",
             errors
         });
         
