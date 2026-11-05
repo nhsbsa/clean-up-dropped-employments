@@ -248,7 +248,7 @@ document.addEventListener('DOMContentLoaded', function () {
             name: "corrupted",
             groupId: "corruptedGroup",
             errorId: "corrupted-error",
-            message: "Select yes if your record has been corrupted",
+            message: "Select yes if the member's record has been corrupted",
             errors
         });
         
@@ -260,7 +260,7 @@ document.addEventListener('DOMContentLoaded', function () {
             name: "payment",
             groupId: "paymentGroup",
             errorId: "payment-error",
-            message: "Select yes if payment will be affected",
+            message: "Select yes if payment has been affected",
             errors
         });
         
