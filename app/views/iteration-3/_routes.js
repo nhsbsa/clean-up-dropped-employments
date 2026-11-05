@@ -14,13 +14,13 @@ router.post('/results', function (req, res) {
     if (action === 'compareData') {
         res.redirect('compare-wide');
     } else if (action === 'createReport') {
-        res.redirect('report');
+        res.redirect('raise-ticket');
     } else {
         res.redirect('results');
     }
 })
 
-router.post('/report', function (req, res) {
+router.post('/raise-ticket', function (req, res) {
     let uploadedFiles = [];
 
     try {
@@ -33,15 +33,15 @@ router.post('/report', function (req, res) {
     }
 
     req.session.data.uploadedFiles = uploadedFiles;
-    res.redirect('check-your-report');
+    res.redirect('check-ticket');
 })
 
-router.post('/check-your-report', function (req, res) {
-    res.redirect('report-submitted');
+router.post('/check-ticket', function (req, res) {
+    res.redirect('ticket-submitted');
 })
 
 
-router.post('/report-submitted', function (req, res) {
+router.post('/ticket-submitted', function (req, res) {
     res.redirect('search');
 })
 

@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 {% set mediumLayout = "true" %}
-{% set pageTitle = "Report submitted successfully"%}
+{% set pageTitle = "Your ticket has been submitted"%}
 {% set hideBack ="true"%}
 {% set showMenu ="true"%}
 {% set supportMenu ="true"%}
@@ -23,16 +23,16 @@
         <p>
             Your ticket will show in your HaloITSM account.</p>
         <p>
-            <a href="#">Manage your ticket at HaloITSM.</a>
+            <a href="#" target="_blank">Manage your ticket at HaloITSM (opens in new tab)</a>
         </p>
 
         <h2 class="nhsuk-heading-m">Give feedback</h2>
 
-        <p><a href="https://research.nhsbsa.nhs.uk/identify-record-issues-feedback" target="_blank">What did you think of this service?<span class="nhsuk-u-visually-hidden"> (opens in a new window)</span></a></p>
+        <p><a href="https://research.nhsbsa.nhs.uk/identify-record-issues-feedback" target="_blank">What did you think of this service? (opens in new tab)</a></p>
 
         <hr>
 
-        <form action="/{{folder}}/report-submitted" method="post" novalidate>
+        <form action="/{{folder}}/ticket-submitted" method="post" novalidate>
             {{ button({
             text: "Search new member",
             value: "searchNew",
