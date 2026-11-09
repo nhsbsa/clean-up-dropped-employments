@@ -608,6 +608,29 @@ html[data-theme='dark'] .nhsuk-error-summary {
   border-color: #ff6b6b;
 }
 
+html[data-theme='dark'] .errorHighlight{
+  .errorTxt{
+    color: #ff6b6b;
+  }
+  > td:first-child {
+    box-shadow: inset 4px 0 0 #ff6b6b;
+  }
+}
+html[data-theme='dark'] .nhsuk-issues-list {
+  background: #2b1718;
+  color: #ffffff;
+  border-color: #ff6b6b;
+  .nhsuk-task-list{
+    background: #2b1718;
+    .nhsuk-task-list__item{
+      background: #2b1718;
+    }
+  }
+  .nhsuk-issue-link {
+    color: #ff6b6b;
+  }
+}
+
 html[data-theme='dark'] .nhsuk-footer {
   background-color: #1d2529 !important;
   background-image: none;
