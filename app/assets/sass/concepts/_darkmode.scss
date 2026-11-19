@@ -193,7 +193,12 @@ html[data-theme='dark'] h6,
 html[data-theme='dark'] .nhsuk-heading-xl,
 html[data-theme='dark'] .nhsuk-heading-l,
 html[data-theme='dark'] .nhsuk-heading-m,
-html[data-theme='dark'] .nhsuk-heading-s {
+html[data-theme='dark'] .nhsuk-heading-s,
+html[data-theme='dark'] .nhsuk-caption-xxl, 
+html[data-theme='dark'] .nhsuk-caption-xl, 
+html[data-theme='dark'] .nhsuk-caption-l, 
+html[data-theme='dark'] .nhsuk-caption-m, 
+html[data-theme='dark'] .nhsuk-caption {
   color: #f0f4f5;
 }
 
