@@ -201,7 +201,6 @@ html[data-theme='dark'] .nhsuk-table,
 html[data-theme='dark'] .nhsuk-table th,
 html[data-theme='dark'] .nhsuk-table td,
 html[data-theme='dark'] .compareCol,
-html[data-theme='dark'] .nhsuk-panel,
 html[data-theme='dark'] .nhsuk-card,
 html[data-theme='dark'] .nhsuk-card__content,
 html[data-theme='dark'] .nhsuk-expander,
@@ -209,6 +208,11 @@ html[data-theme='dark'] .nhsuk-expander .nhsuk-details__summary,
 html[data-theme='dark'] .nhsuk-details__text,
 html[data-theme='dark'] .nhsuk-inset-text {
   background: #1d2529 !important;
+  color: #f0f4f5;
+  border-color: #768692;
+}
+html[data-theme='dark'] .nhsuk-panel{
+  background: #004C23 !important;
   color: #f0f4f5;
   border-color: #768692;
 }
